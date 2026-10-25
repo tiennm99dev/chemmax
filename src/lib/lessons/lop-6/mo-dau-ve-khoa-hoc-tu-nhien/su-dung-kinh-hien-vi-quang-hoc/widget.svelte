@@ -5,12 +5,12 @@
   import { formatNumber } from '#lib/units-engine/format.js';
   import {
     EYEPIECE,
-    FOCUS_TEXT,
     LIGHT_TEXT,
     MAX_GAP,
     OBJECTIVES,
     START_GAP,
     blurRadius,
+    focusMessage,
     focusState,
     gapMm,
     lightState,
@@ -26,6 +26,7 @@
   const objective = $derived(OBJECTIVES[pick]);
   const total = $derived(totalMagnification(objective.mag));
   const focus = $derived(focusState(objective, gap));
+  const focusText = $derived(focusMessage(objective, gap));
   const lit = $derived(lightState(objective, light));
   const blurPx = $derived(blurRadius(objective, gap));
   const visible = $derived(focus !== 'khong-thay');
@@ -77,7 +78,7 @@
       viewBox="0 0 200 200"
       class="mx-auto block w-full max-w-64"
       role="img"
-      aria-label="Thị trường kính hiển vi, độ phóng đại {total} lần: {FOCUS_TEXT[focus]}"
+      aria-label="Thị trường kính hiển vi, độ phóng đại {total} lần: {focusText}"
     >
       <defs>
         <clipPath id="{id}-thi-truong"><circle cx="100" cy="100" r="90" /></clipPath>
@@ -181,7 +182,7 @@
         : 'bg-amber-50 text-amber-900'}"
     aria-live="polite"
   >
-    <p class="font-semibold">{FOCUS_TEXT[focus]}</p>
+    <p class="font-semibold">{focusText}</p>
     <p>{LIGHT_TEXT[lit]}</p>
     <p class="mt-1 text-slate-700">
       Độ phóng đại: {objective.mag} (vật kính) × {EYEPIECE} (thị kính) =

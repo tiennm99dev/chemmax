@@ -1,12 +1,22 @@
 <script>
   /**
    * One safety sign drawn in SVG: the frame (shape and colours) comes from the
-   * sign's kind, the pictogram from its picture name.
-   * @type {{ kind: import('./engine.js').SignKind, picture: import('./engine.js').Pictogram, label: string, size?: number }}
+   * sign's kind, the pictogram from its picture name. `red` paints a chỉ dẫn
+   * sign red (fire equipment) instead of green.
+   * @type {{ kind: import('./engine.js').SignKind, picture: import('./engine.js').Pictogram, label: string, size?: number, red?: boolean }}
    */
-  let { kind, picture, label, size = 120 } = $props();
+  let { kind, picture, label, size = 120, red = false } = $props();
 
-  const ink = $derived(kind === 'cam' || kind === 'nguy-hiem' ? '#111827' : '#ffffff');
+  const ink = $derived(kind === 'chi-dan' ? '#ffffff' : '#111827');
+  const BG = { cam: '#ffffff', 'nguy-hiem': '#facc15', 'hoa-chat': '#f97316' };
+  const bg = $derived(kind === 'chi-dan' ? (red ? '#dc2626' : '#16a34a') : BG[kind]);
+  const place = $derived(
+    kind === 'nguy-hiem'
+      ? 'translate(50 60) scale(0.62)'
+      : kind === 'chi-dan'
+        ? 'translate(50 50) scale(0.62)'
+        : 'translate(50 50) scale(0.8)',
+  );
 </script>
 
 <svg viewBox="0 0 100 100" width={size} height={size} role="img" aria-label={label}>
@@ -20,19 +30,13 @@
       stroke-width="6"
       stroke-linejoin="round"
     />
-  {:else if kind === 'bat-buoc'}
-    <circle cx="50" cy="50" r="46" fill="#2563eb" />
+  {:else if kind === 'hoa-chat'}
+    <rect x="6" y="6" width="88" height="88" fill={bg} stroke="#111827" stroke-width="5" />
   {:else}
-    <rect x="4" y="4" width="92" height="92" rx="6" fill="#16a34a" />
+    <rect x="2" y="22" width="96" height="56" rx="4" fill={bg} />
   {/if}
 
-  <g
-    transform={kind === 'nguy-hiem'
-      ? 'translate(50 60) scale(0.62)'
-      : 'translate(50 50) scale(0.8)'}
-    fill={ink}
-    stroke={ink}
-  >
+  <g transform={place} fill={ink} stroke={ink}>
     {#if picture === 'lua'}
       <path
         d="M0 -38 C 14 -18 26 -8 22 12 C 19 28 8 36 0 36 C -8 36 -21 28 -22 12 C -24 -4 -10 -10 -6 -24 C -2 -14 2 -12 4 -8 C 8 -18 4 -28 0 -38 Z"
@@ -53,20 +57,8 @@
     {:else if picture === 'doc'}
       <circle cx="0" cy="-14" r="20" stroke="none" />
       <rect x="-12" y="2" width="24" height="12" rx="3" stroke="none" />
-      <circle
-        cx="-8"
-        cy="-14"
-        r="5"
-        fill={kind === 'nguy-hiem' ? '#facc15' : '#2563eb'}
-        stroke="none"
-      />
-      <circle
-        cx="8"
-        cy="-14"
-        r="5"
-        fill={kind === 'nguy-hiem' ? '#facc15' : '#2563eb'}
-        stroke="none"
-      />
+      <circle cx="-8" cy="-14" r="5" fill={bg} stroke="none" />
+      <circle cx="8" cy="-14" r="5" fill={bg} stroke="none" />
       <path d="M-30 22 L30 40 M30 22 L-30 40" stroke-width="7" stroke-linecap="round" />
     {:else if picture === 'an-mon'}
       <path d="M-30 -36 h22 l-4 12 h-14 z" stroke="none" />
@@ -76,15 +68,6 @@
       <rect x="-34" y="22" width="26" height="12" stroke="none" />
       <path d="M8 34 h28 v-8 h-20 l-8 -6 z" stroke="none" />
       <path d="M-40 40 h80" stroke-width="4" />
-    {:else if picture === 'kinh'}
-      <circle cx="-16" cy="0" r="13" fill="none" stroke-width="6" />
-      <circle cx="16" cy="0" r="13" fill="none" stroke-width="6" />
-      <path d="M-3 -2 h6 M-29 -2 l-11 -6 M29 -2 l11 -6" stroke-width="6" />
-    {:else if picture === 'gang-tay'}
-      <path
-        d="M-18 34 v-34 h-6 v-26 a4 4 0 0 1 8 0 v20 v-30 a4 4 0 0 1 8 0 v28 v-32 a4 4 0 0 1 8 0 v32 v-28 a4 4 0 0 1 8 0 v30 v-14 a4 4 0 0 1 8 0 v28 c 0 10 -6 16 -12 16 z"
-        stroke="none"
-      />
     {:else if picture === 'thoat-hiem'}
       <rect x="10" y="-36" width="26" height="72" fill="none" stroke-width="5" />
       <circle cx="-14" cy="-26" r="7" stroke="none" />
@@ -94,6 +77,10 @@
         stroke-width="6"
         stroke-linecap="round"
       />
+    {:else if picture === 'binh-chua-chay'}
+      <rect x="-12" y="-22" width="24" height="58" rx="8" stroke="none" />
+      <rect x="-6" y="-32" width="12" height="10" stroke="none" />
+      <path d="M6 -28 h16 l10 10" fill="none" stroke-width="5" stroke-linecap="round" />
     {:else}
       <rect x="-9" y="-32" width="18" height="64" stroke="none" />
       <rect x="-32" y="-9" width="64" height="18" stroke="none" />

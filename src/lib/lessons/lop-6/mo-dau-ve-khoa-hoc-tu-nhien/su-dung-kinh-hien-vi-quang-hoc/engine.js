@@ -95,8 +95,8 @@ export const FOCUS_TEXT = {
   cham: 'Dừng lại! Vật kính đã chạm vào lá kính, có thể làm vỡ tiêu bản và hỏng vật kính. Khi hạ vật kính sát tiêu bản phải nhìn từ bên ngoài.',
   net: 'Ảnh rõ nét: em thấy rõ các tế bào.',
   'gan-net': 'Đã thấy mẫu vật nhưng còn hơi mờ: vặn ốc nhỏ thật chậm để lấy nét.',
-  mo: 'Ảnh rất mờ: vặn ốc to để đưa vật kính về gần vị trí lấy nét.',
-  'khong-thay': 'Chưa thấy mẫu vật: vật kính còn quá xa tiêu bản.',
+  mo: 'Ảnh rất mờ: vật kính còn cách xa vị trí lấy nét.',
+  'khong-thay': 'Chưa thấy mẫu vật.',
 };
 
 /** @type {Record<ReturnType<typeof lightState>, string>} */
@@ -105,6 +105,22 @@ export const LIGHT_TEXT = {
   vua: 'Ánh sáng vừa đủ.',
   choi: 'Ánh sáng quá chói, ảnh bị nhạt: thu hẹp màn chắn.',
 };
+
+/**
+ * The focus message, telling which way to move the objective when the sample
+ * is far out of focus: down when the gap is above the focusing distance, up
+ * when the objective is already too close to the slide.
+ * @param {Objective} objective
+ * @param {number} gap
+ */
+export function focusMessage(objective, gap) {
+  const state = focusState(objective, gap);
+  if (state !== 'mo' && state !== 'khong-thay') return FOCUS_TEXT[state];
+  const head = state === 'mo' ? 'Ảnh rất mờ' : 'Chưa thấy mẫu vật';
+  return gap > objective.focus
+    ? `${head}: vật kính còn xa tiêu bản. Nhìn từ bên ngoài, hạ dần vật kính xuống.`
+    : `${head}: vật kính đã quá gần tiêu bản. Nhìn vào thị kính, nâng dần vật kính lên.`;
+}
 
 /**
  * Gap in millimetres for display.

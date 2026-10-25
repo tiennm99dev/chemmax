@@ -117,6 +117,7 @@
                 ? 'bg-emerald-100 text-emerald-800'
                 : 'bg-rose-100 text-rose-800'}"
             >
+              <span aria-hidden="true">{card.bin === bin.id ? '✓' : '✗'}</span>
               <span class="sr-only">{card.bin === bin.id ? 'Đúng:' : 'Sai:'}</span>
               {card.text}
             </li>

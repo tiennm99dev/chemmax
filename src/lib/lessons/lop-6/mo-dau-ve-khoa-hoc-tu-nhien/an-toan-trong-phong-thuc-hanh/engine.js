@@ -1,15 +1,16 @@
 /**
  * Data and checking for the laboratory-safety widget: everyday situations in
- * the lab with one safe action each, and the four families of safety signs
- * told apart by shape and colour.
+ * the lab with one safe action each, and the four families of warning signs
+ * the KNTT book teaches, told apart by shape and colour.
  */
 
 /**
  * @typedef {{ text: string, safe: boolean, why: string }} Action
  * @typedef {{ id: string, where: string, situation: string, actions: Action[] }} Scenario
- * @typedef {'cam' | 'nguy-hiem' | 'bat-buoc' | 'chi-dan'} SignKind
- * @typedef {'lua' | 'an-uong' | 'nuoc' | 'set' | 'doc' | 'an-mon' | 'kinh' | 'gang-tay' | 'thoat-hiem' | 'so-cuu'} Pictogram
- * @typedef {{ id: string, kind: SignKind, picture: Pictogram, meaning: string }} Sign
+ * @typedef {'cam' | 'nguy-hiem' | 'hoa-chat' | 'chi-dan'} SignKind
+ * @typedef {'lua' | 'an-uong' | 'nuoc' | 'set' | 'doc' | 'an-mon' | 'thoat-hiem' | 'so-cuu' | 'binh-chua-chay'} Pictogram
+ * @typedef {{ id: string, kind: SignKind, picture: Pictogram, meaning: string, red?: boolean }} Sign
+ * `red`: a chỉ dẫn sign on a red background (fire equipment) instead of green.
  */
 
 /** @type {Scenario[]} */
@@ -174,28 +175,40 @@ export const SCENARIOS = [
 
 /** @type {Record<SignKind, { name: string, look: string }>} */
 export const SIGN_KINDS = {
-  cam: { name: 'Biển báo cấm', look: 'hình tròn, nền trắng, viền đỏ, có gạch chéo đỏ' },
-  'nguy-hiem': { name: 'Biển cảnh báo nguy hiểm', look: 'hình tam giác đều, nền vàng, viền đen' },
-  'bat-buoc': { name: 'Biển bắt buộc thực hiện', look: 'hình tròn, nền xanh dương, hình vẽ trắng' },
-  'chi-dan': { name: 'Biển chỉ dẫn', look: 'hình vuông hoặc chữ nhật, nền xanh lá, hình vẽ trắng' },
+  cam: { name: 'Kí hiệu cảnh báo cấm', look: 'hình tròn, viền đỏ, nền trắng' },
+  'nguy-hiem': {
+    name: 'Kí hiệu cảnh báo khu vực nguy hiểm',
+    look: 'hình tam giác đều, viền đen hoặc viền đỏ, nền vàng',
+  },
+  'hoa-chat': {
+    name: 'Kí hiệu cảnh báo nguy hiểm do hoá chất gây ra',
+    look: 'hình vuông, viền đen, nền đỏ cam',
+  },
+  'chi-dan': { name: 'Biển chỉ dẫn thực hiện', look: 'hình chữ nhật, nền xanh hoặc nền đỏ' },
 };
 
 /** @type {SignKind[]} */
-export const KIND_ORDER = ['cam', 'nguy-hiem', 'bat-buoc', 'chi-dan'];
+export const KIND_ORDER = ['cam', 'nguy-hiem', 'hoa-chat', 'chi-dan'];
 
 /** @type {Sign[]} */
 export const SIGNS = [
   { id: 'cam-lua', kind: 'cam', picture: 'lua', meaning: 'Cấm lửa' },
   { id: 'cam-an-uong', kind: 'cam', picture: 'an-uong', meaning: 'Cấm ăn uống' },
   { id: 'cam-nuoc', kind: 'cam', picture: 'nuoc', meaning: 'Không dùng làm nước uống' },
-  { id: 'dien', kind: 'nguy-hiem', picture: 'set', meaning: 'Cảnh báo điện cao thế' },
-  { id: 'doc', kind: 'nguy-hiem', picture: 'doc', meaning: 'Cảnh báo chất độc' },
-  { id: 'chay', kind: 'nguy-hiem', picture: 'lua', meaning: 'Cảnh báo chất dễ cháy' },
-  { id: 'an-mon', kind: 'nguy-hiem', picture: 'an-mon', meaning: 'Cảnh báo chất ăn mòn' },
-  { id: 'kinh', kind: 'bat-buoc', picture: 'kinh', meaning: 'Bắt buộc đeo kính bảo hộ' },
-  { id: 'gang-tay', kind: 'bat-buoc', picture: 'gang-tay', meaning: 'Bắt buộc đeo găng tay' },
+  { id: 'dien', kind: 'nguy-hiem', picture: 'set', meaning: 'Khu vực có điện cao thế' },
+  { id: 'de-chay', kind: 'nguy-hiem', picture: 'lua', meaning: 'Khu vực dễ cháy' },
+  { id: 'doc', kind: 'hoa-chat', picture: 'doc', meaning: 'Hoá chất độc' },
+  { id: 'chay', kind: 'hoa-chat', picture: 'lua', meaning: 'Hoá chất dễ cháy' },
+  { id: 'an-mon', kind: 'hoa-chat', picture: 'an-mon', meaning: 'Hoá chất ăn mòn' },
   { id: 'thoat-hiem', kind: 'chi-dan', picture: 'thoat-hiem', meaning: 'Lối thoát hiểm' },
   { id: 'so-cuu', kind: 'chi-dan', picture: 'so-cuu', meaning: 'Nơi đặt hộp sơ cứu' },
+  {
+    id: 'binh-chua-chay',
+    kind: 'chi-dan',
+    picture: 'binh-chua-chay',
+    meaning: 'Nơi đặt bình chữa cháy',
+    red: true,
+  },
 ];
 
 /**

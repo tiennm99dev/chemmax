@@ -115,6 +115,7 @@
         <SafetySign
           kind={sign.kind}
           picture={sign.picture}
+          red={sign.red}
           label="Biển báo số {signIndex + 1}"
           size={140}
         />

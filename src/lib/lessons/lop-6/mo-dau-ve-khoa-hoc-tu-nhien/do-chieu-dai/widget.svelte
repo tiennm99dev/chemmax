@@ -52,9 +52,11 @@
   const INSET_K = $derived(340 / (20 * ruler.dcnn));
   const insetMarks = $derived(marks(ruler, seen - 11 * ruler.dcnn, seen + 11 * ruler.dcnn));
 
+  /** How far the ruler may slide either way, in cm. */
+  const limit = $derived(thing.length * 0.3 + 2);
+
   /** @param {number} o */
   function setOffset(o) {
-    const limit = thing.length * 0.3 + 2;
     let next = Math.max(-limit, Math.min(limit, o));
     next = Math.abs(next) * px < 5 ? 0 : Math.round(next * 20) / 20;
     offset = next + 0;
@@ -84,7 +86,8 @@
   }
   /** @param {KeyboardEvent} e */
   function key(e) {
-    const step = ruler.dcnn * (e.shiftKey ? 10 : 1);
+    // Half-centimetre steps at most, so the arrows always land on the 0 mark.
+    const step = Math.min(ruler.dcnn, 0.5) * (e.shiftKey ? 10 : 1);
     if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') setOffset(offset - step);
     else if (e.key === 'ArrowRight' || e.key === 'ArrowUp') setOffset(offset + step);
     else if (e.key === 'Home') setOffset(0);
@@ -142,8 +145,8 @@
       role="slider"
       tabindex="0"
       aria-label="Thước, kéo để đặt vạch số 0"
-      aria-valuemin={-10}
-      aria-valuemax={10}
+      aria-valuemin={-limit}
+      aria-valuemax={limit}
       aria-valuenow={offset}
       aria-valuetext={aligned(offset)
         ? 'Vạch số 0 ngang bằng đầu vật'

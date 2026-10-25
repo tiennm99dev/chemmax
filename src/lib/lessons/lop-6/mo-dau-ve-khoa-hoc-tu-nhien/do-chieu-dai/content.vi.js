@@ -220,7 +220,7 @@ export default {
     {
       type: 'choice',
       prompt: 'Dùng thước có ĐCNN $0{,}5$ cm đo chiều dài quyển sách. Cách ghi kết quả nào đúng?',
-      options: ['$26$ cm', '$26{,}4$ cm', '$26{,}5$ cm', '$26{,}45$ cm'],
+      options: ['$26{,}3$ cm', '$26{,}4$ cm', '$26{,}5$ cm', '$26{,}45$ cm'],
       answer: 2,
       hints: ['Kết quả phải là một bội của ĐCNN $0{,}5$ cm.'],
       solution:

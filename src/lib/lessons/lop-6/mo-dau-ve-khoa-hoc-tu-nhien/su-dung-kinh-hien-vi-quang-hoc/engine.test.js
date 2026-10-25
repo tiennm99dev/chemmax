@@ -3,6 +3,7 @@ import {
   OBJECTIVES,
   START_GAP,
   blurRadius,
+  focusMessage,
   focusState,
   lightState,
   totalMagnification,
@@ -60,6 +61,13 @@ describe('virtual microscope', () => {
     expect(blurRadius(low, 1700)).toBe(0);
     expect(blurRadius(low, 1800)).toBeGreaterThan(blurRadius(low, 1750));
     expect(blurRadius(low, 3000)).toBeLessThanOrEqual(14);
+  });
+
+  it('says which way to move the objective when far out of focus', () => {
+    expect(focusMessage(low, 2530)).toMatch(/xa tiêu bản.*hạ/);
+    expect(focusMessage(low, 500)).toMatch(/quá gần.*nâng/);
+    expect(focusMessage(high, 30)).toMatch(/quá gần.*nâng/);
+    expect(focusMessage(high, 0)).toMatch(/chạm/);
   });
 
   it('asks for more light at higher magnification', () => {

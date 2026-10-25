@@ -36,6 +36,8 @@ describe('hand magnifier', () => {
     expect(viewState(1)).toBe('gan-qua');
     expect(viewState(3.8)).toBe('ro-net');
     expect(viewState(4.9)).toBe('ro-net');
+    expect(viewState(FOCAL)).toBe('ro-net');
+    expect(blur(FOCAL)).toBe(0);
     expect(viewState(5.5)).toBe('xa-qua');
     expect(blur(4)).toBe(0);
     expect(blur(1)).toBeGreaterThan(blur(3.5));

@@ -44,7 +44,8 @@ export const SHARP_FROM = (FOCAL * (NEAR_POINT - EYE_TO_LENS)) / (FOCAL + NEAR_P
  * @returns {'gan-qua' | 'ro-net' | 'xa-qua'}
  */
 export function viewState(d) {
-  if (d >= FOCAL) return 'xa-qua';
+  // At the focal point the image is at infinity: sharp for a relaxed eye.
+  if (d > FOCAL + 1e-9) return 'xa-qua';
   return d + 1e-9 >= SHARP_FROM ? 'ro-net' : 'gan-qua';
 }
 

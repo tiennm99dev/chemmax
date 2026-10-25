@@ -1,7 +1,7 @@
 /** @type {import('#lib/core/content-schema.js').LessonContent} */
 export default {
   summary:
-    'Bài học nêu các quy định an toàn trong phòng thực hành, các nguồn gây mất an toàn (điện, hoá chất, dụng cụ dễ vỡ, sắc nhọn) và cách nhận biết biển báo cấm, biển cảnh báo, biển bắt buộc và biển chỉ dẫn.',
+    'Bài học nêu các quy định an toàn trong phòng thực hành, các nguồn gây mất an toàn (điện, hoá chất, dụng cụ dễ vỡ, sắc nhọn) và cách nhận biết bốn loại kí hiệu cảnh báo: cấm, khu vực nguy hiểm, nguy hiểm do hoá chất và chỉ dẫn thực hiện.',
   intro:
     'Phòng thực hành là nơi em được tự tay làm thí nghiệm: đun nóng, pha dung dịch, quan sát mẫu vật. Ở đây có đèn cồn, ổ điện, dụng cụ thuỷ tinh và nhiều loại hoá chất. Nếu sơ ý, chúng có thể gây bỏng, cháy, điện giật hay ngộ độc. Biết các quy định và đọc được các biển báo sẽ giúp em làm thí nghiệm an toàn cho mình và cho các bạn.',
   objectives: [
@@ -71,31 +71,31 @@ export default {
           head: ['Loại kí hiệu', 'Hình dạng và màu sắc', 'Ví dụ'],
           rows: [
             [
-              'Biển báo cấm',
-              'Hình tròn, nền trắng, viền đỏ, thường có gạch chéo đỏ',
+              'Kí hiệu cảnh báo cấm',
+              'Hình tròn, viền đỏ, nền trắng (thường có gạch chéo đỏ)',
               'Cấm lửa; cấm ăn uống; không dùng làm nước uống',
             ],
             [
-              'Biển cảnh báo nguy hiểm',
-              'Hình tam giác đều, nền vàng, viền đen',
-              'Chất dễ cháy; chất độc; chất ăn mòn; điện cao thế',
+              'Kí hiệu cảnh báo khu vực nguy hiểm',
+              'Hình tam giác đều, viền đen hoặc viền đỏ, nền vàng',
+              'Khu vực có điện cao thế; khu vực dễ cháy',
             ],
             [
-              'Biển bắt buộc thực hiện',
-              'Hình tròn, nền xanh dương, hình vẽ trắng',
-              'Phải đeo kính bảo hộ; phải đeo găng tay',
+              'Kí hiệu cảnh báo nguy hiểm do hoá chất gây ra',
+              'Hình vuông, viền đen, nền đỏ cam',
+              'Hoá chất độc; hoá chất ăn mòn; hoá chất dễ cháy',
             ],
             [
-              'Biển chỉ dẫn',
-              'Hình vuông hoặc chữ nhật, nền xanh lá, hình vẽ trắng',
-              'Lối thoát hiểm; nơi đặt hộp sơ cứu',
+              'Biển chỉ dẫn thực hiện',
+              'Hình chữ nhật, nền xanh hoặc nền đỏ',
+              'Lối thoát hiểm; nơi đặt hộp sơ cứu; nơi đặt bình chữa cháy',
             ],
           ],
         },
         {
           type: 'callout',
           tone: 'note',
-          text: 'Trên nhãn các lọ hoá chất còn có kí hiệu hình thoi viền đỏ, nền trắng, hình vẽ đen, cho biết hoá chất đó dễ cháy, độc hay ăn mòn. Luôn đọc nhãn trước khi dùng hoá chất.',
+          text: 'Cùng một hình vẽ (ví dụ ngọn lửa) có thể nằm trên nhiều loại kí hiệu: trong hình tròn viền đỏ là cấm lửa, trong tam giác nền vàng là khu vực dễ cháy, trong hình vuông nền đỏ cam là hoá chất dễ cháy. Vì vậy phải nhìn cả hình dạng, màu sắc lẫn hình vẽ. Luôn đọc nhãn và kí hiệu trên lọ trước khi dùng hoá chất.',
         },
         {
           type: 'p',
@@ -125,10 +125,11 @@ export default {
       problem:
         'Một biển báo có dạng hình tam giác đều, nền vàng, viền đen, bên trong vẽ hình tia sét. Biển đó thuộc loại nào và có ý nghĩa gì?',
       steps: [
-        'Hình tam giác đều, nền vàng, viền đen là đặc điểm của biển cảnh báo nguy hiểm.',
+        'Hình tam giác đều, viền đen, nền vàng là đặc điểm của kí hiệu cảnh báo khu vực nguy hiểm.',
         'Hình tia sét tượng trưng cho điện.',
       ],
-      answer: 'Đó là biển cảnh báo nguy hiểm: cảnh báo điện cao thế, không được lại gần, chạm vào.',
+      answer:
+        'Đó là kí hiệu cảnh báo khu vực nguy hiểm: khu vực có điện cao thế, không được lại gần, chạm vào.',
     },
     {
       problem: 'Vì sao phải tuân thủ các quy định an toàn trong phòng thực hành?',
@@ -159,26 +160,32 @@ export default {
     },
     {
       type: 'choice',
-      prompt: 'Biển báo hình tròn, nền trắng, viền đỏ, có gạch chéo đỏ là',
+      prompt: 'Kí hiệu hình tròn, viền đỏ, nền trắng, có gạch chéo đỏ là',
       options: [
-        'biển cảnh báo nguy hiểm',
-        'biển báo cấm',
-        'biển bắt buộc thực hiện',
-        'biển chỉ dẫn',
+        'kí hiệu cảnh báo khu vực nguy hiểm',
+        'kí hiệu cảnh báo cấm',
+        'kí hiệu cảnh báo nguy hiểm do hoá chất gây ra',
+        'biển chỉ dẫn thực hiện',
       ],
       answer: 1,
       hints: ['Viền đỏ và gạch chéo cho biết việc gì đó không được phép.'],
-      solution: 'Hình tròn, nền trắng, viền đỏ là biển báo cấm (ví dụ: cấm lửa, cấm ăn uống).',
+      solution:
+        'Hình tròn, viền đỏ, nền trắng là kí hiệu cảnh báo cấm (ví dụ: cấm lửa, cấm ăn uống).',
     },
     {
       type: 'match',
-      prompt: 'Nối mỗi loại biển với hình dạng, màu sắc của nó.',
-      left: ['Biển báo cấm', 'Biển cảnh báo nguy hiểm', 'Biển bắt buộc thực hiện', 'Biển chỉ dẫn'],
+      prompt: 'Nối mỗi loại kí hiệu với hình dạng, màu sắc của nó.',
+      left: [
+        'Cảnh báo cấm',
+        'Cảnh báo khu vực nguy hiểm',
+        'Cảnh báo nguy hiểm do hoá chất gây ra',
+        'Chỉ dẫn thực hiện',
+      ],
       right: [
-        'Hình tam giác đều, nền vàng, viền đen',
-        'Hình vuông hoặc chữ nhật, nền xanh lá',
-        'Hình tròn, nền trắng, viền đỏ',
-        'Hình tròn, nền xanh dương',
+        'Hình tam giác đều, viền đen hoặc viền đỏ, nền vàng',
+        'Hình chữ nhật, nền xanh hoặc nền đỏ',
+        'Hình tròn, viền đỏ, nền trắng',
+        'Hình vuông, viền đen, nền đỏ cam',
       ],
       pairs: [
         [0, 2],
@@ -186,9 +193,12 @@ export default {
         [2, 3],
         [3, 1],
       ],
-      hints: ['Màu đỏ: cấm; màu vàng: cảnh báo; màu xanh dương: bắt buộc; màu xanh lá: chỉ dẫn.'],
+      hints: [
+        'Hình tròn viền đỏ: cấm; tam giác nền vàng: khu vực nguy hiểm.',
+        'Hình vuông nền đỏ cam: hoá chất; hình chữ nhật: chỉ dẫn.',
+      ],
       solution:
-        'Cấm: tròn, nền trắng, viền đỏ. Cảnh báo nguy hiểm: tam giác, nền vàng, viền đen. Bắt buộc: tròn, nền xanh dương. Chỉ dẫn: vuông hoặc chữ nhật, nền xanh lá.',
+        'Cấm: tròn, viền đỏ, nền trắng. Khu vực nguy hiểm: tam giác đều, nền vàng. Nguy hiểm do hoá chất: hình vuông, viền đen, nền đỏ cam. Chỉ dẫn thực hiện: hình chữ nhật, nền xanh hoặc đỏ.',
     },
     {
       type: 'choice',
@@ -238,37 +248,43 @@ export default {
     {
       type: 'choice',
       prompt:
-        'Một biển báo hình tròn, nền xanh dương, vẽ hình đôi kính màu trắng. Biển này yêu cầu gì?',
+        'Trên một lọ hoá chất có kí hiệu hình vuông, viền đen, nền đỏ cam, vẽ hình đầu lâu và hai xương bắt chéo. Kí hiệu này cho biết gì?',
       options: [
-        'Cấm đeo kính trong phòng',
-        'Bắt buộc đeo kính bảo hộ',
-        'Cảnh báo ánh sáng mạnh',
-        'Chỉ dẫn nơi để kính',
+        'Cấm mang lọ ra khỏi phòng',
+        'Hoá chất trong lọ là chất độc',
+        'Lọ đặt ở lối thoát hiểm',
+        'Khu vực có điện cao thế',
       ],
       answer: 1,
-      hints: ['Hình tròn nền xanh dương là loại biển nào?'],
+      hints: [
+        'Hình vuông nền đỏ cam là loại kí hiệu cảnh báo nào?',
+        'Hình đầu lâu tượng trưng cho nguy hiểm gì?',
+      ],
       solution:
-        'Hình tròn nền xanh dương là biển bắt buộc thực hiện; hình đôi kính: phải đeo kính bảo hộ.',
+        'Hình vuông, viền đen, nền đỏ cam là kí hiệu cảnh báo nguy hiểm do hoá chất gây ra; hình đầu lâu xương chéo: chất độc. Phải đeo găng tay, không nếm, ngửi và chỉ dùng khi có hướng dẫn của giáo viên.',
     },
     {
-      type: 'order',
-      prompt: 'Sắp xếp các việc theo đúng thứ tự khi bị một ít dung dịch hoá chất bắn vào tay.',
-      items: [
+      type: 'multi',
+      prompt: 'Khi không may bị một ít dung dịch hoá chất bắn vào tay, em cần làm những việc nào?',
+      options: [
         'Báo ngay cho giáo viên',
-        'Dừng thí nghiệm, đặt dụng cụ xuống chỗ an toàn',
-        'Rửa ngay chỗ bị dính hoá chất dưới vòi nước sạch nhiều lần',
+        'Rửa chỗ bị dính hoá chất dưới vòi nước sạch',
+        'Lau tay vào áo rồi làm tiếp',
+        'Giấu đi vì chưa thấy đau',
+        'Tự bôi một hoá chất khác lên để trung hoà',
       ],
-      answer: [1, 2, 0],
+      answers: [0, 1],
       hints: [
-        'Trước hết phải tránh làm đổ thêm hoá chất; sau đó xử lí chỗ bị dính càng sớm càng tốt.',
+        'Gặp sự cố thì phải báo ai?',
+        'Nước sạch làm loãng và cuốn trôi hoá chất; tự dùng hoá chất khác có thể gây bỏng nặng hơn.',
       ],
       solution:
-        'Đặt dụng cụ xuống chỗ an toàn, rửa ngay chỗ bị dính dưới vòi nước sạch nhiều lần để làm loãng và trôi hoá chất, rồi báo cho giáo viên để được xử lí tiếp.',
+        'Báo ngay cho giáo viên để được xử lí kịp thời và rửa chỗ bị dính dưới vòi nước sạch. Lau vào áo, giấu đi hay tự bôi hoá chất khác đều có thể làm tổn thương da nặng hơn.',
     },
   ],
   takeaways: [
     'Nguồn gây mất an toàn trong phòng thực hành: điện; hoá chất và chất dễ cháy; dụng cụ dễ vỡ, sắc nhọn, vật nóng.',
     'Chỉ làm thí nghiệm khi có giáo viên hướng dẫn; mặc đồ bảo hộ, buộc gọn tóc; không ăn uống, đùa nghịch; không nếm, ngửi trực tiếp hoá chất; báo ngay khi có sự cố; thu dọn và rửa tay sau khi làm.',
-    'Biển báo cấm: tròn, nền trắng, viền đỏ. Biển cảnh báo: tam giác, nền vàng, viền đen. Biển bắt buộc: tròn, nền xanh dương. Biển chỉ dẫn: vuông hoặc chữ nhật, nền xanh lá.',
+    'Kí hiệu cảnh báo cấm: tròn, viền đỏ, nền trắng. Khu vực nguy hiểm: tam giác đều, nền vàng. Nguy hiểm do hoá chất: hình vuông, viền đen, nền đỏ cam. Chỉ dẫn thực hiện: hình chữ nhật, nền xanh hoặc đỏ.',
   ],
 };

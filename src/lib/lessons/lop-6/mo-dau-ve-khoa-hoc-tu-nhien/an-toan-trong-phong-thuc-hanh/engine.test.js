@@ -39,9 +39,16 @@ describe('safety signs', () => {
     for (const s of SIGNS) expect(SIGN_KINDS[s.kind], s.id).toBeDefined();
   });
 
-  it('describes the prohibition sign as a red-bordered circle', () => {
-    expect(SIGN_KINDS.cam.look).toMatch(/hình tròn.*viền đỏ/);
-    expect(SIGN_KINDS['nguy-hiem'].look).toMatch(/tam giác.*nền vàng/);
+  it('describes each family by the shape and colours the book gives', () => {
+    expect(SIGN_KINDS.cam.look).toMatch(/hình tròn.*viền đỏ.*nền trắng/);
+    expect(SIGN_KINDS['nguy-hiem'].look).toMatch(/tam giác đều.*nền vàng/);
+    expect(SIGN_KINDS['hoa-chat'].look).toMatch(/hình vuông.*viền đen.*nền đỏ cam/);
+    expect(SIGN_KINDS['chi-dan'].look).toMatch(/hình chữ nhật.*nền xanh/);
+  });
+
+  it('tells the same flame apart by the shape of its sign', () => {
+    const flames = SIGNS.filter((s) => s.picture === 'lua').map((s) => s.kind);
+    expect(new Set(flames)).toEqual(new Set(['cam', 'nguy-hiem', 'hoa-chat']));
   });
 
   it('names the right kind when the learner is wrong', () => {
@@ -49,7 +56,7 @@ describe('safety signs', () => {
     expect(judgeSign(fire, 'cam').ok).toBe(true);
     const wrong = judgeSign(fire, 'chi-dan');
     expect(wrong.ok).toBe(false);
-    expect(wrong.text).toContain('biển báo cấm');
+    expect(wrong.text).toContain('kí hiệu cảnh báo cấm');
     expect(wrong.text).toContain(fire.meaning);
   });
 });
