@@ -3,7 +3,7 @@
   import { untrack } from 'svelte';
   import { draggable } from '#lib/actions/draggable.svelte.js';
   import { niceAxis } from '#lib/stats-engine/ticks.js';
-  import { formatNumber } from '#lib/units-engine/format.js';
+  import { formatNumber } from '#lib/core/number-format.js';
   import { clamp, colorAt, linear, snap } from './svg-math.js';
 
   /**
@@ -166,8 +166,23 @@
         style="cursor:ns-resize; outline:none"
         use:draggable={dragFor(i)}
       >
-        <rect x={cx(i) - barW / 2} y={top - 12} width={barW} height="24" fill="transparent" />
-        <rect x={cx(i) - barW / 2} y={top - 4} width={barW} height="8" rx="4" fill="#0f172a" />
+        <rect
+          class="drag-hit"
+          x={cx(i) - barW / 2}
+          y={top - 12}
+          width={barW}
+          height="24"
+          fill="transparent"
+        />
+        <rect
+          class="drag-knob"
+          x={cx(i) - barW / 2}
+          y={top - 4}
+          width={barW}
+          height="8"
+          rx="4"
+          fill="#0f172a"
+        />
       </g>
     {/if}
   {/each}

@@ -2,7 +2,7 @@
 <script>
   import { draggable } from '#lib/actions/draggable.svelte.js';
   import { percentages, pieSlices } from '#lib/stats-engine/frequency.js';
-  import { formatNumber } from '#lib/units-engine/format.js';
+  import { formatNumber } from '#lib/core/number-format.js';
   import { angleOf, clamp, colorAt, polar, sectorPath, snap } from './svg-math.js';
 
   /**
@@ -150,8 +150,16 @@
           style="cursor:grab; outline:none"
           use:draggable={dragFor(i)}
         >
-          <circle cx={h.x} cy={h.y} r="18" fill="transparent" />
-          <circle cx={h.x} cy={h.y} r="9" fill="#0f172a" stroke="#fff" stroke-width="2" />
+          <circle class="drag-hit" cx={h.x} cy={h.y} r="18" fill="transparent" />
+          <circle
+            class="drag-knob"
+            cx={h.x}
+            cy={h.y}
+            r="9"
+            fill="#0f172a"
+            stroke="#fff"
+            stroke-width="2"
+          />
         </g>
       {/each}
     {/if}

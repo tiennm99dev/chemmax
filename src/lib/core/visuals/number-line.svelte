@@ -1,7 +1,7 @@
 <!-- Synced from tiennm99dev/mathmax by scripts/sync-core.sh. Do not edit it here; change it in mathmax and sync again. -->
 <script>
   import { draggable } from '#lib/actions/draggable.svelte.js';
-  import { formatNumber } from '#lib/units-engine/format.js';
+  import { formatNumber } from '#lib/core/number-format.js';
   import { clamp, hopPath, linear, snap } from './svg-math.js';
 
   /**
@@ -188,8 +188,16 @@
         use:draggable={drag}
       >
         <!-- A wide invisible hit area keeps the marker easy to grab on touch. -->
-        <rect x={mx - 18} y={baseY - 26} width="36" height="40" fill="transparent" />
+        <rect
+          class="drag-hit"
+          x={mx - 18}
+          y={baseY - 26}
+          width="36"
+          height="40"
+          fill="transparent"
+        />
         <path
+          class="drag-knob"
           d="M {mx} {baseY - 2} l -10 -16 h 20 z"
           fill="#D7263D"
           stroke="#fff"

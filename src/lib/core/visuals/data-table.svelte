@@ -1,7 +1,7 @@
 <!-- Synced from tiennm99dev/mathmax by scripts/sync-core.sh. Do not edit it here; change it in mathmax and sync again. -->
 <script>
   import { percentages } from '#lib/stats-engine/frequency.js';
-  import { formatNumber } from '#lib/units-engine/format.js';
+  import { formatNumber } from '#lib/core/number-format.js';
   import { focusRing } from '../ui.js';
 
   /**

@@ -1,6 +1,7 @@
 <!-- Synced from tiennm99dev/mathmax by scripts/sync-core.sh. Do not edit it here; change it in mathmax and sync again. -->
 <script>
   import { planeScale } from './svg-math.js';
+  import { formatNumber } from '../number-format.js';
 
   /**
    * A Cartesian plane with square units: light grid, axes, numbered ticks and
@@ -48,7 +49,7 @@
   const left = $derived(p.mx(p.xMin));
   const right = $derived(p.mx(p.xMax));
   /** @param {number} v */
-  const fmt = (v) => (v < 0 ? `−${-v}` : String(v));
+  const fmt = (v) => formatNumber(v);
 </script>
 
 <svg

@@ -3,7 +3,8 @@
   import { untrack } from 'svelte';
   import { UNITS, convert, ratio, splitMixed } from '#lib/units-engine/units.js';
   import { breakdown } from '#lib/units-engine/money.js';
-  import { formatNumber, parseNumber } from '#lib/units-engine/format.js';
+  import { formatNumber } from '#lib/core/number-format.js';
+  import { parseNumber } from '#lib/units-engine/format.js';
   import SegmentedControl from '../segmented-control.svelte';
   import { focusRing, textInput } from '../ui.js';
 
@@ -233,6 +234,7 @@
           }}
         >
           <rect
+            class="drag-knob"
             x={k * boxW + 3}
             y="38"
             width={boxW - 6}

@@ -159,8 +159,9 @@
         style="cursor:grab; outline:none"
         use:draggable={hourDrag}
       >
-        <circle cx={hourTip.x} cy={hourTip.y} r="20" fill="transparent" />
+        <circle class="drag-hit" cx={hourTip.x} cy={hourTip.y} r="20" fill="transparent" />
         <circle
+          class="drag-knob"
           cx={hourTip.x}
           cy={hourTip.y}
           r="10"
@@ -181,8 +182,9 @@
         style="cursor:grab; outline:none"
         use:draggable={minuteDrag}
       >
-        <circle cx={minuteTip.x} cy={minuteTip.y} r="20" fill="transparent" />
+        <circle class="drag-hit" cx={minuteTip.x} cy={minuteTip.y} r="20" fill="transparent" />
         <circle
+          class="drag-knob"
           cx={minuteTip.x}
           cy={minuteTip.y}
           r="10"
