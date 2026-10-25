@@ -1,0 +1,408 @@
+{
+  "grade": 11,
+  "volumes": ["Sách giáo khoa", "Chuyên đề học tập"],
+  "chapters": [
+    {
+      "no": 1,
+      "label": "Chương 1",
+      "title": "Cân bằng hoá học",
+      "slug": "can-bang-hoa-hoc",
+      "strand": "phan-ung-hoa-hoc",
+      "volume": "Sách giáo khoa",
+      "lessons": [
+        {
+          "no": 1,
+          "title": "Bài 1. Khái niệm về cân bằng hoá học",
+          "slug": "khai-niem-ve-can-bang-hoa-hoc",
+          "kind": "theory",
+          "keyIdeas": ["Phản ứng thuận nghịch", "Hằng số cân bằng KC", "Nguyên lí Le Chatelier"],
+          "interactiveIdea": "Mô phỏng cân bằng N2O4 ⇌ NO2 với thanh nhiệt độ, áp suất, nồng độ và màu khí thay đổi."
+        },
+        {
+          "no": 2,
+          "title": "Bài 2. Cân bằng trong dung dịch nước",
+          "slug": "can-bang-trong-dung-dich-nuoc",
+          "kind": "theory",
+          "keyIdeas": [
+            "Sự điện li, chất điện li",
+            "Thuyết Brønsted – Lowry",
+            "pH và chuẩn độ acid – base"
+          ],
+          "interactiveIdea": "Mô phỏng chuẩn độ với đường cong pH và chất chỉ thị đổi màu."
+        },
+        {
+          "no": 3,
+          "title": "Bài 3. Ôn tập chương 1",
+          "slug": "on-tap-chuong-1",
+          "kind": "review",
+          "keyIdeas": ["Hằng số cân bằng", "Chuyển dịch cân bằng", "pH"],
+          "interactiveIdea": "Bài tập dự đoán chiều chuyển dịch cân bằng có phản hồi tức thì."
+        }
+      ]
+    },
+    {
+      "no": 2,
+      "label": "Chương 2",
+      "title": "Nitrogen – sulfur",
+      "slug": "nitrogen-sulfur",
+      "strand": "hoa-vo-co",
+      "volume": "Sách giáo khoa",
+      "lessons": [
+        {
+          "no": 4,
+          "title": "Bài 4. Nitrogen",
+          "slug": "nitrogen",
+          "kind": "theory",
+          "keyIdeas": ["Trạng thái tự nhiên", "Cấu tạo và tính chất", "Ứng dụng"],
+          "interactiveIdea": "Sơ đồ chu trình nitrogen trong tự nhiên bấm từng mũi tên chuyển hoá."
+        },
+        {
+          "no": 5,
+          "title": "Bài 5. Ammonia. Muối ammonium",
+          "slug": "ammonia-muoi-ammonium",
+          "kind": "theory",
+          "keyIdeas": [
+            "Cấu tạo và tính chất ammonia",
+            "Quá trình Haber",
+            "Muối ammonium và nhận biết"
+          ],
+          "interactiveIdea": "Mô phỏng sản xuất ammonia với thanh nhiệt độ, áp suất và hiệu suất."
+        },
+        {
+          "no": 6,
+          "title": "Bài 6. Một số hợp chất của nitrogen với oxygen",
+          "slug": "mot-so-hop-chat-cua-nitrogen-voi-oxygen",
+          "kind": "theory",
+          "keyIdeas": ["Các oxide của nitrogen", "Nitric acid", "Mưa acid và hiện tượng phú dưỡng"],
+          "interactiveIdea": "Hoạt cảnh khí NOx tạo mưa acid và ảnh hưởng đến hồ nước."
+        },
+        {
+          "no": 7,
+          "title": "Bài 7. Sulfur và sulfur dioxide",
+          "slug": "sulfur-va-sulfur-dioxide",
+          "kind": "theory",
+          "keyIdeas": ["Tính chất của sulfur", "Sulfur dioxide", "Ô nhiễm SO2"],
+          "interactiveIdea": "Phòng thí nghiệm ảo đốt sulfur và dẫn SO2 qua dung dịch thuốc tím."
+        },
+        {
+          "no": 8,
+          "title": "Bài 8. Sulfuric acid và muối sulfate",
+          "slug": "sulfuric-acid-va-muoi-sulfate",
+          "kind": "theory",
+          "keyIdeas": [
+            "Tính chất sulfuric acid loãng và đặc",
+            "Sản xuất sulfuric acid",
+            "Nhận biết ion sulfate"
+          ],
+          "interactiveIdea": "Sơ đồ quy trình tiếp xúc sản xuất H2SO4 và ống nghiệm nhận biết bằng BaCl2."
+        },
+        {
+          "no": 9,
+          "title": "Bài 9. Ôn tập chương 2",
+          "slug": "on-tap-chuong-2",
+          "kind": "review",
+          "keyIdeas": ["Hợp chất nitrogen", "Hợp chất sulfur", "Vấn đề môi trường"],
+          "interactiveIdea": "Sơ đồ chuyển hoá N và S điền chất còn thiếu."
+        }
+      ]
+    },
+    {
+      "no": 3,
+      "label": "Chương 3",
+      "title": "Đại cương về hoá học hữu cơ",
+      "slug": "dai-cuong-ve-hoa-hoc-huu-co",
+      "strand": "hoa-huu-co",
+      "volume": "Sách giáo khoa",
+      "lessons": [
+        {
+          "no": 10,
+          "title": "Bài 10. Hợp chất hữu cơ và hoá học hữu cơ",
+          "slug": "hop-chat-huu-co-va-hoa-hoc-huu-co",
+          "kind": "theory",
+          "keyIdeas": ["Đặc điểm hợp chất hữu cơ", "Phân loại", "Nhóm chức và phổ IR"],
+          "interactiveIdea": "Trình xem phổ IR: bấm đỉnh hấp thụ để nhận diện nhóm chức."
+        },
+        {
+          "no": 11,
+          "title": "Bài 11. Phương pháp tách biệt và tinh chế hợp chất hữu cơ",
+          "slug": "phuong-phap-tach-biet-va-tinh-che-hop-chat-huu-co",
+          "kind": "theory",
+          "keyIdeas": ["Chưng cất", "Chiết", "Kết tinh và sắc kí cột"],
+          "interactiveIdea": "Mô phỏng sắc kí và chưng cất tách các chất theo thời gian."
+        },
+        {
+          "no": 12,
+          "title": "Bài 12. Công thức phân tử hợp chất hữu cơ",
+          "slug": "cong-thuc-phan-tu-hop-chat-huu-co",
+          "kind": "theory",
+          "keyIdeas": [
+            "Công thức tổng quát và đơn giản nhất",
+            "Lập công thức phân tử",
+            "Phổ khối lượng"
+          ],
+          "interactiveIdea": "Máy tính từ phần trăm nguyên tố và phổ MS ra công thức phân tử."
+        },
+        {
+          "no": 13,
+          "title": "Bài 13. Cấu tạo hoá học hợp chất hữu cơ",
+          "slug": "cau-tao-hoa-hoc-hop-chat-huu-co",
+          "kind": "theory",
+          "keyIdeas": ["Thuyết cấu tạo hoá học", "Đồng đẳng và đồng phân", "Công thức cấu tạo"],
+          "interactiveIdea": "Bộ dựng đồng phân: lắp các mạch carbon và đếm số đồng phân khác nhau."
+        },
+        {
+          "no": 14,
+          "title": "Bài 14. Ôn tập chương 3",
+          "slug": "on-tap-chuong-3",
+          "kind": "review",
+          "keyIdeas": ["Phân loại hợp chất hữu cơ", "Tách và tinh chế", "Lập công thức"],
+          "interactiveIdea": "Bài tập ghép phương pháp tách với hỗn hợp phù hợp."
+        }
+      ]
+    },
+    {
+      "no": 4,
+      "label": "Chương 4",
+      "title": "Hydrocarbon",
+      "slug": "hydrocarbon",
+      "strand": "hoa-huu-co",
+      "volume": "Sách giáo khoa",
+      "lessons": [
+        {
+          "no": 15,
+          "title": "Bài 15. Alkane",
+          "slug": "alkane",
+          "kind": "theory",
+          "keyIdeas": ["Danh pháp và đồng phân", "Phản ứng thế, cracking, cháy", "Ứng dụng"],
+          "interactiveIdea": "Bộ đặt tên IUPAC: dựng mạch nhánh và kiểm tra tên gọi."
+        },
+        {
+          "no": 16,
+          "title": "Bài 16. Hydrocarbon không no",
+          "slug": "hydrocarbon-khong-no",
+          "kind": "theory",
+          "keyIdeas": [
+            "Alkene và alkyne",
+            "Phản ứng cộng, quy tắc Markovnikov",
+            "Phản ứng trùng hợp, oxi hoá"
+          ],
+          "interactiveIdea": "Hoạt cảnh cộng HBr vào propene chỉ rõ sản phẩm chính theo Markovnikov."
+        },
+        {
+          "no": 17,
+          "title": "Bài 17. Arene (Hydrocarbon thơm)",
+          "slug": "arene-hydrocarbon-thom",
+          "kind": "theory",
+          "keyIdeas": ["Cấu tạo benzene", "Phản ứng thế và cộng", "Ứng dụng arene"],
+          "interactiveIdea": "Mô hình 3D benzene với đám mây electron π và phản ứng thế."
+        },
+        {
+          "no": 18,
+          "title": "Bài 18. Ôn tập chương 4",
+          "slug": "on-tap-chuong-4",
+          "kind": "review",
+          "keyIdeas": [
+            "Tính chất alkane, alkene, alkyne, arene",
+            "Nhận biết hydrocarbon",
+            "Sơ đồ chuyển hoá"
+          ],
+          "interactiveIdea": "Bảng phân biệt hydrocarbon bằng thuốc thử ảo."
+        }
+      ]
+    },
+    {
+      "no": 5,
+      "label": "Chương 5",
+      "title": "Dẫn xuất halogen – alcohol – phenol",
+      "slug": "dan-xuat-halogen-alcohol-phenol",
+      "strand": "hoa-huu-co",
+      "volume": "Sách giáo khoa",
+      "lessons": [
+        {
+          "no": 19,
+          "title": "Bài 19. Dẫn xuất halogen",
+          "slug": "dan-xuat-halogen",
+          "kind": "theory",
+          "keyIdeas": [
+            "Danh pháp và tính chất vật lí",
+            "Phản ứng thế và tách",
+            "Quy tắc Zaitsev, ứng dụng"
+          ],
+          "interactiveIdea": "Hoạt cảnh so sánh nhánh phản ứng thế và tách của cùng một dẫn xuất halogen."
+        },
+        {
+          "no": 20,
+          "title": "Bài 20. Alcohol",
+          "slug": "alcohol",
+          "kind": "theory",
+          "keyIdeas": [
+            "Danh pháp, bậc alcohol",
+            "Liên kết hydrogen và tính chất vật lí",
+            "Tính chất hoá học, điều chế"
+          ],
+          "interactiveIdea": "Bộ phân loại bậc alcohol và ống nghiệm ảo phản ứng với Cu(OH)2."
+        },
+        {
+          "no": 21,
+          "title": "Bài 21. Phenol",
+          "slug": "phenol",
+          "kind": "theory",
+          "keyIdeas": ["Cấu tạo phenol", "Tính acid", "Phản ứng thế ở vòng benzene"],
+          "interactiveIdea": "So sánh độ acid ethanol, phenol, nước trên thang pKa tương tác."
+        },
+        {
+          "no": 22,
+          "title": "Bài 22. Ôn tập chương 5",
+          "slug": "on-tap-chuong-5",
+          "kind": "review",
+          "keyIdeas": ["Dẫn xuất halogen", "Alcohol", "Phenol"],
+          "interactiveIdea": "Sơ đồ chuyển hoá giữa dẫn xuất halogen, alcohol, alkene."
+        }
+      ]
+    },
+    {
+      "no": 6,
+      "label": "Chương 6",
+      "title": "Hợp chất carbonyl – carboxylic acid",
+      "slug": "hop-chat-carbonyl-carboxylic-acid",
+      "strand": "hoa-huu-co",
+      "volume": "Sách giáo khoa",
+      "lessons": [
+        {
+          "no": 23,
+          "title": "Bài 23. Hợp chất carbonyl",
+          "slug": "hop-chat-carbonyl",
+          "kind": "theory",
+          "keyIdeas": [
+            "Aldehyde và ketone",
+            "Phản ứng khử và oxi hoá",
+            "Phản ứng tráng bạc, iodoform"
+          ],
+          "interactiveIdea": "Ống nghiệm ảo thử thuốc thử Tollens và iodoform để phân biệt aldehyde, ketone."
+        },
+        {
+          "no": 24,
+          "title": "Bài 24. Carboxylic acid",
+          "slug": "carboxylic-acid",
+          "kind": "theory",
+          "keyIdeas": ["Danh pháp và tính chất vật lí", "Tính acid", "Phản ứng ester hoá"],
+          "interactiveIdea": "Mô phỏng cân bằng ester hoá với thanh tỉ lệ acid – alcohol và hiệu suất."
+        },
+        {
+          "no": 25,
+          "title": "Bài 25. Ôn tập chương 6",
+          "slug": "on-tap-chuong-6",
+          "kind": "review",
+          "keyIdeas": ["Carbonyl", "Carboxylic acid", "Chuỗi chuyển hoá hữu cơ"],
+          "interactiveIdea": "Bản đồ chuyển hoá toàn bộ hữu cơ lớp 11 bấm từng phản ứng."
+        }
+      ]
+    },
+    {
+      "no": 7,
+      "label": "Chuyên đề 1",
+      "title": "Phân bón",
+      "slug": "phan-bon",
+      "strand": "chuyen-de",
+      "volume": "Chuyên đề học tập",
+      "lessons": [
+        {
+          "no": 1,
+          "title": "Bài 1. Giới thiệu chung về phân bón",
+          "slug": "cd-gioi-thieu-chung-ve-phan-bon",
+          "kind": "chuyen-de",
+          "keyIdeas": ["Vai trò của nguyên tố dinh dưỡng", "Phân loại phân bón", "Độ dinh dưỡng"],
+          "interactiveIdea": "Bảng nguyên tố dinh dưỡng đa lượng, trung lượng, vi lượng gắn với triệu chứng thiếu ở cây."
+        },
+        {
+          "no": 2,
+          "title": "Bài 2. Phân bón vô cơ",
+          "slug": "cd-phan-bon-vo-co",
+          "kind": "chuyen-de",
+          "keyIdeas": ["Phân đạm, lân, kali", "Phân hỗn hợp, phức hợp", "Sản xuất và sử dụng"],
+          "interactiveIdea": "Máy tính độ dinh dưỡng N–P2O5–K2O và lượng phân cần bón."
+        },
+        {
+          "no": 3,
+          "title": "Bài 3. Phân bón hữu cơ",
+          "slug": "cd-phan-bon-huu-co",
+          "kind": "chuyen-de",
+          "keyIdeas": [
+            "Phân hữu cơ truyền thống",
+            "Phân hữu cơ sinh học, vi sinh",
+            "Ủ phân compost"
+          ],
+          "interactiveIdea": "Mô phỏng ủ compost theo thời gian với nhiệt độ và độ ẩm."
+        }
+      ]
+    },
+    {
+      "no": 8,
+      "label": "Chuyên đề 2",
+      "title": "Trải nghiệm, thực hành hoá học hữu cơ",
+      "slug": "trai-nghiem-thuc-hanh-hoa-hoc-huu-co",
+      "strand": "chuyen-de",
+      "volume": "Chuyên đề học tập",
+      "lessons": [
+        {
+          "no": 4,
+          "title": "Bài 4. Tách tinh dầu từ các nguồn thảo mộc tự nhiên",
+          "slug": "cd-tach-tinh-dau-tu-cac-nguon-thao-moc-tu-nhien",
+          "kind": "chuyen-de",
+          "keyIdeas": ["Tinh dầu", "Chưng cất lôi cuốn hơi nước", "Chiết tinh dầu"],
+          "interactiveIdea": "Hệ chưng cất lôi cuốn hơi nước ảo lắp ráp và vận hành."
+        },
+        {
+          "no": 5,
+          "title": "Bài 5. Chuyển hoá chất béo thành xà phòng",
+          "slug": "cd-chuyen-hoa-chat-beo-thanh-xa-phong",
+          "kind": "chuyen-de",
+          "keyIdeas": ["Phản ứng xà phòng hoá", "Quy trình làm xà phòng", "An toàn với kiềm"],
+          "interactiveIdea": "Quy trình làm xà phòng từng bước với máy tính lượng NaOH theo chỉ số xà phòng."
+        },
+        {
+          "no": 6,
+          "title": "Bài 6. Điều chế glucosamine hydrochloride từ vỏ tôm",
+          "slug": "cd-dieu-che-glucosamine-hydrochloride-tu-vo-tom",
+          "kind": "chuyen-de",
+          "keyIdeas": ["Chitin từ vỏ tôm", "Thuỷ phân chitin", "Ứng dụng glucosamine"],
+          "interactiveIdea": "Sơ đồ quy trình từ vỏ tôm đến glucosamine bấm từng bước."
+        }
+      ]
+    },
+    {
+      "no": 9,
+      "label": "Chuyên đề 3",
+      "title": "Dầu mỏ và chế biến dầu mỏ",
+      "slug": "dau-mo-va-che-bien-dau-mo",
+      "strand": "chuyen-de",
+      "volume": "Chuyên đề học tập",
+      "lessons": [
+        {
+          "no": 7,
+          "title": "Bài 7. Nguồn gốc dầu mỏ. Thành phần và phân loại dầu mỏ",
+          "slug": "cd-nguon-goc-dau-mo-thanh-phan-va-phan-loai-dau-mo",
+          "kind": "chuyen-de",
+          "keyIdeas": ["Nguồn gốc dầu mỏ", "Thành phần hoá học", "Phân loại dầu mỏ"],
+          "interactiveIdea": "Hoạt cảnh địa tầng hình thành mỏ dầu qua hàng triệu năm."
+        },
+        {
+          "no": 8,
+          "title": "Bài 8. Chế biến dầu mỏ",
+          "slug": "cd-che-bien-dau-mo",
+          "kind": "chuyen-de",
+          "keyIdeas": ["Chưng cất phân đoạn", "Cracking và reforming", "Sản phẩm lọc dầu"],
+          "interactiveIdea": "Tháp chưng cất tương tác kèm mô phỏng cracking phân tử dài."
+        },
+        {
+          "no": 9,
+          "title": "Bài 9. Ngành sản xuất dầu mỏ trên thế giới và ở Việt Nam",
+          "slug": "cd-nganh-san-xuat-dau-mo-tren-the-gioi-va-o-viet-nam",
+          "kind": "chuyen-de",
+          "keyIdeas": ["Ngành dầu khí thế giới", "Dầu khí Việt Nam", "Năng lượng và môi trường"],
+          "interactiveIdea": "Bản đồ các mỏ dầu và nhà máy lọc dầu Việt Nam bấm xem thông tin."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "name": "chemmax",
+  "version": "0.0.1.0",
+  "private": true,
+  "description": "ChemMax — Hoá học tương tác cho học sinh lớp 6-12. Static site.",
+  "type": "module",
+  "scripts": {
+    "dev": "vite dev",
+    "build": "vite build",
+    "preview": "vite preview",
+    "check": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json --fail-on-warnings",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "format": "prettier --write .",
+    "lint": "eslint .",
+    "format:check": "prettier --check .",
+    "stubs": "node scripts/stub-report.js",
+    "size-report": "node scripts/size-report.js",
+    "sync-core": "scripts/sync-core.sh"
+  },
+  "dependencies": {
+    "@fontsource/be-vietnam-pro": "^5.2.0",
+    "@sveltejs/adapter-static": "^4.0.0",
+    "@sveltejs/kit": "^3.0.0",
+    "@sveltejs/vite-plugin-svelte": "^7.2.0",
+    "@tailwindcss/postcss": "^4.3.3",
+    "autoprefixer": "^10.5.4",
+    "katex": "^0.19.0",
+    "postcss": "^8.5.19",
+    "svelte": "^5.57.1",
+    "tailwindcss": "^4.3.3",
+    "vite": "^8.1.5"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.13.0",
+    "eslint-plugin-svelte": "^3.23.1",
+    "globals": "^17.13.0",
+    "prettier": "^3.9.5",
+    "prettier-plugin-svelte": "^4.1.1",
+    "svelte-check": "^4.7.3",
+    "vitest": "^5.0.3"
+  },
+  "imports": {
+    "#lib/*": "./src/lib/*"
+  },
+  "engines": {
+    "node": ">=24"
+  }
+}

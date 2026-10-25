@@ -1,0 +1,7 @@
+# Synced from tiennm99dev/mathmax by scripts/sync-core.sh. Do not edit it here; change it in mathmax and sync again.
+build/
+.svelte-kit/
+node_modules/
+package-lock.json
+plans/
+.claude/

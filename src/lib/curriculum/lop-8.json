@@ -1,0 +1,156 @@
+{
+  "grade": 8,
+  "volumes": ["Sách giáo khoa Khoa học tự nhiên 8"],
+  "chapters": [
+    {
+      "no": 0,
+      "label": "Mở đầu",
+      "title": "Mở đầu",
+      "slug": "mo-dau",
+      "strand": "mo-dau",
+      "volume": "Sách giáo khoa Khoa học tự nhiên 8",
+      "lessons": [
+        {
+          "no": 1,
+          "title": "Bài 1. Sử dụng một số hoá chất, thiết bị cơ bản trong phòng thí nghiệm",
+          "slug": "su-dung-mot-so-hoa-chat-thiet-bi-co-ban-trong-phong-thi-nghiem",
+          "kind": "practice",
+          "keyIdeas": [
+            "Hoá chất và cách sử dụng an toàn",
+            "Dụng cụ thí nghiệm cơ bản",
+            "Thiết bị điện trong phòng thí nghiệm"
+          ],
+          "interactiveIdea": "Kệ dụng cụ ảo: bấm từng dụng cụ để xem tên, công dụng và thao tác đúng."
+        }
+      ]
+    },
+    {
+      "no": 1,
+      "label": "Chương 1",
+      "title": "Phản ứng hoá học",
+      "slug": "phan-ung-hoa-hoc",
+      "strand": "phan-ung-hoa-hoc",
+      "volume": "Sách giáo khoa Khoa học tự nhiên 8",
+      "lessons": [
+        {
+          "no": 2,
+          "title": "Bài 2. Phản ứng hoá học",
+          "slug": "phan-ung-hoa-hoc",
+          "kind": "theory",
+          "keyIdeas": [
+            "Biến đổi vật lí và biến đổi hoá học",
+            "Diễn biến phản ứng hoá học",
+            "Phản ứng toả nhiệt và thu nhiệt"
+          ],
+          "interactiveIdea": "Hoạt cảnh phân tử tách và ghép lại nguyên tử khi H2 cháy trong O2."
+        },
+        {
+          "no": 3,
+          "title": "Bài 3. Mol và tỉ khối chất khí",
+          "slug": "mol-va-ti-khoi-chat-khi",
+          "kind": "theory",
+          "keyIdeas": ["Mol và số Avogadro", "Khối lượng mol", "Thể tích mol chất khí, tỉ khối"],
+          "interactiveIdea": "Bộ đổi n – m – V – số hạt với hình minh hoạ đống hạt và bóng khí."
+        },
+        {
+          "no": 4,
+          "title": "Bài 4. Dung dịch và nồng độ",
+          "slug": "dung-dich-va-nong-do",
+          "kind": "theory",
+          "keyIdeas": [
+            "Dung dịch, chất tan, dung môi",
+            "Độ tan",
+            "Nồng độ phần trăm và nồng độ mol"
+          ],
+          "interactiveIdea": "Cốc pha dung dịch: kéo lượng chất tan và nước, màu đậm dần và hiện C% và CM."
+        },
+        {
+          "no": 5,
+          "title": "Bài 5. Định luật bảo toàn khối lượng và phương trình hoá học",
+          "slug": "dinh-luat-bao-toan-khoi-luong-va-phuong-trinh-hoa-hoc",
+          "kind": "theory",
+          "keyIdeas": [
+            "Định luật bảo toàn khối lượng",
+            "Lập phương trình hoá học",
+            "Ý nghĩa phương trình hoá học"
+          ],
+          "interactiveIdea": "Cân hai đĩa ảo trước và sau phản ứng, kèm trò chơi cân bằng hệ số phương trình."
+        },
+        {
+          "no": 6,
+          "title": "Bài 6. Tính theo phương trình hoá học",
+          "slug": "tinh-theo-phuong-trinh-hoa-hoc",
+          "kind": "theory",
+          "keyIdeas": [
+            "Tính lượng chất theo phương trình",
+            "Chất phản ứng hết, chất dư",
+            "Hiệu suất phản ứng"
+          ],
+          "interactiveIdea": "Mô phỏng chất hạn chế: chọn số phân tử ban đầu, xem chất nào hết và sản phẩm tạo ra."
+        },
+        {
+          "no": 7,
+          "title": "Bài 7. Tốc độ phản ứng và chất xúc tác",
+          "slug": "toc-do-phan-ung-va-chat-xuc-tac",
+          "kind": "theory",
+          "keyIdeas": ["Khái niệm tốc độ phản ứng", "Yếu tố ảnh hưởng tốc độ", "Chất xúc tác"],
+          "interactiveIdea": "Thanh trượt nhiệt độ, nồng độ, diện tích tiếp xúc và xúc tác điều khiển tốc độ sủi bọt khí."
+        }
+      ]
+    },
+    {
+      "no": 2,
+      "label": "Chương 2",
+      "title": "Một số hợp chất thông dụng",
+      "slug": "mot-so-hop-chat-thong-dung",
+      "strand": "hoa-vo-co",
+      "volume": "Sách giáo khoa Khoa học tự nhiên 8",
+      "lessons": [
+        {
+          "no": 8,
+          "title": "Bài 8. Acid",
+          "slug": "acid",
+          "kind": "theory",
+          "keyIdeas": ["Khái niệm acid", "Tính chất hoá học của acid", "Một số acid thông dụng"],
+          "interactiveIdea": "Ống nghiệm ảo: nhỏ acid vào kim loại, quỳ tím, base và quan sát hiện tượng."
+        },
+        {
+          "no": 9,
+          "title": "Bài 9. Base. Thang pH",
+          "slug": "base-thang-ph",
+          "kind": "theory",
+          "keyIdeas": ["Khái niệm base, kiềm", "Tính chất hoá học của base", "Thang pH"],
+          "interactiveIdea": "Thang pH tương tác: kéo các dung dịch đời sống vào đúng vị trí và xem màu chất chỉ thị."
+        },
+        {
+          "no": 10,
+          "title": "Bài 10. Oxide",
+          "slug": "oxide",
+          "kind": "theory",
+          "keyIdeas": [
+            "Khái niệm oxide",
+            "Oxide acid, oxide base, lưỡng tính, trung tính",
+            "Tính chất hoá học của oxide"
+          ],
+          "interactiveIdea": "Bảng phân loại oxide kéo thả kèm phản ứng mẫu với nước, acid, base."
+        },
+        {
+          "no": 11,
+          "title": "Bài 11. Muối",
+          "slug": "muoi",
+          "kind": "theory",
+          "keyIdeas": ["Khái niệm và tên gọi muối", "Tính chất hoá học của muối", "Điều chế muối"],
+          "interactiveIdea": "Bảng tính tan và trò chơi dự đoán có kết tủa hay không khi trộn hai dung dịch."
+        },
+        {
+          "no": 12,
+          "title": "Bài 12. Phân bón hoá học",
+          "slug": "phan-bon-hoa-hoc",
+          "kind": "theory",
+          "keyIdeas": ["Vai trò của N, P, K", "Phân đơn, phân phức hợp", "Sử dụng phân bón hợp lí"],
+          "interactiveIdea": "Mô phỏng ruộng cây: chọn loại và lượng phân bón, xem cây phát triển và ô nhiễm môi trường."
+        }
+      ]
+    }
+  ]
+}

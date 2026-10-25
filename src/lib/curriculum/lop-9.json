@@ -1,0 +1,282 @@
+{
+  "grade": 9,
+  "volumes": ["Sách giáo khoa Khoa học tự nhiên 9"],
+  "chapters": [
+    {
+      "no": 0,
+      "label": "Mở đầu",
+      "title": "Mở đầu",
+      "slug": "mo-dau",
+      "strand": "mo-dau",
+      "volume": "Sách giáo khoa Khoa học tự nhiên 9",
+      "lessons": [
+        {
+          "no": 1,
+          "title": "Bài 1. Nhận biết một số dụng cụ, hoá chất. Thuyết trình một vấn đề khoa học",
+          "slug": "nhan-biet-mot-so-dung-cu-hoa-chat-thuyet-trinh-mot-van-de-khoa-hoc",
+          "kind": "activity",
+          "keyIdeas": [
+            "Dụng cụ đo và thí nghiệm",
+            "Hoá chất thông dụng và an toàn",
+            "Kĩ năng thuyết trình khoa học"
+          ],
+          "interactiveIdea": "Trò chơi nhận biết dụng cụ và hoá chất theo hình ảnh, kèm khung dàn ý bài thuyết trình."
+        }
+      ]
+    },
+    {
+      "no": 6,
+      "label": "Chương 6",
+      "title": "Kim loại. Sự khác nhau cơ bản giữa phi kim và kim loại",
+      "slug": "kim-loai-su-khac-nhau-co-ban-giua-phi-kim-va-kim-loai",
+      "strand": "kim-loai",
+      "volume": "Sách giáo khoa Khoa học tự nhiên 9",
+      "lessons": [
+        {
+          "no": 18,
+          "title": "Bài 18. Tính chất chung của kim loại",
+          "slug": "tinh-chat-chung-cua-kim-loai",
+          "kind": "theory",
+          "keyIdeas": [
+            "Tính chất vật lí của kim loại",
+            "Tác dụng với phi kim, acid, muối",
+            "Ứng dụng kim loại"
+          ],
+          "interactiveIdea": "Phòng thí nghiệm ảo cho các kim loại phản ứng với oxygen, acid, dung dịch muối."
+        },
+        {
+          "no": 19,
+          "title": "Bài 19. Dãy hoạt động hoá học",
+          "slug": "day-hoat-dong-hoa-hoc",
+          "kind": "theory",
+          "keyIdeas": [
+            "Thứ tự dãy hoạt động hoá học",
+            "Ý nghĩa dãy hoạt động",
+            "Dự đoán phản ứng kim loại – muối"
+          ],
+          "interactiveIdea": "Dãy kim loại kéo thả: chọn hai kim loại và dự đoán phản ứng đẩy kim loại."
+        },
+        {
+          "no": 20,
+          "title": "Bài 20. Tách kim loại và việc sử dụng hợp kim",
+          "slug": "tach-kim-loai-va-viec-su-dung-hop-kim",
+          "kind": "theory",
+          "keyIdeas": [
+            "Phương pháp tách kim loại",
+            "Luyện gang, thép, nhôm",
+            "Hợp kim và ứng dụng"
+          ],
+          "interactiveIdea": "Sơ đồ lò cao tương tác cho thấy dòng nguyên liệu, phản ứng và sản phẩm theo vùng nhiệt độ."
+        },
+        {
+          "no": 21,
+          "title": "Bài 21. Sự khác nhau cơ bản giữa phi kim và kim loại",
+          "slug": "su-khac-nhau-co-ban-giua-phi-kim-va-kim-loai",
+          "kind": "theory",
+          "keyIdeas": [
+            "Khác nhau về tính chất vật lí",
+            "Khác nhau về tính chất hoá học",
+            "Ion dương và ion âm"
+          ],
+          "interactiveIdea": "Bảng so sánh hai cột kim loại – phi kim với thẻ kéo thả tính chất."
+        }
+      ]
+    },
+    {
+      "no": 7,
+      "label": "Chương 7",
+      "title": "Giới thiệu về chất hữu cơ. Hydrocarbon và nguồn nhiên liệu",
+      "slug": "gioi-thieu-ve-chat-huu-co-hydrocarbon-va-nguon-nhien-lieu",
+      "strand": "hoa-huu-co",
+      "volume": "Sách giáo khoa Khoa học tự nhiên 9",
+      "lessons": [
+        {
+          "no": 22,
+          "title": "Bài 22. Giới thiệu về hợp chất hữu cơ",
+          "slug": "gioi-thieu-ve-hop-chat-huu-co",
+          "kind": "theory",
+          "keyIdeas": [
+            "Khái niệm hợp chất hữu cơ",
+            "Công thức cấu tạo",
+            "Phân loại hydrocarbon và dẫn xuất"
+          ],
+          "interactiveIdea": "Bộ dựng công thức cấu tạo: nối nguyên tử C, H, O theo đúng hoá trị."
+        },
+        {
+          "no": 23,
+          "title": "Bài 23. Alkane",
+          "slug": "alkane",
+          "kind": "theory",
+          "keyIdeas": ["Công thức chung và cấu tạo alkane", "Phản ứng cháy", "Ứng dụng của alkane"],
+          "interactiveIdea": "Mô hình 3D các alkane từ methane đến butane, xoay và xem phản ứng cháy."
+        },
+        {
+          "no": 24,
+          "title": "Bài 24. Alkene",
+          "slug": "alkene",
+          "kind": "theory",
+          "keyIdeas": ["Liên kết đôi C=C", "Phản ứng cộng bromine", "Phản ứng trùng hợp"],
+          "interactiveIdea": "Hoạt cảnh nước bromine mất màu khi sục ethylene và chuỗi trùng hợp polyethylene."
+        },
+        {
+          "no": 25,
+          "title": "Bài 25. Nguồn nhiên liệu",
+          "slug": "nguon-nhien-lieu",
+          "kind": "theory",
+          "keyIdeas": [
+            "Dầu mỏ và khí thiên nhiên",
+            "Nhiên liệu và sử dụng hiệu quả",
+            "Nhiên liệu sinh học"
+          ],
+          "interactiveIdea": "Tháp chưng cất dầu mỏ tương tác với các phân đoạn theo nhiệt độ sôi."
+        }
+      ]
+    },
+    {
+      "no": 8,
+      "label": "Chương 8",
+      "title": "Ethylic alcohol và acetic acid",
+      "slug": "ethylic-alcohol-va-acetic-acid",
+      "strand": "hoa-huu-co",
+      "volume": "Sách giáo khoa Khoa học tự nhiên 9",
+      "lessons": [
+        {
+          "no": 26,
+          "title": "Bài 26. Ethylic alcohol",
+          "slug": "ethylic-alcohol",
+          "kind": "theory",
+          "keyIdeas": [
+            "Cấu tạo và nhóm -OH",
+            "Tính chất và độ cồn",
+            "Ứng dụng và tác hại của rượu bia"
+          ],
+          "interactiveIdea": "Thanh trượt độ cồn trộn ethanol với nước và mô hình phân tử phản ứng với Na."
+        },
+        {
+          "no": 27,
+          "title": "Bài 27. Acetic acid",
+          "slug": "acetic-acid",
+          "kind": "theory",
+          "keyIdeas": ["Cấu tạo và nhóm -COOH", "Tính chất acid", "Phản ứng ester hoá"],
+          "interactiveIdea": "Hoạt cảnh phản ứng ester hoá ghép nhóm -COOH và -OH tạo ester và nước."
+        }
+      ]
+    },
+    {
+      "no": 9,
+      "label": "Chương 9",
+      "title": "Lipid. Carbohydrate. Protein. Polymer",
+      "slug": "lipid-carbohydrate-protein-polymer",
+      "strand": "hoa-huu-co",
+      "volume": "Sách giáo khoa Khoa học tự nhiên 9",
+      "lessons": [
+        {
+          "no": 28,
+          "title": "Bài 28. Lipid",
+          "slug": "lipid",
+          "kind": "theory",
+          "keyIdeas": [
+            "Khái niệm lipid và chất béo",
+            "Phản ứng xà phòng hoá",
+            "Vai trò của chất béo"
+          ],
+          "interactiveIdea": "Mô hình phân tử chất béo tách thành glycerol và muối acid béo khi xà phòng hoá."
+        },
+        {
+          "no": 29,
+          "title": "Bài 29. Carbohydrate. Glucose và saccharose",
+          "slug": "carbohydrate-glucose-va-saccharose",
+          "kind": "theory",
+          "keyIdeas": [
+            "Công thức chung carbohydrate",
+            "Tính chất glucose, phản ứng tráng bạc",
+            "Saccharose và ứng dụng"
+          ],
+          "interactiveIdea": "Ống nghiệm ảo thực hiện phản ứng tráng bạc và thuỷ phân saccharose."
+        },
+        {
+          "no": 30,
+          "title": "Bài 30. Tinh bột và cellulose",
+          "slug": "tinh-bot-va-cellulose",
+          "kind": "theory",
+          "keyIdeas": [
+            "Cấu tạo tinh bột và cellulose",
+            "Phản ứng thuỷ phân và với iodine",
+            "Sự tạo thành trong cây xanh"
+          ],
+          "interactiveIdea": "Nhỏ iodine ảo vào các thực phẩm, tinh bột chuyển xanh tím."
+        },
+        {
+          "no": 31,
+          "title": "Bài 31. Protein",
+          "slug": "protein",
+          "kind": "theory",
+          "keyIdeas": [
+            "Cấu tạo protein từ amino acid",
+            "Phản ứng thuỷ phân, sự đông tụ",
+            "Vai trò của protein"
+          ],
+          "interactiveIdea": "Chuỗi hạt amino acid kéo nối thành protein và hoạt cảnh đông tụ khi đun nóng."
+        },
+        {
+          "no": 32,
+          "title": "Bài 32. Polymer",
+          "slug": "polymer",
+          "kind": "theory",
+          "keyIdeas": [
+            "Khái niệm và cấu tạo polymer",
+            "Chất dẻo, tơ, cao su",
+            "Sử dụng và rác thải polymer"
+          ],
+          "interactiveIdea": "Bộ nối mắt xích monomer thành chuỗi polymer kèm thẻ phân loại vật liệu."
+        }
+      ]
+    },
+    {
+      "no": 10,
+      "label": "Chương 10",
+      "title": "Khai thác tài nguyên từ vỏ Trái Đất",
+      "slug": "khai-thac-tai-nguyen-tu-vo-trai-dat",
+      "strand": "hoa-hoc-va-doi-song",
+      "volume": "Sách giáo khoa Khoa học tự nhiên 9",
+      "lessons": [
+        {
+          "no": 33,
+          "title": "Bài 33. Sơ lược về hoá học vỏ Trái Đất và khai thác tài nguyên từ vỏ Trái Đất",
+          "slug": "so-luoc-ve-hoa-hoc-vo-trai-dat-va-khai-thac-tai-nguyen-tu-vo-trai-dat",
+          "kind": "theory",
+          "keyIdeas": [
+            "Thành phần hoá học vỏ Trái Đất",
+            "Tài nguyên khoáng sản",
+            "Khai thác bền vững"
+          ],
+          "interactiveIdea": "Biểu đồ tròn nguyên tố trong vỏ Trái Đất và bản đồ khoáng sản Việt Nam bấm xem."
+        },
+        {
+          "no": 34,
+          "title": "Bài 34. Khai thác đá vôi. Công nghiệp silicate",
+          "slug": "khai-thac-da-voi-cong-nghiep-silicate",
+          "kind": "theory",
+          "keyIdeas": [
+            "Đá vôi và ứng dụng",
+            "Sản xuất xi măng, gốm, thuỷ tinh",
+            "Ảnh hưởng môi trường"
+          ],
+          "interactiveIdea": "Sơ đồ dây chuyền sản xuất xi măng và thuỷ tinh bấm từng công đoạn."
+        },
+        {
+          "no": 35,
+          "title": "Bài 35. Khai thác nhiên liệu hoá thạch. Nguồn carbon. Chu trình carbon và sự ấm lên toàn cầu",
+          "slug": "khai-thac-nhien-lieu-hoa-thach-nguon-carbon-chu-trinh-carbon-va-su-am-len-toan",
+          "kind": "theory",
+          "keyIdeas": [
+            "Nhiên liệu hoá thạch",
+            "Chu trình carbon",
+            "Hiệu ứng nhà kính và ấm lên toàn cầu"
+          ],
+          "interactiveIdea": "Sơ đồ chu trình carbon động: tăng lượng đốt nhiên liệu và xem CO2 và nhiệt độ tăng."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,484 @@
+{
+  "grade": 12,
+  "volumes": ["Sách giáo khoa", "Chuyên đề học tập"],
+  "chapters": [
+    {
+      "no": 1,
+      "label": "Chương 1",
+      "title": "Ester – lipid",
+      "slug": "ester-lipid",
+      "strand": "hoa-huu-co",
+      "volume": "Sách giáo khoa",
+      "lessons": [
+        {
+          "no": 1,
+          "title": "Bài 1. Ester – Lipid",
+          "slug": "ester-lipid",
+          "kind": "theory",
+          "keyIdeas": ["Danh pháp và tính chất ester", "Phản ứng thuỷ phân", "Chất béo và vai trò"],
+          "interactiveIdea": "Mô hình phân tử ester thuỷ phân trong môi trường acid và kiềm."
+        },
+        {
+          "no": 2,
+          "title": "Bài 2. Xà phòng và chất giặt rửa",
+          "slug": "xa-phong-va-chat-giat-rua",
+          "kind": "theory",
+          "keyIdeas": ["Cấu tạo xà phòng", "Cơ chế giặt rửa", "Chất giặt rửa tổng hợp"],
+          "interactiveIdea": "Hoạt cảnh phân tử xà phòng bao vết dầu tạo micelle."
+        },
+        {
+          "no": 3,
+          "title": "Bài 3. Ôn tập chương 1",
+          "slug": "on-tap-chuong-1",
+          "kind": "review",
+          "keyIdeas": ["Ester", "Chất béo", "Xà phòng"],
+          "interactiveIdea": "Bài tập xác định ester từ sản phẩm thuỷ phân."
+        }
+      ]
+    },
+    {
+      "no": 2,
+      "label": "Chương 2",
+      "title": "Carbohydrate",
+      "slug": "carbohydrate",
+      "strand": "hoa-huu-co",
+      "volume": "Sách giáo khoa",
+      "lessons": [
+        {
+          "no": 4,
+          "title": "Bài 4. Giới thiệu về carbohydrate. Glucose và fructose",
+          "slug": "gioi-thieu-ve-carbohydrate-glucose-va-fructose",
+          "kind": "theory",
+          "keyIdeas": [
+            "Phân loại carbohydrate",
+            "Cấu tạo mạch hở và mạch vòng",
+            "Tính chất glucose, fructose"
+          ],
+          "interactiveIdea": "Hoạt cảnh glucose đóng vòng từ mạch hở và ống nghiệm thử Tollens."
+        },
+        {
+          "no": 5,
+          "title": "Bài 5. Saccharose và maltose",
+          "slug": "saccharose-va-maltose",
+          "kind": "theory",
+          "keyIdeas": ["Cấu tạo disaccharide", "Tính chất hoá học", "Sản xuất đường"],
+          "interactiveIdea": "Mô hình hai đơn vị monosaccharide nối liên kết glycoside, bấm để thuỷ phân."
+        },
+        {
+          "no": 6,
+          "title": "Bài 6. Tinh bột và cellulose",
+          "slug": "tinh-bot-va-cellulose",
+          "kind": "theory",
+          "keyIdeas": [
+            "Cấu tạo amylose, amylopectin, cellulose",
+            "Phản ứng thuỷ phân và với iodine",
+            "Ứng dụng"
+          ],
+          "interactiveIdea": "So sánh chuỗi xoắn tinh bột và sợi thẳng cellulose trong mô hình 3D."
+        },
+        {
+          "no": 7,
+          "title": "Bài 7. Ôn tập chương 2",
+          "slug": "on-tap-chuong-2",
+          "kind": "review",
+          "keyIdeas": ["Monosaccharide", "Disaccharide", "Polysaccharide"],
+          "interactiveIdea": "Bảng nhận biết các carbohydrate bằng thuốc thử ảo."
+        }
+      ]
+    },
+    {
+      "no": 3,
+      "label": "Chương 3",
+      "title": "Hợp chất chứa nitrogen",
+      "slug": "hop-chat-chua-nitrogen",
+      "strand": "hoa-huu-co",
+      "volume": "Sách giáo khoa",
+      "lessons": [
+        {
+          "no": 8,
+          "title": "Bài 8. Amine",
+          "slug": "amine",
+          "kind": "theory",
+          "keyIdeas": [
+            "Danh pháp và bậc amine",
+            "Tính base",
+            "Aniline và phản ứng với nước bromine"
+          ],
+          "interactiveIdea": "Thang tính base so sánh các amine với ammonia."
+        },
+        {
+          "no": 9,
+          "title": "Bài 9. Amino acid và peptide",
+          "slug": "amino-acid-va-peptide",
+          "kind": "theory",
+          "keyIdeas": ["Cấu tạo ion lưỡng cực", "Tính lưỡng tính, điện di", "Liên kết peptide"],
+          "interactiveIdea": "Mô phỏng điện di amino acid theo pH và bộ nối peptide."
+        },
+        {
+          "no": 10,
+          "title": "Bài 10. Protein và enzyme",
+          "slug": "protein-va-enzyme",
+          "kind": "theory",
+          "keyIdeas": ["Cấu trúc protein", "Tính chất protein", "Enzyme và xúc tác sinh học"],
+          "interactiveIdea": "Mô phỏng enzyme – cơ chất khoá và chìa với thanh nhiệt độ và pH."
+        },
+        {
+          "no": 11,
+          "title": "Bài 11. Ôn tập chương 3",
+          "slug": "on-tap-chuong-3",
+          "kind": "review",
+          "keyIdeas": ["Amine", "Amino acid, peptide", "Protein"],
+          "interactiveIdea": "Bài tập tính khối lượng và số mắt xích peptide."
+        }
+      ]
+    },
+    {
+      "no": 4,
+      "label": "Chương 4",
+      "title": "Polymer",
+      "slug": "polymer",
+      "strand": "hoa-huu-co",
+      "volume": "Sách giáo khoa",
+      "lessons": [
+        {
+          "no": 12,
+          "title": "Bài 12. Đại cương về polymer",
+          "slug": "dai-cuong-ve-polymer",
+          "kind": "theory",
+          "keyIdeas": ["Khái niệm và phân loại", "Cấu trúc polymer", "Trùng hợp và trùng ngưng"],
+          "interactiveIdea": "Bộ ghép monomer chọn kiểu trùng hợp hay trùng ngưng và xem chuỗi tạo ra."
+        },
+        {
+          "no": 13,
+          "title": "Bài 13. Vật liệu polymer",
+          "slug": "vat-lieu-polymer",
+          "kind": "theory",
+          "keyIdeas": ["Chất dẻo", "Tơ, cao su, keo dán", "Vật liệu composite và tái chế"],
+          "interactiveIdea": "Thẻ ký hiệu tái chế nhựa kéo vào thùng đúng loại."
+        },
+        {
+          "no": 14,
+          "title": "Bài 14. Ôn tập chương 4",
+          "slug": "on-tap-chuong-4",
+          "kind": "review",
+          "keyIdeas": ["Phản ứng tạo polymer", "Vật liệu polymer", "Ứng dụng và môi trường"],
+          "interactiveIdea": "Câu đố ghép polymer với monomer tương ứng."
+        }
+      ]
+    },
+    {
+      "no": 5,
+      "label": "Chương 5",
+      "title": "Pin điện và điện phân",
+      "slug": "pin-dien-va-dien-phan",
+      "strand": "phan-ung-hoa-hoc",
+      "volume": "Sách giáo khoa",
+      "lessons": [
+        {
+          "no": 15,
+          "title": "Bài 15. Thế điện cực và nguồn điện hoá học",
+          "slug": "the-dien-cuc-va-nguon-dien-hoa-hoc",
+          "kind": "theory",
+          "keyIdeas": ["Cặp oxi hoá – khử", "Thế điện cực chuẩn", "Pin Galvani và sức điện động"],
+          "interactiveIdea": "Pin Galvani ảo chọn hai điện cực, xem dòng electron và sức điện động."
+        },
+        {
+          "no": 16,
+          "title": "Bài 16. Điện phân",
+          "slug": "dien-phan",
+          "kind": "theory",
+          "keyIdeas": [
+            "Điện phân nóng chảy và dung dịch",
+            "Thứ tự điện phân ở điện cực",
+            "Ứng dụng điện phân"
+          ],
+          "interactiveIdea": "Bình điện phân ảo với thanh dòng điện, thời gian và lượng chất thoát ra theo định luật Faraday."
+        },
+        {
+          "no": 17,
+          "title": "Bài 17. Ôn tập chương 5",
+          "slug": "on-tap-chuong-5",
+          "kind": "review",
+          "keyIdeas": ["Thế điện cực", "Pin điện", "Điện phân"],
+          "interactiveIdea": "Bài tập dự đoán sản phẩm điện phân."
+        }
+      ]
+    },
+    {
+      "no": 6,
+      "label": "Chương 6",
+      "title": "Đại cương về kim loại",
+      "slug": "dai-cuong-ve-kim-loai",
+      "strand": "kim-loai",
+      "volume": "Sách giáo khoa",
+      "lessons": [
+        {
+          "no": 18,
+          "title": "Bài 18. Cấu tạo và liên kết trong tinh thể kim loại",
+          "slug": "cau-tao-va-lien-ket-trong-tinh-the-kim-loai",
+          "kind": "theory",
+          "keyIdeas": [
+            "Vị trí kim loại trong bảng tuần hoàn",
+            "Liên kết kim loại",
+            "Mạng tinh thể kim loại"
+          ],
+          "interactiveIdea": "Mô hình biển electron và ba kiểu mạng tinh thể xoay 3D."
+        },
+        {
+          "no": 19,
+          "title": "Bài 19. Tính chất vật lí và tính chất hoá học của kim loại",
+          "slug": "tinh-chat-vat-li-va-tinh-chat-hoa-hoc-cua-kim-loai",
+          "kind": "theory",
+          "keyIdeas": [
+            "Tính dẻo, dẫn điện, dẫn nhiệt",
+            "Tác dụng với phi kim, acid, nước, muối",
+            "Dãy điện hoá"
+          ],
+          "interactiveIdea": "Ống nghiệm ảo cho kim loại phản ứng với dung dịch theo dãy điện hoá."
+        },
+        {
+          "no": 20,
+          "title": "Bài 20. Kim loại trong tự nhiên và phương pháp tách kim loại",
+          "slug": "kim-loai-trong-tu-nhien-va-phuong-phap-tach-kim-loai",
+          "kind": "theory",
+          "keyIdeas": [
+            "Trạng thái tự nhiên",
+            "Nhiệt luyện, thuỷ luyện, điện phân",
+            "Tái chế kim loại"
+          ],
+          "interactiveIdea": "Sơ đồ chọn phương pháp tách theo độ hoạt động kim loại."
+        },
+        {
+          "no": 21,
+          "title": "Bài 21. Hợp kim",
+          "slug": "hop-kim",
+          "kind": "theory",
+          "keyIdeas": ["Khái niệm hợp kim", "Tính chất hợp kim", "Ứng dụng"],
+          "interactiveIdea": "So sánh mạng tinh thể kim loại nguyên chất và hợp kim khi chịu lực."
+        },
+        {
+          "no": 22,
+          "title": "Bài 22. Sự ăn mòn kim loại",
+          "slug": "su-an-mon-kim-loai",
+          "kind": "theory",
+          "keyIdeas": ["Ăn mòn hoá học và điện hoá", "Điều kiện ăn mòn điện hoá", "Chống ăn mòn"],
+          "interactiveIdea": "Mô phỏng đinh sắt trong các môi trường khác nhau theo thời gian."
+        },
+        {
+          "no": 23,
+          "title": "Bài 23. Ôn tập chương 6",
+          "slug": "on-tap-chuong-6",
+          "kind": "review",
+          "keyIdeas": ["Cấu tạo kim loại", "Tính chất kim loại", "Ăn mòn và bảo vệ"],
+          "interactiveIdea": "Bài tập tổng hợp về dãy điện hoá và ăn mòn."
+        }
+      ]
+    },
+    {
+      "no": 7,
+      "label": "Chương 7",
+      "title": "Nguyên tố nhóm IA và nhóm IIA",
+      "slug": "nguyen-to-nhom-ia-va-nhom-iia",
+      "strand": "kim-loai",
+      "volume": "Sách giáo khoa",
+      "lessons": [
+        {
+          "no": 24,
+          "title": "Bài 24. Nguyên tố nhóm IA",
+          "slug": "nguyen-to-nhom-ia",
+          "kind": "theory",
+          "keyIdeas": ["Tính chất kim loại kiềm", "Hợp chất NaCl, NaHCO3, Na2CO3", "Màu ngọn lửa"],
+          "interactiveIdea": "Ngọn lửa ảo: đưa muối vào lửa để xem màu đặc trưng."
+        },
+        {
+          "no": 25,
+          "title": "Bài 25. Nguyên tố nhóm IIA",
+          "slug": "nguyen-to-nhom-iia",
+          "kind": "theory",
+          "keyIdeas": [
+            "Tính chất kim loại nhóm IIA",
+            "Hợp chất của calcium",
+            "Nước cứng và làm mềm"
+          ],
+          "interactiveIdea": "Mô phỏng làm mềm nước cứng bằng nhựa trao đổi ion và Na2CO3."
+        },
+        {
+          "no": 26,
+          "title": "Bài 26. Ôn tập chương 7",
+          "slug": "on-tap-chuong-7",
+          "kind": "review",
+          "keyIdeas": ["Nhóm IA", "Nhóm IIA", "Nước cứng"],
+          "interactiveIdea": "Sơ đồ chuyển hoá Na và Ca điền chỗ trống."
+        }
+      ]
+    },
+    {
+      "no": 8,
+      "label": "Chương 8",
+      "title": "Sơ lược về dãy kim loại chuyển tiếp thứ nhất và phức chất",
+      "slug": "so-luoc-ve-day-kim-loai-chuyen-tiep-thu-nhat-va-phuc-chat",
+      "strand": "kim-loai",
+      "volume": "Sách giáo khoa",
+      "lessons": [
+        {
+          "no": 27,
+          "title": "Bài 27. Đại cương về kim loại chuyển tiếp dãy thứ nhất",
+          "slug": "dai-cuong-ve-kim-loai-chuyen-tiep-day-thu-nhat",
+          "kind": "theory",
+          "keyIdeas": ["Cấu hình electron", "Tính chất vật lí", "Số oxi hoá và màu hợp chất"],
+          "interactiveIdea": "Dải Sc–Cu bấm từng nguyên tố hiện cấu hình, số oxi hoá và màu ion."
+        },
+        {
+          "no": 28,
+          "title": "Bài 28. Sơ lược về phức chất",
+          "slug": "so-luoc-ve-phuc-chat",
+          "kind": "theory",
+          "keyIdeas": ["Nguyên tử trung tâm và phối tử", "Liên kết cho – nhận", "Dạng hình học"],
+          "interactiveIdea": "Bộ dựng phức chất gắn phối tử quanh ion trung tâm, xem hình học 3D."
+        },
+        {
+          "no": 29,
+          "title": "Bài 29. Một số tính chất và ứng dụng của phức chất",
+          "slug": "mot-so-tinh-chat-va-ung-dung-cua-phuc-chat",
+          "kind": "theory",
+          "keyIdeas": [
+            "Phản ứng thay thế phối tử",
+            "Màu phức chất",
+            "Ứng dụng trong y học, phân tích"
+          ],
+          "interactiveIdea": "Ống nghiệm ảo nhỏ ammonia vào Cu2+ để thấy màu phức thay đổi."
+        },
+        {
+          "no": 30,
+          "title": "Bài 30. Ôn tập chương 8",
+          "slug": "on-tap-chuong-8",
+          "kind": "review",
+          "keyIdeas": ["Kim loại chuyển tiếp", "Phức chất", "Ứng dụng"],
+          "interactiveIdea": "Câu đố nhận diện phức chất qua màu và công thức."
+        }
+      ]
+    },
+    {
+      "no": 9,
+      "label": "Chuyên đề 1",
+      "title": "Cơ chế phản ứng trong hoá học hữu cơ",
+      "slug": "co-che-phan-ung-trong-hoa-hoc-huu-co",
+      "strand": "chuyen-de",
+      "volume": "Chuyên đề học tập",
+      "lessons": [
+        {
+          "no": 1,
+          "title": "Bài 1. Đại cương về cơ chế phản ứng",
+          "slug": "cd-dai-cuong-ve-co-che-phan-ung",
+          "kind": "chuyen-de",
+          "keyIdeas": [
+            "Phân cắt liên kết",
+            "Tiểu phân trung gian",
+            "Tác nhân nucleophile, electrophile"
+          ],
+          "interactiveIdea": "Hoạt cảnh mũi tên cong dịch chuyển electron trong phân cắt đồng li và dị li."
+        },
+        {
+          "no": 2,
+          "title": "Bài 2. Cơ chế phản ứng thế",
+          "slug": "cd-co-che-phan-ung-the",
+          "kind": "chuyen-de",
+          "keyIdeas": [
+            "Thế gốc tự do",
+            "Thế nucleophile SN1, SN2",
+            "Thế electrophile vào vòng thơm"
+          ],
+          "interactiveIdea": "Hoạt cảnh từng bước SN1 và SN2 so sánh tốc độ và hoá lập thể."
+        },
+        {
+          "no": 3,
+          "title": "Bài 3. Cơ chế phản ứng cộng",
+          "slug": "cd-co-che-phan-ung-cong",
+          "kind": "chuyen-de",
+          "keyIdeas": [
+            "Cộng electrophile vào alkene",
+            "Cộng nucleophile vào carbonyl",
+            "Quy tắc Markovnikov"
+          ],
+          "interactiveIdea": "Hoạt cảnh cơ chế cộng HBr qua carbocation bền hơn."
+        }
+      ]
+    },
+    {
+      "no": 10,
+      "label": "Chuyên đề 2",
+      "title": "Trải nghiệm, thực hành hoá học vô cơ",
+      "slug": "trai-nghiem-thuc-hanh-hoa-hoc-vo-co",
+      "strand": "chuyen-de",
+      "volume": "Chuyên đề học tập",
+      "lessons": [
+        {
+          "no": 4,
+          "title": "Bài 4. Tái chế kim loại",
+          "slug": "cd-tai-che-kim-loai",
+          "kind": "chuyen-de",
+          "keyIdeas": ["Nguồn kim loại phế thải", "Quy trình tái chế", "Lợi ích môi trường"],
+          "interactiveIdea": "Sơ đồ vòng đời lon nhôm từ khai thác đến tái chế với so sánh năng lượng."
+        },
+        {
+          "no": 5,
+          "title": "Bài 5. Công nghiệp silicate",
+          "slug": "cd-cong-nghiep-silicate",
+          "kind": "chuyen-de",
+          "keyIdeas": ["Gốm, thuỷ tinh, xi măng", "Quy trình sản xuất", "Thực hành làm sản phẩm"],
+          "interactiveIdea": "Lò nung ảo chọn nguyên liệu và nhiệt độ để ra gốm, thuỷ tinh hoặc clinker."
+        },
+        {
+          "no": 6,
+          "title": "Bài 6. Xử lí nước sinh hoạt",
+          "slug": "cd-xu-li-nuoc-sinh-hoat",
+          "kind": "chuyen-de",
+          "keyIdeas": ["Nguồn nước và chất ô nhiễm", "Lắng, lọc, khử trùng", "Làm bộ lọc nước"],
+          "interactiveIdea": "Bộ lọc nước nhiều lớp kéo thả, đổ nước đục và xem độ trong sau lọc."
+        }
+      ]
+    },
+    {
+      "no": 11,
+      "label": "Chuyên đề 3",
+      "title": "Một số vấn đề cơ bản về phức chất",
+      "slug": "mot-so-van-de-co-ban-ve-phuc-chat",
+      "strand": "chuyen-de",
+      "volume": "Chuyên đề học tập",
+      "lessons": [
+        {
+          "no": 7,
+          "title": "Bài 7. Một số vấn đề cơ bản về phức chất",
+          "slug": "cd-mot-so-van-de-co-ban-ve-phuc-chat",
+          "kind": "chuyen-de",
+          "keyIdeas": ["Danh pháp phức chất", "Số phối trí", "Hằng số bền"],
+          "interactiveIdea": "Bộ đặt tên phức chất: chọn ion trung tâm và phối tử, tự sinh tên gọi."
+        },
+        {
+          "no": 8,
+          "title": "Bài 8. Liên kết và cấu tạo của phức chất",
+          "slug": "cd-lien-ket-va-cau-tao-cua-phuc-chat",
+          "kind": "chuyen-de",
+          "keyIdeas": [
+            "Thuyết liên kết hoá trị",
+            "Lai hoá và hình học phức",
+            "Đồng phân phức chất"
+          ],
+          "interactiveIdea": "Mô hình 3D phức bát diện, tứ diện, vuông phẳng kèm sơ đồ lai hoá."
+        },
+        {
+          "no": 9,
+          "title": "Bài 9. Vai trò và ứng dụng của phức chất",
+          "slug": "cd-vai-tro-va-ung-dung-cua-phuc-chat",
+          "kind": "chuyen-de",
+          "keyIdeas": [
+            "Phức chất trong sinh học",
+            "Ứng dụng trong hoá phân tích",
+            "Ứng dụng trong y học và công nghiệp"
+          ],
+          "interactiveIdea": "Bản đồ ứng dụng bấm xem phức hemoglobin, chlorophyll, cisplatin."
+        }
+      ]
+    }
+  ]
+}

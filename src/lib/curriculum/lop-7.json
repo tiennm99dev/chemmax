@@ -1,0 +1,112 @@
+{
+  "grade": 7,
+  "volumes": ["Sách giáo khoa Khoa học tự nhiên 7"],
+  "chapters": [
+    {
+      "no": 0,
+      "label": "Mở đầu",
+      "title": "Mở đầu",
+      "slug": "mo-dau",
+      "strand": "mo-dau",
+      "volume": "Sách giáo khoa Khoa học tự nhiên 7",
+      "lessons": [
+        {
+          "no": 1,
+          "title": "Bài 1. Phương pháp và kĩ năng học tập môn khoa học tự nhiên",
+          "slug": "phuong-phap-va-ki-nang-hoc-tap-mon-khoa-hoc-tu-nhien",
+          "kind": "activity",
+          "keyIdeas": [
+            "Phương pháp tìm hiểu tự nhiên",
+            "Kĩ năng quan sát, đo, dự báo",
+            "Viết báo cáo khoa học"
+          ],
+          "interactiveIdea": "Sơ đồ các bước phương pháp tìm hiểu tự nhiên, kéo thả sắp xếp đúng thứ tự cho một ví dụ."
+        }
+      ]
+    },
+    {
+      "no": 1,
+      "label": "Chương 1",
+      "title": "Nguyên tử. Sơ lược về bảng tuần hoàn các nguyên tố hoá học",
+      "slug": "nguyen-tu-so-luoc-ve-bang-tuan-hoan-cac-nguyen-to-hoa-hoc",
+      "strand": "cau-tao-chat",
+      "volume": "Sách giáo khoa Khoa học tự nhiên 7",
+      "lessons": [
+        {
+          "no": 2,
+          "title": "Bài 2. Nguyên tử",
+          "slug": "nguyen-tu",
+          "kind": "theory",
+          "keyIdeas": [
+            "Mô hình nguyên tử Rutherford – Bohr",
+            "Proton, neutron, electron",
+            "Khối lượng nguyên tử (amu)"
+          ],
+          "interactiveIdea": "Bộ dựng nguyên tử: thêm proton, neutron, electron và xem nguyên tố, điện tích thay đổi."
+        },
+        {
+          "no": 3,
+          "title": "Bài 3. Nguyên tố hoá học",
+          "slug": "nguyen-to-hoa-hoc",
+          "kind": "theory",
+          "keyIdeas": ["Khái niệm nguyên tố hoá học", "Kí hiệu hoá học", "Tên 20 nguyên tố đầu"],
+          "interactiveIdea": "Trò chơi thẻ nhớ ghép tên nguyên tố với kí hiệu và số proton."
+        },
+        {
+          "no": 4,
+          "title": "Bài 4. Sơ lược về bảng tuần hoàn các nguyên tố hoá học",
+          "slug": "so-luoc-ve-bang-tuan-hoan-cac-nguyen-to-hoa-hoc",
+          "kind": "theory",
+          "keyIdeas": [
+            "Nguyên tắc xây dựng bảng tuần hoàn",
+            "Ô, chu kì, nhóm",
+            "Kim loại, phi kim, khí hiếm"
+          ],
+          "interactiveIdea": "Bảng tuần hoàn tương tác: bấm ô xem thông tin, tô màu theo nhóm kim loại, phi kim, khí hiếm."
+        }
+      ]
+    },
+    {
+      "no": 2,
+      "label": "Chương 2",
+      "title": "Phân tử. Liên kết hoá học",
+      "slug": "phan-tu-lien-ket-hoa-hoc",
+      "strand": "cau-tao-chat",
+      "volume": "Sách giáo khoa Khoa học tự nhiên 7",
+      "lessons": [
+        {
+          "no": 5,
+          "title": "Bài 5. Phân tử – Đơn chất – Hợp chất",
+          "slug": "phan-tu-don-chat-hop-chat",
+          "kind": "theory",
+          "keyIdeas": ["Phân tử", "Đơn chất và hợp chất", "Khối lượng phân tử"],
+          "interactiveIdea": "Bộ lắp mô hình phân tử bằng quả cầu và máy tính khối lượng phân tử."
+        },
+        {
+          "no": 6,
+          "title": "Bài 6. Giới thiệu về liên kết hoá học",
+          "slug": "gioi-thieu-ve-lien-ket-hoa-hoc",
+          "kind": "theory",
+          "keyIdeas": [
+            "Lớp electron bền vững của khí hiếm",
+            "Liên kết ion",
+            "Liên kết cộng hoá trị"
+          ],
+          "interactiveIdea": "Hoạt cảnh electron chuyển giữa Na và Cl, và dùng chung electron trong H2O."
+        },
+        {
+          "no": 7,
+          "title": "Bài 7. Hoá trị và công thức hoá học",
+          "slug": "hoa-tri-va-cong-thuc-hoa-hoc",
+          "kind": "theory",
+          "keyIdeas": [
+            "Hoá trị",
+            "Quy tắc hoá trị",
+            "Lập công thức hoá học, tính phần trăm nguyên tố"
+          ],
+          "interactiveIdea": "Công cụ lập công thức: chọn hai nguyên tố, nhập hoá trị và tự kiểm tra quy tắc hoá trị."
+        }
+      ]
+    }
+  ]
+}

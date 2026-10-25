@@ -1,0 +1,222 @@
+{
+  "grade": 6,
+  "volumes": ["Sách giáo khoa Khoa học tự nhiên 6"],
+  "chapters": [
+    {
+      "no": 1,
+      "label": "Chương I",
+      "title": "Mở đầu về khoa học tự nhiên",
+      "slug": "mo-dau-ve-khoa-hoc-tu-nhien",
+      "strand": "mo-dau",
+      "volume": "Sách giáo khoa Khoa học tự nhiên 6",
+      "lessons": [
+        {
+          "no": 1,
+          "title": "Bài 1. Giới thiệu về khoa học tự nhiên",
+          "slug": "gioi-thieu-ve-khoa-hoc-tu-nhien",
+          "kind": "theory",
+          "keyIdeas": [
+            "Khoa học tự nhiên là gì",
+            "Các lĩnh vực chính của KHTN",
+            "Vật sống và vật không sống"
+          ],
+          "interactiveIdea": "Thẻ kéo thả phân loại hiện tượng vào vật lí, hoá học, sinh học, Trái Đất và bầu trời."
+        },
+        {
+          "no": 2,
+          "title": "Bài 2. An toàn trong phòng thực hành",
+          "slug": "an-toan-trong-phong-thuc-hanh",
+          "kind": "theory",
+          "keyIdeas": [
+            "Quy định an toàn phòng thực hành",
+            "Kí hiệu cảnh báo",
+            "Dụng cụ và hoá chất nguy hiểm"
+          ],
+          "interactiveIdea": "Phòng thí nghiệm tương tác: bấm vào từng tình huống để chọn hành động an toàn và nhận diện biển cảnh báo."
+        },
+        {
+          "no": 3,
+          "title": "Bài 3. Sử dụng kính lúp",
+          "slug": "su-dung-kinh-lup",
+          "kind": "practice",
+          "keyIdeas": [
+            "Cấu tạo kính lúp",
+            "Cách cầm và điều chỉnh khoảng cách",
+            "Bảo quản kính lúp"
+          ],
+          "interactiveIdea": "Thanh trượt khoảng cách kính lúp đến vật cho thấy ảnh to dần và rõ nét ở vị trí phù hợp."
+        },
+        {
+          "no": 4,
+          "title": "Bài 4. Sử dụng kính hiển vi quang học",
+          "slug": "su-dung-kinh-hien-vi-quang-hoc",
+          "kind": "practice",
+          "keyIdeas": ["Cấu tạo kính hiển vi", "Các bước quan sát mẫu vật", "Độ phóng đại"],
+          "interactiveIdea": "Kính hiển vi ảo: chọn vật kính, vặn ốc to và ốc nhỏ để lấy nét mẫu tế bào."
+        },
+        {
+          "no": 5,
+          "title": "Bài 5. Đo chiều dài",
+          "slug": "do-chieu-dai",
+          "kind": "practice",
+          "keyIdeas": [
+            "Đơn vị đo chiều dài",
+            "GHĐ và ĐCNN của thước",
+            "Cách đặt mắt và đọc kết quả"
+          ],
+          "interactiveIdea": "Thước ảo kéo đặt dọc vật, chọn thước phù hợp và đọc số đo theo ĐCNN."
+        },
+        {
+          "no": 6,
+          "title": "Bài 6. Đo khối lượng",
+          "slug": "do-khoi-luong",
+          "kind": "practice",
+          "keyIdeas": ["Đơn vị khối lượng", "Các loại cân", "Cách đo bằng cân"],
+          "interactiveIdea": "Cân đồng hồ và cân điện tử ảo: đặt vật, trừ bì và đọc khối lượng."
+        },
+        {
+          "no": 7,
+          "title": "Bài 7. Đo thời gian",
+          "slug": "do-thoi-gian",
+          "kind": "practice",
+          "keyIdeas": ["Đơn vị thời gian", "Đồng hồ bấm giây", "Cách đo thời gian"],
+          "interactiveIdea": "Đồng hồ bấm giây ảo đo thời gian viên bi lăn và so sánh nhiều lần đo."
+        },
+        {
+          "no": 8,
+          "title": "Bài 8. Đo nhiệt độ",
+          "slug": "do-nhiet-do",
+          "kind": "practice",
+          "keyIdeas": ["Thang nhiệt độ Celsius và Kelvin", "Các loại nhiệt kế", "Cách đo nhiệt độ"],
+          "interactiveIdea": "Nhiệt kế ảo nhúng vào cốc nước nóng lạnh với bộ đổi °C và K."
+        }
+      ]
+    },
+    {
+      "no": 2,
+      "label": "Chương II",
+      "title": "Chất quanh ta",
+      "slug": "chat-quanh-ta",
+      "strand": "chat-va-hon-hop",
+      "volume": "Sách giáo khoa Khoa học tự nhiên 6",
+      "lessons": [
+        {
+          "no": 9,
+          "title": "Bài 9. Sự đa dạng của chất",
+          "slug": "su-da-dang-cua-chat",
+          "kind": "theory",
+          "keyIdeas": [
+            "Vật thể tự nhiên và nhân tạo",
+            "Chất và tính chất của chất",
+            "Tính chất vật lí và hoá học"
+          ],
+          "interactiveIdea": "Bảng phân loại kéo thả vật thể và đánh dấu tính chất vật lí hay hoá học."
+        },
+        {
+          "no": 10,
+          "title": "Bài 10. Các thể của chất và sự chuyển thể",
+          "slug": "cac-the-cua-chat-va-su-chuyen-the",
+          "kind": "theory",
+          "keyIdeas": ["Thể rắn, lỏng, khí", "Nóng chảy, đông đặc, bay hơi, ngưng tụ", "Sự sôi"],
+          "interactiveIdea": "Mô phỏng hạt: thanh nhiệt độ làm các hạt chuyển từ rắn sang lỏng sang khí."
+        },
+        {
+          "no": 11,
+          "title": "Bài 11. Oxygen. Không khí",
+          "slug": "oxygen-khong-khi",
+          "kind": "theory",
+          "keyIdeas": [
+            "Tính chất và vai trò của oxygen",
+            "Thành phần không khí",
+            "Ô nhiễm và bảo vệ không khí"
+          ],
+          "interactiveIdea": "Biểu đồ tròn thành phần không khí kèm thí nghiệm nến cháy trong cốc úp."
+        }
+      ]
+    },
+    {
+      "no": 3,
+      "label": "Chương III",
+      "title": "Một số vật liệu, nguyên liệu, nhiên liệu, lương thực – thực phẩm thông dụng",
+      "slug": "mot-so-vat-lieu-nguyen-lieu-nhien-lieu-luong-thuc-thuc-pham-thong-dung",
+      "strand": "hoa-hoc-va-doi-song",
+      "volume": "Sách giáo khoa Khoa học tự nhiên 6",
+      "lessons": [
+        {
+          "no": 12,
+          "title": "Bài 12. Một số vật liệu",
+          "slug": "mot-so-vat-lieu",
+          "kind": "theory",
+          "keyIdeas": [
+            "Tính chất của kim loại, nhựa, gỗ, thuỷ tinh, gốm",
+            "Sử dụng vật liệu an toàn, hiệu quả",
+            "Phát triển bền vững"
+          ],
+          "interactiveIdea": "Bảng so sánh vật liệu: chọn vật liệu phù hợp cho từng đồ vật theo tính chất."
+        },
+        {
+          "no": 13,
+          "title": "Bài 13. Một số nguyên liệu",
+          "slug": "mot-so-nguyen-lieu",
+          "kind": "theory",
+          "keyIdeas": ["Quặng, đá vôi, dầu mỏ", "Tính chất và ứng dụng", "Khai thác bền vững"],
+          "interactiveIdea": "Sơ đồ từ nguyên liệu thô đến sản phẩm, bấm từng mũi tên xem quy trình."
+        },
+        {
+          "no": 14,
+          "title": "Bài 14. Một số nhiên liệu",
+          "slug": "mot-so-nhien-lieu",
+          "kind": "theory",
+          "keyIdeas": [
+            "Nhiên liệu rắn, lỏng, khí",
+            "Năng suất toả nhiệt",
+            "Sử dụng nhiên liệu an toàn, tiết kiệm"
+          ],
+          "interactiveIdea": "Mô phỏng đốt nhiên liệu so sánh nhiệt toả ra và lượng khí thải."
+        },
+        {
+          "no": 15,
+          "title": "Bài 15. Một số lương thực, thực phẩm",
+          "slug": "mot-so-luong-thuc-thuc-pham",
+          "kind": "theory",
+          "keyIdeas": [
+            "Nhóm chất dinh dưỡng",
+            "Vai trò của lương thực, thực phẩm",
+            "Bảo quản thực phẩm"
+          ],
+          "interactiveIdea": "Đĩa ăn tương tác: ghép thực phẩm để cân đối các nhóm chất dinh dưỡng."
+        }
+      ]
+    },
+    {
+      "no": 4,
+      "label": "Chương IV",
+      "title": "Hỗn hợp. Tách chất ra khỏi hỗn hợp",
+      "slug": "hon-hop-tach-chat-ra-khoi-hon-hop",
+      "strand": "chat-va-hon-hop",
+      "volume": "Sách giáo khoa Khoa học tự nhiên 6",
+      "lessons": [
+        {
+          "no": 16,
+          "title": "Bài 16. Hỗn hợp các chất",
+          "slug": "hon-hop-cac-chat",
+          "kind": "theory",
+          "keyIdeas": [
+            "Chất tinh khiết và hỗn hợp",
+            "Hỗn hợp đồng nhất và không đồng nhất",
+            "Dung dịch, huyền phù, nhũ tương"
+          ],
+          "interactiveIdea": "Phòng thí nghiệm ảo trộn chất vào nước, khuấy và quan sát dung dịch hay huyền phù."
+        },
+        {
+          "no": 17,
+          "title": "Bài 17. Tách chất khỏi hỗn hợp",
+          "slug": "tach-chat-khoi-hon-hop",
+          "kind": "practice",
+          "keyIdeas": ["Lọc", "Cô cạn", "Chiết"],
+          "interactiveIdea": "Chọn phương pháp tách phù hợp cho từng hỗn hợp và xem hoạt cảnh lọc, cô cạn, chiết."
+        }
+      ]
+    }
+  ]
+}

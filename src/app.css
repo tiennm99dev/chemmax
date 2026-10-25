@@ -1,0 +1,32 @@
+/* Synced from tiennm99dev/mathmax by scripts/sync-core.sh. Do not edit it here; change it in mathmax and sync again. */
+/* Explicit `/index.css` so the bundler's @import resolver finds the file;
+   the bare 'tailwindcss' specifier is intercepted before Tailwind sees it. */
+@import 'tailwindcss/index.css';
+
+/* Keeps the `pair` tick palette and the Be Vietnam Pro sans stack. */
+@config '../tailwind.config.js';
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    font-family: 'Be Vietnam Pro', system-ui, sans-serif;
+  }
+
+  /* Visible focus ring for keyboard users on draggable SVG vertices. */
+  svg [role='slider']:focus-visible {
+    stroke: #4f46e5;
+    stroke-width: 3;
+  }
+
+  /* Drag handles are filled with their own colour, so the ring is dark. */
+  svg .drag-handle:focus-visible {
+    stroke: #0f172a;
+    stroke-width: 4;
+  }
+}

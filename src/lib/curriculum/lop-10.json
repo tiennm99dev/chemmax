@@ -1,0 +1,452 @@
+{
+  "grade": 10,
+  "volumes": ["Sách giáo khoa", "Chuyên đề học tập"],
+  "chapters": [
+    {
+      "no": 0,
+      "label": "Mở đầu",
+      "title": "Mở đầu",
+      "slug": "mo-dau",
+      "strand": "mo-dau",
+      "volume": "Sách giáo khoa",
+      "lessons": [
+        {
+          "no": 0,
+          "title": "Mở đầu",
+          "slug": "mo-dau-nhap-mon-hoa-hoc",
+          "kind": "theory",
+          "keyIdeas": [
+            "Đối tượng nghiên cứu của hoá học",
+            "Vai trò của hoá học với đời sống và sản xuất",
+            "Phương pháp học tập và nghiên cứu hoá học"
+          ],
+          "interactiveIdea": "Phân loại thẻ ví dụ thành biến đổi vật lí hay biến đổi hoá học, kèm lĩnh vực ứng dụng của hoá học."
+        }
+      ]
+    },
+    {
+      "no": 1,
+      "label": "Chương 1",
+      "title": "Cấu tạo nguyên tử",
+      "slug": "cau-tao-nguyen-tu",
+      "strand": "cau-tao-chat",
+      "volume": "Sách giáo khoa",
+      "lessons": [
+        {
+          "no": 1,
+          "title": "Bài 1. Thành phần của nguyên tử",
+          "slug": "thanh-phan-cua-nguyen-tu",
+          "kind": "theory",
+          "keyIdeas": [
+            "Hạt nhân và lớp vỏ",
+            "Proton, neutron, electron",
+            "Kích thước và khối lượng nguyên tử"
+          ],
+          "interactiveIdea": "Thanh phóng to từ nguyên tử đến hạt nhân để thấy tỉ lệ kích thước."
+        },
+        {
+          "no": 2,
+          "title": "Bài 2. Nguyên tố hoá học",
+          "slug": "nguyen-to-hoa-hoc",
+          "kind": "theory",
+          "keyIdeas": ["Số hiệu nguyên tử, số khối", "Đồng vị", "Nguyên tử khối trung bình"],
+          "interactiveIdea": "Máy tính nguyên tử khối trung bình với thanh trượt phần trăm đồng vị."
+        },
+        {
+          "no": 3,
+          "title": "Bài 3. Cấu trúc lớp vỏ electron nguyên tử",
+          "slug": "cau-truc-lop-vo-electron-nguyen-tu",
+          "kind": "theory",
+          "keyIdeas": ["Orbital nguyên tử", "Lớp, phân lớp electron", "Cấu hình electron"],
+          "interactiveIdea": "Bộ điền electron vào ô orbital theo nguyên lí Pauli, quy tắc Hund và trật tự mức năng lượng."
+        },
+        {
+          "no": 4,
+          "title": "Bài 4. Ôn tập chương 1",
+          "slug": "on-tap-chuong-1",
+          "kind": "review",
+          "keyIdeas": ["Hệ thống thành phần nguyên tử", "Đồng vị", "Cấu hình electron"],
+          "interactiveIdea": "Bộ câu hỏi nhanh kèm bản đồ khái niệm cấu tạo nguyên tử."
+        }
+      ]
+    },
+    {
+      "no": 2,
+      "label": "Chương 2",
+      "title": "Bảng tuần hoàn các nguyên tố hoá học và định luật tuần hoàn",
+      "slug": "bang-tuan-hoan-cac-nguyen-to-hoa-hoc-va-dinh-luat-tuan-hoan",
+      "strand": "cau-tao-chat",
+      "volume": "Sách giáo khoa",
+      "lessons": [
+        {
+          "no": 5,
+          "title": "Bài 5. Cấu tạo của bảng tuần hoàn các nguyên tố hoá học",
+          "slug": "cau-tao-cua-bang-tuan-hoan-cac-nguyen-to-hoa-hoc",
+          "kind": "theory",
+          "keyIdeas": ["Nguyên tắc sắp xếp", "Ô, chu kì, nhóm", "Khối nguyên tố s, p, d, f"],
+          "interactiveIdea": "Bảng tuần hoàn tương tác tô màu theo khối s, p, d, f và hiện cấu hình electron."
+        },
+        {
+          "no": 6,
+          "title": "Bài 6. Xu hướng biến đổi một số tính chất của nguyên tử các nguyên tố trong một nhóm",
+          "slug": "xu-huong-bien-doi-mot-so-tinh-chat-cua-nguyen-tu-cac-nguyen-to-trong-mot-nhom",
+          "kind": "theory",
+          "keyIdeas": ["Bán kính nguyên tử", "Độ âm điện", "Tính kim loại, phi kim"],
+          "interactiveIdea": "Bản đồ nhiệt trên bảng tuần hoàn với thanh chọn tính chất bán kính, độ âm điện."
+        },
+        {
+          "no": 7,
+          "title": "Bài 7. Xu hướng biến đổi thành phần và một số tính chất của hợp chất trong một chu kì",
+          "slug": "xu-huong-bien-doi-thanh-phan-va-mot-so-tinh-chat-cua-hop-chat-trong-mot-chu-ki",
+          "kind": "theory",
+          "keyIdeas": [
+            "Hoá trị cao nhất với oxygen",
+            "Tính acid – base của oxide và hydroxide",
+            "Biến đổi trong chu kì 3"
+          ],
+          "interactiveIdea": "Dải chu kì 3 kéo qua từng nguyên tố hiện oxide, hydroxide và tính acid – base."
+        },
+        {
+          "no": 8,
+          "title": "Bài 8. Định luật tuần hoàn. Ý nghĩa của bảng tuần hoàn các nguyên tố hoá học",
+          "slug": "dinh-luat-tuan-hoan-y-nghia-cua-bang-tuan-hoan-cac-nguyen-to-hoa-hoc",
+          "kind": "theory",
+          "keyIdeas": [
+            "Nội dung định luật tuần hoàn",
+            "Quan hệ vị trí – cấu tạo – tính chất",
+            "Dự đoán tính chất"
+          ],
+          "interactiveIdea": "Trò chơi suy luận: cho vị trí, đoán cấu hình và tính chất, rồi lật thẻ kiểm tra."
+        },
+        {
+          "no": 9,
+          "title": "Bài 9. Ôn tập chương 2",
+          "slug": "on-tap-chuong-2",
+          "kind": "review",
+          "keyIdeas": [
+            "Cấu tạo bảng tuần hoàn",
+            "Xu hướng biến đổi tính chất",
+            "Định luật tuần hoàn"
+          ],
+          "interactiveIdea": "Câu đố bảng tuần hoàn tìm nguyên tố theo gợi ý tính chất."
+        }
+      ]
+    },
+    {
+      "no": 3,
+      "label": "Chương 3",
+      "title": "Liên kết hoá học",
+      "slug": "lien-ket-hoa-hoc",
+      "strand": "cau-tao-chat",
+      "volume": "Sách giáo khoa",
+      "lessons": [
+        {
+          "no": 10,
+          "title": "Bài 10. Quy tắc octet",
+          "slug": "quy-tac-octet",
+          "kind": "theory",
+          "keyIdeas": ["Lớp vỏ bền của khí hiếm", "Quy tắc octet", "Áp dụng và ngoại lệ"],
+          "interactiveIdea": "Sơ đồ Lewis kéo thả electron để mỗi nguyên tử đạt octet."
+        },
+        {
+          "no": 11,
+          "title": "Bài 11. Liên kết ion",
+          "slug": "lien-ket-ion",
+          "kind": "theory",
+          "keyIdeas": ["Sự tạo thành ion", "Liên kết ion", "Tinh thể ion"],
+          "interactiveIdea": "Hoạt cảnh chuyển electron tạo ion và mô hình 3D mạng tinh thể NaCl."
+        },
+        {
+          "no": 12,
+          "title": "Bài 12. Liên kết cộng hoá trị",
+          "slug": "lien-ket-cong-hoa-tri",
+          "kind": "theory",
+          "keyIdeas": [
+            "Liên kết đơn, đôi, ba",
+            "Liên kết phân cực và độ âm điện",
+            "Liên kết σ, π và năng lượng liên kết"
+          ],
+          "interactiveIdea": "Thanh hiệu độ âm điện dịch chuyển cặp electron từ không phân cực đến ion."
+        },
+        {
+          "no": 13,
+          "title": "Bài 13. Liên kết hydrogen và tương tác van der Waals",
+          "slug": "lien-ket-hydrogen-va-tuong-tac-van-der-waals",
+          "kind": "theory",
+          "keyIdeas": [
+            "Liên kết hydrogen",
+            "Tương tác van der Waals",
+            "Ảnh hưởng đến nhiệt độ sôi, độ tan"
+          ],
+          "interactiveIdea": "Mô phỏng phân tử nước tạo liên kết hydrogen và biểu đồ nhiệt độ sôi theo phân tử."
+        },
+        {
+          "no": 14,
+          "title": "Bài 14. Ôn tập chương 3",
+          "slug": "on-tap-chuong-3",
+          "kind": "review",
+          "keyIdeas": ["Quy tắc octet", "Các loại liên kết", "Tương tác giữa phân tử"],
+          "interactiveIdea": "Sơ đồ quyết định chọn loại liên kết từ hiệu độ âm điện."
+        }
+      ]
+    },
+    {
+      "no": 4,
+      "label": "Chương 4",
+      "title": "Phản ứng oxi hoá – khử",
+      "slug": "phan-ung-oxi-hoa-khu",
+      "strand": "phan-ung-hoa-hoc",
+      "volume": "Sách giáo khoa",
+      "lessons": [
+        {
+          "no": 15,
+          "title": "Bài 15. Phản ứng oxi hoá – khử",
+          "slug": "phan-ung-oxi-hoa-khu",
+          "kind": "theory",
+          "keyIdeas": [
+            "Số oxi hoá",
+            "Chất oxi hoá, chất khử",
+            "Cân bằng phương trình bằng thăng bằng electron"
+          ],
+          "interactiveIdea": "Công cụ cân bằng thăng bằng electron từng bước, tô màu nguyên tử đổi số oxi hoá."
+        },
+        {
+          "no": 16,
+          "title": "Bài 16. Ôn tập chương 4",
+          "slug": "on-tap-chuong-4",
+          "kind": "review",
+          "keyIdeas": ["Số oxi hoá", "Quá trình oxi hoá – khử", "Cân bằng phương trình"],
+          "interactiveIdea": "Bộ bài tập cân bằng phản ứng có kiểm tra tức thì."
+        }
+      ]
+    },
+    {
+      "no": 5,
+      "label": "Chương 5",
+      "title": "Năng lượng hoá học",
+      "slug": "nang-luong-hoa-hoc",
+      "strand": "phan-ung-hoa-hoc",
+      "volume": "Sách giáo khoa",
+      "lessons": [
+        {
+          "no": 17,
+          "title": "Bài 17. Biến thiên enthalpy trong các phản ứng hoá học",
+          "slug": "bien-thien-enthalpy-trong-cac-phan-ung-hoa-hoc",
+          "kind": "theory",
+          "keyIdeas": [
+            "Phản ứng toả nhiệt, thu nhiệt",
+            "Enthalpy tạo thành chuẩn",
+            "Tính ΔH theo năng lượng liên kết"
+          ],
+          "interactiveIdea": "Giản đồ năng lượng động và máy tính ΔH từ enthalpy tạo thành hoặc năng lượng liên kết."
+        },
+        {
+          "no": 18,
+          "title": "Bài 18. Ôn tập chương 5",
+          "slug": "on-tap-chuong-5",
+          "kind": "review",
+          "keyIdeas": ["Biến thiên enthalpy", "Giản đồ năng lượng", "Tính ΔH"],
+          "interactiveIdea": "Bài tập phân loại phản ứng toả nhiệt hay thu nhiệt theo giản đồ."
+        }
+      ]
+    },
+    {
+      "no": 6,
+      "label": "Chương 6",
+      "title": "Tốc độ phản ứng",
+      "slug": "toc-do-phan-ung",
+      "strand": "phan-ung-hoa-hoc",
+      "volume": "Sách giáo khoa",
+      "lessons": [
+        {
+          "no": 19,
+          "title": "Bài 19. Tốc độ phản ứng",
+          "slug": "toc-do-phan-ung",
+          "kind": "theory",
+          "keyIdeas": [
+            "Tốc độ trung bình",
+            "Định luật tác dụng khối lượng",
+            "Yếu tố ảnh hưởng, hệ số Van't Hoff, chất xúc tác"
+          ],
+          "interactiveIdea": "Mô phỏng va chạm hạt với thanh trượt nồng độ, nhiệt độ và đồ thị nồng độ theo thời gian."
+        },
+        {
+          "no": 20,
+          "title": "Bài 20. Ôn tập chương 6",
+          "slug": "on-tap-chuong-6",
+          "kind": "review",
+          "keyIdeas": ["Biểu thức tốc độ", "Các yếu tố ảnh hưởng", "Hệ số nhiệt độ"],
+          "interactiveIdea": "Bài tập đọc đồ thị nồng độ – thời gian để tính tốc độ."
+        }
+      ]
+    },
+    {
+      "no": 7,
+      "label": "Chương 7",
+      "title": "Nguyên tố nhóm halogen",
+      "slug": "nguyen-to-nhom-halogen",
+      "strand": "hoa-vo-co",
+      "volume": "Sách giáo khoa",
+      "lessons": [
+        {
+          "no": 21,
+          "title": "Bài 21. Nhóm halogen",
+          "slug": "nhom-halogen",
+          "kind": "theory",
+          "keyIdeas": [
+            "Trạng thái tự nhiên và cấu tạo",
+            "Tính chất vật lí, hoá học",
+            "Tính oxi hoá giảm dần từ F đến I"
+          ],
+          "interactiveIdea": "Phòng thí nghiệm ảo cho halogen đẩy nhau khỏi dung dịch muối và đổi màu."
+        },
+        {
+          "no": 22,
+          "title": "Bài 22. Hydrogen halide. Muối halide",
+          "slug": "hydrogen-halide-muoi-halide",
+          "kind": "theory",
+          "keyIdeas": [
+            "Hydrogen halide và hydrohalic acid",
+            "Tính khử của ion halide",
+            "Nhận biết ion halide bằng AgNO3"
+          ],
+          "interactiveIdea": "Ống nghiệm nhỏ AgNO3 vào dung dịch halide cho kết tủa màu khác nhau."
+        },
+        {
+          "no": 23,
+          "title": "Bài 23. Ôn tập chương 7",
+          "slug": "on-tap-chuong-7",
+          "kind": "review",
+          "keyIdeas": ["Tính chất halogen", "Hydrogen halide", "Nhận biết ion halide"],
+          "interactiveIdea": "Sơ đồ chuyển hoá halogen điền chỗ trống."
+        }
+      ]
+    },
+    {
+      "no": 8,
+      "label": "Chuyên đề 1",
+      "title": "Cơ sở hoá học",
+      "slug": "co-so-hoa-hoc",
+      "strand": "chuyen-de",
+      "volume": "Chuyên đề học tập",
+      "lessons": [
+        {
+          "no": 1,
+          "title": "Bài 1. Liên kết hoá học",
+          "slug": "cd-lien-ket-hoa-hoc",
+          "kind": "chuyen-de",
+          "keyIdeas": ["Liên kết cho – nhận", "Lai hoá orbital", "Hình học phân tử"],
+          "interactiveIdea": "Mô hình 3D lai hoá sp, sp2, sp3 xoay và so sánh góc liên kết."
+        },
+        {
+          "no": 2,
+          "title": "Bài 2. Phản ứng hạt nhân",
+          "slug": "cd-phan-ung-hat-nhan",
+          "kind": "chuyen-de",
+          "keyIdeas": [
+            "Phóng xạ tự nhiên và nhân tạo",
+            "Phương trình phản ứng hạt nhân",
+            "Ứng dụng đồng vị phóng xạ"
+          ],
+          "interactiveIdea": "Mô phỏng chu kì bán rã với đồ thị số hạt còn lại theo thời gian."
+        },
+        {
+          "no": 3,
+          "title": "Bài 3. Năng lượng hoạt hoá của phản ứng hoá học",
+          "slug": "cd-nang-luong-hoat-hoa-cua-phan-ung-hoa-hoc",
+          "kind": "chuyen-de",
+          "keyIdeas": ["Năng lượng hoạt hoá", "Phương trình Arrhenius", "Vai trò của chất xúc tác"],
+          "interactiveIdea": "Giản đồ năng lượng có thanh trượt Ea và nhiệt độ, xem hằng số tốc độ thay đổi."
+        },
+        {
+          "no": 4,
+          "title": "Bài 4. Entropy và biến thiên năng lượng tự do Gibbs",
+          "slug": "cd-entropy-va-bien-thien-nang-luong-tu-do-gibbs",
+          "kind": "chuyen-de",
+          "keyIdeas": ["Entropy", "Năng lượng tự do Gibbs", "Dự đoán chiều phản ứng"],
+          "interactiveIdea": "Máy tính ΔG = ΔH − TΔS với đồ thị theo nhiệt độ cho thấy vùng phản ứng tự xảy ra."
+        }
+      ]
+    },
+    {
+      "no": 9,
+      "label": "Chuyên đề 2",
+      "title": "Hoá học trong việc phòng chống cháy, nổ",
+      "slug": "hoa-hoc-trong-viec-phong-chong-chay-no",
+      "strand": "chuyen-de",
+      "volume": "Chuyên đề học tập",
+      "lessons": [
+        {
+          "no": 5,
+          "title": "Bài 5. Sơ lược về phản ứng cháy, nổ",
+          "slug": "cd-so-luoc-ve-phan-ung-chay-no",
+          "kind": "chuyen-de",
+          "keyIdeas": ["Bản chất phản ứng cháy", "Phản ứng nổ", "Tam giác cháy"],
+          "interactiveIdea": "Tam giác cháy tương tác: bỏ một cạnh nhiên liệu, oxygen hay nhiệt thì lửa tắt."
+        },
+        {
+          "no": 6,
+          "title": "Bài 6. Điểm chớp cháy. Nhiệt độ ngọn lửa. Nhiệt độ tự bốc cháy",
+          "slug": "cd-diem-chop-chay-nhiet-do-ngon-lua-nhiet-do-tu-boc-chay",
+          "kind": "chuyen-de",
+          "keyIdeas": ["Điểm chớp cháy", "Nhiệt độ ngọn lửa", "Nhiệt độ tự bốc cháy"],
+          "interactiveIdea": "Biểu đồ so sánh điểm chớp cháy và nhiệt độ tự bốc cháy của các chất thường gặp."
+        },
+        {
+          "no": 7,
+          "title": "Bài 7. Hoá học về phản ứng cháy, nổ",
+          "slug": "cd-hoa-hoc-ve-phan-ung-chay-no",
+          "kind": "chuyen-de",
+          "keyIdeas": ["Các yếu tố ảnh hưởng phản ứng cháy", "Giới hạn nổ", "Tính toán năng lượng"],
+          "interactiveIdea": "Thanh trượt nồng độ khí trong không khí đánh dấu vùng giới hạn nổ."
+        },
+        {
+          "no": 8,
+          "title": "Bài 8. Phòng chống cháy, nổ",
+          "slug": "cd-phong-chong-chay-no",
+          "kind": "chuyen-de",
+          "keyIdeas": ["Nguyên tắc phòng cháy", "Chất và dụng cụ chữa cháy", "Xử lí khi có cháy"],
+          "interactiveIdea": "Tình huống ảo chọn bình chữa cháy phù hợp cho từng loại đám cháy."
+        }
+      ]
+    },
+    {
+      "no": 10,
+      "label": "Chuyên đề 3",
+      "title": "Thực hành hoá học và công nghệ thông tin",
+      "slug": "thuc-hanh-hoa-hoc-va-cong-nghe-thong-tin",
+      "strand": "chuyen-de",
+      "volume": "Chuyên đề học tập",
+      "lessons": [
+        {
+          "no": 9,
+          "title": "Bài 9. Thực hành về cấu trúc phân tử",
+          "slug": "cd-thuc-hanh-ve-cau-truc-phan-tu",
+          "kind": "chuyen-de",
+          "keyIdeas": [
+            "Phần mềm vẽ cấu trúc phân tử",
+            "Mô hình 2D, 3D",
+            "Đo góc và độ dài liên kết"
+          ],
+          "interactiveIdea": "Trình xem phân tử 3D xoay, đo độ dài và góc liên kết."
+        },
+        {
+          "no": 10,
+          "title": "Bài 10. Thực hành thí nghiệm hoá học ảo",
+          "slug": "cd-thuc-hanh-thi-nghiem-hoa-hoc-ao",
+          "kind": "chuyen-de",
+          "keyIdeas": ["Phần mềm thí nghiệm ảo", "Thực hiện thí nghiệm ảo", "Ghi nhận và báo cáo"],
+          "interactiveIdea": "Phòng thí nghiệm ảo kéo thả dụng cụ và hoá chất để làm thí nghiệm chuẩn độ."
+        },
+        {
+          "no": 11,
+          "title": "Bài 11. Thực hành tính tham số cấu trúc và năng lượng",
+          "slug": "cd-thuc-hanh-tinh-tham-so-cau-truc-va-nang-luong",
+          "kind": "chuyen-de",
+          "keyIdeas": ["Tính toán hoá học bằng phần mềm", "Tham số cấu trúc", "Năng lượng phân tử"],
+          "interactiveIdea": "Bảng so sánh tham số tính toán với thực nghiệm cho một số phân tử nhỏ."
+        }
+      ]
+    }
+  ]
+}

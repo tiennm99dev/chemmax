@@ -1,0 +1,20 @@
+// Synced from tiennm99dev/mathmax by scripts/sync-core.sh. Do not edit it here; change it in mathmax and sync again.
+export {
+  fraction,
+  simplify,
+  isSimplest,
+  expand,
+  equals,
+  compare,
+  commonDenominator,
+  add,
+  sub,
+  mul,
+  div,
+  toNumber,
+  toMixed,
+  fromMixed,
+  fromDecimal,
+  format,
+  toTex,
+} from './fraction.js';
