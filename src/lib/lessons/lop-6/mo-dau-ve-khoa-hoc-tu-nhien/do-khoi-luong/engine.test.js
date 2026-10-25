@@ -101,7 +101,17 @@ describe('electronic scale', () => {
     expect(noTare.ok).toBe(false);
     expect(noTare.messages[0]).toMatch(/Trừ bì/);
     const lateTare = judgeDigital({ ...good, tare: beaker.tenths + salt.tenths }, 0);
-    expect(lateTare.messages[0]).toMatch(/làm lại/);
+    expect(lateTare.messages[0]).toMatch(/khi mẫu đã ở trên đĩa/);
+  });
+
+  it('names a tare taken with another container or with the sample alone', () => {
+    const paper = { id: 'dia', name: 'Giấy cân', tenths: 18 };
+    const swapped = judgeDigital({ container: paper, sample: salt, tare: beaker.tenths }, 25.4);
+    expect(swapped.ok).toBe(false);
+    expect(swapped.messages[0]).toMatch(/không ứng với giấy cân/);
+    const sampleOnly = judgeDigital({ container: beaker, sample: salt, tare: salt.tenths }, 62.3);
+    expect(sampleOnly.ok).toBe(false);
+    expect(sampleOnly.messages[0]).toMatch(/không ứng với cốc thuỷ tinh/);
   });
 
   it('asks for a container and a sample', () => {

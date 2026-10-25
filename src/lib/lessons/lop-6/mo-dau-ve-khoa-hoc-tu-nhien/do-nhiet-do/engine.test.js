@@ -130,6 +130,17 @@ describe('judging a reading', () => {
     expect(
       judge({ ...base, th: yTe, target: target('nuoc-da'), celsius: 35, kelvin: 308 }).messages[0],
     ).toMatch(/nhỏ nhất/);
+    expect(
+      judge({ ...base, th: yTe, target: target('nuoc-da'), celsius: 35, kelvin: 308 }).messages[0],
+    ).not.toMatch(/tụt xuống/);
+    expect(
+      judge({
+        ...base,
+        th: ruou,
+        target: { id: 'x', name: 'Nước muối đá', temp: -40 },
+        celsius: -30,
+      }).messages[0],
+    ).toMatch(/tụt xuống dưới vạch đầu tiên/);
   });
 
   it('names an unshaken thermometer, a moving column and a wrong conversion', () => {

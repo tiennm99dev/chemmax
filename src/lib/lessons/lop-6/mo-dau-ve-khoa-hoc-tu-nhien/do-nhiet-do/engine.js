@@ -173,10 +173,15 @@ export function judge({ th, target, inContact, still, peak, celsius, kelvin }) {
     };
   }
   if (target.temp < th.min) {
+    // The neck of a medical thermometer stops the mercury from falling back,
+    // so it never shows the cold value: it just cannot measure it.
+    const why = th.keepsMax
+      ? 'nhiệt kế không chỉ được nhiệt độ thấp như vậy'
+      : `${th.liquid} tụt xuống dưới vạch đầu tiên, không đọc được`;
     return {
       ok: false,
       messages: [
-        `${target.name} lạnh hơn số nhỏ nhất ghi trên ${th.name.toLowerCase()} (${c(th.min)} °C): ${th.liquid} tụt xuống dưới vạch đầu tiên, không đọc được. Hãy chọn nhiệt kế khác.`,
+        `${target.name} lạnh hơn số nhỏ nhất ghi trên ${th.name.toLowerCase()} (${c(th.min)} °C): ${why}. Hãy chọn nhiệt kế khác.`,
       ],
     };
   }

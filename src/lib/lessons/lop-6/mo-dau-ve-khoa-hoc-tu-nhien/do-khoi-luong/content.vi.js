@@ -64,8 +64,8 @@ export default {
           head: ['Loại cân', 'Thường dùng để cân'],
           rows: [
             ['Cân đòn', 'Hàng hoá, nông sản, gia súc ở chợ'],
-            ['Cân Roberval', 'Vật từ vài trăm gam đến vài chục kilôgam'],
-            ['Cân đồng hồ', 'Vật nhỏ, từ vài chục gam đến vài kilôgam'],
+            ['Cân Roberval', 'Vật nhỏ, từ vài gam đến vài kilôgam'],
+            ['Cân đồng hồ', 'Rau, thịt, hoa quả: từ vài chục gam đến vài chục kilôgam'],
             ['Cân y tế (cân sức khoẻ)', 'Khối lượng cơ thể người'],
             ['Cân tạ (cân bàn)', 'Vật nặng: bao gạo, bao xi măng'],
             [

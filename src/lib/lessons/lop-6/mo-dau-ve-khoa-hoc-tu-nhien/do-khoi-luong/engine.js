@@ -212,13 +212,17 @@ export function judgeDigital(s, grams) {
   }
   /** @type {string[]} */
   const messages = [];
-  if (s.tare < s.container.tenths) {
+  if (s.tare === 0) {
     messages.push(
       `Số chỉ trên màn hình gồm cả khối lượng ${s.container.name.toLowerCase()}: hãy bấm "Trừ bì" khi trên đĩa mới chỉ có vật chứa, để cân chỉ khối lượng của mẫu.`,
     );
-  } else if (s.tare > s.container.tenths) {
+  } else if (s.tare === load(s)) {
     messages.push(
       'Đã bấm "Trừ bì" khi mẫu đã ở trên đĩa, nên màn hình không còn chỉ khối lượng của mẫu. Hãy làm lại: đặt vật chứa, trừ bì, rồi mới cho mẫu vào.',
+    );
+  } else if (s.tare !== s.container.tenths) {
+    messages.push(
+      `Lần "Trừ bì" trước không ứng với ${s.container.name.toLowerCase()} đang ở trên đĩa (vật chứa đã được đổi hoặc trừ bì chưa đúng lúc). Hãy làm lại: đặt vật chứa, trừ bì, rồi mới cho mẫu vào.`,
     );
   }
   const typed = Math.round(grams * 10);

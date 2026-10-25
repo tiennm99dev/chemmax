@@ -33,6 +33,8 @@
   let now = $state(0);
   let sw = $state(stopwatch());
   let fromZero = $state(true);
+  /** Whether the reading on the display is already in the table. */
+  let recorded = $state(false);
   /** @type {Array<{ measured: number, ok: boolean, message: string }>} */
   let trials = $state([]);
   let note = $state(
@@ -84,10 +86,13 @@
     now = performance.now();
     fromZero = sw.base === 0;
     sw = start(sw, now);
+    recorded = false;
   }
   function pressStop() {
+    if (!sw.running) return;
     now = performance.now();
     sw = stop(sw, now);
+    note = `Đồng hồ dừng ở ${secondsText(reading(sw.base))} s. Bấm "Ghi kết quả" để so với cổng quang điện.`;
   }
   function pressReset() {
     if (sw.running) {
@@ -107,6 +112,11 @@
       note = 'Đồng hồ đang chỉ 0,00 s: hãy đo trước rồi mới ghi.';
       return;
     }
+    if (recorded) {
+      note = 'Số đo này đã được ghi. Bấm Reset, thả bi và đo lần mới.';
+      return;
+    }
+    recorded = true;
     const r = judgeTrial({ measured: shown, truth, fromZero });
     trials = [...trials, { measured: shown, ...r }].slice(-MAX_TRIALS);
     note = `Lần ${trials.length}: ${secondsText(shown)} s. ${r.message}`;
