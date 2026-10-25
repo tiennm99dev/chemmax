@@ -1,13 +1,13 @@
 <script>
   import SegmentedControl from '#lib/core/segmented-control.svelte';
   import { button } from '#lib/core/ui.js';
-  import { formatNumber } from '#lib/core/number-format.js';
+  import { fmt, formatNumber } from '#lib/core/number-format.js';
   import { CUPS, burnTime, flameSize, oxygenShare, waterRise } from './engine.js';
 
   // The rising water and shrinking flame are the result being observed, so
   // they move even under prefers-reduced-motion; only the flicker stops.
 
-  const CUP_OPTIONS = CUPS.map((v) => ({ value: v, label: `Cốc ${formatNumber(v)} mL` }));
+  const CUP_OPTIONS = CUPS.map((v) => ({ value: v, label: `Cốc ${fmt(v)} mL` }));
   /** @type {Record<number, number>} */
   const CUP_WIDTH = { 250: 84, 500: 124, 1000: 180 };
 
@@ -94,7 +94,7 @@
     class="block w-full max-w-md"
     role="img"
     aria-label="Cây nến đặt trong chậu nước{covered
-      ? `, úp cốc ${formatNumber(volume)} mL lên trên`
+      ? `, úp cốc ${fmt(volume)} mL lên trên`
       : ''}. {status}"
   >
     <!-- dish of water -->
@@ -174,7 +174,7 @@
       <tbody>
         {#each CUPS.filter((v) => results[v] !== undefined) as v (v)}
           <tr class="border-t border-slate-200">
-            <td class="py-1">{formatNumber(v)} mL</td>
+            <td class="py-1">{fmt(v)} mL</td>
             <td class="py-1">khoảng {formatNumber(Math.round(results[v]))} giây</td>
             <td class="py-1">khoảng 1/5 cốc</td>
           </tr>

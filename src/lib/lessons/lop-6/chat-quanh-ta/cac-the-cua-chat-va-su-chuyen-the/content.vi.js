@@ -271,7 +271,7 @@ export default {
   ],
   takeaways: [
     'Chất tồn tại ở ba thể chính: rắn, lỏng, khí (hơi).',
-    'Thể rắn: hình dạng, thể tích xác định, rất khó nén. Thể lỏng: thể tích xác định, hình dạng theo vật chứa, khó nén. Thể khí: không có hình dạng, thể tích xác định, dễ nén.',
+    'Thể rắn: hình dạng, thể tích xác định, rất khó nén. Thể lỏng: thể tích xác định, hình dạng theo vật chứa, khó nén. Thể khí: không có hình dạng và thể tích xác định, dễ nén.',
     'Nóng chảy: rắn → lỏng; đông đặc: lỏng → rắn; bay hơi: lỏng → hơi; ngưng tụ: hơi → lỏng.',
     'Bay hơi xảy ra trên bề mặt chất lỏng ở mọi nhiệt độ; sôi xảy ra cả trong lòng chất lỏng, ở nhiệt độ sôi xác định.',
     'Trong suốt quá trình nóng chảy và quá trình sôi, nhiệt độ của chất không đổi (nước: $0$ °C và $100$ °C).',

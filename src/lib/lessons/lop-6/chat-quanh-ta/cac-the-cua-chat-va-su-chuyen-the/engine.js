@@ -70,7 +70,9 @@ export function processName(stage, up) {
     case 'nong-chay':
       return up ? 'Nóng chảy (rắn → lỏng)' : 'Đông đặc (lỏng → rắn)';
     case 'long':
-      return 'Bay hơi trên bề mặt chất lỏng (lỏng → hơi)';
+      return up
+        ? 'Bay hơi trên bề mặt chất lỏng (lỏng → hơi)'
+        : 'Nước lỏng lạnh đi, ít hạt bay hơi hơn';
     case 'soi':
       return up ? 'Sôi (bay hơi cả trong lòng và trên bề mặt chất lỏng)' : 'Ngưng tụ (hơi → lỏng)';
     default:
@@ -79,19 +81,24 @@ export function processName(stage, up) {
 }
 
 /**
- * Plain description of the particles in the state shown.
- * @param {WaterState} s
+ * Plain description of the particles in the state shown, given whether the
+ * water is being heated (`up`) or cooled.
+ * @param {WaterState} s @param {boolean} [up]
  */
-export function particleNote(s) {
+export function particleNote(s, up = true) {
   switch (s.stage) {
     case 'ran':
       return 'Thể rắn: các hạt liên kết chặt chẽ, xếp khít nhau và chỉ dao động tại chỗ, nên nước đá có hình dạng và thể tích xác định.';
     case 'nong-chay':
-      return 'Một phần hạt thoát khỏi khối rắn và trượt lên nhau thành chất lỏng. Nhiệt độ đứng yên ở 0 °C cho đến khi nước đá tan hết.';
+      return up
+        ? 'Một phần hạt thoát khỏi khối rắn và trượt lên nhau thành chất lỏng. Nhiệt độ đứng yên ở 0 °C cho đến khi nước đá tan hết.'
+        : 'Các hạt lỏng chậm dần, xếp lại khít nhau thành nước đá. Nhiệt độ đứng yên ở 0 °C cho đến khi nước đông đặc hết.';
     case 'long':
       return 'Thể lỏng: các hạt liên kết không chặt chẽ, trượt lên nhau, nên nước chảy được và có hình dạng của vật chứa. Một vài hạt ở bề mặt thoát ra thành hơi: đó là sự bay hơi.';
     case 'soi':
-      return 'Bọt hơi tạo thành ngay trong lòng chất lỏng. Nhiệt độ đứng yên ở 100 °C cho đến khi nước hoá hơi hết.';
+      return up
+        ? 'Bọt hơi tạo thành ngay trong lòng chất lỏng. Nhiệt độ đứng yên ở 100 °C cho đến khi nước hoá hơi hết.'
+        : 'Các hạt hơi chậm lại, gặp nhau và tụ lại thành giọt nước lỏng. Nhiệt độ đứng yên ở 100 °C cho đến khi hơi ngưng tụ hết.';
     default:
       return 'Thể khí: các hạt ở rất xa nhau, chuyển động tự do và hỗn loạn về mọi phía, nên chất khí chiếm đầy bình chứa và dễ bị nén.';
   }

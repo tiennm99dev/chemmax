@@ -7,6 +7,7 @@ import {
   STAGE_BOUNDS,
   evaporated,
   layout,
+  particleNote,
   processName,
   stateAt,
 } from './engine.js';
@@ -57,6 +58,13 @@ describe('water heating model', () => {
     expect(processName('soi', true)).toMatch(/^Sôi/);
     expect(processName('soi', false)).toMatch(/^Ngưng tụ/);
     expect(processName('long', true)).toMatch(/^Bay hơi/);
+  });
+
+  it('describes freezing and condensing, not melting and boiling, while cooling', () => {
+    expect(particleNote(stateAt(25), false)).toMatch(/đông đặc/);
+    expect(particleNote(stateAt(25), true)).toMatch(/tan hết/);
+    expect(particleNote(stateAt(75), false)).toMatch(/ngưng tụ/);
+    expect(particleNote(stateAt(75), true)).toMatch(/Bọt hơi/);
   });
 
   it('keeps every particle inside the box', () => {

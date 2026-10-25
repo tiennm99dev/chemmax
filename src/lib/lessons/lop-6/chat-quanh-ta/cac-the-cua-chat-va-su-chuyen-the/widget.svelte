@@ -87,7 +87,7 @@
   const curvePath = CURVE.map(([q, t], i) => `${i ? 'L' : 'M'}${cx(q)},${cy(t)}`).join(' ');
 
   const bubbles = $derived(
-    s.stage === 'soi'
+    s.stage === 'soi' && up
       ? [0, 1, 2, 3].map((i) => {
           const u = (time * 0.6 + i * 0.25) % 1;
           return { x: 140 + i * 40, y: BOX.bottom - 4 - u * Math.max(0, level - 10), r: 3 + u * 4 };
@@ -204,7 +204,7 @@
     <p>Nhiệt độ của nước: <strong>{tempText}</strong></p>
     <div aria-live="polite">
       <p><strong>{process}.</strong></p>
-      <p class="mt-1">{particleNote(s)}</p>
+      <p class="mt-1">{particleNote(s, up)}</p>
     </div>
   </div>
 </div>
