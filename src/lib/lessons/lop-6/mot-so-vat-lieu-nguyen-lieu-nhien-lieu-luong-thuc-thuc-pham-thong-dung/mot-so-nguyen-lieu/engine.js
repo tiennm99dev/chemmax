@@ -53,8 +53,12 @@ export const CHAINS = [
         process: 'Nghiền nhỏ, trộn đều rồi nung trong lò quay',
         detail:
           'Hỗn hợp đá vôi và đất sét được nghiền mịn, trộn với nước thành bùn hoặc để khô, rồi nung ở khoảng 1\u202f400 – 1\u202f500 °C, tạo thành những viên nhỏ cứng gọi là clinker.',
-        question: 'Nguyên liệu chính để sản xuất xi măng là gì?',
-        options: ['Đá vôi và đất sét', 'Cát và muối ăn', 'Quặng sắt và than'],
+        question: 'Hỗn hợp đá vôi và đất sét được biến thành clinker bằng cách nào?',
+        options: [
+          'Nghiền mịn, trộn đều rồi nung ở nhiệt độ rất cao',
+          'Hoà tan trong nước rồi lọc lấy phần trong',
+          'Phơi khô ngoài nắng',
+        ],
         answer: 0,
       },
       {
@@ -111,8 +115,12 @@ export const CHAINS = [
         process: 'Làm sạch quặng, tách lấy aluminium oxide',
         detail:
           'Quặng bauxite chứa nhiều aluminium oxide lẫn đất đá, iron oxide. Quặng được nghiền, xử lí bằng hoá chất để loại tạp chất, thu được aluminium oxide dạng bột trắng (alumina).',
-        question: 'Quặng bauxite là nguyên liệu để sản xuất kim loại nào?',
-        options: ['Sắt', 'Nhôm', 'Đồng'],
+        question: 'Quặng bauxite lẫn nhiều đất đá. Làm thế nào để có aluminium oxide sạch?',
+        options: [
+          'Phơi quặng thật khô',
+          'Nghiền quặng, xử lí bằng hoá chất để loại tạp chất',
+          'Ngâm quặng trong nước muối',
+        ],
         answer: 1,
       },
       {
@@ -148,8 +156,12 @@ export const CHAINS = [
         process: 'Chế biến hoá dầu',
         detail:
           'Một phần sản phẩm chưng cất được chế biến tiếp thành các hoá chất cơ bản, từ đó sản xuất chất dẻo (nhựa), tơ sợi tổng hợp, cao su tổng hợp, phân bón, thuốc trừ sâu, dược phẩm, mĩ phẩm.',
-        question: 'Phần lớn nhựa (chất dẻo) ta dùng hằng ngày được sản xuất từ nguyên liệu nào?',
-        options: ['Đá vôi', 'Dầu mỏ', 'Quặng sắt'],
+        question: 'Từ các sản phẩm chưng cất dầu mỏ, làm thế nào để có chất dẻo (nhựa)?',
+        options: [
+          'Để nguội cho đông cứng lại',
+          'Chế biến tiếp thành hoá chất cơ bản rồi sản xuất chất dẻo',
+          'Trộn với cát rồi nung',
+        ],
         answer: 1,
       },
     ],

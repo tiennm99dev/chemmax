@@ -233,6 +233,9 @@ export default {
         'cacbon dioxit',
         'khí cacbonic',
         'cacbonic',
+        'khí CO2',
+        'carbon đioxide',
+        'cacbon đioxit',
       ],
       hints: ['Đây cũng là khí làm đục nước vôi trong.'],
       solution:
