@@ -60,7 +60,7 @@ export default {
         },
         {
           type: 'tex',
-          tex: '\\text{Iron} + \\text{Sulfur} \\longrightarrow \\text{Iron(II) sulfide}',
+          tex: '\\text{Sắt} + \\text{Lưu huỳnh} \\longrightarrow \\text{Iron(II) sulfide}',
         },
         {
           type: 'p',

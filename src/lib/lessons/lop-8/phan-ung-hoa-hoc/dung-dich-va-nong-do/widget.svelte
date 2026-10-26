@@ -20,7 +20,7 @@
     { value: 'phan-tram', label: 'Nồng độ phần trăm' },
     { value: 'mol', label: 'Nồng độ mol' },
   ];
-  /** Mass slider range in molarity mode: stays well below saturation. */
+  /** Mass slider range in molarity mode: with at least 100 mL of solution it stays below saturation. */
   const molMax = $derived(Math.round(s.maxMass / 2.5));
 
   const mix = $derived(dissolve(s, mSolute, mWater));
@@ -72,7 +72,7 @@
         class={select}
         bind:value={formula}
         onchange={() => {
-          if (mode === 'mol') mSolute = Math.min(mSolute, molMax);
+          mSolute = Math.min(mSolute, mode === 'mol' ? molMax : s.maxMass);
         }}
       >
         {#each SOLUTES as sol (sol.formula)}
@@ -95,7 +95,9 @@
       viewBox="0 0 160 160"
       class="mx-auto block h-auto w-full max-w-60"
       role="img"
-      aria-label="Cốc dung dịch {s.formula}{crystals ? ', có chất rắn chưa tan ở đáy' : ''}"
+      aria-label="Cốc dung dịch {prettyFormula(s.formula)}{crystals
+        ? ', có chất rắn chưa tan ở đáy'
+        : ''}"
     >
       <rect x="30" y={150 - level} width="100" height={level} {fill} />
       {#each Array.from({ length: crystals }, (_, i) => i) as i (i)}
@@ -169,7 +171,7 @@
         <SliderField
           label="Thể tích dung dịch"
           bind:value={volume}
-          min={50}
+          min={100}
           max={500}
           step={10}
           unit="mL"

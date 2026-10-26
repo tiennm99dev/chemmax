@@ -85,7 +85,7 @@
         <div
           class="mb-2 flex flex-wrap items-center gap-1"
           role="group"
-          aria-label="{formatNumber([a, b][i])} mol {t.formula}"
+          aria-label="{formatNumber([a, b][i])} mol {prettyFormula(t.formula)}"
         >
           <span class="w-14 text-sm"><ChemFormula formula={t.formula} /></span>
           {#each chips([a, b][i]) as f, k (k)}
@@ -101,7 +101,7 @@
         <div
           class="mb-2 flex flex-wrap items-center gap-1"
           role="group"
-          aria-label="Còn {formatNumber(sim.left[i], 3)} mol {t.formula}"
+          aria-label="Còn {formatNumber(sim.left[i], 3)} mol {prettyFormula(t.formula)}"
         >
           <span class="w-14 text-sm"><ChemFormula formula={t.formula} /></span>
           {#each chips(sim.left[i]) as f, k (k)}
@@ -115,7 +115,7 @@
         <div
           class="mb-2 flex flex-wrap items-center gap-1"
           role="group"
-          aria-label="Tạo ra {formatNumber(sim.formed[j], 3)} mol {t.formula}"
+          aria-label="Tạo ra {formatNumber(sim.formed[j], 3)} mol {prettyFormula(t.formula)}"
         >
           <span class="w-14 text-sm"><ChemFormula formula={t.formula} /></span>
           {#each chips(sim.formed[j]) as f, k (k)}

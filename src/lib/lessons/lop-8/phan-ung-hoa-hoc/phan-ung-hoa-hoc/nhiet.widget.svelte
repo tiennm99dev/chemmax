@@ -39,10 +39,10 @@
       why: 'Nhiệt toả ra khi xăng cháy được dùng để làm động cơ hoạt động.',
     },
     {
-      id: 'banh-mi',
-      label: 'Nướng bánh mì: bột nhào chín và nở dưới nhiệt của lò',
+      id: 'bot-no',
+      label: 'Bột nở (baking soda) bị phân huỷ khi nướng bánh, sinh khí làm bánh xốp',
       bin: 'thu',
-      why: 'Các biến đổi hoá học trong bột chỉ xảy ra khi nhận nhiệt từ lò nướng.',
+      why: 'Baking soda chỉ phân huỷ khi nhận nhiệt từ lò nướng; ra khỏi lò, phản ứng dừng lại.',
     },
     {
       id: 'con',

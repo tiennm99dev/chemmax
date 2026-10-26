@@ -84,7 +84,7 @@
           stroke-width="2"
         />
         <text x="120" y="114" text-anchor="middle" font-size="11" font-weight="700" fill="#7f1d1d"
-          >{a}</text
+          >{prettyFormula(a)}</text
         >
       </g>
     </svg>

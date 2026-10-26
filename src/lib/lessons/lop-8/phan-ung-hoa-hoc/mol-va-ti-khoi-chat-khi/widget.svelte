@@ -149,7 +149,7 @@
           >
         {:else}
           <text x="100" y="84" text-anchor="middle" font-size="11" fill="#64748b"
-            >Không phải chất khí</text
+            >{s.gas ? 'Chưa có khí' : 'Không phải chất khí'}</text
           >
         {/if}
       </svg>
