@@ -90,15 +90,17 @@
     </div>
   {/if}
 
-  <PeriodicTable
-    bind:selected
-    colorBy="metal"
-    controls={false}
-    details={false}
-    {highlight}
-    {onselect}
-    label="Bảng tuần hoàn: kim loại, phi kim, khí hiếm"
-  />
+  <div class="fit-table">
+    <PeriodicTable
+      bind:selected
+      colorBy="metal"
+      controls={false}
+      details={false}
+      {highlight}
+      {onselect}
+      label="Bảng tuần hoàn: kim loại, phi kim, khí hiếm"
+    />
+  </div>
 
   {#if mode === 'explore'}
     <div class="rounded-xl bg-slate-50 p-4" aria-live="polite">
@@ -115,8 +117,9 @@
           </div>
           <div class="min-w-0 flex-1 space-y-1 text-sm">
             <p class="font-semibold">
-              <span class="capitalize">{info.el.name}</span>{#if info.el.viName}
-                ({info.el.viName}){/if}: {KIND_LABELS[info.kind]}
+              <span class="capitalize">{info.el.name}</span>{info.el.viName
+                ? ` (${info.el.viName})`
+                : ''}: {KIND_LABELS[info.kind]}
             </p>
             <ul class="list-disc space-y-0.5 pl-5">
               {#each lines as line (line)}
@@ -135,3 +138,18 @@
     </div>
   {/if}
 </div>
+
+<style>
+  /* The lesson column is at most 694 px wide, but the table's 46rem minimum
+     and 40 px cells would hide part of the noble-gas column behind a sideways
+     scroll even on a desktop. From the sm breakpoint, let the table shrink to
+     the column (cells about 36 px); phones keep the scrolling table. */
+  @media (min-width: 40rem) {
+    .fit-table :global(.overflow-x-auto > .grid) {
+      min-width: 42rem;
+    }
+    .fit-table :global(.overflow-x-auto > .grid button) {
+      min-height: 2.25rem;
+    }
+  }
+</style>
