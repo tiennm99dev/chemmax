@@ -20,7 +20,9 @@
    * lanthanide and actinide rows below. Tap an element, or Tab into the table
    * and move with the arrow keys (Home/End jump to the ends of a row), to see
    * its card: atomic weight, configuration, shells, group in A/B notation and
-   * electronegativity. On narrow screens the table scrolls sideways.
+   * electronegativity. Cells are at least 2 rem square, so the whole table
+   * fits a lesson column from about 36 rem wide; on a phone it scrolls
+   * sideways inside its own box and the page never does.
    *
    * - `selected` (bindable): atomic number of the chosen element, or null.
    * - `colorBy` (bindable): `'category'`, `'block'`, `'metal'` (kim loại /
@@ -104,9 +106,9 @@
     <SegmentedControl label="Tô màu theo" options={MODES} bind:value={colorBy} />
   {/if}
 
-  <div class="overflow-x-auto pb-2">
+  <div class="max-w-full overflow-x-auto overscroll-x-contain pb-2">
     <div
-      class="grid min-w-[46rem] gap-0.5"
+      class="grid min-w-[36rem] gap-0.5"
       style:grid-template-columns="repeat(18, minmax(0, 1fr))"
       style:grid-template-rows="repeat(7, auto) 0.5rem repeat(2, auto)"
       role="group"
@@ -117,7 +119,7 @@
         <button
           bind:this={buttons[c.el.z]}
           type="button"
-          class="flex aspect-square min-h-10 flex-col items-center justify-center rounded border text-slate-900 transition {focusRing} {selected ===
+          class="flex aspect-square min-h-8 flex-col items-center justify-center rounded border text-slate-900 transition {focusRing} {selected ===
           c.el.z
             ? 'border-slate-900 ring-2 ring-slate-900'
             : 'border-black/10'} {dim ? 'opacity-30' : ''}"

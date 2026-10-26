@@ -496,13 +496,23 @@ export const STATE_LABELS = {
 };
 
 /**
- * Coarse kind for grades 6-9: kim loại, phi kim (halogens and metalloids
- * included) or khí hiếm.
+ * Metalloids (á kim) that the KNTT books, which sort every element into
+ * kim loại, phi kim or khí hiếm, colour as metals: germanium and antimony.
+ * The other metalloids (B, Si, As, Te) count as non-metals there.
+ */
+export const METALLIC_METALLOIDS = new Set([32, 51]);
+
+/**
+ * Coarse kind for grades 6-9, as the KNTT books split the table: kim loại,
+ * phi kim (halogens included) or khí hiếm. A metalloid (á kim, `category`
+ * 'metalloid') goes to the side the book puts it on: Ge and Sb are metals,
+ * B, Si, As and Te non-metals.
  * @param {Element} el
  * @returns {'kim-loai' | 'phi-kim' | 'khi-hiem'}
  */
 export function metalKind(el) {
   if (el.category === 'noble-gas') return 'khi-hiem';
-  if (['nonmetal', 'halogen', 'metalloid'].includes(el.category)) return 'phi-kim';
+  if (el.category === 'metalloid') return METALLIC_METALLOIDS.has(el.z) ? 'kim-loai' : 'phi-kim';
+  if (el.category === 'nonmetal' || el.category === 'halogen') return 'phi-kim';
   return 'kim-loai';
 }

@@ -146,6 +146,12 @@ describe('table layout', () => {
     expect(metalKind(el('S'))).toBe('phi-kim');
     expect(metalKind(el('Ar'))).toBe('khi-hiem');
   });
+
+  it('sorts the metalloids the way the KNTT table colours them', () => {
+    for (const s of ['B', 'Si', 'As', 'Te']) expect(metalKind(el(s)), s).toBe('phi-kim');
+    for (const s of ['Ge', 'Sb']) expect(metalKind(el(s)), s).toBe('kim-loai');
+    expect(el('Ge').category).toBe('metalloid');
+  });
 });
 
 describe('electron configuration', () => {
