@@ -103,14 +103,14 @@ export default {
         {
           type: 'table',
           caption: 'Sự hoà tan của một số chất trong nước',
-          head: ['Thể', 'Tan trong nước', 'Không tan trong nước'],
+          head: ['Thể', 'Tan trong nước', 'Không tan hoặc tan rất ít'],
           rows: [
             ['Rắn', 'Muối ăn, đường, phèn chua', 'Cát, đá vôi, bột phấn'],
             ['Lỏng', 'Giấm, cồn (rượu)', 'Dầu ăn, xăng'],
             [
               'Khí',
-              'Carbon dioxide (trong nước có gas); oxygen tan ít nhưng đủ cho cá thở',
-              'Nitrogen (tan rất ít)',
+              'Carbon dioxide (có trong nước giải khát có gas)',
+              'Oxygen, nitrogen (lượng oxygen tan rất ít nhưng đủ cho cá thở)',
             ],
           ],
         },

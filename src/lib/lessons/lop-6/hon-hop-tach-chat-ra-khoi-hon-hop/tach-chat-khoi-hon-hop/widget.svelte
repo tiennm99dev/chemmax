@@ -2,7 +2,15 @@
   import SegmentedControl from '#lib/core/segmented-control.svelte';
   import { button } from '#lib/core/ui.js';
   import { formatNumber } from '#lib/core/number-format.js';
-  import { METHODS, MIXTURES, WATER_SHARE, judge, judgeTap, mixtureById } from './engine.js';
+  import {
+    METHODS,
+    MIXTURES,
+    TAP_TOLERANCE,
+    WATER_SHARE,
+    judge,
+    judgeTap,
+    mixtureById,
+  } from './engine.js';
 
   /** @typedef {import('./engine.js').Method} Method */
 
@@ -167,6 +175,17 @@
   const bodyH = BODY_BOTTOM - BODY_TOP;
   const waterLeft = $derived(Math.max(0, WATER_SHARE - drained));
   const oilLeft = $derived(Math.min(1 - WATER_SHARE, 1 - drained));
+  // The cone above the tap holds the bottom TAP_TOLERANCE share of the liquid,
+  // so the oil reaches the tap exactly when closing it starts to count.
+  const CONE_TOP = BODY_BOTTOM;
+  const CONE_H = 20;
+  const CONE = `M112 ${CONE_TOP} L136 ${CONE_TOP + CONE_H} L144 ${CONE_TOP + CONE_H} L168 ${CONE_TOP} Z`;
+  const coneWater = $derived(Math.min(waterLeft, TAP_TOLERANCE) / TAP_TOLERANCE);
+  const coneOil = $derived(
+    Math.min(waterLeft + oilLeft, TAP_TOLERANCE) / TAP_TOLERANCE - coneWater,
+  );
+  const waterBody = $derived(Math.max(0, waterLeft - TAP_TOLERANCE));
+  const oilBody = $derived(Math.max(0, waterLeft + oilLeft - TAP_TOLERANCE) - waterBody);
   const oilDown = $derived(Math.max(0, drained - WATER_SHARE));
   const waterDown = $derived(Math.min(drained, WATER_SHARE));
 
@@ -318,28 +337,43 @@
     {:else if scene === 'chiet'}
       <!-- separating funnel held above a conical flask -->
       <rect x="130" y="4" width="20" height="10" fill="#94a3b8" />
-      {#if oilLeft > 0}
+      {#if oilBody > 0}
         <rect
           x="110"
-          y={BODY_BOTTOM - (waterLeft + oilLeft) * bodyH}
+          y={BODY_BOTTOM - (waterBody + oilBody) * bodyH}
           width="60"
-          height={oilLeft * bodyH}
+          height={oilBody * bodyH}
           fill="#facc15"
         />
       {/if}
-      {#if waterLeft > 0}
+      {#if waterBody > 0}
         <rect
           x="110"
-          y={BODY_BOTTOM - waterLeft * bodyH}
+          y={BODY_BOTTOM - waterBody * bodyH}
           width="60"
-          height={waterLeft * bodyH}
+          height={waterBody * bodyH}
           fill="#60a5fa"
         />
       {/if}
-      <path
-        d="M112 {BODY_BOTTOM} L136 {BODY_BOTTOM + 20} L144 {BODY_BOTTOM + 20} L168 {BODY_BOTTOM} Z"
-        fill={waterLeft > 0 ? '#60a5fa' : drained < 1 ? '#facc15' : 'none'}
-      />
+      <clipPath id="separating-cone-clip">
+        <path d={CONE} />
+      </clipPath>
+      <g clip-path="url(#separating-cone-clip)">
+        <rect
+          x="110"
+          y={CONE_TOP + CONE_H * (1 - coneWater - coneOil)}
+          width="60"
+          height={CONE_H * coneOil}
+          fill="#facc15"
+        />
+        <rect
+          x="110"
+          y={CONE_TOP + CONE_H * (1 - coneWater)}
+          width="60"
+          height={CONE_H * coneWater}
+          fill="#60a5fa"
+        />
+      </g>
       <path
         d="M134 14 L110 {BODY_TOP} L110 {BODY_BOTTOM} L134 {BODY_BOTTOM + 22} L146 {BODY_BOTTOM +
           22} L170 {BODY_BOTTOM} L170 {BODY_TOP} L146 14"
@@ -392,16 +426,16 @@
         {/if}
       </g>
       <path d={FLASK} fill="none" stroke="#334155" stroke-width="2.5" />
-      {#if oilLeft > 0.05}
+      {#if oilBody > 0.05}
         <text
           x="176"
-          y={BODY_BOTTOM - (waterLeft + oilLeft / 2) * bodyH + 4}
+          y={BODY_BOTTOM - (waterBody + oilBody / 2) * bodyH + 4}
           font-size="11"
           fill="#334155">dầu ăn</text
         >
       {/if}
-      {#if waterLeft > 0.05}
-        <text x="176" y={BODY_BOTTOM - (waterLeft / 2) * bodyH + 4} font-size="11" fill="#334155"
+      {#if waterBody > 0.05}
+        <text x="176" y={BODY_BOTTOM - (waterBody / 2) * bodyH + 4} font-size="11" fill="#334155"
           >nước</text
         >
       {/if}

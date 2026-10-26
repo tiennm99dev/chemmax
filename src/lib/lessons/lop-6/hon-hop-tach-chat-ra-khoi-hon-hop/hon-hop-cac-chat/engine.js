@@ -6,7 +6,7 @@
  * insoluble powder (chalk) stays suspended after stirring (huyền phù) and
  * settles slowly; coarse sand sinks at once. Oil floats as a layer, breaks
  * into droplets when shaken hard (nhũ tương) and separates again on standing.
- * Vinegar and alcohol mix with water in any amount (dung dịch).
+ * Vinegar mixes with water in any amount (dung dịch).
  */
 
 /** @typedef {'nong' | 'lanh'} Temperature */
