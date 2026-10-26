@@ -73,7 +73,7 @@ export default {
         {
           type: 'callout',
           tone: 'warning',
-          text: 'Các yếu tố trên làm phản ứng xảy ra nhanh hơn, nhưng không làm tăng lượng sản phẩm cuối cùng: cùng $1$ g đá vôi thì dù ở dạng bột hay dạng viên, khi phản ứng hết vẫn tạo ra cùng một lượng khí $\\mathrm{CO_2}$.',
+          text: 'Các yếu tố trên làm phản ứng xảy ra nhanh hơn, nhưng không làm tăng lượng sản phẩm cuối cùng: với cùng lượng đá vôi và cùng lượng acid, dù đá vôi ở dạng bột hay dạng viên, khi phản ứng kết thúc vẫn thu được cùng một lượng khí $\\mathrm{CO_2}$.',
         },
       ],
     },
