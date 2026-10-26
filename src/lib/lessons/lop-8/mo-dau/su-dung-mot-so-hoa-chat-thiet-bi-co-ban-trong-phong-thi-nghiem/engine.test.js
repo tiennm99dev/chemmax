@@ -59,6 +59,25 @@ describe('challenge tasks', () => {
     expect(judgeTask(t, 'khong-co')).toEqual({ ok: false, text: '' });
   });
 
+  it('explains a near miss instead of calling its use wrong', () => {
+    const t = TASKS.find((x) => x.id === 'do-cuong-do');
+    if (!t) throw new Error('missing task');
+    const near = judgeTask(t, 'joulemeter');
+    expect(near.ok).toBe(false);
+    expect(near.text).toMatch(
+      /^Chưa đúng: joulemeter cũng hiện được dòng điện .* mắc nối tiếp với bóng đèn\. Hãy chọn lại\.$/,
+    );
+  });
+
+  it('names only existing items in near-miss notes', () => {
+    for (const t of TASKS) {
+      for (const id of Object.keys(t.near ?? {})) {
+        expect(itemById(id), `${t.id} ${id}`).toBeDefined();
+        expect(id, t.id).not.toBe(t.answer);
+      }
+    }
+  });
+
   it('scores only first picks that were right', () => {
     expect(firstTryScore({})).toBe(0);
     expect(

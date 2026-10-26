@@ -311,7 +311,10 @@ export default {
       prompt:
         'Khi đun nóng hoá chất trong ống nghiệm, cần kẹp ống nghiệm ở khoảng bao nhiêu phần chiều dài ống, tính từ miệng ống xuống? Viết dưới dạng phân số.',
       answer: [1, 3],
-      hints: ['Vị trí kẹp gần miệng ống hơn đáy ống.', 'Mẫu số là 3.'],
+      hints: [
+        'Vị trí kẹp gần miệng ống hơn đáy ống.',
+        'Chia ống nghiệm thành các phần bằng nhau: đoạn từ miệng đến chỗ kẹp ngắn bằng một nửa đoạn từ chỗ kẹp đến đáy.',
+      ],
       solution:
         'Kẹp ở khoảng $\\tfrac{1}{3}$ ống nghiệm tính từ miệng ống: không quá cao để dễ thao tác, không quá thấp để ống không bị tuột.',
     },
@@ -327,7 +330,7 @@ export default {
       answer: 3,
       hints: ['Vùng nóng nhất của ngọn lửa ở khoảng $\\tfrac{2}{3}$ ngọn lửa tính từ dưới lên.'],
       solution:
-        'Bấc đèn là vùng lửa ít nóng, và ống chạm bấc dễ nứt vỡ, làm đổ cồn. Phải đun ở khoảng $\\tfrac{2}{3}$ ngọn lửa tính từ dưới lên, đáy ống không chạm bấc.',
+        'Sát bấc đèn là vùng lửa ít nóng nhất, và ống nghiệm nóng chạm vào bấc dễ bị nứt, vỡ. Phải đun ở khoảng $\\tfrac{2}{3}$ ngọn lửa tính từ dưới lên, đáy ống không chạm bấc.',
     },
     {
       type: 'order',

@@ -9,7 +9,9 @@
  * @typedef {'dung-cu' | 'thiet-bi-dien'} ShelfId
  * @typedef {'chua' | 'lay' | 'dong-loc' | 'dun' | 'nguon' | 'do-dien' | 'su-dung-dien' | 'ho-tro'} GroupId
  * @typedef {{ id: string, name: string, shelf: ShelfId, group: GroupId, use: string, howTo: string, careful: string }} Item
- * @typedef {{ id: string, task: string, answer: string, why: string }} Task
+ * @typedef {{ id: string, task: string, answer: string, why: string, near?: Record<string, string> }} Task
+ *   `near` explains, per item id, why an item that can partly do the job is
+ *   still not the right pick.
  */
 
 /** @type {Record<ShelfId, string>} */
@@ -283,6 +285,9 @@ export const TASKS = [
     task: 'Giữ ống nghiệm trong lúc đun nóng.',
     answer: 'kep-ong-nghiem',
     why: 'kẹp ống nghiệm ở khoảng 1/3 ống tính từ miệng, không cầm bằng tay.',
+    near: {
+      panh: 'panh dùng để gắp hoá chất rắn, không dùng để giữ ống nghiệm khi đun',
+    },
   },
   {
     id: 'khuay',
@@ -313,12 +318,22 @@ export const TASKS = [
     task: 'Lắc trộn đều một dung dịch mà không để dung dịch bắn ra ngoài.',
     answer: 'binh-non',
     why: 'bình nón có miệng hẹp, đáy rộng nên lắc không bị bắn ra ngoài.',
+    near: {
+      'coc-thuy-tinh':
+        'cốc thuỷ tinh miệng rộng nên dung dịch dễ bắn ra ngoài khi lắc; hãy tìm bình có miệng hẹp, đáy rộng',
+      'ong-nghiem':
+        'ống nghiệm chỉ đựng lượng nhỏ và dễ bắn ra khi lắc mạnh; hãy tìm bình có miệng hẹp, đáy rộng',
+    },
   },
   {
     id: 'dun-nong',
     task: 'Đun nóng dung dịch trong ống nghiệm.',
     answer: 'den-con',
     why: 'đèn cồn là dụng cụ đun nóng; đun ở khoảng 2/3 ngọn lửa tính từ dưới lên.',
+    near: {
+      'kep-ong-nghiem':
+        'kẹp ống nghiệm chỉ để giữ ống khi đun; hãy tìm dụng cụ tạo ra ngọn lửa để đun',
+    },
   },
   {
     id: 'doi-dien-ap',
@@ -337,18 +352,30 @@ export const TASKS = [
     task: 'Đo cường độ dòng điện chạy qua bóng đèn.',
     answer: 'ampe-ke',
     why: 'ampe kế đo cường độ dòng điện, mắc nối tiếp với bóng đèn.',
+    near: {
+      joulemeter:
+        'joulemeter cũng hiện được dòng điện nhưng là thiết bị đo năng lượng điện cung cấp cho cả mạch; hãy tìm dụng cụ chuyên đo cường độ dòng điện, mắc nối tiếp với bóng đèn',
+    },
   },
   {
     id: 'do-hieu-dien-the',
     task: 'Đo hiệu điện thế giữa hai đầu bóng đèn.',
     answer: 'von-ke',
     why: 'vôn kế đo hiệu điện thế, mắc song song với bóng đèn.',
+    near: {
+      joulemeter:
+        'joulemeter cũng hiện được điện áp nhưng là thiết bị đo năng lượng điện cung cấp cho cả mạch; hãy tìm dụng cụ chuyên đo hiệu điện thế, mắc song song với bóng đèn',
+    },
   },
   {
     id: 'do-nang-luong',
     task: 'Đo năng lượng điện mà nguồn cung cấp cho mạch điện.',
     answer: 'joulemeter',
     why: 'joulemeter đo dòng điện, điện áp, công suất và năng lượng điện cung cấp cho mạch.',
+    near: {
+      'ampe-ke': 'ampe kế chỉ đo cường độ dòng điện, không đo được năng lượng điện',
+      'von-ke': 'vôn kế chỉ đo hiệu điện thế, không đo được năng lượng điện',
+    },
   },
   {
     id: 'chinh-do-sang',
@@ -410,6 +437,8 @@ export function judgeTask(task, pickedId) {
   if (pickedId === task.answer) {
     return { ok: true, text: `Đúng: ${picked.name}, vì ${task.why}` };
   }
+  const near = task.near?.[pickedId];
+  if (near) return { ok: false, text: `Chưa đúng: ${near}. Hãy chọn lại.` };
   const use = picked.use.charAt(0).toLowerCase() + picked.use.slice(1);
   return {
     ok: false,
