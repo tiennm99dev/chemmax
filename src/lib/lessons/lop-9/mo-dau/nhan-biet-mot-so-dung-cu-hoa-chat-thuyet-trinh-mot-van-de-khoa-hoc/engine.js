@@ -244,7 +244,7 @@ export const CHEMICALS = [
     id: 'na',
     label: 'Na (sodium)',
     bin: 'kim-loai',
-    why: 'Sodium là kim loại rất mạnh, được ngâm trong dầu hoả để không tác dụng với oxygen và hơi nước trong không khí.',
+    why: 'Sodium là kim loại hoạt động hoá học rất mạnh, được ngâm trong dầu hoả để không tác dụng với oxygen và hơi nước trong không khí.',
   },
   {
     id: 'fe',
