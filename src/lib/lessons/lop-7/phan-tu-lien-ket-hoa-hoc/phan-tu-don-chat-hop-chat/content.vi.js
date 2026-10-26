@@ -5,12 +5,64 @@ export default {
   intro:
     'Khí oxygen ta hít thở, nước ta uống hay khí carbon dioxide ta thở ra đều được tạo nên từ các nguyên tử. Nhưng trong một cốc nước, các nguyên tử hydrogen và oxygen không nằm lộn xộn: chúng liên kết với nhau thành từng nhóm giống hệt nhau. Mỗi nhóm như thế là gì, nặng bao nhiêu, và vì sao oxygen được gọi là đơn chất còn nước lại là hợp chất?',
   objectives: [
-    'Nêu được khái niệm phân tử.',
-    'Tính được khối lượng phân tử theo đơn vị amu.',
     'Nêu được khái niệm đơn chất, hợp chất và đưa ra được ví dụ.',
     'Phân biệt được đơn chất với hợp chất khi biết các nguyên tố tạo nên chất.',
+    'Nêu được khái niệm phân tử.',
+    'Tính được khối lượng phân tử theo đơn vị amu.',
   ],
   sections: [
+    {
+      heading: 'Đơn chất',
+      blocks: [
+        {
+          type: 'callout',
+          tone: 'definition',
+          title: 'Đơn chất',
+          text: 'Đơn chất là những chất được tạo nên từ một nguyên tố hoá học.',
+        },
+        {
+          type: 'list',
+          items: [
+            'Đơn chất kim loại, ví dụ copper (Cu), iron (Fe), aluminium (Al): có ánh kim, dẫn điện và dẫn nhiệt tốt; ở điều kiện thường hầu hết ở thể rắn (trừ thuỷ ngân).',
+            'Đơn chất phi kim, ví dụ sulfur (S), carbon (C), oxygen ($\\mathrm{O_2}$), nitrogen ($\\mathrm{N_2}$): thường không dẫn điện, không dẫn nhiệt; ở điều kiện thường có thể ở thể rắn, lỏng hoặc khí.',
+            'Đơn chất khí hiếm, ví dụ helium (He), neon (Ne): ở điều kiện thường đều là chất khí, tồn tại dưới dạng các nguyên tử riêng rẽ.',
+          ],
+        },
+        {
+          type: 'callout',
+          tone: 'warning',
+          text: 'Một nguyên tố có thể tạo nên nhiều đơn chất khác nhau. Nguyên tố oxygen tạo nên khí oxygen ($\\mathrm{O_2}$) và khí ozone ($\\mathrm{O_3}$); nguyên tố carbon tạo nên than chì và kim cương.',
+        },
+      ],
+    },
+    {
+      heading: 'Hợp chất',
+      blocks: [
+        {
+          type: 'callout',
+          tone: 'definition',
+          title: 'Hợp chất',
+          text: 'Hợp chất là những chất được tạo nên từ hai hay nhiều nguyên tố hoá học.',
+        },
+        {
+          type: 'table',
+          caption: 'Một số hợp chất quen thuộc',
+          head: ['Hợp chất', 'Nguyên tố tạo nên'],
+          rows: [
+            ['Nước ($\\mathrm{H_2O}$)', 'Hydrogen, oxygen'],
+            ['Muối ăn, sodium chloride ($\\mathrm{NaCl}$)', 'Sodium, chlorine'],
+            ['Carbon dioxide ($\\mathrm{CO_2}$)', 'Carbon, oxygen'],
+            ['Đá vôi, calcium carbonate ($\\mathrm{CaCO_3}$)', 'Calcium, carbon, oxygen'],
+            ['Đường mía, saccharose ($\\mathrm{C_{12}H_{22}O_{11}}$)', 'Carbon, hydrogen, oxygen'],
+          ],
+        },
+        {
+          type: 'p',
+          text: 'Tính chất của hợp chất khác hẳn tính chất của các đơn chất tạo nên nó. Sodium là kim loại phản ứng mãnh liệt với nước, chlorine là khí độc màu vàng lục, nhưng sodium chloride lại là muối ăn hằng ngày.',
+        },
+        { type: 'widget', name: 'phan-loai-chat' },
+      ],
+    },
     {
       heading: 'Phân tử',
       blocks: [
@@ -65,58 +117,6 @@ export default {
         },
       ],
     },
-    {
-      heading: 'Đơn chất',
-      blocks: [
-        {
-          type: 'callout',
-          tone: 'definition',
-          title: 'Đơn chất',
-          text: 'Đơn chất là những chất được tạo nên từ một nguyên tố hoá học.',
-        },
-        {
-          type: 'list',
-          items: [
-            'Đơn chất kim loại, ví dụ copper (Cu), iron (Fe), aluminium (Al): có ánh kim, dẫn điện và dẫn nhiệt tốt; ở điều kiện thường hầu hết ở thể rắn (trừ thuỷ ngân).',
-            'Đơn chất phi kim, ví dụ sulfur (S), carbon (C), oxygen ($\\mathrm{O_2}$), nitrogen ($\\mathrm{N_2}$): thường không dẫn điện, không dẫn nhiệt; ở điều kiện thường có thể ở thể rắn, lỏng hoặc khí.',
-            'Đơn chất khí hiếm, ví dụ helium (He), neon (Ne): phân tử chỉ gồm một nguyên tử.',
-          ],
-        },
-        {
-          type: 'callout',
-          tone: 'warning',
-          text: 'Một nguyên tố có thể tạo nên nhiều đơn chất khác nhau. Nguyên tố oxygen tạo nên khí oxygen ($\\mathrm{O_2}$) và khí ozone ($\\mathrm{O_3}$); nguyên tố carbon tạo nên than chì và kim cương.',
-        },
-      ],
-    },
-    {
-      heading: 'Hợp chất',
-      blocks: [
-        {
-          type: 'callout',
-          tone: 'definition',
-          title: 'Hợp chất',
-          text: 'Hợp chất là những chất được tạo nên từ hai hay nhiều nguyên tố hoá học.',
-        },
-        {
-          type: 'table',
-          caption: 'Một số hợp chất quen thuộc',
-          head: ['Hợp chất', 'Nguyên tố tạo nên'],
-          rows: [
-            ['Nước ($\\mathrm{H_2O}$)', 'Hydrogen, oxygen'],
-            ['Muối ăn, sodium chloride ($\\mathrm{NaCl}$)', 'Sodium, chlorine'],
-            ['Carbon dioxide ($\\mathrm{CO_2}$)', 'Carbon, oxygen'],
-            ['Đá vôi, calcium carbonate ($\\mathrm{CaCO_3}$)', 'Calcium, carbon, oxygen'],
-            ['Đường mía, saccharose ($\\mathrm{C_{12}H_{22}O_{11}}$)', 'Carbon, hydrogen, oxygen'],
-          ],
-        },
-        {
-          type: 'p',
-          text: 'Tính chất của hợp chất khác hẳn tính chất của các đơn chất tạo nên nó. Sodium là kim loại phản ứng mãnh liệt với nước, chlorine là khí độc màu vàng lục, nhưng sodium chloride lại là muối ăn hằng ngày.',
-        },
-        { type: 'widget', name: 'phan-loai-chat' },
-      ],
-    },
   ],
   explore: {
     title: 'Bộ lắp mô hình phân tử',
@@ -124,15 +124,6 @@ export default {
       'Bấm $+$ và $-$ để lấy các quả cầu nguyên tử. Bộ lắp cho biết công thức, chất là đơn chất hay hợp chất, và tính khối lượng phân tử theo amu. Khi các nguyên tử ghép thành một phân tử quen thuộc, mô hình quả cầu – que hiện ra. Hãy giải lần lượt các thử thách.',
   },
   examples: [
-    {
-      problem:
-        'Tính khối lượng phân tử của oxygen ($\\mathrm{O_2}$) và carbon dioxide ($\\mathrm{CO_2}$).',
-      steps: [
-        'Phân tử oxygen gồm $2$ nguyên tử O: $2 \\cdot 16 = 32$ amu.',
-        'Phân tử carbon dioxide gồm $1$ nguyên tử C và $2$ nguyên tử O: $1 \\cdot 12 + 2 \\cdot 16 = 44$ amu.',
-      ],
-      answer: 'Khối lượng phân tử oxygen là $32$ amu, của carbon dioxide là $44$ amu.',
-    },
     {
       problem:
         'Cho các chất: khí nitrogen ($\\mathrm{N_2}$), copper (Cu), ammonia ($\\mathrm{NH_3}$), khí ozone ($\\mathrm{O_3}$), sodium chloride ($\\mathrm{NaCl}$). Chất nào là đơn chất, chất nào là hợp chất?',
@@ -143,6 +134,15 @@ export default {
       ],
       answer:
         'Đơn chất: $\\mathrm{N_2}$, Cu, $\\mathrm{O_3}$. Hợp chất: $\\mathrm{NH_3}$, $\\mathrm{NaCl}$.',
+    },
+    {
+      problem:
+        'Tính khối lượng phân tử của oxygen ($\\mathrm{O_2}$) và carbon dioxide ($\\mathrm{CO_2}$).',
+      steps: [
+        'Phân tử oxygen gồm $2$ nguyên tử O: $2 \\cdot 16 = 32$ amu.',
+        'Phân tử carbon dioxide gồm $1$ nguyên tử C và $2$ nguyên tử O: $1 \\cdot 12 + 2 \\cdot 16 = 44$ amu.',
+      ],
+      answer: 'Khối lượng phân tử oxygen là $32$ amu, của carbon dioxide là $44$ amu.',
     },
     {
       problem:

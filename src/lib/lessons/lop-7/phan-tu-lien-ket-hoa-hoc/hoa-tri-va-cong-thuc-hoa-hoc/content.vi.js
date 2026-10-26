@@ -55,7 +55,7 @@ export default {
       blocks: [
         {
           type: 'p',
-          text: 'Xét hợp chất $\\mathrm{Al_2O_3}$: Al có hoá trị III, O có hoá trị II. Tích chỉ số và hoá trị của Al là $2 \\cdot 3 = 6$, của O là $3 \\cdot 2 = 6$. Hai tích bằng nhau. Điều này đúng với mọi hợp chất hai nguyên tố.',
+          text: 'Xét hợp chất $\\mathrm{Al_2O_3}$: Al có hoá trị III, O có hoá trị II. Tích chỉ số và hoá trị của Al là $2 \\cdot 3 = 6$, của O là $3 \\cdot 2 = 6$. Hai tích bằng nhau. Điều này đúng với các hợp chất hai nguyên tố thường gặp.',
         },
         {
           type: 'callout',

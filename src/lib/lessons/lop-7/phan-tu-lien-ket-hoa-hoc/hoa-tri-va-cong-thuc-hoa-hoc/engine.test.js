@@ -78,6 +78,11 @@ describe('evaluate', () => {
     expect(evaluate({ first: 'Ag', second: 'OH', a: 1, b: 1, x: 1, y: 1 }).status).toBe('unstable');
   });
 
+  it('accepts real compounds that hydrolyse in water', () => {
+    expect(evaluate({ first: 'Al', second: 'S2', a: 3, b: 2, x: 2, y: 3 }).status).toBe('ok');
+    expect(evaluate({ first: 'Cu', second: 'SO4', a: 1, b: 2, x: 2, y: 1 }).status).toBe('ok');
+  });
+
   it('names the valences in Roman numerals', () => {
     const r = evaluate({ first: 'Na', second: 'Cl', a: 2, b: 1, x: 1, y: 1 });
     expect(feedback(r, 2, 1)).toContain('hoá trị I, không phải II');
