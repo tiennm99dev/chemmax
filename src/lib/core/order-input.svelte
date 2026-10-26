@@ -3,6 +3,7 @@
   import { tick } from 'svelte';
   import RichText from './rich-text.svelte';
   import { practice as copy } from './copy.vi.js';
+  import { htmlText } from './tex-text.js';
   import { focusRing } from './ui.js';
 
   /**
@@ -19,6 +20,8 @@
   let { items, value = $bindable(), labelledby, disabled = false, onchange } = $props();
 
   const id = $props.id();
+  // Plain names of the items, so each arrow says which item it moves.
+  const names = $derived(items.map(htmlText));
   /** @type {HTMLOListElement | undefined} */
   let list = $state();
 
@@ -64,8 +67,7 @@
         type="button"
         data-dir="-1"
         class={arrow}
-        aria-label={copy.moveUp}
-        aria-describedby="{id}-{item}"
+        aria-label={copy.moveUp(names[item])}
         disabled={disabled || pos === 0}
         onclick={() => move(pos, -1)}><span aria-hidden="true">↑</span></button
       >
@@ -73,8 +75,7 @@
         type="button"
         data-dir="1"
         class={arrow}
-        aria-label={copy.moveDown}
-        aria-describedby="{id}-{item}"
+        aria-label={copy.moveDown(names[item])}
         disabled={disabled || pos === value.length - 1}
         onclick={() => move(pos, 1)}><span aria-hidden="true">↓</span></button
       >

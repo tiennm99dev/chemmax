@@ -8,6 +8,7 @@
 import katex from 'katex';
 import { findClose } from './content-schema.js';
 import { texOptions } from './katex-options.js';
+import { texHtml } from './tex-text.js';
 
 /** @typedef {import('./content-schema.js').LessonContent} LessonContent */
 /** @typedef {import('./content-schema.js').RenderedLesson} RenderedLesson */
@@ -25,12 +26,13 @@ export function escapeHtml(s) {
 
 /**
  * Renders TeX with the shared options (see `katex-options.js`), so the markup
- * is safe to inject and keeps MathML for screen readers.
+ * is safe to inject, wrapped with its accessible text (see `tex-text.js`) so
+ * screen readers and accessible names hear `√144`, not a bare `144`.
  * @param {string} tex
  * @param {boolean} display
  */
 export function renderTex(tex, display) {
-  return katex.renderToString(tex, texOptions(display));
+  return texHtml(katex.renderToString(tex, texOptions(display)), tex);
 }
 
 /**
