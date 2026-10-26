@@ -209,7 +209,7 @@ export default {
             'Đề xuất vấn đề: ghi câu hỏi nhóm muốn trả lời.',
             'Đưa ra dự đoán: mỗi bạn ghi dự đoán của mình và lí do; nhóm thống nhất một dự đoán.',
             'Lập kế hoạch: rót cùng 50 mL nước vào mỗi cốc; đo nhiệt độ từng cốc; định cho muối vào từng thìa gạt bằng, khuấy như nhau, đếm số thìa đến khi muối không tan thêm.',
-            'Thực hiện: làm thí nghiệm, ghi số thìa muối tan hết ở mỗi cốc vào bảng; so sánh với dự đoán. Nếu kết quả không phù hợp, quay lại bước 2.',
+            'Thực hiện: làm thí nghiệm, ghi số thìa muối tan hết ở mỗi cốc vào bảng; so sánh với dự đoán. Nếu kết quả không phù hợp, quay lại bước 2. Nếu số thìa ở các cốc bằng nhau, hãy thảo luận: độ tan của muối ăn thay đổi ít theo nhiệt độ, hay một thìa muối quá nhiều để thấy được sự khác nhau?',
             'Viết báo cáo theo mẫu (mục đích, chuẩn bị, các bước, kết quả, kết luận) và chuẩn bị 3 – 5 phút trình bày.',
           ],
         },
@@ -292,12 +292,12 @@ export default {
       prompt:
         'Ở bước thực hiện kế hoạch kiểm tra, kết quả thí nghiệm không phù hợp với dự đoán. Theo phương pháp tìm hiểu tự nhiên, em cần làm gì?',
       options: [
-        'Quay lại bước 2, đưa ra dự đoán mới',
         'Sửa số liệu cho khớp với dự đoán',
         'Viết báo cáo, kết luận dự đoán là đúng',
+        'Quay lại bước 2, đưa ra dự đoán mới',
         'Dừng lại, vì vấn đề không thể tìm hiểu',
       ],
-      answer: 0,
+      answer: 2,
       hints: ['Kết quả trái dự đoán cho biết dự đoán chưa đúng, chứ không phải vấn đề sai.'],
       solution:
         'Khi kết quả không phù hợp, quay lại bước 2: đưa ra dự đoán khoa học mới rồi lập kế hoạch kiểm tra lại. Sửa số liệu là không trung thực; kết luận dự đoán đúng là sai với kết quả.',
@@ -366,12 +366,12 @@ export default {
       type: 'choice',
       prompt: 'Trong chế độ A ↔ B, đồng hồ đo thời gian hiện số đo khoảng thời gian nào?',
       options: [
-        'Từ lúc vật đi qua cổng quang A đến lúc vật đi qua cổng quang B',
         'Từ lúc bật công tắc điện đến lúc nhấn RESET',
         'Thời gian vật chắn tia hồng ngoại ở một cổng quang',
         'Từ lúc người đo bấm nút đến lúc bấm lần thứ hai',
+        'Từ lúc vật đi qua cổng quang A đến lúc vật đi qua cổng quang B',
       ],
-      answer: 0,
+      answer: 3,
       hints: ['Hai cổng quang đóng vai trò công tắc: một cổng bật, một cổng tắt đồng hồ.'],
       solution:
         'Ở chế độ A ↔ B, cổng quang A bật đồng hồ khi vật đi qua, cổng quang B tắt đồng hồ khi vật đi qua; số hiện trên đồng hồ là thời gian giữa hai thời điểm đó.',
@@ -406,12 +406,12 @@ export default {
       prompt:
         'Cơ quan khí tượng dùng số liệu quan sát và mô hình tính toán trên máy tính để đưa ra lượng mưa ngày mai. Đây là kiểu dự báo nào?',
       options: [
-        'Dự báo định lượng',
         'Dự báo định tính',
+        'Dự báo định lượng',
         'Không phải dự báo, là quan sát',
         'Kĩ năng phân loại',
       ],
-      answer: 0,
+      answer: 1,
       hints: ['Dự báo dựa trên số liệu và mô hình tính toán hay dựa trên đánh giá của chuyên gia?'],
       solution:
         'Dự báo dùng số liệu quan sát và mô hình tính toán là dự báo định lượng; dự báo định tính dựa vào hiểu biết, đánh giá, suy luận của chuyên gia.',

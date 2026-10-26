@@ -19,6 +19,11 @@ describe('inquiry steps', () => {
       expect(s.moves.find((m) => m.ok)?.text, s.id).toMatch(/bước 2/);
     }
   });
+
+  it('does not always put the right next move in the same place', () => {
+    const places = new Set(SCENARIOS.map((s) => s.moves.findIndex((m) => m.ok)));
+    expect(places.size).toBeGreaterThan(1);
+  });
 });
 
 describe('startOrder', () => {

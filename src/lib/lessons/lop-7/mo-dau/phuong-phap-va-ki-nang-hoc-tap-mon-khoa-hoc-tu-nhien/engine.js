@@ -86,8 +86,8 @@ export const SCENARIOS = [
     mismatch:
       'Giả sử nhóm em dự đoán "nước lạnh hoà tan được nhiều muối hơn", nhưng ở bước 4 thấy cốc nước lạnh còn nhiều muối chưa tan nhất.',
     moves: [
-      { text: 'Quay lại bước 2, đưa ra dự đoán mới', ok: true, why: BACK_TO_PREDICTION },
       { text: 'Viết báo cáo theo dự đoán ban đầu', ok: false, why: NOT_REPORT_YET },
+      { text: 'Quay lại bước 2, đưa ra dự đoán mới', ok: true, why: BACK_TO_PREDICTION },
       {
         text: 'Quay lại bước 1, đổi sang tìm hiểu vấn đề khác',
         ok: false,
@@ -100,7 +100,7 @@ export const SCENARIOS = [
     title: 'Ánh sáng và cây đậu',
     cards: [
       'Cây đậu non có cần ánh sáng để lớn lên xanh tốt không?',
-      'Dự đoán: cây đậu thiếu ánh sáng sẽ còi cọc, lá vàng.',
+      'Dự đoán: cây đậu thiếu ánh sáng sẽ thấp hơn, lá vàng.',
       'Gieo hai chậu đậu giống nhau, cùng đất, cùng lượng nước; định đặt một chậu cạnh cửa sổ, một chậu trong hộp tối.',
       'Đặt hai chậu, tưới như nhau, đo chiều cao và ghi màu lá mỗi ngày trong 7 ngày.',
       'Lập bảng số liệu, viết báo cáo kết luận về vai trò của ánh sáng và trình bày với nhóm.',
@@ -108,13 +108,13 @@ export const SCENARIOS = [
     mismatch:
       'Giả sử ở bước 4 chậu trong hộp tối có cây cao hơn (nhưng lá vàng, thân mảnh), không giống dự đoán "cây thiếu sáng sẽ thấp hơn".',
     moves: [
-      { text: 'Quay lại bước 2, sửa lại dự đoán', ok: true, why: BACK_TO_PREDICTION },
       { text: 'Kết luận ngay: cây không cần ánh sáng', ok: false, why: NOT_REPORT_YET },
       {
         text: 'Đo lại cho đến khi cây trong tối thấp hơn',
         ok: false,
         why: 'Không được. Đo lại để kiểm tra là tốt, nhưng cố đo cho khớp dự đoán là không trung thực.',
       },
+      { text: 'Quay lại bước 2, sửa lại dự đoán', ok: true, why: BACK_TO_PREDICTION },
     ],
   },
 ];
