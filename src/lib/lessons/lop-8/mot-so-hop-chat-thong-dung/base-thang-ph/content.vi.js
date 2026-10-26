@@ -103,6 +103,11 @@ export default {
           text: 'Để xác định pH, có thể dùng giấy chỉ thị vạn năng (so màu giấy với bảng màu chuẩn) hoặc dùng máy đo pH, bút đo pH cho giá trị chính xác hơn.',
         },
         {
+          type: 'callout',
+          tone: 'note',
+          text: 'Quỳ tím chỉ đổi màu rõ khi độ acid hoặc độ base của dung dịch đủ lớn. Với dung dịch chỉ có tính acid hoặc tính base yếu như cà phê đen, sữa bò, máu, quỳ tím gần như không đổi màu, nên muốn biết pH cụ thể phải dùng giấy chỉ thị vạn năng hoặc máy đo pH.',
+        },
+        {
           type: 'table',
           caption: 'pH trong cơ thể và trong môi trường',
           head: ['Đối tượng', 'pH thường gặp', 'Ý nghĩa'],

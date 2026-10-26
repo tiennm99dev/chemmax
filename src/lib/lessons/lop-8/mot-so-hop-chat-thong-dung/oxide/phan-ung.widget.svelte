@@ -78,10 +78,8 @@
         {prettyFormula(formula)} thuộc loại oxide nào?
       </button>
     {/if}
-    {#if revealKind}
-      <span class="font-semibold text-indigo-700" aria-live="polite"
-        >{prettyFormula(formula)} là {kindLabel.toLowerCase()}.</span
-      >
-    {/if}
+    <span class="font-semibold text-indigo-700" aria-live="polite"
+      >{#if revealKind}{prettyFormula(formula)} là {kindLabel.toLowerCase()}.{/if}</span
+    >
   </div>
 </div>

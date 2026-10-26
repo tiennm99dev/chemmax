@@ -5,6 +5,7 @@
  * tan, "–" không tồn tại hoặc bị nước phân huỷ.
  */
 import { balance, formatEquation, parseEquation } from '#lib/domain/equation.js';
+import { prettyFormula } from '#lib/domain/formula.js';
 
 /** @typedef {'T' | 'I' | 'K' | '–'} Solubility */
 /** @typedef {{ id: string, formula: string, charge: number, name: string }} Ion */
@@ -176,7 +177,9 @@ export function mix(a, b) {
   const solid = products.filter((p) => p.solubility === 'K');
   if (solid.length) {
     const equation = writeEquation(a, b, products);
-    const list = solid.map((p) => `${p.formula} (${p.name}) màu ${p.colour}`).join(' và ');
+    const list = solid
+      .map((p) => `${prettyFormula(p.formula)} (${p.name}) màu ${p.colour}`)
+      .join(' và ');
     return {
       outcome: 'precipitate',
       products,
@@ -198,7 +201,7 @@ export function mix(a, b) {
       outcome: 'slight',
       products,
       equation: null,
-      text: `${p.formula} ít tan (I): dung dịch có thể hơi vẩn đục nếu nồng độ đủ lớn. Bảng tính tan chưa cho câu trả lời chắc chắn.`,
+      text: `${prettyFormula(p.formula)} ít tan (I): dung dịch có thể hơi vẩn đục nếu nồng độ đủ lớn. Bảng tính tan chưa cho câu trả lời chắc chắn.`,
     };
   }
   return {

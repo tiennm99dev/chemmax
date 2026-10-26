@@ -55,6 +55,7 @@ describe('mix', () => {
       expect(isBalancedText(eq)).toBe(true);
     }
     expect(mix(sol('Fe3-Cl'), sol('Na-OH')).text).toContain('nâu đỏ');
+    expect(mix(sol('Ba-Cl'), sol('Na-SO4')).text).toContain('BaSO₄ (barium sulfate)');
   });
 
   it('gives no reaction when every new pair is soluble or ions are shared', () => {
