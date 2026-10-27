@@ -68,4 +68,11 @@ describe('predict', () => {
   it('does nothing in a solution of the same metal', () => {
     expect(predict('Fe', 'Fe').reacts).toBe(false);
   });
+
+  it('still lets K, Na, Ca react with the water of their own salt solution', () => {
+    const p = predict('Na', 'Na');
+    expect(p.reacts).toBe(true);
+    expect(p.displaces).toBe(false);
+    expect(p.equation).toBe('2Na + 2H2O → 2NaOH + H2↑');
+  });
 });

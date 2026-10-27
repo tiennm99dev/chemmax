@@ -170,20 +170,20 @@ export function predict(m, target) {
         : `${cap} đứng trước H nên đẩy được hydrogen ra khỏi dung dịch acid${m === 'Pb' ? ' (phản ứng rất chậm vì muối PbCl₂ ít tan bám ngoài chì)' : ''}.`,
     };
   }
-  if (m === target) {
-    return {
-      reacts: false,
-      displaces: false,
-      equation: null,
-      reason: 'Một kim loại không phản ứng với dung dịch muối của chính nó.',
-    };
-  }
   if (WATER_METALS.includes(m)) {
     return {
       reacts: true,
       displaces: false,
       equation: waterEquation(m),
       reason: `${cap} tác dụng với nước trong dung dịch trước, tạo base và khí hydrogen, nên không đẩy được ${NAME[target]} ra khỏi muối.`,
+    };
+  }
+  if (m === target) {
+    return {
+      reacts: false,
+      displaces: false,
+      equation: null,
+      reason: 'Một kim loại không phản ứng với dung dịch muối của chính nó.',
     };
   }
   if (!before) {

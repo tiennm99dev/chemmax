@@ -50,4 +50,17 @@ describe('outcome', () => {
     expect(outcome('Fe', 'O2').equation).toBe('3Fe + 2O2 → Fe3O4');
     expect(outcome('Fe', 'O2').heated).toBe(true);
   });
+
+  it('draws a flame only where the metal really burns', () => {
+    expect(outcome('Mg', 'O2').sign).toBe('flame');
+    expect(outcome('Cu', 'O2').sign).toBe('none');
+    expect(outcome('Cu', 'O2').reacts).toBe(true);
+    expect(outcome('Ag', 'Cl2').sign).toBe('none');
+  });
+
+  it('leaves a black oxide on iron and copper, a white one on magnesium', () => {
+    expect(outcome('Fe', 'O2').residue).toBe('#292524');
+    expect(outcome('Cu', 'O2').residue).toBe('#1c1917');
+    expect(outcome('Mg', 'O2').residue).toBe('#f8fafc');
+  });
 });

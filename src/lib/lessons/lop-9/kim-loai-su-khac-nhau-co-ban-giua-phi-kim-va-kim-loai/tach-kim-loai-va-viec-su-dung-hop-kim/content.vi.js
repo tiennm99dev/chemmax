@@ -77,7 +77,7 @@ export default {
           type: 'callout',
           tone: 'definition',
           title: 'Sản xuất nhôm',
-          text: 'Nguyên liệu là quặng bauxite (thành phần chính $\\mathrm{Al_2O_3}$). Sau khi làm sạch, $\\mathrm{Al_2O_3}$ được điện phân ở trạng thái nóng chảy (có thêm cryolite để hạ nhiệt độ nóng chảy): $2\\mathrm{Al_2O_3} \\rightarrow 4\\mathrm{Al} + 3\\mathrm{O_2}$. Nhôm lỏng thu được ở cực âm.',
+          text: 'Nguyên liệu là quặng bauxite (thành phần chính $\\mathrm{Al_2O_3}$). Sau khi làm sạch, $\\mathrm{Al_2O_3}$ được điện phân ở trạng thái nóng chảy (có thêm cryolite để hạ nhiệt độ nóng chảy; đpnc là điện phân nóng chảy): $2\\mathrm{Al_2O_3} \\xrightarrow[\\text{cryolite}]{\\text{đpnc}} 4\\mathrm{Al} + 3\\mathrm{O_2}$. Nhôm lỏng thu được ở cực âm.',
         },
       ],
     },
@@ -157,7 +157,7 @@ export default {
       problem:
         'Điện phân nóng chảy $20{,}4$ tấn $\\mathrm{Al_2O_3}$. Tính khối lượng nhôm thu được, biết hiệu suất $100\\%$ (Al = 27, O = 16).',
       steps: [
-        '$2\\mathrm{Al_2O_3} \\rightarrow 4\\mathrm{Al} + 3\\mathrm{O_2}$: mỗi phân tử $\\mathrm{Al_2O_3}$ cho $2$ nguyên tử $\\mathrm{Al}$.',
+        '$2\\mathrm{Al_2O_3} \\xrightarrow[\\text{cryolite}]{\\text{đpnc}} 4\\mathrm{Al} + 3\\mathrm{O_2}$: mỗi phân tử $\\mathrm{Al_2O_3}$ cho $2$ nguyên tử $\\mathrm{Al}$.',
         '$M_{\\mathrm{Al_2O_3}} = 2 \\times 27 + 3 \\times 16 = 102$; cứ $102$ tấn $\\mathrm{Al_2O_3}$ cho $54$ tấn $\\mathrm{Al}$.',
         '$m_{\\mathrm{Al}} = 20{,}4 \\times \\dfrac{54}{102} = 10{,}8$ tấn.',
       ],

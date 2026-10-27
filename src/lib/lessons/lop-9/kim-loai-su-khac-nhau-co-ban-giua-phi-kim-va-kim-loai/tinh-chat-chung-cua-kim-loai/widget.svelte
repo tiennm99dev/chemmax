@@ -67,11 +67,7 @@
       : `Chuẩn bị: ${m.name} và ${r.label.toLowerCase()}${r.heated ? ' (đun nóng kim loại)' : ''}. Bấm “Tiến hành” để quan sát.`,
   );
   const pieceColor = $derived(
-    done && o.reacts && o.sign === 'none'
-      ? '#94a3b8'
-      : done && o.sign === 'flame'
-        ? '#f1f5f9'
-        : m.color,
+    done && o.residue ? o.residue : done && o.reacts && o.sign === 'none' ? '#94a3b8' : m.color,
   );
 </script>
 
@@ -129,7 +125,7 @@
               cx={74 + i * 26}
               cy={190 - (i % 2) * 14}
               r="9"
-              fill={reagentId === 'Cl2' && metalId === 'Fe' ? '#b45309' : '#e5e7eb'}
+              fill={reagentId === 'Cl2' && o.residue ? o.residue : '#e5e7eb'}
               opacity="0.7"
               class="smoke"
             />

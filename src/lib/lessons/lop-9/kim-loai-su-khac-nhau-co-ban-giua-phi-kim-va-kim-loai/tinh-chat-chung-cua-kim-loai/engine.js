@@ -65,6 +65,7 @@ export const REAGENTS = [
  * @property {string} [solution] colour of the liquid at the end
  * @property {string} [deposit] colour of the metal deposited on the piece
  * @property {string} [flameColor]
+ * @property {string} [residue] colour of the solid product left in the spoon after burning
  */
 
 const BLUE = '#93c5fd';
@@ -169,8 +170,9 @@ export function outcome(metalId, reagentId) {
         reacts: true,
         equation: OXIDE[metalId],
         heated: metalId !== 'Na',
-        sign: metalId === 'Na' ? 'none' : 'flame',
+        sign: metalId === 'Na' || metalId === 'Cu' ? 'none' : 'flame',
         flameColor: FLAME[metalId],
+        residue: OXIDE_COLOR[metalId],
         seen: OXIDE_SEEN[metalId],
         why: 'Kim loại tác dụng với oxygen tạo thành oxide.',
       };
@@ -179,8 +181,9 @@ export function outcome(metalId, reagentId) {
         reacts: true,
         equation: CHLORIDE[metalId],
         heated: true,
-        sign: 'flame',
+        sign: metalId === 'Ag' ? 'none' : 'flame',
         flameColor: FLAME[metalId],
+        residue: CHLORIDE_COLOR[metalId],
         seen: CHLORIDE_SEEN[metalId],
         why: 'Kim loại tác dụng với chlorine tạo thành muối chloride.',
       };
@@ -285,6 +288,32 @@ const FLAME = {
   Fe: '#fb923c',
   Cu: '#fdba74',
   Ag: '#fde68a',
+};
+
+const WHITE = '#f8fafc';
+
+/** Colour of the oxide left after burning; sodium only dulls in air. */
+/** @type {Record<MetalId, string>} */
+const OXIDE_COLOR = {
+  Na: '#94a3b8',
+  Mg: WHITE,
+  Al: WHITE,
+  Zn: WHITE,
+  Fe: '#292524',
+  Cu: '#1c1917',
+  Ag: '',
+};
+
+/** Colour of the chloride formed: iron(III) chloride is red-brown, copper(II) chloride brown-yellow. */
+/** @type {Record<MetalId, string>} */
+const CHLORIDE_COLOR = {
+  Na: WHITE,
+  Mg: WHITE,
+  Al: WHITE,
+  Zn: WHITE,
+  Fe: '#9a3412',
+  Cu: '#a16207',
+  Ag: WHITE,
 };
 
 /** @type {Record<MetalId, string>} */
