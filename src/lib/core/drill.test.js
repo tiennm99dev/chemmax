@@ -2,6 +2,7 @@
 import { describe, it, expect } from 'vitest';
 import {
   buildSet,
+  countsAsNaturals,
   hintsFor,
   int,
   isDone,
@@ -65,12 +66,24 @@ describe('skillMap', () => {
       skillMap(SKILLS, qs, res).map((s) => s.status);
     expect(map([null, null, null, null])).toEqual(['todo', 'todo']);
     expect(map([true, true, false, false])).toEqual(['good', 'weak']);
-    expect(map([true, false, true, null])).toEqual(['mixed', 'good']);
+    expect(map([true, false, true, null])).toEqual(['mixed', 'doing']);
+    expect(map([true, false, true, true])).toEqual(['mixed', 'good']);
     expect(skillMap(SKILLS, qs, [true, false, null, null])[0]).toMatchObject({
       right: 1,
       answered: 2,
       total: 2,
     });
+  });
+
+  it('waits until a skill is finished before judging it', () => {
+    const qs = ['1', '2', '3', '4'].map((prompt) => ({ skill: 'a', prompt, answer: 1, steps: [] }));
+    const status = (/** @type {Array<boolean | null>} */ res) =>
+      skillMap(SKILLS, qs, res)[0].status;
+    expect(status([false, null, null, null])).toBe('doing');
+    expect(status([false, true, true, null])).toBe('doing');
+    expect(status([false, true, true, true])).toBe('mixed');
+    expect(status([false, false, false, true])).toBe('weak');
+    expect(status([true, true, true, true])).toBe('good');
   });
 });
 
@@ -148,5 +161,26 @@ describe('per-question answers', () => {
     expect(withUnit('90', '°')).toBe('90°');
     expect(withUnit('12 000', 'đồng')).toBe('12 000 đồng');
     expect(withUnit('7')).toBe('7');
+  });
+});
+
+describe('countsAsNaturals', () => {
+  it('reads whole-number answers as natural numbers and leaves the rest alone', () => {
+    /** @type {import('./drill.js').Skill} */
+    const skill = {
+      id: 'k',
+      label: 'K',
+      make: (r) =>
+        r() < 0.5
+          ? { prompt: 'count', answer: 1350, steps: [] }
+          : { prompt: 'p', answer: 0.25, steps: [] },
+    };
+    const wrapped = countsAsNaturals(skill);
+    const r = rng(7);
+    for (let i = 0; i < 20; i++) {
+      const q = wrapped.make(r);
+      if (Number.isInteger(q.answer)) expect(q.read?.('1.350')).toBe(1350);
+      else expect(q.read).toBeUndefined();
+    }
   });
 });

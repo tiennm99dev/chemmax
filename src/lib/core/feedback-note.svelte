@@ -1,9 +1,12 @@
 <!-- Synced from tiennm99dev/mathmax by scripts/sync-core.sh. Do not edit it here; change it in mathmax and sync again. -->
 <script>
+  import LiveRichText from '#lib/components/live-rich-text.svelte';
+
   /**
    * The live feedback line under a measuring widget: green when the
    * measurement is right, amber when a step went wrong, grey otherwise.
-   * Screen readers hear every change.
+   * Screen readers hear every change. The text may carry inline `$...$` TeX,
+   * so `$C_M$` or `$N_A$` shows as math.
    * @type {{ tone: 'ok' | 'warn' | 'info', text: string }}
    */
   let { tone, text } = $props();
@@ -17,5 +20,5 @@
       : 'bg-slate-100 text-slate-700'}"
   aria-live="polite"
 >
-  {text}
+  <LiveRichText {text} />
 </p>
