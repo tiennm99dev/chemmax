@@ -1,4 +1,5 @@
 <script>
+  import LiveRichText from '#lib/components/live-rich-text.svelte';
   import SegmentedControl from '#lib/core/segmented-control.svelte';
   import FeedbackNote from '#lib/core/feedback-note.svelte';
   import { focusRing, textInput } from '#lib/core/ui.js';
@@ -62,10 +63,11 @@
     /** @type {string[]} */
     const out = [];
     if (kind === 'm') out.push(`n = m : M = ${formatNumber(value ?? 0, 4)} : ${M} = ${n} mol`);
-    if (kind === 'N') out.push(`n = N : N_A = ${sciText(value ?? 0)} : (6,022 × 10²³) = ${n} mol`);
+    if (kind === 'N')
+      out.push(`n = N : $N_A$ = ${sciText(value ?? 0)} : (6,022 × 10²³) = ${n} mol`);
     if (kind === 'V') out.push(`n = V : 24,79 = ${formatNumber(value ?? 0, 4)} : 24,79 = ${n} mol`);
     if (kind !== 'm') out.push(`m = n × M = ${n} × ${M} = ${formatNumber(result.m, 4)} g`);
-    if (kind !== 'N') out.push(`Số hạt = n × N_A = ${n} × 6,022 × 10²³ = ${sciText(result.N)}`);
+    if (kind !== 'N') out.push(`Số hạt = n × $N_A$ = ${n} × 6,022 × 10²³ = ${sciText(result.N)}`);
     if (result.V !== null && kind !== 'V')
       out.push(`V = 24,79 × n = 24,79 × ${n} = ${formatNumber(result.V, 4)} L`);
     return out;
@@ -166,7 +168,7 @@
       </p>
       <ol class="list-decimal space-y-1 pl-5 tabular-nums">
         {#each steps as line, i (i)}
-          <li>{line}</li>
+          <li><LiveRichText text={line} /></li>
         {/each}
       </ol>
     </div>

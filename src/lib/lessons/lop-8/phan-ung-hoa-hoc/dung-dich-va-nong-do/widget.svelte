@@ -42,7 +42,7 @@
       if (mode === 'mol') {
         return {
           tone: 'ok',
-          text: `n = ${formatNumber(Math.min(mSolute, molMax), 2)} : ${formatNumber(mol.M)} ≈ ${formatNumber(mol.n, 4)} mol; C_M = n : V = ${formatNumber(mol.n, 4)} : ${formatNumber(volume / 1000, 3)} ≈ ${formatNumber(mol.molarity, 3)} M.`,
+          text: `n = ${formatNumber(Math.min(mSolute, molMax), 2)} : ${formatNumber(mol.M)} ≈ ${formatNumber(mol.n, 4)} mol; $C_M$ = n : V = ${formatNumber(mol.n, 4)} : ${formatNumber(volume / 1000, 3)} ≈ ${formatNumber(mol.molarity, 3)} M.`,
         };
       }
       if (mSolute === 0) return { tone: 'info', text: 'Chưa có chất tan: trong cốc chỉ có nước.' };
