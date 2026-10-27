@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { isBalancedText } from '../_shared/reaction.js';
+import { isBalancedText } from '#lib/domain/reaction.js';
 import { DROPS_TO_FINISH, TARGETS, mix, observe } from './engine.js';
 
 describe('equations', () => {

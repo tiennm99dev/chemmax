@@ -2,7 +2,7 @@
   import SegmentedControl from '#lib/core/segmented-control.svelte';
   import FeedbackNote from '#lib/core/feedback-note.svelte';
   import { button } from '#lib/core/ui.js';
-  import EquationLine from '../_shared/equation-line.svelte';
+  import EquationLine from '#lib/domain/equation-line.svelte';
   import { ACIDS, MAX_DROPS, TARGETS, observe, target } from './engine.js';
 
   /** @type {import('./engine.js').AcidId} */

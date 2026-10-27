@@ -3,7 +3,7 @@
   import ChemFormula from '#lib/domain/chem-formula.svelte';
   import { prettyFormula } from '#lib/domain/formula.js';
   import { button, focusRing } from '#lib/core/ui.js';
-  import EquationLine from '../_shared/equation-line.svelte';
+  import EquationLine from '#lib/domain/equation-line.svelte';
   import { NAME, SERIES, predict, rank, solutionOf } from './engine.js';
 
   /** @typedef {import('./engine.js').MetalId} MetalId */

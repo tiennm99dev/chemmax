@@ -1,12 +1,13 @@
 /**
- * Atomic masses in amu rounded the way the grade 7 KNTT book prints them
- * (H 1, O 16, Cl 35,5, …), and molecular masses built from them. The domain
- * element table holds precise atomic weights (O 15,999), which give answers
- * that differ from the book's in the last digits.
+ * Atomic masses in amu (so also molar masses in g/mol) rounded the way the
+ * KNTT books print them (H 1, O 16, Cl 35,5, …), and molecular masses built
+ * from them. The element table (`elements.js`) holds precise atomic weights
+ * (O 15,999), which give answers that differ from the book's in the last
+ * digits.
  */
-import { parseFormula } from '#lib/domain/formula.js';
+import { parseFormula } from './formula.js';
 
-/** Rounded atomic masses (amu) of the elements the chapter uses. */
+/** Rounded atomic masses (amu) of the elements the books use. */
 export const BOOK_MASS = /** @type {Record<string, number>} */ ({
   H: 1,
   He: 4,
@@ -25,6 +26,7 @@ export const BOOK_MASS = /** @type {Record<string, number>} */ ({
   Ar: 40,
   K: 39,
   Ca: 40,
+  Mn: 55,
   Fe: 56,
   Cu: 64,
   Zn: 65,

@@ -4,7 +4,7 @@
  * subscripts and check the valence rule a·x = b·y of the formula AxBy.
  * Valences follow the KNTT table of common elements and groups.
  */
-import { percentComposition, moleculeMassAmu } from '../_shared/book-masses.js';
+import { percentComposition, moleculeMassAmu } from '#lib/domain/book-mass.js';
 
 /** Roman numerals the book writes valences with. */
 export const ROMAN = ['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII'];

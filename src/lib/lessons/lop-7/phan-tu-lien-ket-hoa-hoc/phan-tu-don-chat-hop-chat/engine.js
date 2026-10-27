@@ -5,7 +5,7 @@
  * with the book's rounded atomic masses.
  */
 import { MOLECULES } from '#lib/domain/molecule.js';
-import { bookMass } from '../_shared/book-masses.js';
+import { bookMass } from '#lib/domain/book-mass.js';
 
 /** Elements in the kit, in the order the palette shows them. */
 export const KIT = ['H', 'C', 'N', 'O', 'S', 'Cl'];

@@ -1,12 +1,12 @@
 /**
  * Molar quantities the way the grade 8 KNTT book computes them: rounded
- * atomic masses (H 1, O 16, Cl 35,5), the Avogadro number 6,022 × 10²³ and
- * the molar volume of a gas at standard conditions (25 °C, 1 bar), 24,79 L.
- * The domain element table holds precise atomic weights (O 15,999), which
- * give answers that differ from the book's in the last digits.
+ * atomic masses (H 1, O 16, Cl 35,5, from `#lib/domain/book-mass.js`), the
+ * Avogadro number 6,022 × 10²³ and the molar volume of a gas at standard
+ * conditions (25 °C, 1 bar), 24,79 L.
  */
 import { parseFormula } from '#lib/domain/formula.js';
 import { formatNumber } from '#lib/core/number-format.js';
+import { BOOK_MASS } from '#lib/domain/book-mass.js';
 
 /** Avogadro number N_A, particles per mol. */
 export const AVOGADRO = 6.022e23;
@@ -16,32 +16,6 @@ export const MOLAR_VOLUME = 24.79;
 
 /** Mean molar mass of air used by the book, g/mol. */
 export const AIR_MOLAR_MASS = 29;
-
-/** Rounded atomic masses (amu, so also g/mol) used by the book. */
-export const BOOK_MASS = /** @type {Record<string, number>} */ ({
-  H: 1,
-  He: 4,
-  C: 12,
-  N: 14,
-  O: 16,
-  F: 19,
-  Ne: 20,
-  Na: 23,
-  Mg: 24,
-  Al: 27,
-  P: 31,
-  S: 32,
-  Cl: 35.5,
-  Ar: 40,
-  K: 39,
-  Ca: 40,
-  Mn: 55,
-  Fe: 56,
-  Cu: 64,
-  Zn: 65,
-  Ag: 108,
-  Ba: 137,
-});
 
 /**
  * Removes float noise from a computed value: 36.49999999 → 36.5.

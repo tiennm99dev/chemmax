@@ -2,7 +2,7 @@
   import SliderField from '#lib/core/slider-field.svelte';
   import FeedbackNote from '#lib/core/feedback-note.svelte';
   import { fmt } from '#lib/core/number-format.js';
-  import EquationLine from '../_shared/equation-line.svelte';
+  import EquationLine from '#lib/domain/equation-line.svelte';
   import { ZONES, temperatureAt, zoneAt } from './engine.js';
 
   /** Depth of the probe in percent of the furnace height, 0 at the top. */

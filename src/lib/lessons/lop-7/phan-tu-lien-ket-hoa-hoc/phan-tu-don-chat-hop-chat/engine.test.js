@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { moleculeMassAmu } from '../_shared/book-masses.js';
+import { moleculeMassAmu } from '#lib/domain/book-mass.js';
 import {
   KIT,
   MAX_EACH,

@@ -3,7 +3,7 @@
   import { button, focusRing } from '#lib/core/ui.js';
   import ChemFormula from '#lib/domain/chem-formula.svelte';
   import { prettyFormula } from '#lib/domain/formula.js';
-  import EquationLine from '../_shared/equation-line.svelte';
+  import EquationLine from '#lib/domain/equation-line.svelte';
   import {
     ANIONS,
     CATIONS,

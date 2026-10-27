@@ -3,7 +3,7 @@
   import FeedbackNote from '#lib/core/feedback-note.svelte';
   import { focusRing } from '#lib/core/ui.js';
   import { prettyFormula } from '#lib/domain/formula.js';
-  import EquationLine from '../_shared/equation-line.svelte';
+  import EquationLine from '#lib/domain/equation-line.svelte';
   import { KINDS, OXIDES, REAGENTS, mixText, oxide } from './engine.js';
 
   let formula = $state('CaO');

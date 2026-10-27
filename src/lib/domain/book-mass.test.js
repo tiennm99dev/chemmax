@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { BOOK_MASS, bookMass, moleculeMassAmu, percentComposition } from './book-masses.js';
-import { element } from '#lib/domain/elements.js';
+import { BOOK_MASS, bookMass, moleculeMassAmu, percentComposition } from './book-mass.js';
+import { element } from './elements.js';
 
 describe('book masses', () => {
   it('rounds every atomic weight the way the book does', () => {

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { isBalancedText } from '../_shared/reaction.js';
+import { isBalancedText } from '#lib/domain/reaction.js';
 import { METALS, REAGENTS, outcome } from './engine.js';
 
 describe('outcome', () => {
