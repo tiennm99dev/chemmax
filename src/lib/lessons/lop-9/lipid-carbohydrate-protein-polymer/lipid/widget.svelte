@@ -4,12 +4,14 @@
   import EquationLine from '#lib/domain/equation-line.svelte';
   import { button, focusRing } from '#lib/core/ui.js';
   import { fmt } from '#lib/core/number-format.js';
+  import { prettyFormula } from '#lib/domain/formula.js';
   import {
     FATTY_ACIDS,
     acidFormula,
     fatMass,
     fattyAcid,
     saltFormula,
+    saltCounts,
     saponifyEquation,
     saponifyMasses,
     saponifyStep,
@@ -22,6 +24,7 @@
   const step = $derived(saponifyStep(rs, cuts));
   const masses = $derived(saponifyMasses(rs));
   const equation = $derived(saponifyEquation(rs));
+  const salts = $derived(saltCounts(rs));
   const backbone = ['CH₂', 'CH', 'CH₂'];
 
   /**
@@ -72,7 +75,7 @@
             onchange={(e) => choose(i, e.currentTarget.value)}
           >
             {#each FATTY_ACIDS as a (a.id)}
-              <option value={a.id}>{a.r} ({a.name})</option>
+              <option value={a.id}>{prettyFormula(a.r)} ({a.name})</option>
             {/each}
           </select>
         {/if}
@@ -96,16 +99,17 @@
 
   {#if step.done}
     <div class="space-y-2 rounded-xl bg-slate-50 p-3 text-sm text-slate-700">
-      {#if equation}
-        <p class="text-base"><EquationLine text={equation} /></p>
-      {:else}
-        <p>
-          Chất béo có ba gốc acid béo khác nhau nên tạo ba muối khác nhau:
-          {#each rs as r, i (i)}{#if i > 0},
-            {/if}<ChemFormula formula={saltFormula(r)} /> (từ <ChemFormula
-              formula={acidFormula(r)}
-            />){/each}.
-        </p>
+      <p class="overflow-x-auto text-base"><EquationLine text={equation} /></p>
+      {#if salts.length > 1}
+        <p>Các gốc acid béo khác nhau nên tạo {salts.length} muối khác nhau:</p>
+        <ul class="list-disc space-y-1 pl-5">
+          {#each salts as s (s.r)}
+            <li>
+              {s.count} mol <ChemFormula formula={saltFormula(s.r)} /> (từ gốc của
+              <ChemFormula formula={acidFormula(s.r)} />)
+            </li>
+          {/each}
+        </ul>
       {/if}
       <p>
         Bảo toàn khối lượng cho 1 mol chất béo:

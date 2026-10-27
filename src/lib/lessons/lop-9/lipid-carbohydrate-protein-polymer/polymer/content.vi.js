@@ -112,7 +112,7 @@ export default {
             ],
             [
               'Vật liệu composite',
-              'Vật liệu gồm vật liệu cốt (sợi hoặc hạt, như sợi thuỷ tinh, sợi carbon) giúp chịu lực và vật liệu nền (thường là polymer) gắn kết chúng',
+              'Vật liệu được tổ hợp từ hai hay nhiều vật liệu khác nhau: vật liệu cốt (sợi hoặc hạt, như sợi thuỷ tinh, sợi carbon) giúp chịu lực và vật liệu nền (thường là polymer) gắn kết chúng',
               'Ống dẫn, bồn chứa, vật liệu xây dựng, vỏ xe, vỏ tàu thuyền',
             ],
           ],

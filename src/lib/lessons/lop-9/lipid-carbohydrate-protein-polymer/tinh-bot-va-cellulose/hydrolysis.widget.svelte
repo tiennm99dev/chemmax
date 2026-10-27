@@ -31,16 +31,16 @@
 <div class="space-y-4">
   <div class="flex items-start gap-4">
     <div
-      class="flex flex-1 flex-wrap items-center gap-y-2"
+      class="flex min-w-0 flex-1 flex-wrap items-center gap-y-2"
       role="img"
       aria-label="Các đoạn mạch: {pieces.join(', ')} mắt xích"
     >
       {#each pieces as len, i (i)}
-        <span class="mr-3 flex items-center" aria-hidden="true">
+        <span class="mr-3 flex flex-wrap items-center gap-y-1" aria-hidden="true">
           {#each Array.from({ length: len }, (_, k) => k) as k (k)}
-            {#if k > 0}<span class="h-0.5 w-2 bg-slate-500"></span>{/if}
+            {#if k > 0}<span class="h-0.5 w-1 bg-slate-500 sm:w-2"></span>{/if}
             <span
-              class="inline-flex size-7 items-center justify-center rounded-full text-[0.6rem] font-bold text-white {len ===
+              class="inline-flex size-5 items-center sm:size-7 justify-center rounded-full text-[0.6rem] font-bold text-white {len ===
               1
                 ? 'bg-emerald-600'
                 : 'bg-amber-600'}">{len === 1 ? 'G' : ''}</span

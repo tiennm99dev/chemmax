@@ -86,11 +86,30 @@ export function saponifyStep(rs, cuts) {
 }
 
 /**
- * Book-style equation of the saponification when all three R groups are the
- * same; null for a mixed fat.
+ * The different sodium salts the fat gives, each with how many moles one mole
+ * of fat releases, in the order the R groups first appear.
+ * @param {string[]} rs
+ * @returns {{ r: string, count: number }[]}
+ */
+export function saltCounts(rs) {
+  /** @type {{ r: string, count: number }[]} */
+  const out = [];
+  for (const r of rs) {
+    const hit = out.find((x) => x.r === r);
+    if (hit) hit.count += 1;
+    else out.push({ r, count: 1 });
+  }
+  return out;
+}
+
+/**
+ * Book-style equation of the saponification. A mixed fat lists each salt
+ * with its own coefficient.
  * @param {string[]} rs
  */
 export function saponifyEquation(rs) {
-  if (!rs.every((r) => r === rs[0])) return null;
-  return `${fatFormula(rs)} + 3NaOH → 3${saltFormula(rs[0])} + C3H5(OH)3`;
+  const salts = saltCounts(rs)
+    .map(({ r, count }) => `${count > 1 ? count : ''}${saltFormula(r)}`)
+    .join(' + ');
+  return `${fatFormula(rs)} + 3NaOH → ${salts} + C3H5(OH)3`;
 }

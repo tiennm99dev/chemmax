@@ -6,6 +6,7 @@ import {
   MOLAR_MASS,
   fatFormula,
   fatMass,
+  saltCounts,
   saponifyEquation,
   saponifyMasses,
   saponifyStep,
@@ -57,13 +58,25 @@ describe('saponification', () => {
       }
   });
 
-  it('writes balanced equations for simple fats only', () => {
-    for (const a of FATTY_ACIDS) {
-      const eq = saponifyEquation([a.r, a.r, a.r]);
-      expect(eq).not.toBeNull();
-      expect(isBalancedText(/** @type {string} */ (eq)), eq ?? '').toBe(true);
-    }
-    expect(saponifyEquation(['C17H35', 'C15H31', 'C17H35'])).toBeNull();
+  it('writes balanced equations for simple and mixed fats', () => {
+    for (const a of FATTY_ACIDS)
+      for (const b of FATTY_ACIDS)
+        for (const c of FATTY_ACIDS) {
+          const eq = saponifyEquation([a.r, b.r, c.r]);
+          expect(isBalancedText(eq), eq).toBe(true);
+        }
+    expect(saponifyEquation(STEARIC)).toBe('(C17H35COO)3C3H5 + 3NaOH → 3C17H35COONa + C3H5(OH)3');
+    expect(saponifyEquation(['C17H35', 'C15H31', 'C17H35'])).toBe(
+      '(C17H35COO)(C15H31COO)(C17H35COO)C3H5 + 3NaOH → 2C17H35COONa + C15H31COONa + C3H5(OH)3',
+    );
+  });
+
+  it('counts each different salt of a mixed fat', () => {
+    expect(saltCounts(['C17H35', 'C15H31', 'C17H35'])).toEqual([
+      { r: 'C17H35', count: 2 },
+      { r: 'C15H31', count: 1 },
+    ]);
+    expect(saltCounts(STEARIC)).toEqual([{ r: 'C17H35', count: 3 }]);
   });
 
   it('gives tristearin 3 × 306 g of sodium stearate per mole', () => {
