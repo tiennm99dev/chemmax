@@ -88,7 +88,7 @@ export function target(id) {
 }
 
 /**
- * Places the heavy atoms in a shallow zigzag in the middle of the board and
+ * Places the heavy atoms in a zigzag deep enough that a bond between the two ends clears the middle atom, in the middle of the board and
  * the hydrogen atoms on an ellipse around them.
  * @param {Target} t
  * @returns {PlacedAtom[]}
@@ -101,9 +101,9 @@ export function placeAtoms(t) {
       [220, 130],
     ],
     [
-      [110, 145],
-      [180, 112],
-      [250, 145],
+      [110, 154],
+      [180, 96],
+      [250, 154],
     ],
   ][t.heavy.length - 1];
   /** @type {PlacedAtom[]} */
