@@ -200,7 +200,7 @@
         label="Hiệu suất"
         bind:value={yieldPercent}
         min={10}
-        max={100}
+        max={95}
         step={5}
         unit="%"
       />

@@ -33,6 +33,8 @@ describe('alcohol content', () => {
 
   it('names the kind of mixture', () => {
     expect(mixtureKind(5)).toMatch(/bia/);
+    expect(mixtureKind(20)).toMatch(/giữa/);
+    expect(mixtureKind(40)).toMatch(/rượu mạnh/);
     expect(mixtureKind(70)).toMatch(/sát khuẩn/);
     expect(mixtureKind(100)).toMatch(/nguyên chất/);
   });

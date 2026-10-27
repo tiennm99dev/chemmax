@@ -46,17 +46,18 @@ export const TASKS = [
 ];
 
 /**
- * A short label for the kind of mixture a content falls into.
+ * A sentence placing an alcohol content among everyday mixtures.
  * @param {number} degree
  */
 export function mixtureKind(degree) {
-  if (degree === 0) return 'nước, chưa có ethylic alcohol';
-  if (degree <= 8) return 'gần độ cồn của bia (khoảng 3° đến 8°)';
-  if (degree <= 15) return 'gần độ cồn của rượu vang (khoảng 10° đến 15°)';
-  if (degree < 60) return 'gần độ cồn của các loại rượu mạnh (khoảng 30° đến 50°)';
-  if (degree < 90) return 'gần độ cồn sát khuẩn (70° đến 75°)';
-  if (degree < 100) return 'cồn có độ cồn cao, dùng làm dung môi, nhiên liệu';
-  return 'ethylic alcohol nguyên chất (cồn tuyệt đối)';
+  if (degree === 0) return 'Đây là nước, chưa có ethylic alcohol.';
+  if (degree <= 8) return 'Độ cồn này gần độ cồn của bia (khoảng 3° đến 8°).';
+  if (degree <= 15) return 'Độ cồn này gần độ cồn của rượu vang (khoảng 10° đến 15°).';
+  if (degree < 30) return 'Độ cồn này nằm giữa độ cồn của rượu vang và của các loại rượu mạnh.';
+  if (degree < 60) return 'Độ cồn này gần độ cồn của các loại rượu mạnh (khoảng 30° đến 50°).';
+  if (degree < 90) return 'Độ cồn này gần độ cồn của cồn sát khuẩn (70° đến 75°).';
+  if (degree < 100) return 'Đây là cồn có độ cồn cao, dùng làm dung môi, nhiên liệu.';
+  return 'Đây là ethylic alcohol nguyên chất (cồn tuyệt đối).';
 }
 
 /**

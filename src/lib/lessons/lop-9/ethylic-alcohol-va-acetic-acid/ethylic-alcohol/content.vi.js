@@ -89,7 +89,7 @@ export default {
           type: 'callout',
           tone: 'theorem',
           title: '2. Phản ứng với sodium',
-          text: 'Cho mẩu sodium vào ethylic alcohol, mẩu sodium tan dần và có bọt khí thoát ra. Nguyên tử Na thay thế nguyên tử H của nhóm $\\mathrm{{-}OH}$, tạo sodium ethylate và khí hydrogen.',
+          text: 'Cho mẩu sodium vào ethylic alcohol, mẩu sodium tan dần và có bọt khí thoát ra. Nguyên tử Na thay thế nguyên tử H của nhóm $\\mathrm{{-}OH}$, tạo sodium ethoxide ($\\mathrm{C_2H_5ONa}$) và khí hydrogen.',
         },
         {
           type: 'tex',

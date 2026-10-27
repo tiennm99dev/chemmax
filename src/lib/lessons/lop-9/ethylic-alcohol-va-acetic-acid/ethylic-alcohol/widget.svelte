@@ -53,7 +53,7 @@
     if (mode === 'free') {
       if (total === 0)
         return 'Kéo hai thanh trượt để rót ethylic alcohol nguyên chất và nước vào cốc.';
-      return `Độ cồn = ${ml(ethanol)} : ${ml(total)} × 100 = ${deg(degree)}: cứ 100 mL hỗn hợp có ${formatNumber(degree, 1)} mL ethylic alcohol nguyên chất. Đây là ${mixtureKind(Math.round(degree))}.`;
+      return `Độ cồn = ${ml(ethanol)} : ${ml(total)} × 100 = ${deg(degree)}: cứ 100 mL hỗn hợp có ${formatNumber(degree, 1)} mL ethylic alcohol nguyên chất. ${mixtureKind(Math.round(degree))}`;
     }
     const goal = `Cần ${task.volume} mL ${task.use} ${task.degree}°.`;
     if (total === 0)

@@ -43,7 +43,7 @@
       tone = 'ok';
       note =
         n === 2
-          ? 'Đúng! Hai nguyên tử H của hai nhóm –OH kết hợp thành một phân tử H₂ bay lên; còn lại hai phân tử C₂H₅ONa (sodium ethylate).'
+          ? 'Đúng! Hai nguyên tử H của hai nhóm –OH kết hợp thành một phân tử H₂ bay lên; còn lại hai phân tử C₂H₅ONa (sodium ethoxide).'
           : 'Đúng! Na thay thế nguyên tử H của nhóm –OH, tạo C₂H₅ONa. Nguyên tử H được giải phóng; hãy làm tiếp với phân tử còn lại.';
     } else if (result === 'c-h') {
       tone = 'warn';
