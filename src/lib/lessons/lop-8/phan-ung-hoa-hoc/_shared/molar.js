@@ -5,7 +5,7 @@
  * conditions (25 °C, 1 bar), 24,79 L.
  */
 import { parseFormula } from '#lib/domain/formula.js';
-import { formatNumber } from '#lib/core/number-format.js';
+import { formatNumber, tidy } from '#lib/core/number-format.js';
 import { BOOK_MASS } from '#lib/domain/book-mass.js';
 
 /** Avogadro number N_A, particles per mol. */
@@ -16,16 +16,6 @@ export const MOLAR_VOLUME = 24.79;
 
 /** Mean molar mass of air used by the book, g/mol. */
 export const AIR_MOLAR_MASS = 29;
-
-/**
- * Removes float noise from a computed value: 36.49999999 → 36.5.
- * @param {number} v
- * @param {number} [digits] significant decimals kept
- */
-export function clean(v, digits = 9) {
-  const f = 10 ** digits;
-  return Math.round(v * f) / f;
-}
 
 /**
  * Molar mass in g/mol with the book's atomic masses: H2O → 18, HCl → 36,5.
@@ -39,7 +29,7 @@ export function molarMass(formula) {
     if (a === undefined) throw new Error(`No book mass for ${symbol}`);
     m += a * n;
   }
-  return clean(m, 6);
+  return tidy(m, 6);
 }
 
 /**
@@ -51,9 +41,9 @@ export function molarMass(formula) {
 export function sciText(value, decimals = 4) {
   if (value === 0) return '0';
   let exp = Math.floor(Math.log10(Math.abs(value)));
-  let mant = clean(value / 10 ** exp, decimals);
+  let mant = tidy(value / 10 ** exp, decimals);
   if (Math.abs(mant) >= 10) {
-    mant = clean(mant / 10, decimals);
+    mant = tidy(mant / 10, decimals);
     exp += 1;
   }
   if (exp === 0) return formatNumber(mant, decimals);

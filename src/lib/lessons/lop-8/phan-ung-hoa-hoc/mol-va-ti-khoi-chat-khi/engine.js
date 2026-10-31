@@ -4,7 +4,8 @@
  * standard conditions (25 °C, 1 bar) volume V = 24,79·n (L). Also the
  * relative density of two gases, d = M_A / M_B.
  */
-import { AIR_MOLAR_MASS, AVOGADRO, MOLAR_VOLUME, clean, molarMass } from '../_shared/molar.js';
+import { AIR_MOLAR_MASS, AVOGADRO, MOLAR_VOLUME, molarMass } from '../_shared/molar.js';
+import { tidy } from '#lib/core/number-format.js';
 
 /** @typedef {'n' | 'm' | 'N' | 'V'} Quantity */
 /** @typedef {{ formula: string, name: string, gas: boolean }} Substance */
@@ -69,10 +70,10 @@ export function convert(formula, kind, value) {
   }
   return {
     M,
-    n: clean(n),
-    m: clean(n * M),
+    n: tidy(n),
+    m: tidy(n * M),
     N: n * AVOGADRO,
-    V: s.gas ? clean(n * MOLAR_VOLUME) : null,
+    V: s.gas ? tidy(n * MOLAR_VOLUME) : null,
   };
 }
 

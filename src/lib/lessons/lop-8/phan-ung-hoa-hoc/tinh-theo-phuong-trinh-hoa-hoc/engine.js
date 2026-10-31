@@ -5,7 +5,8 @@
  * extent is min(n_A / a, n_B / b), and each species changes by
  * coefficient × extent. A yield H below 100% scales the products.
  */
-import { clean, molarMass } from '../_shared/molar.js';
+import { molarMass } from '../_shared/molar.js';
+import { tidy } from '#lib/core/number-format.js';
 
 /** @typedef {{ formula: string, coef: number }} Term */
 /** @typedef {{ id: string, equation: string, reactants: [Term, Term], products: Term[] }} Reaction */
@@ -68,12 +69,12 @@ export function simulate(r, amounts) {
   else if (Math.abs(ratios[0] - ratios[1]) < 1e-9) limiting = 'vua-du';
   else limiting = ratios[0] < ratios[1] ? 0 : 1;
   return {
-    ratios: ratios.map((x) => clean(x)),
-    extent: clean(extent),
+    ratios: ratios.map((x) => tidy(x)),
+    extent: tidy(extent),
     limiting,
-    used: r.reactants.map((t) => clean(t.coef * extent)),
-    left: r.reactants.map((t, i) => clean(amounts[i] - t.coef * extent)),
-    formed: r.products.map((t) => clean(t.coef * extent)),
+    used: r.reactants.map((t) => tidy(t.coef * extent)),
+    left: r.reactants.map((t, i) => tidy(amounts[i] - t.coef * extent)),
+    formed: r.products.map((t) => tidy(t.coef * extent)),
   };
 }
 
@@ -83,7 +84,7 @@ export function simulate(r, amounts) {
  * @param {number} percent
  */
 export function actual(theoretical, percent) {
-  return clean((theoretical * percent) / 100);
+  return tidy((theoretical * percent) / 100);
 }
 
 /**
@@ -92,7 +93,7 @@ export function actual(theoretical, percent) {
  * @param {number} theoretical
  */
 export function yieldPercent(actualAmount, theoretical) {
-  return theoretical > 0 ? clean((actualAmount / theoretical) * 100) : 0;
+  return theoretical > 0 ? tidy((actualAmount / theoretical) * 100) : 0;
 }
 
 /**
@@ -101,5 +102,5 @@ export function yieldPercent(actualAmount, theoretical) {
  * @param {number} n
  */
 export function massOf(formula, n) {
-  return clean(n * molarMass(formula));
+  return tidy(n * molarMass(formula));
 }

@@ -3,7 +3,8 @@
  * by its solubility S, grams per 100 g of water at 20 °C), the mass
  * percentage C% = m_ct / m_dd · 100% and the molarity C_M = n / V.
  */
-import { clean, molarMass } from '../_shared/molar.js';
+import { molarMass } from '../_shared/molar.js';
+import { tidy } from '#lib/core/number-format.js';
 
 /**
  * @typedef {object} Solute
@@ -62,11 +63,11 @@ export function dissolve(s, mSolute, mWater) {
   const dissolved = Math.min(mSolute, capacity);
   const mSolution = dissolved + mWater;
   return {
-    capacity: clean(capacity),
-    dissolved: clean(dissolved),
-    excess: clean(Math.max(0, mSolute - capacity)),
+    capacity: tidy(capacity),
+    dissolved: tidy(dissolved),
+    excess: tidy(Math.max(0, mSolute - capacity)),
     saturated: mSolute >= capacity - 1e-9,
-    mSolution: clean(mSolution),
+    mSolution: tidy(mSolution),
     percent: mSolution > 0 ? (dissolved / mSolution) * 100 : 0,
   };
 }
@@ -80,7 +81,7 @@ export function dissolve(s, mSolute, mWater) {
 export function molarity(s, mSolute, volumeMl) {
   const M = molarMass(s.formula);
   const n = mSolute / M;
-  return { M, n: clean(n), molarity: volumeMl > 0 ? n / (volumeMl / 1000) : 0 };
+  return { M, n: tidy(n), molarity: volumeMl > 0 ? n / (volumeMl / 1000) : 0 };
 }
 
 /**
@@ -91,7 +92,7 @@ export function molarity(s, mSolute, volumeMl) {
 export function shade(s, strength) {
   const a = Math.max(0, Math.min(1, strength));
   const [r, g, b] = s.rgb;
-  return `rgba(${r}, ${g}, ${b}, ${clean(0.08 + 0.8 * a, 3)})`;
+  return `rgba(${r}, ${g}, ${b}, ${tidy(0.08 + 0.8 * a, 3)})`;
 }
 
 /**

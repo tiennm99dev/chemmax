@@ -10,7 +10,7 @@
  * lowest whole-number coefficients.
  */
 import { balance, isBalanced, parseEquation } from '#lib/domain/equation.js';
-import { clean } from '../_shared/molar.js';
+import { tidy } from '#lib/core/number-format.js';
 
 /** @typedef {{ formula: string, name: string, mass: number, gas?: boolean }} Part */
 /**
@@ -80,7 +80,7 @@ export function experiment(id) {
 }
 
 /** @param {Part[]} parts */
-export const total = (parts) => clean(parts.reduce((s, p) => s + p.mass, 0));
+export const total = (parts) => tidy(parts.reduce((s, p) => s + p.mass, 0));
 
 /**
  * What the left pan carries before and after the reaction. In an open
@@ -92,7 +92,7 @@ export const total = (parts) => clean(parts.reduce((s, p) => s + p.mass, 0));
 export function panMasses(e, closed) {
   const before = closed ? total(e.reactants) : total(e.reactants.filter((p) => !p.gas));
   const after = closed ? total(e.products) : total(e.products.filter((p) => !p.gas));
-  return { before, after, change: clean(after - before) };
+  return { before, after, change: tidy(after - before) };
 }
 
 /** Largest tilt of the beam, in degrees. */

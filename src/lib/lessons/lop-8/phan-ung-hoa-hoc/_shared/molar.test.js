@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { clean, molarMass, sciText } from './molar.js';
+import { molarMass, sciText } from './molar.js';
 
 describe('molarMass', () => {
   it('uses the book atomic masses', () => {
@@ -25,9 +25,5 @@ describe('sciText', () => {
     expect(sciText(1.2044e24)).toBe('1,2044 × 10²⁴');
     expect(sciText(3.011e23)).toBe('3,011 × 10²³');
     expect(sciText(0)).toBe('0');
-  });
-
-  it('removes float noise', () => {
-    expect(clean(0.1 + 0.2)).toBe(0.3);
   });
 });
