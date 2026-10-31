@@ -137,6 +137,7 @@ export default {
         'Gọi $x$ là phần trăm số nguyên tử ${}^{63}\\mathrm{Cu}$; khi đó ${}^{65}\\mathrm{Cu}$ chiếm $(100 - x)\\%$.',
         'Ta có $\\dfrac{63x + 65(100 - x)}{100} = 63{,}546$, tức $6\\,500 - 2x = 6\\,354{,}6$.',
         'Suy ra $2x = 145{,}4$, nên $x = 72{,}7$.',
+        'Lưu ý: kết quả này dựa trên giả thiết nguyên tử khối mỗi đồng vị bằng số khối. Với nguyên tử khối chính xác của hai đồng vị ($62{,}93$ và $64{,}93$), tỉ lệ đo được trong tự nhiên là khoảng $69{,}15\\%$ ${}^{63}\\mathrm{Cu}$, như trong máy tính ở trên.',
       ],
       answer:
         '${}^{63}\\mathrm{Cu}$ chiếm $72{,}7\\%$ và ${}^{65}\\mathrm{Cu}$ chiếm $27{,}3\\%$ số nguyên tử.',
