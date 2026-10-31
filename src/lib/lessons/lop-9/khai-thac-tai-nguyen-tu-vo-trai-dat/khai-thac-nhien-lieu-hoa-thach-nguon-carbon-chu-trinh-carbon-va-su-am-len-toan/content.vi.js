@@ -26,7 +26,7 @@ export default {
         },
         {
           type: 'p',
-          text: 'Than đá được khai thác lộ thiên hoặc trong hầm lò (ở Việt Nam chủ yếu ở Quảng Ninh); dầu mỏ và khí thiên nhiên được khai thác bằng giàn khoan (ở thềm lục địa phía Nam). Hiện nay nhiên liệu hoá thạch vẫn là nguồn năng lượng chiếm tỉ lệ lớn nhất thế giới: dùng cho nhà máy nhiệt điện, luyện kim, sản xuất xi măng, giao thông vận tải và làm nguyên liệu cho công nghiệp hoá chất. Khi cháy, chúng đều tạo ra $\\mathrm{CO_2}$:',
+          text: 'Than đá được khai thác lộ thiên hoặc trong hầm lò (ở Việt Nam chủ yếu ở Quảng Ninh); dầu mỏ và khí thiên nhiên được khai thác bằng giàn khoan (ở thềm lục địa phía Nam). Hiện nay nhiên liệu hoá thạch vẫn là nguồn năng lượng chiếm tỉ lệ lớn nhất thế giới: dùng cho nhà máy nhiệt điện, luyện kim, sản xuất xi măng, giao thông vận tải và làm nguyên liệu cho công nghiệp hoá chất. Than đá, khí thiên nhiên cũng như các nhiên liệu chứa carbon khác (ví dụ ethanol $\\mathrm{C_2H_5OH}$, nhiên liệu sinh học pha vào xăng E5) khi cháy đều tạo ra $\\mathrm{CO_2}$:',
         },
         {
           type: 'tex',
@@ -75,7 +75,10 @@ export default {
           type: 'p',
           text: 'Carbon luôn luân chuyển giữa khí quyển, đại dương, đất đá và sinh vật theo một vòng khép kín gọi là chu trình carbon. Cây xanh hấp thụ $\\mathrm{CO_2}$ qua quang hợp (cần ánh sáng và chất diệp lục) để tạo chất hữu cơ:',
         },
-        { type: 'tex', tex: '\\mathrm{6CO_2 + 6H_2O \\longrightarrow C_6H_{12}O_6 + 6O_2}' },
+        {
+          type: 'tex',
+          tex: '\\mathrm{6CO_2 + 6H_2O \\xrightarrow{\\text{ánh sáng, diệp lục}} C_6H_{12}O_6 + 6O_2}',
+        },
         {
           type: 'list',
           items: [
@@ -187,16 +190,16 @@ export default {
     {
       type: 'number',
       prompt:
-        'Đốt cháy hoàn toàn $8$ g methane. Tính thể tích khí $\\mathrm{CO_2}$ sinh ra ở điều kiện chuẩn (một mol khí chiếm $24{,}79$ L), đơn vị lít, làm tròn đến hàng phần trăm (C = 12, H = 1).',
-      answer: 12.395,
-      tolerance: 0.01,
+        'Đốt cháy hoàn toàn $16$ g methane. Tính thể tích khí $\\mathrm{CO_2}$ sinh ra ở điều kiện chuẩn (một mol khí chiếm $24{,}79$ L), đơn vị lít (C = 12, H = 1).',
+      answer: 24.79,
+      tolerance: 0.02,
       unit: 'L',
       hints: [
-        '$n_{\\mathrm{CH_4}} = \\dfrac{8}{16}$ mol.',
+        '$M_{\\mathrm{CH_4}} = 12 + 4 \\times 1 = 16$ g/mol.',
         'Một mol $\\mathrm{CH_4}$ tạo một mol $\\mathrm{CO_2}$.',
       ],
       solution:
-        '$n_{\\mathrm{CH_4}} = 0{,}5$ mol $= n_{\\mathrm{CO_2}}$; $V = 0{,}5 \\times 24{,}79 \\approx 12{,}40$ L.',
+        '$n_{\\mathrm{CH_4}} = \\dfrac{16}{16} = 1$ mol $= n_{\\mathrm{CO_2}}$; $V = 1 \\times 24{,}79 = 24{,}79$ L.',
     },
     {
       type: 'match',

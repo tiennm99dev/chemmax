@@ -2,7 +2,7 @@
   import FeedbackNote from '#lib/core/feedback-note.svelte';
   import SegmentedControl from '#lib/core/segmented-control.svelte';
   import { focusRing } from '#lib/core/ui.js';
-  import { formatNumber } from '#lib/core/number-format.js';
+  import { formatFixed, formatNumber } from '#lib/core/number-format.js';
   import { polar, sectorPath } from '#lib/core/visuals/svg-math.js';
   import { ELEMENTS, slices, sumPercent } from './engine.js';
 
@@ -79,6 +79,11 @@
         tone: /** @type {const} */ ('ok'),
         text: `Đúng rồi! ${names.charAt(0).toUpperCase()}${names.slice(1)} chiếm ${sumText} khối lượng vỏ Trái Đất.`,
       };
+    if (picked.every((x) => current.answer.includes(x)))
+      return {
+        tone: /** @type {const} */ ('info'),
+        text: `Đúng hướng: ${names} (${sumText}). Chọn tiếp.`,
+      };
     return {
       tone: /** @type {const} */ ('warn'),
       text: `Chưa đúng: ${names} (${sumText}). ${
@@ -153,7 +158,7 @@
             <span class="h-3 w-3 shrink-0 rounded-sm" style:background={el.colour}></span>
             <span class="min-w-0">
               <span class="block">{el.name}</span>
-              <span class="block tabular-nums text-slate-600">{formatNumber(el.percent, 1)}%</span>
+              <span class="block tabular-nums text-slate-600">{formatFixed(el.percent, 1)}%</span>
             </span>
           </button>
         </li>

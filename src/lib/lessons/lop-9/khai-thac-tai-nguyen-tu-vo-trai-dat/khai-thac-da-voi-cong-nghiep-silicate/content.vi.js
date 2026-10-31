@@ -74,6 +74,10 @@ export default {
           text: 'Silicon là nguyên tố phổ biến thứ hai trong vỏ Trái Đất (khoảng $28{,}2\\%$ khối lượng), tồn tại chủ yếu dưới dạng silicon dioxide $\\mathrm{SiO_2}$ (cát, thạch anh) và các muối silicate (đất sét, cao lanh, mica). Công nghiệp silicate là ngành sản xuất đồ gốm, thuỷ tinh, xi măng từ các hợp chất tự nhiên của silicon và các chất khác.',
         },
         {
+          type: 'p',
+          text: 'Silicon tinh khiết là chất bán dẫn, dùng làm vi mạch điện tử (chip), pin mặt trời, cảm biến. Thạch anh (gần như $\\mathrm{SiO_2}$ tinh khiết) dùng làm thiết bị phát sóng siêu âm, dụng cụ quang học, thuỷ tinh chịu nhiệt, cáp quang.',
+        },
+        {
           type: 'table',
           head: ['Ngành', 'Nguyên liệu chính', 'Công đoạn chính'],
           rows: [
