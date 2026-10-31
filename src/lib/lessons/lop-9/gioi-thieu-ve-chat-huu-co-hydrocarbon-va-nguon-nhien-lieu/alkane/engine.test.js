@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { bondValences } from '#lib/domain/molecule.js';
-import { isBalancedText } from '../_shared/equation-check.js';
+import { isBalancedText } from '#lib/domain/reaction.js';
 import {
   ALKANES,
   alkaneFormula,

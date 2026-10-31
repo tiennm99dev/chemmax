@@ -28,4 +28,12 @@ describe('isBalancedText', () => {
     expect(isBalancedText('Fe2O3 + 3HCl → 2FeCl3 + 3H2O')).toBe(false);
     expect(isBalancedText('Ca(OH)2 + CO2 → CaCO3↓ + H2O')).toBe(true);
   });
+
+  it('ignores the bond marks of condensed structural formulas', () => {
+    expect(isBalancedText('CH4 + 2O2 → CO2 + 2H2O')).toBe(true);
+    expect(isBalancedText('CH2=CH2 + Br2 → BrCH2–CH2Br')).toBe(true);
+    expect(isBalancedText('CH≡CH + 2Br2 → Br2CH–CHBr2')).toBe(true);
+    expect(isBalancedText('CH4 + O2 → CO2 + 2H2O')).toBe(false);
+    expect(isBalancedText('C2H4 + 2O2 → 2CO2 + 2H2O')).toBe(false);
+  });
 });

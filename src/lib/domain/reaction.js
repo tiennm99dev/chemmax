@@ -40,12 +40,15 @@ export function terms(text) {
 }
 
 /**
- * Whether a book-style equation conserves every element.
+ * Whether a book-style equation conserves every element. Bond marks of
+ * condensed structural formulas (–, =, ≡) are ignored, so
+ * "CH2=CH2 + Br2 → BrCH2–CH2Br" can be checked too.
  * @param {string} text
  */
 export function isBalancedText(text) {
   const { left, right } = terms(text);
-  const plain = (/** @type {Term[]} */ list) => list.map((t) => t.formula).join(' + ');
+  const plain = (/** @type {Term[]} */ list) =>
+    list.map((t) => t.formula.replace(/[–=≡]/g, '')).join(' + ');
   const eq = parseEquation(`${plain(left)} -> ${plain(right)}`);
   return isBalanced(
     eq,

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { isBalancedText } from '../_shared/equation-check.js';
+import { isBalancedText } from '#lib/domain/reaction.js';
 import { PORTIONS_TO_CLEAR, bromineColour, bromineTest, chainMass, mol } from './engine.js';
 
 describe('bromineTest', () => {
