@@ -9,7 +9,7 @@
  * and superscript exponents (`polyText`); decimals use a comma.
  */
 
-import { MINUS, formatNumber, sup, texNumber } from '#lib/core/number-format.js';
+import { MINUS, formatNumber, numTex, sup, tidy } from '#lib/core/number-format.js';
 
 /** @typedef {{ c: number, e: number }} Term */
 
@@ -17,10 +17,7 @@ import { MINUS, formatNumber, sup, texNumber } from '#lib/core/number-format.js'
  * Rounds away floating-point noise (0.1 + 0.2) so equal values compare equal.
  * @param {number} v
  */
-const clean = (v) => {
-  const r = Math.round(v * 1e9) / 1e9;
-  return Object.is(r, -0) ? 0 : r;
-};
+const clean = (v) => tidy(v);
 
 /**
  * Drops trailing zero coefficients.
@@ -128,10 +125,10 @@ export function termsOf(p, ascending = false) {
 }
 
 /**
- * A number in TeX with the decimal comma braced: 2.5 → '2{,}5'.
- * @param {number} v
+ * A number in TeX the book's way (`numTex` in `number-format.js`): 2.5 →
+ * '2{,}5', 1296 → '1\,296'.
  */
-export const numTex = (v) => texNumber(formatNumber(v)).replace(MINUS, '-');
+export { numTex };
 
 /**
  * One term as TeX. `first` leaves a positive sign off; otherwise the sign is

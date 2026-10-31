@@ -9,6 +9,11 @@
  * - `formatFixed`: a fixed number of decimals, zeros kept (5 → '5,0').
  * - `texNumber`: a formatted number made safe for TeX (`3{,}5`), so KaTeX does
  *   not put a space after the decimal comma.
+ * - `numTex`: a number as TeX source the book's way, digits grouped by a thin
+ *   space (`12\,345{,}5`).
+ * - `hoursText`: a time in hours as rich text, '$1$ giờ $12$ phút'.
+ * - `tidy`: rounds away binary noise (0.1 + 0.2) before a value is compared
+ *   or written.
  * - `fmt`, `sup`, `powText`, `readNatural`: natural numbers the way the lower
  *   secondary books print them, grouped by a narrow space (2 345), with
  *   superscript exponents (2⁵).
@@ -62,6 +67,41 @@ export function formatFixed(value, decimals) {
  */
 export function texNumber(text) {
   return text.replace(/,/g, '{,}');
+}
+
+/**
+ * Rounds away binary noise to `places` decimals, so 0.1 + 0.2 equals 0.3 and
+ * −0 becomes 0.
+ * @param {number} value
+ * @param {number} [places]
+ */
+export function tidy(value, places = 9) {
+  const r = Math.round(value * 10 ** places) / 10 ** places;
+  return Object.is(r, -0) ? 0 : r;
+}
+
+/**
+ * A number as TeX source, grouped the book's way: digits in threes split by a
+ * thin space (`\,`), the decimal comma braced and an ASCII minus, rounded to
+ * at most `maxDecimals` places: 12345.5 → '12\,345{,}5', -2.5 → '-2{,}5'.
+ * @param {number} value
+ * @param {number} [maxDecimals]
+ */
+export function numTex(value, maxDecimals = 6) {
+  return texNumber(formatNumber(value, maxDecimals)).replace(/\./g, '\\,').replace(MINUS, '-');
+}
+
+/**
+ * A time in hours as rich text with TeX numbers, the way the book writes a
+ * duration: 1.2 gives '$1$ giờ $12$ phút', 0.5 gives '$30$ phút', 4 gives
+ * '$4$ giờ'.
+ * @param {number} hours
+ */
+export function hoursText(hours) {
+  const h = Math.floor(hours);
+  const m = Math.round((hours - h) * 60);
+  if (m === 0) return `$${h}$ giờ`;
+  return h === 0 ? `$${m}$ phút` : `$${h}$ giờ $${m}$ phút`;
 }
 
 /**

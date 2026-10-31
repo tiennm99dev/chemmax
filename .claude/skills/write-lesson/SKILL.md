@@ -148,7 +148,7 @@ Exercises all have `prompt`, `hints` (one or more, revealed one at a time) and
 | `multi` | `options`, `answers` indices | exact set |
 | `text` | `accept: string[]` | ignores case, diacritics, extra spaces, final `.` |
 | `order` | `items`, `answer` (item indices in correct order) | drag to sort |
-| `match` | `left`, `right` (at least as many), `pairs: [[l, r]]` | each left once |
+| `match` | `left`, `right` (at least as many), `pairs: [[l, r]]` | each left once; the page shows `right` in a seeded order, so list it in any order and never scramble it by hand |
 | `count` | `picture`, `answer` 0-100, `choices?` (must include it) | kids count and tap |
 
 `picture` names come from `src/lib/core/kid/pictures/index.js` (apple, banana,
@@ -225,12 +225,19 @@ Core visuals, `#lib/core/visuals/<name>.svelte`:
 (of a perpendicular), `diagonalPoint`, `triangleFromSides`, `bisectorFoot`,
 `labelSpot` (a vertex name pushed away from the centroid and kept on the
 board), `polygonArea`, and for quadrilaterals `quadAngles`, `splittingSide`
-and `isConvex`. `#lib/geom-engine/grid-triangle.js` is a draggable triangle on
+and `isConvex`. `#lib/geom-engine/centers.js` has the circles of a
+triangle: `circumcircle` and `incircle` (`{ center, radius }`, null when
+flat) and `touchPoints` (where the incircle meets the sides).
+`#lib/geom-engine/solid.js` draws solids in a turning orthographic view:
+`add3`, `sub3`, `mul3`, `dot3`, `cross3` on `{ x, y, z }`, `viewPoint`,
+`facesViewer`, `drawOrder` (faces far to near) and the view controls
+`clampPitch`, `wrapYaw`, `turnByKey`. `#lib/geom-engine/grid-triangle.js` is a draggable triangle on
 a half-unit grid: `toGrid`, `placeVertex` (never goes flat), `measureTri`
 (exact squared sides, angles), `same`, `OPPOSITE`, `frame` (grid units to SVG
 and back) and `labelOutside`. `#lib/utils/svg.js` has `pointsAttr` for a
-polygon's `points`. Never copy `dist`, `gcd`, `polygonArea` or an angle helper
-into a lesson.
+polygon's `points`. Never copy `dist`, `cross`, `gcd`
+(`#lib/numtheory-engine/index.js`), `polygonArea`, an angle helper (`along`,
+`directionTo`) or a 3D vector helper into a lesson.
 
 `number-line` reads the marker's value to screen readers as Vietnamese decimals;
 pass `valueText` when it should be read another way (a fraction).
@@ -256,7 +263,11 @@ Other shared pieces:
   (`2⁵`) and `readNatural` for typed input. Integers: `MINUS` (the book's
   `−`), `intText` (`−1 234`), `operand` (`(−5)`) and `readInteger`.
   `roundToTotal(values, total)` rounds measures to whole numbers that still
-  add up (four angles to 360°, shares to 100%).
+  add up (four angles to 360°, shares to 100%). In generated TeX write numbers
+  with `numTex` (`12\,345{,}5`: thin-space thousands, braced comma, ASCII
+  minus), never `formatNumber` with a comma swap, and durations with
+  `hoursText` (`$1$ giờ $12$ phút`). `tidy(v, places = 9)` rounds away binary
+  noise (0.1 + 0.2) before comparing or writing a computed value.
 - `#lib/core/fractions.js`: `fracText` (`−3/4`), `fracOperand`, `mixedText`
   (`1 3/4`), `texFrac`, `texOperand`, `toFraction`, `valueText`,
   `readFraction`, and `readProbability`/`probabilityText` for probabilities;
@@ -281,8 +292,11 @@ Other shared pieces:
 - `#lib/core/drill-board.svelte` with `#lib/core/drill.js`: a generated
   practice drill for `practice` and `review` lessons. Write one `Skill`
   (`{ id, label, make(rand) }`, `make` returns `{ prompt, answer, steps,
-  hints? }`) per lesson in `_shared/skills.js` using `int`, `pick` and
-  `shuffle` from `drill.js`, then render
+  hints? }`) per lesson in `_shared/skills.js` using `int`, `pick`,
+  `shuffle`, `nonZero`, `signedInt` (a size from lo to hi with a random
+  sign), `partition` (k positive parts adding up to n), `rounded` (null on a
+  rounding half) and `retryMake` (redraw until a maker returns a question)
+  from `drill.js`, then render
   `<DrillBoard skills={[...]} perSkill={2} />`. A wrong first answer shows a
   hint ladder (the question's `hints`, else its steps that do not give the
   answer away) and a second try; only a second miss shows the full solution.
@@ -342,9 +356,11 @@ Other shared pieces:
   ChemMax has `periodic-table`, `atom-model`, `molecule-viewer`,
   `equation-balancer`, `ph-scale`, `lab-glassware`, `equation-line` (a
   book-style equation such as "Zn + 2HCl → ZnCl2 + H2↑" with real subscripts)
-  with `reaction.js` (`terms`, `isBalancedText`); BioMax has
+  with `reaction.js` (`terms`, `isBalancedText`, which also checks condensed
+  structural formulas such as "CH2=CH2 + Br2 → BrCH2–CH2Br"); BioMax has
   `diagram-hotspots`, `punnett-square`, `pedigree-chart`, `food-web` (`mode`
-  opens it in "Loại bỏ" mode), `dna-codon-translator`, `population-chart`. Use
+  opens it in "Loại bỏ" mode), `dna-codon-translator`, `population-chart`,
+  `pea` (a garden-pea seed, flower or plant picture for Mendel's traits). Use
   what `ls src/lib/domain/` actually shows; each component has a
   `<name>.gallery.svelte` demo that `/_gallery/` lists. When two chapters need
   the same subject helper, it belongs in `src/lib/domain/`, not in two
@@ -357,6 +373,9 @@ writes, no `{@html}` of anything but KaTeX output. Respect
 `prefers-reduced-motion` for animations. Keep a lesson's JS under 30 KB gzip;
 `npm run size-report` fails any lesson chunk over 60 KB. Put non-trivial logic in
 `engine.js` or a `*.svelte.js` module and test it in Node (there is no jsdom).
+Keep each test well under a second, since the suite runs under load: sample
+fixed seeds and edge cases, and in a loop over many cases collect failures
+into a list checked by one `expect` instead of calling `expect` per case.
 
 ## 7. Quality bar
 
@@ -395,7 +414,10 @@ with zero warnings; fix the cause, never weaken a test.
    src/lib/lessons/lop-N/<chuong-slug>` first) and `npm run check`.
 3. `npm test`.
 4. `npm run build`, then `npm run size-report` within budget.
-5. `npm run stubs -- lop-N/<chuong-slug>` reports `0 stubs`.
+5. `npm run stubs -- lop-N/<chuong-slug>` reports `0 stubs`. When you were
+   given only some lessons of a chapter that has later parts, the gate is
+   checked for your lessons, not the whole chapter: none of them may appear in
+   the stub list the command prints, and the later parts' stubs remain.
 6. `git diff --name-only main...HEAD` (and `git status --short`) lists only paths
    under `src/lib/lessons/lop-N/<chuong-slug>/`.
 7. Spot check one lesson in the browser (`npm run preview`, agent-browser where
@@ -415,6 +437,11 @@ with zero warnings; fix the cause, never weaken a test.
   or test names.
 - No AI attribution: no `Co-Authored-By` trailer for an agent, no "Generated
   with" footer.
+- Start every commit from a clean index: run `git status` first and stage
+  only that commit's paths (`git add <paths>`, never `git add -A` over
+  someone else's work), so a deletion or rename left staged is not swept into
+  an earlier commit. Each commit must build on its own: lint, check, tests and
+  build pass at that commit, not only at the last one.
 - Rebase on `main` before merging; paths are disjoint from other chapters, so a
   conflict means you touched a file you do not own. Do not push unless told to.
 
