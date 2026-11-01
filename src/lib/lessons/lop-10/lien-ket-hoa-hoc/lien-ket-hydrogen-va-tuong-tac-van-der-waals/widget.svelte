@@ -7,6 +7,7 @@
   import { atomColor } from '#lib/domain/molecule.js';
   import {
     BOARD,
+    EDGE_PAD,
     START,
     SUBSTANCES,
     boardText,
@@ -97,7 +98,7 @@
           point: points[i],
           svg: () => svgEl ?? null,
           viewBox: { w: BOARD.w, h: BOARD.h },
-          pad: 34,
+          pad: EDGE_PAD,
           keyStep: 10,
           keyShiftStep: 30,
           onChange: () => moved(i),

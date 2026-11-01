@@ -83,7 +83,7 @@
           font-size="18"
           font-weight="700"
           fill={positive ? '#dc2626' : '#2563eb'}
-          >{facts.type === 'ion' ? (positive ? '+' : '−') : positive ? 'δ+' : 'δ−'}</text
+          >{facts.ionic ? (positive ? '+' : '−') : positive ? 'δ+' : 'δ−'}</text
         >
       {/if}
     {/each}

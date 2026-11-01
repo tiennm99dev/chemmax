@@ -12,7 +12,7 @@ import { MINUS, formatNumber } from '#lib/core/number-format.js';
  * @property {string} id
  * @property {string} center symbol of the central atom
  * @property {number[]} hydrogens directions of the H atoms, degrees
- * @property {number} lonePairs lone pairs of the central atom open to a hydrogen bond
+ * @property {number} lonePairs lone pairs of the central atom open to a hydrogen bond; HF has one hydrogen per molecule, so one lone pair on average is in use and the molecules form chains
  * @property {boolean} forms whether the molecule forms hydrogen bonds at all
  * @property {string} note
  */
@@ -22,6 +22,8 @@ import { MINUS, formatNumber } from '#lib/core/number-format.js';
 
 export const BOARD = { w: 360, h: 320 };
 export const BOND_LENGTH = 26;
+/** How far a central atom stays from the edge of the board, so its hydrogens stay on it. */
+export const EDGE_PAD = 34;
 /** Closest distance between two central atoms. */
 const MIN_CENTERS = 52;
 /** Range of the H…X distance for a hydrogen bond. */
@@ -52,7 +54,7 @@ export const SUBSTANCES = [
     id: 'HF',
     center: 'F',
     hydrogens: [0],
-    lonePairs: 3,
+    lonePairs: 1,
     forms: true,
     note: 'Mỗi phân tử HF có 1 nguyên tử H nên các phân tử nối với nhau thành chuỗi.',
   },
@@ -169,7 +171,8 @@ export function orient(mols, s) {
 
 /**
  * Keeps the moved molecule from overlapping the others: pushed straight out to
- * the closest allowed distance.
+ * the closest allowed distance, or to the opposite side of the other molecule
+ * when that would leave the board.
  * @param {{ x: number, y: number }} p @param {{ x: number, y: number }[]} others
  */
 export function pushOut(p, others) {
@@ -181,6 +184,8 @@ export function pushOut(p, others) {
     const uy = d > 0 ? (y - o.y) / d : 0;
     x = o.x + ux * MIN_CENTERS;
     y = o.y + uy * MIN_CENTERS;
+    if (x < EDGE_PAD || x > BOARD.w - EDGE_PAD) x = 2 * o.x - x;
+    if (y < EDGE_PAD || y > BOARD.h - EDGE_PAD) y = 2 * o.y - y;
   }
   return { x, y };
 }

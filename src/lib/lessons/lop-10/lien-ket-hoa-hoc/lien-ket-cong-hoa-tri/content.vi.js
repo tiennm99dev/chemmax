@@ -27,7 +27,7 @@ export default {
             'Phân tử',
             'Mỗi nguyên tử góp',
             'Số cặp chung',
-            'Công thức Lewis',
+            'Công thức cấu tạo',
             'Loại liên kết',
           ],
           rows: [
@@ -46,7 +46,7 @@ export default {
         },
         {
           type: 'p',
-          text: 'Công thức electron biểu diễn các electron hoá trị bằng dấu chấm. Thay mỗi cặp electron chung bằng một gạch nối ta được công thức Lewis, trong đó có thể giữ lại các cặp electron riêng. Công thức cấu tạo chỉ giữ các gạch nối.',
+          text: 'Công thức electron biểu diễn các electron hoá trị bằng dấu chấm. Thay mỗi cặp electron chung bằng một gạch nối ta được công thức Lewis, các cặp electron riêng vẫn được giữ lại. Công thức cấu tạo chỉ giữ các gạch nối.',
         },
         {
           type: 'callout',
@@ -129,7 +129,7 @@ export default {
           type: 'callout',
           tone: 'definition',
           title: 'Năng lượng liên kết',
-          text: 'Năng lượng liên kết $E_b$ là năng lượng cần để phá vỡ một mol liên kết thành các nguyên tử ở thể khí, thường tính ở $25\\ ^\\circ\\mathrm{C}$, $1$ bar, đơn vị $\\mathrm{kJ \\cdot mol^{-1}}$. $E_b$ càng lớn thì liên kết càng bền.',
+          text: 'Năng lượng liên kết $E_b$ là năng lượng cần để phá vỡ một mol liên kết trong phân tử ở thể khí, tạo thành các nguyên tử ở thể khí, thường tính ở $25\\ ^\\circ\\mathrm{C}$, $1$ bar, đơn vị $\\mathrm{kJ \\cdot mol^{-1}}$. $E_b$ càng lớn thì liên kết càng bền.',
         },
         {
           type: 'table',
@@ -163,11 +163,11 @@ export default {
   examples: [
     {
       problem:
-        'Giải thích sự hình thành liên kết trong phân tử $\\mathrm{CO_2}$. Viết công thức Lewis và cho biết số liên kết $\\sigma$, $\\pi$.',
+        'Giải thích sự hình thành liên kết trong phân tử $\\mathrm{CO_2}$. Viết công thức cấu tạo và cho biết số liên kết $\\sigma$, $\\pi$.',
       steps: [
         'C có 4 electron hoá trị, cần thêm 4 electron; mỗi O có 6 electron hoá trị, cần thêm 2 electron.',
         'C góp 2 electron với mỗi O, mỗi O góp 2 electron với C: giữa C và mỗi O có 2 cặp electron chung.',
-        'Công thức Lewis có dạng O=C=O; mỗi O còn 2 cặp electron riêng.',
+        'Công thức cấu tạo là O=C=O; trong công thức Lewis, mỗi O còn giữ 2 cặp electron riêng.',
         'Mỗi liên kết đôi gồm $1\\sigma$ và $1\\pi$, nên phân tử có $2\\sigma$ và $2\\pi$.',
       ],
       answer: '$\\mathrm{CO_2}$: O=C=O, gồm $2$ liên kết $\\sigma$ và $2$ liên kết $\\pi$.',

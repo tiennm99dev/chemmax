@@ -74,11 +74,38 @@ describe('bar', () => {
   });
 });
 
-describe('H–F', () => {
-  it('keeps the rule but says the molecule is covalent', () => {
-    expect(pairFacts('H', 'F').type).toBe('ion');
-    expect(pairSentence('H', 'F')).toContain('cộng hoá trị phân cực rất mạnh');
-    expect(pairSentence('H', 'F')).not.toContain('nhường hẳn');
+describe('pairs the thresholds misjudge', () => {
+  it('keeps the rule but says two non-metals past the ion limit still share electrons', () => {
+    const pairs = [
+      ['H', 'F'],
+      ['P', 'F'],
+      ['Si', 'F'],
+    ];
+    const bad = pairs.filter(([a, b]) => {
+      const f = pairFacts(a, b);
+      const text = pairSentence(a, b);
+      return (
+        f.type !== 'ion' ||
+        f.ionic ||
+        Math.abs(f.lean) === 1 ||
+        !text.includes('cộng hoá trị phân cực rất mạnh') ||
+        text.includes('nhường hẳn')
+      );
+    });
+    expect(bad).toEqual([]);
+  });
+
+  it('keeps the rule but says a typical metal below the ion limit still forms an ionic compound', () => {
+    expect(pairFacts('Na', 'S').type).toBe('polar');
+    expect(pairSentence('Na', 'S')).toContain('hợp chất ion');
+    expect(pairSentence('Mg', 'Br')).toContain('hợp chất ion');
+    expect(pairSentence('Al', 'Cl')).not.toContain('hợp chất ion');
+  });
+
+  it('shows a real ionic pair with whole charges and the pair moved across', () => {
+    expect(pairFacts('Na', 'Cl').ionic).toBe(true);
+    expect(pairFacts('Na', 'Cl').lean).toBe(1);
+    expect(pairSentence('Na', 'Cl')).toContain('nhường hẳn');
   });
 });
 

@@ -10,6 +10,8 @@ import { BOND_LABELS, ION_LIMIT, bondType, chi, deltaChi } from '../_shared/bond
 export const FIRST_ATOMS = ['H', 'C', 'N', 'P', 'S', 'Si', 'Cl', 'Al', 'Mg', 'Ca', 'Na', 'K'];
 const SECOND_ATOMS = ['H', 'C', 'N', 'O', 'F', 'S', 'Cl', 'Br', 'I'];
 const METALS = new Set(['Al', 'Mg', 'Ca', 'Na', 'K']);
+/** Metals whose compounds with non-metals are ionic even when the difference is below the limit. */
+const TYPICAL_METALS = new Set(['Mg', 'Ca', 'Na', 'K']);
 
 /** Right end of the bar: the largest difference among the elements offered is K–F. */
 export const BAR_MAX = 3.3;
@@ -31,7 +33,18 @@ export function pairFacts(a, b) {
   const type = bondType(delta);
   const big = chi(a) >= chi(b) ? a : b;
   const small = big === a ? b : a;
-  return { delta, type, big, small, lean: leanOf(delta) * (chi(b) >= chi(a) ? 1 : -1) };
+  // Two non-metals still share their electrons past the ion limit (H–F, P–F, Si–F).
+  const sharedPastLimit = type === 'ion' && !METALS.has(a) && !METALS.has(b);
+  const lean = sharedPastLimit ? 0.8 : leanOf(delta);
+  return {
+    delta,
+    type,
+    big,
+    small,
+    sharedPastLimit,
+    ionic: type === 'ion' && !sharedPastLimit,
+    lean: lean * (chi(b) >= chi(a) ? 1 : -1),
+  };
 }
 
 /**
@@ -56,8 +69,12 @@ export const barPercent = (delta) => Math.min(100, (delta / BAR_MAX) * 100);
 export function pairSentence(a, b) {
   const f = pairFacts(a, b);
   const calc = `$|\\Delta\\chi| = ${numTex(f.delta)}$`;
-  if (a !== b && [a, b].includes('H') && [a, b].includes('F')) {
-    return `${calc}: từ $1{,}7$ trở lên nên theo ngưỡng thì xếp vào liên kết ion. Thực tế HF là phân tử cộng hoá trị phân cực rất mạnh: các ngưỡng chỉ là quy ước gần đúng.`;
+  if (f.sharedPastLimit) {
+    return `${calc}: từ $1{,}7$ trở lên nên theo ngưỡng thì xếp vào liên kết ion. Thực tế ${a} và ${b} đều là phi kim, cặp electron vẫn được dùng chung nên đây là liên kết cộng hoá trị phân cực rất mạnh: các ngưỡng chỉ là quy ước gần đúng.`;
+  }
+  const typical = [a, b].find((s) => TYPICAL_METALS.has(s));
+  if (f.type === 'polar' && typical) {
+    return `${calc}: từ $0{,}4$ đến dưới $1{,}7$ nên theo ngưỡng thì xếp vào liên kết cộng hoá trị phân cực. Thực tế ${typical} là kim loại điển hình, hợp chất của nó với phi kim thường là hợp chất ion: các ngưỡng chỉ là quy ước gần đúng.`;
   }
   if (f.type === 'nonpolar') {
     return `${calc}: nhỏ hơn $0{,}4$, cặp electron chung gần như nằm giữa hai nguyên tử ${a} và ${b}. Đây là liên kết cộng hoá trị không phân cực.`;

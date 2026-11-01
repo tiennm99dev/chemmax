@@ -94,7 +94,7 @@ export default {
         },
         {
           type: 'p',
-          text: 'Biểu đồ dưới đây cho thấy dấu hiệu rõ nhất của liên kết hydrogen: chất đầu dãy có khối lượng phân tử nhỏ nhất nhưng lại sôi cao bất thường. Hãy tự tìm chất đó trong từng dãy.',
+          text: 'Biểu đồ dưới đây cho thấy dấu hiệu rõ nhất của liên kết hydrogen: chất có khối lượng phân tử nhỏ nhất nhưng lại sôi cao bất thường. Không phải dãy nào cũng có chất như vậy; hãy xem từng dãy và quyết định.',
         },
         { type: 'widget', name: 'nhiet-do-soi' },
       ],

@@ -69,9 +69,8 @@ describe('hydrogen bond board', () => {
       s,
     );
     const bonds = hydrogenBonds(cross, s);
-    const onCentre = bonds.filter((b) => b.donor === 0 || b.acceptor === 0).length;
-    expect(onCentre).toBeGreaterThan(0);
-    expect(onCentre).toBeLessThanOrEqual(4);
+    expect(bonds.filter((b) => b.donor === 0).length).toBe(2);
+    expect(bonds.filter((b) => b.acceptor === 0).length).toBe(2);
   });
 
   it('caps acceptors by their lone pairs', () => {
@@ -89,6 +88,30 @@ describe('hydrogen bond board', () => {
       (_, i) => hydrogenBonds(crowd, s).filter((b) => b.acceptor === i).length,
     );
     expect(Math.max(...load)).toBeLessThanOrEqual(1);
+  });
+
+  it('links HF molecules into chains, at most one bond in and one out', () => {
+    const s = substance('HF');
+    const cross = orient(
+      placed([
+        [180, 160],
+        [180, 100],
+        [240, 160],
+        [180, 220],
+        [120, 160],
+      ]),
+      s,
+    );
+    const bonds = hydrogenBonds(cross, s);
+    const most = Math.max(...cross.map((_, i) => bonds.filter((b) => b.acceptor === i).length));
+    expect(bonds.length).toBeGreaterThan(0);
+    expect(most).toBe(1);
+  });
+
+  it('keeps a molecule pushed against the edge on the board', () => {
+    const p = pushOut({ x: 34, y: 100 }, [{ x: 50, y: 100 }]);
+    expect(p.x).toBeCloseTo(102);
+    expect(p.y).toBeCloseTo(100);
   });
 
   it('never leaves molecules overlapping', () => {

@@ -18,8 +18,10 @@
   let view = $state({ yaw: 28, pitch: 24 });
   let selected = $state(ions.findIndex((i) => i.place === 'tam'));
   let place = $state(/** @type {Place} */ ('tam'));
-  /** @type {{ x: number, y: number, moved: boolean } | null} */
+  /** @type {{ x: number, y: number } | null} */
   let press = null;
+  /** The last press turned the view, so its click must not also select an ion. */
+  let turned = false;
 
   const ion = $derived(ions[selected]);
   const near = $derived(neighbours(ion, ions));
@@ -54,16 +56,25 @@
 
   /** @param {PointerEvent} e */
   function down(e) {
-    press = { x: e.clientX, y: e.clientY, moved: false };
+    press = { x: e.clientX, y: e.clientY };
+    turned = false;
   }
 
   /** @param {PointerEvent} e */
   function moveView(e) {
     if (!press) return;
+    if (e.buttons === 0) {
+      press = null;
+      return;
+    }
     const dx = e.clientX - press.x;
     const dy = e.clientY - press.y;
-    if (!press.moved && Math.hypot(dx, dy) < 4) return;
-    press.moved = true;
+    if (!turned && Math.hypot(dx, dy) < 4) return;
+    if (!turned) {
+      turned = true;
+      // Redrawing moves the circles in the DOM, which would drop a pointer held on one.
+      /** @type {SVGSVGElement} */ (e.currentTarget).setPointerCapture(e.pointerId);
+    }
     press.x = e.clientX;
     press.y = e.clientY;
     view = { yaw: wrapYaw(view.yaw - dx * 0.6), pitch: clampPitch(view.pitch + dy * 0.6) };
@@ -91,6 +102,8 @@
     class="mx-auto block w-full max-w-sm rounded-xl bg-slate-50 select-none {focusRing}"
     style:touch-action="none"
     role="slider"
+    aria-valuemin="-180"
+    aria-valuemax="180"
     aria-valuenow={Math.round(view.yaw)}
     aria-valuetext="Đã xoay {Math.round(view.yaw)} độ"
     tabindex="0"
@@ -128,7 +141,7 @@
         aria-label="Ion {ionName(d.p.kind)}"
         style="cursor:pointer; outline:none"
         onclick={() => {
-          if (!press?.moved) pick(d.i);
+          if (!turned) pick(d.i);
         }}
       />
     {/each}

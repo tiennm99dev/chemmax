@@ -79,7 +79,7 @@ export default {
           type: 'callout',
           tone: 'note',
           title: 'Hydrogen',
-          text: 'Nguyên tử H chỉ cần 2 electron, giống helium. Do đó H luôn tạo một cặp electron chung và không có cặp electron riêng.',
+          text: 'Nguyên tử H chỉ cần 2 electron, giống helium. Do đó trong phân tử, H tạo một cặp electron chung và không có cặp electron riêng.',
         },
       ],
     },
