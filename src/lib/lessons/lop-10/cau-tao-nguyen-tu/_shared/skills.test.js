@@ -1,23 +1,8 @@
 import { describe, expect, it } from 'vitest';
 import { rng } from '#lib/core/drill.js';
-import {
-  REVIEW_SKILLS,
-  configTex,
-  unpairedElectrons,
-  isotopeShareSkill,
-  particleSkill,
-} from './skills.js';
+import { REVIEW_SKILLS, isotopeShareSkill, particleSkill } from './skills.js';
 
 describe('review drill skills', () => {
-  it('counts unpaired electrons by Hund’s rule', () => {
-    const got = [1, 2, 5, 6, 7, 8, 9, 10, 15, 16, 17, 18, 19, 20, 26].map(unpairedElectrons);
-    expect(got).toEqual([1, 0, 1, 2, 3, 2, 1, 0, 3, 2, 1, 0, 1, 0, 4]);
-  });
-
-  it('writes configurations in shell order', () => {
-    expect(configTex(19)).toBe('\\mathrm{1s^{2}2s^{2}2p^{6}3s^{2}3p^{6}4s^{1}}');
-  });
-
   it('builds questions whose answers solve their own data', () => {
     const rand = rng(7);
     /** @type {string[]} */

@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import {
   ELEMENTS,
+  configTex,
   electronConfiguration,
   element,
   formatConfiguration,
@@ -10,6 +11,7 @@ import {
   outerElectrons,
   shellCounts,
   tablePosition,
+  unpairedElectrons,
 } from './elements.js';
 
 /** @param {number | string} key */
@@ -203,5 +205,16 @@ describe('electron configuration', () => {
         expect(outerElectrons(e.z), e.symbol).toBe(e.group);
       }
     }
+  });
+});
+
+describe('unpaired electrons and TeX configurations', () => {
+  it('counts unpaired electrons by Hund’s rule', () => {
+    const got = [1, 2, 5, 6, 7, 8, 9, 10, 15, 16, 17, 18, 19, 20, 26].map(unpairedElectrons);
+    expect(got).toEqual([1, 0, 1, 2, 3, 2, 1, 0, 3, 2, 1, 0, 1, 0, 4]);
+  });
+
+  it('writes configurations in shell order', () => {
+    expect(configTex(19)).toBe('\\mathrm{1s^{2}2s^{2}2p^{6}3s^{2}3p^{6}4s^{1}}');
   });
 });

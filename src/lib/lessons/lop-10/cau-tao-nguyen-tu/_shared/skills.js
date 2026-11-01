@@ -6,12 +6,7 @@
  */
 import { int, pick } from '#lib/core/drill.js';
 import { numTex } from '#lib/core/number-format.js';
-import {
-  electronConfiguration,
-  element,
-  outerElectrons,
-  subshellCapacity,
-} from '#lib/domain/elements.js';
+import { configTex, element, outerElectrons, unpairedElectrons } from '#lib/domain/elements.js';
 
 /** Common isotopes as [Z, N], one per element. */
 export const NUCLIDES = /** @type {Array<[number, number]>} */ ([
@@ -32,26 +27,6 @@ export const NUCLIDES = /** @type {Array<[number, number]>} */ ([
 
 /** @param {number} z */
 const symbol = (z) => element(z)?.symbol ?? '?';
-
-/**
- * Unpaired electrons of a ground-state atom, by Hund's rule in each subshell.
- * @param {number} z
- */
-export function unpairedElectrons(z) {
-  return electronConfiguration(z).reduce((n, s) => {
-    const orbitals = subshellCapacity(s.l) / 2;
-    return n + (s.electrons <= orbitals ? s.electrons : 2 * orbitals - s.electrons);
-  }, 0);
-}
-
-/** Configuration as upright TeX: 1s²2s²2p³ → \mathrm{1s^{2}2s^{2}2p^{3}}. @param {number} z */
-export function configTex(z) {
-  const text = electronConfiguration(z)
-    .sort((a, b) => a.n - b.n || a.l - b.l)
-    .map((s) => `${s.n}${'spdf'[s.l]}^{${s.electrons}}`)
-    .join('');
-  return `\\mathrm{${text}}`;
-}
 
 /** @type {import('#lib/core/drill.js').Skill} */
 export const particleSkill = {

@@ -434,6 +434,30 @@ export function outerElectrons(z) {
   return shellCounts(electronConfiguration(z)).at(-1) ?? 0;
 }
 
+/**
+ * Unpaired electrons of a ground-state atom, by Hund's rule in each subshell.
+ * @param {number} z
+ */
+export function unpairedElectrons(z) {
+  return electronConfiguration(z).reduce((n, s) => {
+    const orbitals = subshellCapacity(s.l) / 2;
+    return n + (s.electrons <= orbitals ? s.electrons : 2 * orbitals - s.electrons);
+  }, 0);
+}
+
+/**
+ * Ground-state configuration as upright TeX, subshells in shell order:
+ * 1s²2s²2p³ → \mathrm{1s^{2}2s^{2}2p^{3}}.
+ * @param {number} z
+ */
+export function configTex(z) {
+  const text = electronConfiguration(z)
+    .sort((a, b) => a.n - b.n || a.l - b.l)
+    .map((s) => `${s.n}${'spdf'[s.l]}^{${s.electrons}}`)
+    .join('');
+  return `\\mathrm{${text}}`;
+}
+
 const ROMAN = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII'];
 
 /**
