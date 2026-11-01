@@ -25,6 +25,42 @@ import { MAIN_GROUP } from '../_shared/main-group.js';
 /** Riddles are over the elements of periods 1-4. */
 export const LAST_Z = 36;
 
+/**
+ * Character of the highest hydroxide of the period 4 p elements, which the
+ * chapter's compound table (Li–Ca) leaves out.
+ * @type {Record<number, import('../_shared/compounds.js').Nature>}
+ */
+const PERIOD4_P_HYDROXIDES = {
+  31: 'luong-tinh',
+  32: 'luong-tinh',
+  33: 'acid',
+  34: 'acid',
+  35: 'acid',
+};
+
+/**
+ * Highest valence with oxygen of a group A element (the group number), or
+ * null for the elements with no highest oxide in the book's sense: d and f
+ * elements, oxygen, fluorine and the noble gases.
+ * @param {Element} el
+ */
+function oxideValence(el) {
+  if (el.block !== 's' && el.block !== 'p') return null;
+  if (el.z === 8 || el.z === 9 || metalKind(el) === 'khi-hiem') return null;
+  const column = /** @type {number} */ (el.group);
+  return column <= 2 ? column : column - 10;
+}
+
+/**
+ * Character of the highest hydroxide of a group A element, or null when it
+ * has none (hydrogen, oxygen, fluorine, the noble gases) or is not in group A.
+ * @param {Element} el
+ */
+function hydroxideNature(el) {
+  if (el.z === 1 || oxideValence(el) === null) return null;
+  return compoundsOf(el.z)?.hydroxideNature ?? PERIOD4_P_HYDROXIDES[el.z] ?? null;
+}
+
 const TYPE_TEXT = {
   'kim-loai': 'Là kim loại.',
   'phi-kim': 'Là phi kim.',
@@ -47,9 +83,9 @@ export function clueText(clue) {
     case 'valence-d':
       return `Nguyên tử có ${clue.value} electron hoá trị (ở phân lớp (n − 1)d và ns).`;
     case 'oxide':
-      return `Oxide cao nhất có dạng ${oxideFormula('R', clue.value).replace(/(\d)/g, (d) => '₀₁₂₃₄₅₆₇₈₉'[Number(d)])}.`;
+      return `Là nguyên tố nhóm A, oxide cao nhất có dạng ${oxideFormula('R', clue.value).replace(/(\d)/g, (d) => '₀₁₂₃₄₅₆₇₈₉'[Number(d)])}.`;
     case 'hydroxide':
-      return `Hydroxide cao nhất là ${HYDROXIDE_NATURE[clue.value]}.`;
+      return `Là nguyên tố nhóm A, hydroxide cao nhất là ${HYDROXIDE_NATURE[clue.value]}.`;
     case 'top-chi':
       return 'Có độ âm điện lớn nhất trong bảng tuần hoàn.';
     case 'largest-in-period':
@@ -72,13 +108,13 @@ export function fits(clue, el) {
     case 'type':
       return metalKind(el) === clue.value;
     case 'outer':
-      return (el.block === 's' || el.block === 'p') && outerElectrons(el.z) === clue.value;
+      return outerElectrons(el.z) === clue.value;
     case 'valence-d':
       return el.block === 'd' && el.group === clue.value;
     case 'oxide':
-      return compoundsOf(el.z)?.valence === clue.value;
+      return oxideValence(el) === clue.value;
     case 'hydroxide':
-      return compoundsOf(el.z)?.hydroxideNature === clue.value;
+      return hydroxideNature(el) === clue.value;
     case 'top-chi': {
       const top = Math.max(...ELEMENTS.map((e) => e.electronegativity ?? 0));
       return el.electronegativity === top;
@@ -167,6 +203,7 @@ export const RIDDLES = [
     clues: [
       { kind: 'hydroxide', value: 'acid' },
       { kind: 'outer', value: 6 },
+      { kind: 'period', value: 3 },
     ],
   },
   {

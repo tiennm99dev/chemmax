@@ -207,7 +207,7 @@ export default {
     {
       type: 'text',
       prompt: 'Nguyên tố ở chu kì 2, nhóm VA là nguyên tố nào? (Viết tên hoặc kí hiệu hoá học.)',
-      accept: ['nitrogen', 'N'],
+      accept: ['nitrogen', 'N', 'nitơ'],
       hints: ['Chu kì 2, nhóm VA: cấu hình $\\mathrm{1s^2 2s^2 2p^3}$.'],
       solution: 'Cấu hình $\\mathrm{1s^2 2s^2 2p^3}$ có $7$ electron, $Z = 7$: nitrogen (N).',
     },
