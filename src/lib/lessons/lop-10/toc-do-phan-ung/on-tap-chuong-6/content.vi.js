@@ -142,7 +142,7 @@ export default {
         "Một phản ứng ở $50\\,^\\circ\\mathrm{C}$ có tốc độ $0{,}032$ mol/(L·phút), hệ số nhiệt độ Van't Hoff bằng $2$. Phải giảm xuống bao nhiêu $^\\circ\\mathrm{C}$ để tốc độ còn $0{,}004$ mol/(L·phút)?",
       answer: 20,
       unit: '°C',
-      hints: ['Lập tỉ số $\\dfrac{0{,}032}{0{,}004}$.', 'Viết tỉ số thành lũy thừa của $2$.'],
+      hints: ['Lập tỉ số $\\dfrac{0{,}032}{0{,}004}$.', 'Viết tỉ số thành luỹ thừa của $2$.'],
       solution:
         'Tỉ số tốc độ là $8 = 2^3$, nên nhiệt độ giảm $30\\,^\\circ\\mathrm{C}$, còn $50 - 30 = 20\\,^\\circ\\mathrm{C}$.',
     },
@@ -230,7 +230,7 @@ export default {
         'Chuẩn bị dung dịch trước, rồi tạo hai nhiệt độ khác nhau, sau cùng mới cho kẽm vào.',
       ],
       solution:
-        'Chuẩn bị hai ống axit giống nhau, tạo hai mức nhiệt độ, thả kẽm cùng lúc, rồi so sánh tốc độ thoát khí. Chỉ nhiệt độ khác nhau nên kết luận đáng tin cậy.',
+        'Chuẩn bị hai ống acid giống nhau, tạo hai mức nhiệt độ, thả kẽm cùng lúc, rồi so sánh tốc độ thoát khí. Chỉ nhiệt độ khác nhau nên kết luận đáng tin cậy.',
     },
     {
       type: 'text',
@@ -244,6 +244,6 @@ export default {
   takeaways: [
     'Đồ thị nồng độ theo thời gian: dây cung càng dốc thì tốc độ trung bình càng lớn; tốc độ thường giảm dần theo thời gian.',
     'Đọc đúng hệ số của chất khi tính tốc độ và khi viết biểu thức tốc độ.',
-    'Mỗi lần tăng $10\\,^\\circ\\mathrm{C}$, tốc độ nhân với $\\gamma$; hãy đổi bài toán nhiệt độ về lũy thừa của $\\gamma$.',
+    'Mỗi lần tăng $10\\,^\\circ\\mathrm{C}$, tốc độ nhân với $\\gamma$; hãy đổi bài toán nhiệt độ về luỹ thừa của $\\gamma$.',
   ],
 };

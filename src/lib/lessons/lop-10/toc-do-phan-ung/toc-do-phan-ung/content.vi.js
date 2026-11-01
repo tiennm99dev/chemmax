@@ -69,13 +69,16 @@ export default {
           title: 'Định luật tác dụng khối lượng',
           text: 'Ở nhiệt độ không đổi, tốc độ phản ứng tỉ lệ thuận với tích nồng độ các chất phản ứng với số mũ thích hợp.',
         },
-        { type: 'p', text: 'Với phản ứng $a\\mathrm{A} + b\\mathrm{B} \\rightarrow$ sản phẩm:' },
+        {
+          type: 'p',
+          text: 'Với phản ứng đơn giản $a\\mathrm{A} + b\\mathrm{B} \\rightarrow$ sản phẩm:',
+        },
         { type: 'tex', tex: 'v = k \\cdot C_{\\mathrm{A}}^{a} \\cdot C_{\\mathrm{B}}^{b}' },
         {
           type: 'list',
           items: [
             '$k$ là hằng số tốc độ, chỉ phụ thuộc vào bản chất của chất phản ứng và nhiệt độ, không phụ thuộc nồng độ. Khi $C_{\\mathrm{A}} = C_{\\mathrm{B}} = 1$ M thì $v = k$.',
-            'Với phản ứng đơn giản (một giai đoạn), số mũ bằng hệ số của chất trong phương trình. Với phản ứng phức tạp, số mũ được xác định bằng thực nghiệm.',
+            'Phản ứng đơn giản là phản ứng xảy ra trong một giai đoạn; số mũ bằng hệ số của chất trong phương trình. Với phản ứng phức tạp, số mũ được xác định bằng thực nghiệm.',
           ],
         },
         {
@@ -90,7 +93,7 @@ export default {
       blocks: [
         {
           type: 'p',
-          text: 'Các hạt chất phản ứng chuyển động không ngừng và va chạm với nhau. Chỉ những va chạm đủ năng lượng để phá vỡ liên kết cũ, hình thành liên kết mới mới tạo ra sản phẩm; đó là các va chạm hiệu quả. Số va chạm hiệu quả càng nhiều thì tốc độ phản ứng càng lớn.',
+          text: 'Các hạt chất phản ứng chuyển động không ngừng và va chạm với nhau. Chỉ những va chạm đủ năng lượng để phá vỡ liên kết cũ, hình thành liên kết mới mới tạo ra sản phẩm; đó là các va chạm hiệu quả. Số va chạm hiệu quả càng nhiều thì tốc độ phản ứng càng lớn. Năng lượng tối thiểu mà các hạt cần có để va chạm gây ra phản ứng được gọi là năng lượng hoạt hoá.',
         },
         {
           type: 'table',
@@ -324,7 +327,7 @@ export default {
     {
       type: 'number',
       prompt:
-        'Một khối đá vôi lập phương cạnh $2$ cm được cắt thành $8$ khối lập phương cạnh $1$ cm. Tổng diện tích bề mặt tiếp xúc với axit tăng bao nhiêu lần?',
+        'Một khối đá vôi lập phương cạnh $2$ cm được cắt thành $8$ khối lập phương cạnh $1$ cm. Tổng diện tích bề mặt tiếp xúc với acid tăng bao nhiêu lần?',
       answer: 2,
       hints: ['Diện tích toàn phần của hình lập phương cạnh $a$ là $6a^2$.'],
       solution:
@@ -338,7 +341,7 @@ export default {
         'Thay kẽm hạt bằng kẽm bột cùng khối lượng',
         'Dùng dung dịch $\\mathrm{HCl}$ có nồng độ lớn hơn',
         'Đun nóng hỗn hợp',
-        'Pha thêm nước vào dung dịch axit',
+        'Pha thêm nước vào dung dịch acid',
         'Tăng áp suất trên bề mặt dung dịch bằng nén khí trơ',
       ],
       answers: [0, 1, 2],
@@ -347,7 +350,7 @@ export default {
         'Áp suất chỉ ảnh hưởng khi chất phản ứng ở thể khí.',
       ],
       solution:
-        'Kẽm bột có diện tích bề mặt lớn hơn, axit đặc hơn có nồng độ lớn hơn, đun nóng tăng nhiệt độ. Pha nước làm giảm nồng độ; áp suất không ảnh hưởng vì chất phản ứng không ở thể khí.',
+        'Kẽm bột có diện tích bề mặt lớn hơn, acid đặc hơn có nồng độ lớn hơn, đun nóng tăng nhiệt độ. Pha nước làm giảm nồng độ; áp suất không ảnh hưởng vì chất phản ứng không ở thể khí.',
     },
     {
       type: 'match',

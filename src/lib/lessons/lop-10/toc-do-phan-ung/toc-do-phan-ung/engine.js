@@ -285,8 +285,20 @@ function changes(a, b) {
 }
 
 /**
+ * Whether the change of one condition should speed the reaction up.
+ * @param {Conditions} from
+ * @param {Conditions} to
+ */
+const shouldSpeedUp = (from, to) =>
+  to.concentration > from.concentration ||
+  to.temperature > from.temperature ||
+  (to.catalyst && !from.catalyst);
+
+/**
  * The verdict on a finished run: what it measured and, when one condition
- * changed since the run before, how the rate responded.
+ * changed since the run before, how the rate responded. So few particles make
+ * single runs noisy, and a run that goes against the known effect is called
+ * chance rather than reported as what the condition does.
  * @param {RunSummary} run
  * @param {RunSummary | null} before
  * @returns {string} rich text
@@ -305,7 +317,11 @@ export function runVerdict(run, before) {
   const window = Math.max(1, Math.min(COMPARE_OVER, run.end, before.end));
   const now = rateOver(run.curve, window);
   const then = rateOver(before.curve, window);
-  if (now === then) return `${own} Đổi ${changed[0]}, tốc độ đo được như lần trước.`;
+  const expectedFaster = shouldSpeedUp(before.conditions, run.conditions);
+  if (now === then || now > then !== expectedFaster) {
+    const trend = expectedFaster ? 'nhanh hơn' : 'chậm hơn';
+    return `${own} Đổi ${changed[0]}: lần chạy này chưa thấy phản ứng ${trend}, vì số hạt ít nên mỗi lần chạy có sai lệch ngẫu nhiên. Tính trung bình nhiều lần, phản ứng sẽ ${trend}; hãy đổi qua lại yếu tố này vài lần để so sánh.`;
+  }
   if (then === 0)
     return `${own} Đổi ${changed[0]}: lần trước gần như chưa có phản ứng, lần này đã có.`;
   if (now === 0) return `${own} Đổi ${changed[0]}: lần này gần như chưa có phản ứng.`;

@@ -39,11 +39,18 @@ describe('reading rates off graphs', () => {
     expect(judge(oxygen, 1.07)).toBe('right');
     expect(judge(oxygen, 1.067)).toBe('right');
     expect(judge(oxygen, 1.1)).toBe('wrong');
+    expect(judge({ graph: GRAPHS[0], from: 3, to: 4 }, 0.53)).toBe('right');
     const n2o5 = { graph: GRAPHS[1], from: 0, to: 1 };
     expect(judge(n2o5, 0.001)).toBe('right');
     expect(judge(n2o5, -0.001)).toBe('negative');
     expect(judge(n2o5, 0.002)).toBe('coefficient');
     expect(judge(n2o5, null)).toBe('invalid');
+  });
+
+  it('marks a rounded rate as approximate and an exact one as equal', () => {
+    const oxygen = GRAPHS[0];
+    expect(solutionText({ graph: oxygen, from: 0, to: 1 })).toContain('\\approx 1{,}0667');
+    expect(solutionText({ graph: oxygen, from: 2, to: 4 })).toContain('= 0{,}6$');
   });
 
   it('writes a solution for every task and offers them all', () => {

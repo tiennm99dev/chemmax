@@ -132,6 +132,19 @@ describe('run verdict', () => {
     expect(text).toContain('$2$ lần');
   });
 
+  it('calls a run against the known effect chance, not a slower reaction', () => {
+    const heatedButSlower = runVerdict(run({ temperature: 40 }, 0.15), run({}, 0.1));
+    expect(heatedButSlower).toContain('ngẫu nhiên');
+    expect(heatedButSlower).not.toContain('chậm hơn khoảng');
+    const cooledButFaster = runVerdict(run({ temperature: 20 }, 0.1), run({}, 0.15));
+    expect(cooledButFaster).toContain('ngẫu nhiên');
+    expect(runVerdict(run({ catalyst: true }, 0.15), run({}, 0.15))).toContain('ngẫu nhiên');
+  });
+
+  it('reports a slowdown when the change should slow the reaction', () => {
+    expect(runVerdict(run({ temperature: 20 }, 0.15), run({}, 0.1))).toContain('chậm hơn khoảng');
+  });
+
   it('refuses to conclude when several conditions changed', () => {
     expect(runVerdict(run({ temperature: 40, catalyst: true }, 0.1), run({}, 0.15))).toContain(
       'đổi nhiều yếu tố',

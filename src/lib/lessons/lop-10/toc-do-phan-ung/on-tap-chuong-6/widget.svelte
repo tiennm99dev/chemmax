@@ -90,6 +90,9 @@
       label="Đồ thị theo thời gian, kéo hai chốt để chọn khoảng cần tính"
     />
   {/key}
+  <p class="text-xs text-slate-600">
+    Đồ thị thể tích khí oxygen dùng số liệu của sách; các đồ thị còn lại dùng số liệu minh hoạ.
+  </p>
   <p
     class="text-sm font-semibold {placed ? 'text-emerald-700' : 'text-slate-700'}"
     aria-live="polite"

@@ -1,8 +1,9 @@
 /**
- * Reading average rates off a graph: measured curves whose readings sit on grid
- * crossings, the tasks drawn from them, and how a typed rate is judged.
+ * Reading average rates off a graph: the book's oxygen curve and three
+ * illustrative ones whose readings sit on grid crossings, the tasks drawn from
+ * them, and how a typed rate is judged.
  */
-import { numTex } from '#lib/core/number-format.js';
+import { numTex, tidy } from '#lib/core/number-format.js';
 import { shuffle, rng } from '#lib/core/drill.js';
 import { averageRate } from '../_shared/rate.js';
 
@@ -154,7 +155,8 @@ export function taskRate({ graph, from, to }) {
 }
 
 /**
- * Judges a typed rate. Rounded answers pass within half a percent; two common
+ * Judges a typed rate. Answers rounded to two decimals pass, as 0,53 for 8/15
+ * does, which is why the margin is one percent; two common
  * slips get a named reply: a negative sign, and a forgotten coefficient.
  * @param {Task} task
  * @param {number | null} typed
@@ -163,7 +165,7 @@ export function taskRate({ graph, from, to }) {
 export function judge(task, typed) {
   if (typed === null) return 'invalid';
   const rate = taskRate(task);
-  const close = (/** @type {number} */ target) => Math.abs(typed - target) <= target * 0.005;
+  const close = (/** @type {number} */ target) => Math.abs(typed - target) <= target * 0.01;
   if (close(rate)) return 'right';
   if (typed < 0) return 'negative';
   if (task.graph.coefficient !== 1 && close(rate * task.graph.coefficient)) return 'coefficient';
@@ -183,5 +185,7 @@ export function solutionText(task) {
   const sign = rise ? '' : '-';
   const over = graph.coefficient === 1 ? '' : `\\dfrac{1}{${graph.coefficient}} \\cdot `;
   const s = graph.symbol;
-  return `Đọc đồ thị: $${s}_1 = ${numTex(y1)}$ ở $t_1 = ${numTex(t1)}$ ${graph.tUnit}, $${s}_2 = ${numTex(y2)}$ ở $t_2 = ${numTex(t2)}$ ${graph.tUnit}. Khi đó $\\overline{v} = ${sign}${over}\\dfrac{${numTex(y2)} - ${numTex(y1)}}{${numTex(t2)} - ${numTex(t1)}} = ${numTex(taskRate(task), 4)}$ ${graph.unit}.`;
+  const rate = taskRate(task);
+  const equals = tidy(rate, 4) === rate ? '=' : '\\approx';
+  return `Đọc đồ thị: $${s}_1 = ${numTex(y1)}$ ở $t_1 = ${numTex(t1)}$ ${graph.tUnit}, $${s}_2 = ${numTex(y2)}$ ở $t_2 = ${numTex(t2)}$ ${graph.tUnit}. Khi đó $\\overline{v} = ${sign}${over}\\dfrac{${numTex(y2)} - ${numTex(y1)}}{${numTex(t2)} - ${numTex(t1)}} ${equals} ${numTex(rate, 4)}$ ${graph.unit}.`;
 }

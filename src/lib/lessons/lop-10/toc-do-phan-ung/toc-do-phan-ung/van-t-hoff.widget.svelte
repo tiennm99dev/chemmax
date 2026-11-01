@@ -34,7 +34,7 @@
   <SegmentedControl label="Hệ số nhiệt độ Van't Hoff" options={GAMMAS} bind:value={gamma} />
   <SliderField
     label="Đun nóng từ 20 °C đến"
-    min={20}
+    min={30}
     max={70}
     step={10}
     unit="°C"

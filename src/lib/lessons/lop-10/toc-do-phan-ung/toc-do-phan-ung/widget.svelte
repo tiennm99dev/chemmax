@@ -154,7 +154,7 @@
         <strong>{view.effective}</strong> · thời gian: <strong>{formatFixed(view.t, 1)} s</strong>
       </p>
       <p class="text-center text-xs text-slate-600">
-        Chấm cam loé lên là một va chạm hiệu quả, tạo một phân tử sản phẩm C (hai màu).
+        Vòng vàng loé lên là một va chạm hiệu quả, tạo một phân tử sản phẩm C (hai màu).
       </p>
     </div>
     <RatePlot
