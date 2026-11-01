@@ -1,12 +1,14 @@
 <script>
+  import { tick } from 'svelte';
   import LiveRichText from '#lib/components/live-rich-text.svelte';
   import { draggable } from '#lib/actions/draggable.svelte.js';
   import FeedbackNote from '#lib/core/feedback-note.svelte';
-  import { formatNumber, numTex, tidy } from '#lib/core/number-format.js';
+  import { numTex, tidy } from '#lib/core/number-format.js';
   import SliderField from '#lib/core/slider-field.svelte';
   import { button, textInput } from '#lib/core/ui.js';
   import {
     KIND_NAMES,
+    groupedText,
     judgeLevel,
     kindOf,
     signedTex,
@@ -102,15 +104,18 @@
     if (verdict.ok) solved = true;
   }
 
-  function next() {
+  // The button that called this goes away with the solved state, so focus moves on to the handle.
+  async function next() {
     const at = REACTIONS.findIndex((x) => x.id === id);
     id = REACTIONS[(at + 1) % REACTIONS.length].id;
     reset();
+    await tick();
+    svgEl?.querySelector('circle')?.focus();
   }
 
   const live = $derived.by(() => {
     if (drawn === 0) return 'Hai mức đang bằng nhau.';
-    return `Mức sản phẩm đang ${drawn < 0 ? 'thấp' : 'cao'} hơn mức chất đầu ${formatNumber(Math.abs(drawn))} kJ: giản đồ của một phản ứng ${KIND_NAMES[kindOf(drawn)]}.`;
+    return `Mức sản phẩm đang ${drawn < 0 ? 'thấp' : 'cao'} hơn mức chất đầu ${groupedText(Math.abs(drawn))} kJ: giản đồ của một phản ứng ${KIND_NAMES[kindOf(drawn)]}.`;
   });
 </script>
 

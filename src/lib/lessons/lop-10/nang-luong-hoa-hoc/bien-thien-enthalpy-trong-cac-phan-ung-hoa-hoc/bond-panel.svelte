@@ -68,6 +68,7 @@
 
   /** @param {string} rowId */
   function take(rowId) {
+    if (order.includes(rowId)) return;
     const move = ladderMove(r, order, rowId);
     if (!move.ok) {
       note = { tone: 'warn', text: move.text };
@@ -114,7 +115,7 @@
             <li>
               <button
                 type="button"
-                disabled={on}
+                aria-disabled={on}
                 class="min-h-11 w-full rounded-lg border px-3 py-2 text-left text-sm tabular-nums {focusRing} {on
                   ? 'border-slate-300 bg-slate-100 text-slate-500'
                   : 'border-slate-300 bg-white text-slate-800 hover:bg-slate-50'}"

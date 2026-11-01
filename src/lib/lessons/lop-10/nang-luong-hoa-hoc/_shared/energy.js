@@ -3,7 +3,7 @@
  * enthalpies of formation, average bond energies, the reactions the lessons
  * calculate with, and how to write them the book's way.
  */
-import { formatNumber, numTex, tidy } from '#lib/core/number-format.js';
+import { GROUP, formatNumber, numTex, tidy } from '#lib/core/number-format.js';
 import { prettyFormula } from '#lib/domain/formula.js';
 
 /**
@@ -275,13 +275,19 @@ export function equationText(r) {
 }
 
 /**
- * A signed value in kJ as plain text, thousands split the book's way:
- * +225, −1 559,7, 0.
+ * A value as plain text, thousands split the book's way: 1 000, −1 559,7.
+ * @param {number} v
+ */
+export function groupedText(v) {
+  return formatNumber(v).replace(/\./g, GROUP);
+}
+
+/**
+ * A signed value in kJ as plain text: +225, −1 559,7, 0.
  * @param {number} v
  */
 export function signedText(v) {
-  const text = formatNumber(v).replace(/\./g, ' ');
-  return v > 0 ? `+${text}` : text;
+  return v > 0 ? `+${groupedText(v)}` : groupedText(v);
 }
 
 /**
@@ -397,7 +403,7 @@ export function bondSteps(r) {
     );
   const names = (/** @type {BondTerm[]} */ terms) =>
     bondTotals(terms)
-      .map((b) => `${formatNumber(b.count)} liên kết ${b.bond}`)
+      .map((b) => `${formatNumber(b.count)} mol liên kết ${b.bond}`)
       .join(', ');
   return [
     `Chất đầu có ${names(r.left)}: $\\sum E_b(\\text{cđ}) = ${line(r.left)} = ${numTex(sum(r.left))}$ kJ.`,

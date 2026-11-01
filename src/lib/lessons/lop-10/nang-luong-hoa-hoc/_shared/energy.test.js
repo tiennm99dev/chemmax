@@ -3,12 +3,14 @@ import {
   BOND_REACTIONS,
   FORMATION_REACTIONS,
   bondRows,
+  bondSteps,
   equationTex,
   equationText,
   formationLevels,
   formationRows,
   fromBonds,
   fromFormation,
+  groupedText,
   judgeLevel,
   ladder,
   ladderMove,
@@ -108,6 +110,10 @@ describe('enthalpy change from bond energies', () => {
     expect(bad).toEqual([]);
   });
 
+  it('counts the bonds of a half coefficient in moles', () => {
+    expect(bondSteps(bondById('butane'))[0]).toContain('6,5 mol liên kết O=O');
+  });
+
   it('forms bonds only after every bond is broken', () => {
     const r = bondById('hcl');
     expect(ladderMove(r, [], 'form-H–Cl').ok).toBe(false);
@@ -128,6 +134,7 @@ describe('writing', () => {
     expect(signedText(225)).toBe('+225');
     expect(signedText(-1559.7)).toBe('−1 559,7');
     expect(signedText(0)).toBe('0');
+    expect(groupedText(1000)).toBe('1\u202f000');
   });
 });
 
