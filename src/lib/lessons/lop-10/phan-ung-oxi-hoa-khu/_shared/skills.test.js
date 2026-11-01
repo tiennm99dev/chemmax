@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { readNumber } from '#lib/core/decimal.js';
-import { rng } from '#lib/core/drill.js';
+import { answerText, readNumber } from '#lib/core/decimal.js';
+import { readAnswer, rng, withUnit } from '#lib/core/drill.js';
 import { formatNumber } from '#lib/core/number-format.js';
 import { REVIEW_SKILLS, gasMolSkill, oxNumberSkill } from './skills.js';
 
@@ -12,6 +12,20 @@ describe('redox review skills', () => {
       for (let i = 0; i < 40; i++) {
         const q = skill.make(rand);
         if (!Number.isFinite(q.answer) || !q.prompt || q.steps.length === 0) bad.push(skill.id);
+      }
+    }
+    expect(bad).toEqual([]);
+  });
+
+  it('accepts every answer as the board prints it, unit included', () => {
+    const bad = [];
+    for (const skill of REVIEW_SKILLS) {
+      const rand = rng(21);
+      for (let i = 0; i < 60; i++) {
+        const q = skill.make(rand);
+        if (readAnswer(q, withUnit(answerText(q.answer), q.unit), readNumber) !== q.answer) {
+          bad.push(q.prompt);
+        }
       }
     }
     expect(bad).toEqual([]);

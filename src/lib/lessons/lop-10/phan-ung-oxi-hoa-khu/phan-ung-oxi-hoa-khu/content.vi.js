@@ -88,7 +88,7 @@ export default {
         },
         {
           type: 'p',
-          text: 'Không có nguyên tố nào đổi số oxi hoá thì không phải phản ứng oxi hoá – khử, chẳng hạn $\\mathrm{NaOH} + \\mathrm{HCl} \\rightarrow \\mathrm{NaCl} + \\mathrm{H_2O}$ hay $\\mathrm{CaCO_3} \\rightarrow \\mathrm{CaO} + \\mathrm{CO_2}$.',
+          text: 'Không có nguyên tố nào đổi số oxi hoá thì không phải phản ứng oxi hoá – khử, chẳng hạn $\\mathrm{NaOH} + \\mathrm{HCl} \\rightarrow \\mathrm{NaCl} + \\mathrm{H_2O}$ hay $\\mathrm{CaCO_3} \\xrightarrow{t^\\circ} \\mathrm{CaO} + \\mathrm{CO_2}$.',
         },
       ],
     },
@@ -123,23 +123,27 @@ export default {
           rows: [
             [
               'Sự cháy, tạo năng lượng',
-              '$\\mathrm{C} + \\mathrm{O_2} \\rightarrow \\mathrm{CO_2}$; đèn xì oxygen – acetylene: $\\mathrm{2C_2H_2} + \\mathrm{5O_2} \\rightarrow \\mathrm{4CO_2} + \\mathrm{2H_2O}$',
+              '$\\mathrm{C} + \\mathrm{O_2} \\xrightarrow{t^\\circ} \\mathrm{CO_2}$; đèn xì oxygen – acetylene: $\\mathrm{2C_2H_2} + \\mathrm{5O_2} \\xrightarrow{t^\\circ} \\mathrm{4CO_2} + \\mathrm{2H_2O}$',
             ],
             [
               'Luyện kim',
-              '$\\mathrm{Fe_2O_3} + \\mathrm{3CO} \\rightarrow \\mathrm{2Fe} + \\mathrm{3CO_2}$',
+              '$\\mathrm{Fe_2O_3} + \\mathrm{3CO} \\xrightarrow{t^\\circ} \\mathrm{2Fe} + \\mathrm{3CO_2}$',
             ],
             [
               'Sản xuất hoá chất',
-              '$\\mathrm{N_2} + \\mathrm{3H_2} \\rightarrow \\mathrm{2NH_3}$; $\\mathrm{2SO_2} + \\mathrm{O_2} \\rightarrow \\mathrm{2SO_3}$ khi sản xuất sulfuric acid',
+              '$\\mathrm{N_2} + \\mathrm{3H_2} \\overset{t^\\circ,\\ p,\\ \\text{xt}}{\\rightleftharpoons} \\mathrm{2NH_3}$; $\\mathrm{2SO_2} + \\mathrm{O_2} \\overset{t^\\circ,\\ \\mathrm{V_2O_5}}{\\rightleftharpoons} \\mathrm{2SO_3}$ khi sản xuất sulfuric acid',
             ],
             [
               'Sự han gỉ kim loại',
-              '$\\mathrm{4Fe(OH)_2} + \\mathrm{O_2} + \\mathrm{2H_2O} \\rightarrow \\mathrm{4Fe(OH)_3}$: lớp gỉ màu nâu đỏ trên sắt',
+              '$\\mathrm{4Fe} + \\mathrm{3O_2} + 2x\\mathrm{H_2O} \\rightarrow \\mathrm{2Fe_2O_3} \\cdot x\\mathrm{H_2O}$: lớp gỉ màu nâu đỏ trên thép trong không khí ẩm',
             ],
             [
               'Chuyển hoá trong tự nhiên',
-              'Khi có sét: $\\mathrm{N_2} + \\mathrm{O_2} \\rightarrow \\mathrm{2NO}$, khởi đầu chuỗi tạo đạm trong nước mưa',
+              'Khi có sét: $\\mathrm{N_2} + \\mathrm{O_2} \\xrightarrow{\\text{tia lửa điện}} \\mathrm{2NO}$, khởi đầu chuỗi tạo đạm trong nước mưa',
+            ],
+            [
+              'Xác định nồng độ chất',
+              'Dung dịch $\\mathrm{KMnO_4}$ là chất oxi hoá mạnh, dùng để xác định hàm lượng các chất khử như $\\mathrm{Fe^{2+}}$, $\\mathrm{H_2O_2}$',
             ],
           ],
         },
@@ -225,9 +229,9 @@ export default {
       type: 'choice',
       prompt: 'Phản ứng nào sau đây là phản ứng oxi hoá – khử?',
       options: [
-        '$\\mathrm{CaCO_3} \\rightarrow \\mathrm{CaO} + \\mathrm{CO_2}$',
+        '$\\mathrm{CaCO_3} \\xrightarrow{t^\\circ} \\mathrm{CaO} + \\mathrm{CO_2}$',
         '$\\mathrm{NaOH} + \\mathrm{HCl} \\rightarrow \\mathrm{NaCl} + \\mathrm{H_2O}$',
-        '$\\mathrm{2Fe} + \\mathrm{3Cl_2} \\rightarrow \\mathrm{2FeCl_3}$',
+        '$\\mathrm{2Fe} + \\mathrm{3Cl_2} \\xrightarrow{t^\\circ} \\mathrm{2FeCl_3}$',
         '$\\mathrm{BaCl_2} + \\mathrm{H_2SO_4} \\rightarrow \\mathrm{BaSO_4} + \\mathrm{2HCl}$',
       ],
       answer: 2,
@@ -312,7 +316,7 @@ export default {
       answers: [0, 1, 3],
       hints: ['Viết phương trình mỗi quá trình rồi xem nguyên tố nào đổi số oxi hoá.'],
       solution:
-        'Đốt than ($\\mathrm{C}$ từ $0$ lên $+4$), sắt gỉ ($\\mathrm{Fe}$ tăng số oxi hoá) và sét tạo $\\mathrm{NO}$ ($\\mathrm{N}$ từ $0$ lên $+2$) đều là phản ứng oxi hoá – khử. Nung đá vôi $\\mathrm{CaCO_3} \\rightarrow \\mathrm{CaO} + \\mathrm{CO_2}$ không đổi số oxi hoá.',
+        'Đốt than ($\\mathrm{C}$ từ $0$ lên $+4$), sắt gỉ ($\\mathrm{Fe}$ tăng số oxi hoá) và sét tạo $\\mathrm{NO}$ ($\\mathrm{N}$ từ $0$ lên $+2$) đều là phản ứng oxi hoá – khử. Nung đá vôi $\\mathrm{CaCO_3} \\xrightarrow{t^\\circ} \\mathrm{CaO} + \\mathrm{CO_2}$ không đổi số oxi hoá.',
     },
   ],
   takeaways: [

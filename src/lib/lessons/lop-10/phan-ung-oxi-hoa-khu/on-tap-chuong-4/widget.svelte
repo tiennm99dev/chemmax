@@ -38,9 +38,11 @@
     {#if r.condition}<p>Điều kiện: {r.condition}.</p>{/if}
   </div>
 
-  {#key r.id}
-    <EquationBalancer equation={scheme(r)} solver={false} {onbalanced} />
-  {/key}
+  {#if !balanced}
+    {#key r.id}
+      <EquationBalancer equation={scheme(r)} solver={false} {onbalanced} />
+    {/key}
+  {/if}
 
   {#if hinted || balanced}
     <ul class="space-y-1 rounded-xl bg-slate-50 p-3">

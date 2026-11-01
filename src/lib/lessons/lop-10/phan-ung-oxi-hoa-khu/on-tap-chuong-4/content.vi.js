@@ -45,8 +45,12 @@ export default {
           text: 'Nguyên tắc: tổng electron nhường bằng tổng electron nhận. (1) Xác định số oxi hoá, chất khử, chất oxi hoá. (2) Viết quá trình oxi hoá và quá trình khử. (3) Tìm hệ số cho hai quá trình. (4) Đặt hệ số vào sơ đồ, cân bằng phần còn lại và kiểm tra.',
         },
         {
+          type: 'p',
+          text: 'Ví dụ với phản ứng tổng hợp ammonia, nitrogen là chất oxi hoá và hydrogen là chất khử:',
+        },
+        {
           type: 'tex',
-          tex: '\\begin{aligned} &\\overset{0}{\\mathrm{N_2}} + 6e \\rightarrow 2\\overset{-3}{\\mathrm{N}} \\quad (\\times 1) \\\\ &\\overset{0}{\\mathrm{H_2}} \\rightarrow 2\\overset{+1}{\\mathrm{H}} + 2e \\quad (\\times 3) \\\\ &\\mathrm{N_2} + \\mathrm{3H_2} \\rightarrow \\mathrm{2NH_3} \\end{aligned}',
+          tex: '\\begin{aligned} &\\overset{0}{\\mathrm{N_2}} + 6e \\rightarrow 2\\overset{-3}{\\mathrm{N}} \\quad (\\times 1) \\\\ &\\overset{0}{\\mathrm{H_2}} \\rightarrow 2\\overset{+1}{\\mathrm{H}} + 2e \\quad (\\times 3) \\\\ &\\mathrm{N_2} + \\mathrm{3H_2} \\overset{t^\\circ,\\ p,\\ \\text{xt}}{\\rightleftharpoons} \\mathrm{2NH_3} \\end{aligned}',
         },
       ],
     },
@@ -165,7 +169,7 @@ export default {
       type: 'choice',
       prompt: 'Trong phản ứng nào sau đây $\\mathrm{NH_3}$ đóng vai trò chất khử?',
       options: [
-        '$\\mathrm{4NH_3} + \\mathrm{5O_2} \\rightarrow \\mathrm{4NO} + \\mathrm{6H_2O}$',
+        '$\\mathrm{4NH_3} + \\mathrm{5O_2} \\xrightarrow{t^\\circ,\\ \\mathrm{Pt}} \\mathrm{4NO} + \\mathrm{6H_2O}$',
         '$\\mathrm{NH_3} + \\mathrm{HCl} \\rightarrow \\mathrm{NH_4Cl}$',
         '$\\mathrm{2NH_3} + \\mathrm{H_2SO_4} \\rightarrow \\mathrm{(NH_4)_2SO_4}$',
         '$\\mathrm{NH_3} + \\mathrm{HNO_3} \\rightarrow \\mathrm{NH_4NO_3}$',

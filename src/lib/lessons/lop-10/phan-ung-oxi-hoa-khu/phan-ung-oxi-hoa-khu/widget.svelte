@@ -273,7 +273,7 @@
           >Đặt hệ số vào sơ đồ</button
         >
       {/if}
-    {:else}
+    {:else if !finished}
       {#key r.id}
         <EquationBalancer
           equation={r.seed}

@@ -14,6 +14,7 @@ import {
   halfElectrons,
   halfTex,
   onText,
+  oxParts,
   oxSumTex,
   schemeTex,
   solveOx,
@@ -41,15 +42,16 @@ export const oxNumberSkill = {
       OX_CASES.filter((x) => x.formula !== 'Cl2'),
     );
     const x = solveOx(c);
+    const { charge } = oxParts(c);
     return {
       prompt: `Tính số oxi hoá của ${c.target} trong $${formulaTex(c.formula)}$. Số âm thì viết cả dấu trừ, ví dụ $-3$.`,
       answer: x,
       hints: [
         'Tổng số oxi hoá của các nguyên tử bằng $0$ với phân tử, bằng điện tích với ion.',
-        `Đặt $x$ là số oxi hoá của ${c.target}: $${oxSumTex(c, null)}$.`,
+        `Đặt $x$ là số oxi hoá của ${c.target}: $${oxSumTex(c, null)} = ${charge}$.`,
       ],
       steps: [
-        `Đặt $x$ là số oxi hoá của ${c.target}, ta có tổng: $${oxSumTex(c, null)}$.`,
+        `Đặt $x$ là số oxi hoá của ${c.target}, ta có: $${oxSumTex(c, null)} = ${charge}$.`,
         `Giải ra $x = ${x > 0 ? '+' : ''}${x}$: số oxi hoá của ${c.target} là ${onText(x)}.`,
       ],
     };
