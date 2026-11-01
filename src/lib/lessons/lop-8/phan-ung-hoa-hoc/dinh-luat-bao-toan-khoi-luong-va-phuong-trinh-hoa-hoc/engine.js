@@ -11,6 +11,7 @@
  */
 import { balance, isBalanced, parseEquation } from '#lib/domain/equation.js';
 import { tidy } from '#lib/core/number-format.js';
+import { gcd } from '#lib/numtheory-engine/index.js';
 
 /** @typedef {{ formula: string, name: string, mass: number, gas?: boolean }} Part */
 /**
@@ -121,9 +122,6 @@ export const GAME = [
   'Fe2O3 + CO -> Fe + CO2',
   'CH4 + O2 -> CO2 + H2O',
 ];
-
-/** @param {number} a @param {number} b @returns {number} */
-const gcd = (a, b) => (b === 0 ? a : gcd(b, a % b));
 
 /**
  * Judges the learner's coefficients for an equation.

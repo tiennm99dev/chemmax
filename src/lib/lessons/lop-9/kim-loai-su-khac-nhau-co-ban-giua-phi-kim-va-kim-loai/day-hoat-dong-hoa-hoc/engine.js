@@ -7,6 +7,8 @@
  * really runs to the end.
  */
 
+import { gcd } from '#lib/numtheory-engine/index.js';
+
 /** @typedef {'K' | 'Na' | 'Ca' | 'Mg' | 'Al' | 'Zn' | 'Fe' | 'Pb' | 'H' | 'Cu' | 'Ag' | 'Au'} SeriesId */
 /** @typedef {Exclude<SeriesId, 'H'>} MetalId */
 
@@ -63,11 +65,6 @@ export const NAME = /** @type {Record<SeriesId, string>} */ ({
 /** @param {SeriesId} id */
 export function rank(id) {
   return SERIES.indexOf(id);
-}
-
-/** @param {number} a @param {number} b @returns {number} */
-function gcd(a, b) {
-  return b === 0 ? a : gcd(b, a % b);
 }
 
 /** @param {number} n */

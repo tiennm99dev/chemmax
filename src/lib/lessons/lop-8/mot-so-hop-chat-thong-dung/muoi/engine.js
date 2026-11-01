@@ -6,6 +6,7 @@
  */
 import { balance, formatEquation, parseEquation } from '#lib/domain/equation.js';
 import { prettyFormula } from '#lib/domain/formula.js';
+import { gcd } from '#lib/numtheory-engine/index.js';
 
 /** @typedef {'T' | 'I' | 'K' | '–'} Solubility */
 /** @typedef {{ id: string, formula: string, charge: number, name: string }} Ion */
@@ -69,9 +70,6 @@ export const SWATCH = /** @type {Record<string, string>} */ ({
   'vàng nhạt': '#fef08a',
   vàng: '#facc15',
 });
-
-/** @param {number} a @param {number} b @returns {number} */
-const gcd = (a, b) => (b ? gcd(b, a % b) : a);
 
 /**
  * Formula of the compound of a cation and an anion: "Fe2(SO4)3", "CuCl2".

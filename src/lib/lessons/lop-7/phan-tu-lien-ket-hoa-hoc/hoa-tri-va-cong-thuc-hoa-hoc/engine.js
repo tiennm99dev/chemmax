@@ -5,6 +5,7 @@
  * Valences follow the KNTT table of common elements and groups.
  */
 import { percentComposition, moleculeMassAmu } from '#lib/domain/book-mass.js';
+import { gcd } from '#lib/numtheory-engine/index.js';
 
 /** Roman numerals the book writes valences with. */
 export const ROMAN = ['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII'];
@@ -90,15 +91,6 @@ export const secondPart = (id) => SECOND.find((p) => p.id === id) ?? SECOND[0];
 export function partnersOf(firstId) {
   const ids = NONMETAL_PARTNERS[firstId];
   return ids ? SECOND.filter((p) => ids.includes(p.id)) : SECOND;
-}
-
-/**
- * @param {number} a
- * @param {number} b
- * @returns {number}
- */
-export function gcd(a, b) {
-  return b === 0 ? a : gcd(b, a % b);
 }
 
 /**

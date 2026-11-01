@@ -4,6 +4,8 @@
  * so the learner can balance it.
  */
 
+import { gcd } from '#lib/numtheory-engine/index.js';
+
 /** @typedef {import('#lib/domain/molecule.js').Molecule} Molecule */
 /** @typedef {[number, number, number, number]} Coefficients alkane, O2, CO2, H2O */
 
@@ -90,19 +92,12 @@ export function isBalanced(n, k) {
   return Object.values(tally(n, k)).every(([l, r]) => l === r);
 }
 
-/** @param {number[]} k */
-function gcd(...k) {
-  /** @type {(a: number, b: number) => number} */
-  const g = (a, b) => (b ? g(b, a % b) : a);
-  return k.reduce(g);
-}
-
 /**
  * Whether balanced coefficients are the smallest whole numbers.
  * @param {Coefficients} k
  */
 export function isSimplest(k) {
-  return gcd(...k) === 1;
+  return k.reduce(gcd) === 1;
 }
 
 /**

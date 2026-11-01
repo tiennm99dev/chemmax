@@ -6,6 +6,8 @@
  * taken, which is also the formula of the compound.
  */
 
+import { gcd } from '#lib/numtheory-engine/index.js';
+
 /** @typedef {'Na' | 'K' | 'Mg' | 'Ca' | 'Al'} MetalId */
 /** @typedef {'Cl' | 'O' | 'S'} NonmetalId */
 
@@ -23,11 +25,6 @@ export const NONMETAL_OUTER = /** @type {Record<NonmetalId, number>} */ ({ Cl: 7
 
 /** Atoms in one molecule of the element as it is written in equations. */
 const MOLECULE = /** @type {Record<NonmetalId, number>} */ ({ Cl: 2, O: 2, S: 1 });
-
-/** @param {number} a @param {number} b @returns {number} */
-function gcd(a, b) {
-  return b === 0 ? a : gcd(b, a % b);
-}
 
 /** @param {NonmetalId} n electrons a nonmetal atom takes to reach 8 */
 export function gain(n) {
