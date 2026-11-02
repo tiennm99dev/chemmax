@@ -359,7 +359,7 @@ export default {
       answer: 2,
       hints: ['Điện áp lưới điện 220 V quá nguy hiểm để làm thí nghiệm trực tiếp.'],
       solution:
-        'Biến áp nguồn chuyển điện áp xoay chiều 220 V thành điện áp xoay chiều hoặc một chiều có giá trị nhỏ, an toàn khi làm thí nghiệm. Phương án cuối là chức năng của joulemeter.',
+        'Biến áp nguồn chuyển điện áp xoay chiều 220 V thành điện áp xoay chiều hoặc một chiều có giá trị nhỏ, an toàn khi làm thí nghiệm. Đo dòng điện, điện áp, công suất và năng lượng điện là chức năng của joulemeter.',
     },
     {
       type: 'number',
