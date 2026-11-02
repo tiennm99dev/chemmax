@@ -262,6 +262,6 @@ export default {
     'Từ F đến I: bán kính tăng, độ âm điện giảm, tính oxi hoá của $\\mathrm{X_2}$ giảm, nhiệt độ sôi của $\\mathrm{X_2}$ tăng.',
     'Từ HF đến HI: tính acid tăng; nhiệt độ sôi HF cao bất thường do liên kết hydrogen.',
     'Tính khử của ion halide tăng: $\\mathrm{Cl^-} < \\mathrm{Br^-} < \\mathrm{I^-}$.',
-    'Dung dịch $\\mathrm{AgNO_3}$ nhận biết được bốn ion halide nhờ màu kết tủa.',
+    'Dung dịch $\\mathrm{AgNO_3}$ nhận biết được bốn ion halide: $\\mathrm{F^-}$ không kết tủa, ba ion còn lại cho kết tủa khác màu.',
   ],
 };

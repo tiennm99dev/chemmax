@@ -34,6 +34,13 @@ describe('conversion schemes', () => {
     expect(bad).toEqual([]);
   });
 
+  it('never marks a real product of the step as wrong', () => {
+    const bad = CHAINS.flatMap((c) => c.steps).filter((s) =>
+      terms(s.equation).right.some((t) => t.formula !== s.product && s.options.includes(t.formula)),
+    );
+    expect(bad).toEqual([]);
+  });
+
   it('judges a choice against the product', () => {
     const step = CHAINS[0].steps[0];
     expect(isRight(step, 'HCl')).toBe(true);

@@ -50,7 +50,13 @@
       <li>
         <button
           type="button"
-          class="{isResult ? button.primary : button.quiet} w-full !justify-start text-left"
+          class="{isResult
+            ? button.primary
+            : button.quiet} w-full !justify-start text-left {shown &&
+          guess === step.sulfur &&
+          !isResult
+            ? '!border-amber-500 !bg-amber-50'
+            : ''}"
           aria-pressed={guess === step.sulfur}
           onclick={() => choose(step.sulfur)}
         >

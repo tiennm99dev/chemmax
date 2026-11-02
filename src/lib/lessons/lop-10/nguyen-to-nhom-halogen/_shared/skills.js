@@ -208,7 +208,7 @@ export const displacementSkill = {
     const half = tidy(n / 2);
     const answer = tidy(half * d.outMass);
     return {
-      prompt: `Cho $\\mathrm{${d.free}}$ dư tác dụng hoàn toàn với dung dịch chứa $${numTex(given)}$ g $\\mathrm{${d.salt}}$. Tính khối lượng $\\mathrm{${d.out}}$ sinh ra, theo g. Cho $M_{\\mathrm{${d.salt}}} = ${d.saltMass}$ g/mol, $M_{\\mathrm{${d.out}}} = ${d.outMass}$ g/mol.`,
+      prompt: `Cho $\\mathrm{${d.free}}$ vừa đủ tác dụng hoàn toàn với dung dịch chứa $${numTex(given)}$ g $\\mathrm{${d.salt}}$. Tính khối lượng $\\mathrm{${d.out}}$ sinh ra, theo g. Cho $M_{\\mathrm{${d.salt}}} = ${d.saltMass}$ g/mol, $M_{\\mathrm{${d.out}}} = ${d.outMass}$ g/mol.`,
       answer,
       unit: 'g',
       hints: ['$2$ mol muối sinh ra $1$ mol halogen đơn chất.'],

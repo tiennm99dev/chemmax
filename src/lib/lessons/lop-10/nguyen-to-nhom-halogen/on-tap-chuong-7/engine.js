@@ -37,7 +37,7 @@ export const CHAINS = [
       {
         reagent: 'MnO2, đun nóng',
         product: 'Cl2',
-        options: ['Cl2', 'MnCl2', 'H2'],
+        options: ['Cl2', 'O2', 'H2'],
         equation: 'MnO2 + 4HCl → MnCl2 + Cl2↑ + 2H2O',
         hint: 'Đây là cách điều chế một khí màu vàng lục trong phòng thí nghiệm.',
       },
@@ -86,7 +86,7 @@ export const CHAINS = [
       {
         reagent: 'Cl2',
         product: 'Br2',
-        options: ['HBr', 'Br2', 'NaCl'],
+        options: ['HBr', 'Br2', 'HBrO'],
         equation: 'Cl2 + 2NaBr → 2NaCl + Br2',
         hint: 'Halogen mạnh hơn đẩy halogen yếu hơn ra khỏi dung dịch muối.',
       },
@@ -121,7 +121,7 @@ export const CHAINS = [
       {
         reagent: 'Br2',
         product: 'I2',
-        options: ['I2', 'HI', 'NaBr'],
+        options: ['I2', 'HI', 'HIO'],
         equation: 'Br2 + 2NaI → 2NaBr + I2',
         hint: 'Bromine mạnh hơn iodine nên đẩy được iodine ra khỏi muối.',
       },

@@ -267,7 +267,7 @@ export default {
     {
       type: 'number',
       prompt:
-        'Hỗn hợp NaF và NaCl có khối lượng $10$ g. Nhỏ dung dịch $\\mathrm{AgNO_3}$ dư vào dung dịch hỗn hợp, thu được $14{,}35$ g kết tủa. Tính phần trăm khối lượng NaCl trong hỗn hợp.',
+        'Hỗn hợp NaF và NaCl có khối lượng $10$ g. Nhỏ dung dịch $\\mathrm{AgNO_3}$ dư vào dung dịch hỗn hợp, thu được $14{,}35$ g kết tủa. Tính phần trăm khối lượng NaCl trong hỗn hợp. Biết $M_{\\mathrm{NaCl}} = 58{,}5$ g/mol, $M_{\\mathrm{AgCl}} = 143{,}5$ g/mol.',
       answer: 58.5,
       tolerance: 0.05,
       unit: '%',

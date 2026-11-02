@@ -32,6 +32,7 @@ export default {
             'Chlorine: nhiều nhất trong nước biển ở dạng NaCl, ngoài ra còn trong muối mỏ.',
             'Bromine: chủ yếu ở dạng muối bromide trong nước biển.',
             'Iodine: có trong nước biển và rong biển.',
+            'Trong cơ thể người: ion $\\mathrm{Cl^-}$ có trong máu và dịch vị dạ dày; iodine có ở tuyến giáp dưới dạng hợp chất hữu cơ.',
           ],
         },
       ],
@@ -95,7 +96,7 @@ export default {
           type: 'list',
           items: [
             'Các halogen ít tan trong nước, tan nhiều hơn trong dung môi hữu cơ như ethanol, benzene.',
-            'Iodine dễ thăng hoa: khi đun nóng, tinh thể chuyển thẳng thành hơi màu tím.',
+            'Iodine dễ thăng hoa: khi đun nóng, tinh thể chuyển thẳng thành hơi màu tím. Dung dịch iodine loãng trong ethanol được dùng làm thuốc sát trùng.',
           ],
         },
         {
@@ -159,7 +160,7 @@ export default {
         },
         {
           type: 'p',
-          text: 'Với nước, fluorine phản ứng mãnh liệt với nước và đẩy oxygen ra. Chlorine, bromine phản ứng thuận nghịch, bromine chậm hơn; iodine gần như không phản ứng:',
+          text: 'Với nước, fluorine phản ứng mãnh liệt với nước và đẩy oxygen ra. Chlorine, bromine, iodine phản ứng chậm hơn và thuận nghịch, mức độ giảm dần từ chlorine đến iodine:',
         },
         {
           type: 'tex',
@@ -175,7 +176,7 @@ export default {
         },
         {
           type: 'p',
-          text: 'Với dung dịch kiềm ở nhiệt độ thường, chlorine tạo nước Javel; khi đun nóng đến khoảng $70\\,^\\circ\\mathrm{C}$ thì tạo muối chlorate:',
+          text: 'Với dung dịch kiềm ở nhiệt độ thường, chlorine tạo nước Javel dùng để tẩy rửa và khử trùng; khi đun nóng thì tạo muối chlorate. $\\mathrm{KClO_3}$ là chất oxi hoá mạnh, dùng làm thuốc nổ và đầu que diêm:',
         },
         {
           type: 'tex',
@@ -183,7 +184,7 @@ export default {
         },
         {
           type: 'tex',
-          tex: '3\\mathrm{Cl_2} + 6\\mathrm{NaOH} \\xrightarrow{70\\,^\\circ\\mathrm{C}} 5\\mathrm{NaCl} + \\mathrm{NaClO_3} + 3\\mathrm{H_2O}',
+          tex: '3\\mathrm{Cl_2} + 6\\mathrm{KOH} \\xrightarrow{t^\\circ} 5\\mathrm{KCl} + \\mathrm{KClO_3} + 3\\mathrm{H_2O}',
         },
       ],
     },
@@ -409,7 +410,7 @@ export default {
     {
       type: 'number',
       prompt:
-        'Cho khí chlorine dư tác dụng hoàn toàn với dung dịch chứa $20{,}6$ g NaBr. Tính khối lượng bromine sinh ra. Biết $M_{\\mathrm{Na}} = 23$, $M_{\\mathrm{Br}} = 80$ g/mol.',
+        'Cho khí chlorine vừa đủ tác dụng hoàn toàn với dung dịch chứa $20{,}6$ g NaBr. Tính khối lượng bromine sinh ra. Biết $M_{\\mathrm{Na}} = 23$, $M_{\\mathrm{Br}} = 80$ g/mol.',
       answer: 16,
       tolerance: 0.01,
       unit: 'g',
