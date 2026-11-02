@@ -203,7 +203,8 @@ export default {
     },
     {
       type: 'order',
-      prompt: 'Xếp các chất theo điểm chớp cháy tăng dần.',
+      prompt:
+        'Dựa vào số liệu ở mục "So sánh các chất lỏng theo nhiệt độ", xếp các chất theo điểm chớp cháy tăng dần.',
       items: ['Ethanol', 'Nitrobenzene', 'Acetone', 'Ethylene glycol', 'Acetic acid'],
       answer: [2, 0, 4, 1, 3],
       hints: [

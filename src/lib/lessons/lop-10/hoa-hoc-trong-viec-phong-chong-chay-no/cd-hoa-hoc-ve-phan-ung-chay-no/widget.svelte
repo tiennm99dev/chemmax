@@ -37,10 +37,11 @@
   }
 
   function ventilate() {
-    percent = tidy(percent * 0.7, 1);
+    percent = percent < 0.5 ? 0 : tidy(percent * 0.7, 1);
   }
 
   const message = $derived.by(() => {
+    if (percent === 0) return `Chưa có ${gas.name} trong không khí nên chưa có gì để cháy.`;
     if (zone === 'lean')
       return `${gas.name} ${one(percent)}%: dưới giới hạn nổ dưới (${one(gas.lower)}%). Hỗn hợp quá loãng nên ngọn lửa không lan đi được.`;
     if (zone === 'rich')

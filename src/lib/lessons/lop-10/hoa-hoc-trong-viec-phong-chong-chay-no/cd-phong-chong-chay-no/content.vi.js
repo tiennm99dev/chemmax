@@ -96,7 +96,7 @@ export default {
           type: 'callout',
           tone: 'warning',
           title: 'Vì sao không dùng nước cho kim loại đang cháy?',
-          text: 'Kim loại hoạt động nóng phản ứng với nước sinh ra hydrogen gây nổ, ví dụ $\\mathrm{Mg} + \\mathrm{2H_2O} \\rightarrow \\mathrm{Mg(OH)_2} + \\mathrm{H_2}$. Magnesium còn cháy được trong $\\mathrm{CO_2}$: $\\mathrm{2Mg} + \\mathrm{CO_2} \\rightarrow \\mathrm{2MgO} + \\mathrm{C}$, và phản ứng được với cát nóng: $\\mathrm{2Mg} + \\mathrm{SiO_2} \\rightarrow \\mathrm{2MgO} + \\mathrm{Si}$.',
+          text: 'Kim loại hoạt động nóng phản ứng với nước sinh ra hydrogen gây nổ, ví dụ $\\mathrm{Mg} + \\mathrm{H_2O} \\rightarrow \\mathrm{MgO} + \\mathrm{H_2}$. Magnesium còn cháy được trong $\\mathrm{CO_2}$: $\\mathrm{2Mg} + \\mathrm{CO_2} \\rightarrow \\mathrm{2MgO} + \\mathrm{C}$, và phản ứng được với cát nóng: $\\mathrm{2Mg} + \\mathrm{SiO_2} \\rightarrow \\mathrm{2MgO} + \\mathrm{Si}$.',
         },
       ],
     },
@@ -171,7 +171,7 @@ export default {
       problem:
         'Giải thích vì sao không dùng nước, $\\mathrm{CO_2}$, bọt hay bột thông dụng để chữa đám cháy magnesium.',
       steps: [
-        'Nước và bọt: Mg nóng phản ứng với nước sinh ra khí $\\mathrm{H_2}$, gây nổ: $\\mathrm{Mg} + \\mathrm{2H_2O} \\rightarrow \\mathrm{Mg(OH)_2} + \\mathrm{H_2}$.',
+        'Nước và bọt: Mg nóng phản ứng với nước sinh ra khí $\\mathrm{H_2}$, gây nổ: $\\mathrm{Mg} + \\mathrm{H_2O} \\rightarrow \\mathrm{MgO} + \\mathrm{H_2}$.',
         '$\\mathrm{CO_2}$: Mg vẫn cháy trong khí này: $\\mathrm{2Mg} + \\mathrm{CO_2} \\rightarrow \\mathrm{2MgO} + \\mathrm{C}$.',
         'Bột chứa $\\mathrm{NaHCO_3}$: khi nóng phân huỷ, $\\mathrm{2NaHCO_3} \\rightarrow \\mathrm{Na_2CO_3} + \\mathrm{CO_2} + \\mathrm{H_2O}$, sinh ra đúng hai chất trên.',
       ],
@@ -308,7 +308,7 @@ export default {
     'Chữa cháy: loại bỏ hoặc làm suy yếu một trong ba yếu tố của tam giác cháy.',
     'Xử lí: báo động, cắt điện, dập lửa bằng phương tiện tại chỗ, gọi $114$.',
     'Không dùng nước cho xăng dầu, chảo dầu, kim loại hoạt động và thiết bị đang có điện.',
-    'Đám cháy kim loại cần bột chuyên dụng; không dùng nước, $\\mathrm{CO_2}$, bọt hay cát.',
+    'Đám cháy kim loại cần bột chuyên dụng; không dùng nước, $\\mathrm{CO_2}$ hay bọt, và magnesium nóng còn phản ứng cả với cát.',
     'Khi lửa lớn, thoát ra ngay: tính mạng quan trọng hơn tài sản.',
   ],
 };

@@ -129,7 +129,6 @@
       <button
         type="button"
         class={isOn(side) ? button.primary : button.quiet}
-        aria-pressed={isOn(side)}
         onclick={() => toggle(side)}
       >
         {isOn(side) ? 'Bỏ' : 'Thêm'}

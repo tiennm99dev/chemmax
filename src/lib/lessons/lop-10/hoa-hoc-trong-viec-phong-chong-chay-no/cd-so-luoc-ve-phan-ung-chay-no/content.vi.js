@@ -125,7 +125,7 @@ export default {
         },
         {
           type: 'p',
-          text: 'Ngoài hai loại trên còn có nổ hạt nhân, gây ra bởi biến đổi trong hạt nhân nguyên tử. Phản ứng $\\mathrm{2H_2} + \\mathrm{O_2} \\rightarrow \\mathrm{2H_2O}$ của bóng bay chứa hydrogen là một phản ứng cháy xảy ra cực nhanh trong hỗn hợp đã trộn sẵn chất cháy với oxygen.',
+          text: 'Ngoài hai loại trên còn có nổ hạt nhân, gây ra bởi biến đổi trong hạt nhân nguyên tử. Phản ứng $\\mathrm{2H_2} + \\mathrm{O_2} \\rightarrow \\mathrm{2H_2O}$ của bóng bay chứa hydrogen là một phản ứng cháy xảy ra cực nhanh: khi bóng vỡ, hydrogen trộn ngay với oxygen của không khí và bùng cháy trong tích tắc.',
         },
         {
           type: 'callout',
@@ -305,7 +305,7 @@ export default {
       type: 'text',
       prompt:
         'Khí độc không màu, không mùi sinh ra khi than cháy thiếu oxygen có công thức hoá học là gì?',
-      accept: ['CO', 'carbon monoxide'],
+      accept: ['CO', 'carbon monoxide', 'carbon monoxit', 'cacbon monoxit'],
       hints: ['Khí này có một nguyên tử oxygen trong phân tử.'],
       solution:
         'Đó là carbon monoxide, $\\mathrm{CO}$, sinh ra do phản ứng $\\mathrm{2C} + \\mathrm{O_2} \\rightarrow \\mathrm{2CO}$.',

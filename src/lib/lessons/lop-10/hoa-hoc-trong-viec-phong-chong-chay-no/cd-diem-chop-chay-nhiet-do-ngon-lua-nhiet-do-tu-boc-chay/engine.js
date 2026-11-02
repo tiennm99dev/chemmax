@@ -89,7 +89,7 @@ export function stateMessage(liquid, t, spark, format) {
  * @type {Array<{ id: string, name: string, air: number, oxygen: number }>}
  */
 export const FLAMES = [
-  { id: 'methane', name: 'Methane', air: 1960, oxygen: 3100 },
+  { id: 'methane', name: 'Methane', air: 1960, oxygen: 2810 },
   { id: 'propane', name: 'Propane', air: 1980, oxygen: 2820 },
   { id: 'hydrogen', name: 'Hydrogen', air: 2250, oxygen: 3200 },
   { id: 'acetylene', name: 'Acetylene', air: 2500, oxygen: 3480 },

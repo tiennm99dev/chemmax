@@ -161,7 +161,7 @@ export const CASES = [
       },
       co2: { verdict: 'good', why: 'CO₂ không dẫn điện và không để lại cặn trên thiết bị.' },
       metal: { verdict: 'bad', why: 'Bột này chỉ dành cho kim loại.' },
-      cover: { verdict: 'poor', why: 'Chăn ướt có nước nên không an toàn khi còn điện.' },
+      cover: { verdict: 'bad', why: 'Chăn ướt có nước nên có thể gây điện giật khi còn điện.' },
     },
   },
 ];
