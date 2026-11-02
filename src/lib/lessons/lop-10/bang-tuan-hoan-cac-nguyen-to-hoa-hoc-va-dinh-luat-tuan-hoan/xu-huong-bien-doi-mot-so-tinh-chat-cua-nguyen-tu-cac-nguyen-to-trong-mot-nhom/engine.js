@@ -4,11 +4,11 @@
  * main-group table, with the steps that go against the general trend.
  */
 import { fmt, formatNumber } from '#lib/core/number-format.js';
-import { MAIN_GROUP, valueOf } from '../_shared/main-group.js';
-import { roman } from '../_shared/compounds.js';
+import { MAIN_GROUP, valueOf } from '#lib/domain/main-group.js';
+import { roman } from '#lib/domain/compounds.js';
 
-/** @typedef {import('../_shared/main-group.js').MainGroupAtom} MainGroupAtom */
-/** @typedef {import('../_shared/main-group.js').Property} Property */
+/** @typedef {import('#lib/domain/main-group.js').MainGroupAtom} MainGroupAtom */
+/** @typedef {import('#lib/domain/main-group.js').Property} Property */
 /** @typedef {'group' | 'period'} Direction */
 
 export const PERIODS = [1, 2, 3, 4, 5, 6];

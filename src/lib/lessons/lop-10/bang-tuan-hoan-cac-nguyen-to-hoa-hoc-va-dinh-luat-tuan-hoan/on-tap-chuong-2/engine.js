@@ -4,8 +4,8 @@
  * with a predicate, so the tests can prove every riddle has one answer.
  */
 import { ELEMENTS, element, groupLabel, metalKind, outerElectrons } from '#lib/domain/elements.js';
-import { HYDROXIDE_NATURE, compoundsOf, oxideFormula } from '../_shared/compounds.js';
-import { MAIN_GROUP } from '../_shared/main-group.js';
+import { HYDROXIDE_NATURE, compoundsOf, oxideFormula } from '#lib/domain/compounds.js';
+import { MAIN_GROUP } from '#lib/domain/main-group.js';
 
 /** @typedef {import('#lib/domain/elements.js').Element} Element */
 
@@ -17,7 +17,7 @@ import { MAIN_GROUP } from '../_shared/main-group.js';
  *   | { kind: 'outer', value: number }
  *   | { kind: 'valence-d', value: number }
  *   | { kind: 'oxide', value: number }
- *   | { kind: 'hydroxide', value: import('../_shared/compounds.js').Nature }
+ *   | { kind: 'hydroxide', value: import('#lib/domain/compounds.js').Nature }
  *   | { kind: 'top-chi' }
  *   | { kind: 'largest-in-period' }} Clue
  */
@@ -28,7 +28,7 @@ export const LAST_Z = 36;
 /**
  * Character of the highest hydroxide of the period 4 p elements, which the
  * chapter's compound table (Li–Ca) leaves out.
- * @type {Record<number, import('../_shared/compounds.js').Nature>}
+ * @type {Record<number, import('#lib/domain/compounds.js').Nature>}
  */
 const PERIOD4_P_HYDROXIDES = {
   31: 'luong-tinh',

@@ -18,7 +18,7 @@ import {
   formulaTex,
   oxideFormula,
   roman,
-} from '../_shared/compounds.js';
+} from '#lib/domain/compounds.js';
 
 /**
  * @typedef {object} Question

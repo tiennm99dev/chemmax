@@ -30,7 +30,9 @@ export const BOOK_MASS = /** @type {Record<string, number>} */ ({
   Fe: 56,
   Cu: 64,
   Zn: 65,
+  Br: 80,
   Ag: 108,
+  I: 127,
   Ba: 137,
 });
 

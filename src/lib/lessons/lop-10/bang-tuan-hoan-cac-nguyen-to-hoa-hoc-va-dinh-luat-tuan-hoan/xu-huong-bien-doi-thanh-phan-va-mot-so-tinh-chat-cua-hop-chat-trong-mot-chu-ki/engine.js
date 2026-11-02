@@ -4,10 +4,10 @@
  * check of a learner's guess of that character.
  */
 import { element } from '#lib/domain/elements.js';
-import { COMPOUNDS, OXIDE_NATURE, formulaTex, roman } from '../_shared/compounds.js';
+import { COMPOUNDS, OXIDE_NATURE, formulaTex, roman } from '#lib/domain/compounds.js';
 
-/** @typedef {import('../_shared/compounds.js').Nature} Nature */
-/** @typedef {import('../_shared/compounds.js').HighestCompounds} HighestCompounds */
+/** @typedef {import('#lib/domain/compounds.js').Nature} Nature */
+/** @typedef {import('#lib/domain/compounds.js').HighestCompounds} HighestCompounds */
 
 /**
  * @typedef {HighestCompounds & {

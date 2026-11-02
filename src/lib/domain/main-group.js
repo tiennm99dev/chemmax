@@ -4,7 +4,7 @@
  * which also covers the noble gases on one scale) and the first ionisation
  * energy (kJ/mol). Electronegativity comes from `elements.js`.
  */
-import { element } from '#lib/domain/elements.js';
+import { element } from './elements.js';
 
 /** z → [radius in pm, first ionisation energy in kJ/mol] */
 const DATA = /** @type {Record<number, [number, number]>} */ ({

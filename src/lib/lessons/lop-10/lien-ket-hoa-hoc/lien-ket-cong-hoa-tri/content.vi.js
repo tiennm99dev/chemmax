@@ -144,7 +144,7 @@ export default {
           rows: [
             ['H–H', '436', 'H–F', '567'],
             ['Cl–Cl', '243', 'H–Cl', '431'],
-            ['O=O', '498', 'H–Br', '366'],
+            ['O=O', '494', 'H–Br', '366'],
             ['N≡N', '945', 'H–I', '299'],
           ],
         },
@@ -272,7 +272,7 @@ export default {
       prompt: 'Sắp xếp các liên kết theo độ bền giảm dần.',
       items: [
         'N≡N ($945\\ \\mathrm{kJ \\cdot mol^{-1}}$)',
-        'O=O ($498\\ \\mathrm{kJ \\cdot mol^{-1}}$)',
+        'O=O ($494\\ \\mathrm{kJ \\cdot mol^{-1}}$)',
         'H–H ($436\\ \\mathrm{kJ \\cdot mol^{-1}}$)',
         'Cl–Cl ($243\\ \\mathrm{kJ \\cdot mol^{-1}}$)',
       ],

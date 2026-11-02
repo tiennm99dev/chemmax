@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { element, groupLabel, outerElectrons } from '#lib/domain/elements.js';
-import { COMPOUNDS, roman } from '../_shared/compounds.js';
+import { COMPOUNDS, roman } from '#lib/domain/compounds.js';
 import { DECK, card, outerText, score } from './engine.js';
 
 describe('outer configuration', () => {

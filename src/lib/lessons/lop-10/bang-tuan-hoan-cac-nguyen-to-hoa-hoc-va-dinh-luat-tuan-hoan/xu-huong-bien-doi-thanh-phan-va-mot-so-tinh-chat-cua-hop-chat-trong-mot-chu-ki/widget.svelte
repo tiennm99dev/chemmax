@@ -4,10 +4,10 @@
   import ChemFormula from '#lib/domain/chem-formula.svelte';
   import EquationLine from '#lib/domain/equation-line.svelte';
   import LiveRichText from '#lib/components/live-rich-text.svelte';
-  import { OXIDE_NATURE, roman } from '../_shared/compounds.js';
+  import { OXIDE_NATURE, roman } from '#lib/domain/compounds.js';
   import { NATURE_CHOICES, PERIOD3, judgeNature, periodSentence } from './engine.js';
 
-  /** @typedef {import('../_shared/compounds.js').Nature} Nature */
+  /** @typedef {import('#lib/domain/compounds.js').Nature} Nature */
 
   let index = $state(0);
   /** @type {Record<number, Nature>} guesses by atomic number */

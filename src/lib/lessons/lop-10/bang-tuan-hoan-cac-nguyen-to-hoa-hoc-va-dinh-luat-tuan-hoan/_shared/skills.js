@@ -14,7 +14,7 @@ import {
   shellCounts,
   electronConfiguration,
 } from '#lib/domain/elements.js';
-import { COMPOUNDS, formulaTex, oxideFormula, roman } from './compounds.js';
+import { COMPOUNDS, formulaTex, oxideFormula, roman } from '#lib/domain/compounds.js';
 
 /** @param {number} z */
 const el = (z) => /** @type {import('#lib/domain/elements.js').Element} */ (element(z));
@@ -110,7 +110,7 @@ export const oxideMassSkill = {
   label: 'Bài 7. Tìm nguyên tố từ oxide cao nhất',
   make(rand) {
     const [z, mass] = pick(rand, MASS_POOL);
-    const c = /** @type {import('./compounds.js').HighestCompounds} */ (
+    const c = /** @type {import('#lib/domain/compounds.js').HighestCompounds} */ (
       COMPOUNDS.find((x) => x.z === z)
     );
     const v = c.valence;

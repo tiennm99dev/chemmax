@@ -3,6 +3,7 @@
  * enthalpies of formation, average bond energies, the reactions the lessons
  * calculate with, and how to write them the book's way.
  */
+import { BOND_ENERGY } from '#lib/domain/bond-energy.js';
 import { GROUP, formatNumber, numTex, tidy } from '#lib/core/number-format.js';
 import { prettyFormula } from '#lib/domain/formula.js';
 
@@ -31,24 +32,7 @@ export const FORMATION = {
   'Fe2O3(s)': -825.5,
 };
 
-/**
- * Average bond energy, in kJ/mol.
- * @type {Record<string, number>}
- */
-export const BOND_ENERGY = {
-  'H–H': 436,
-  'Cl–Cl': 243,
-  'H–Cl': 431,
-  'O=O': 494,
-  'N≡N': 945,
-  'N–H': 386,
-  'N=O': 607,
-  'C–H': 418,
-  'C–C': 346,
-  'C=C': 612,
-  'C=O': 732,
-  'O–H': 459,
-};
+export { BOND_ENERGY };
 
 /** @typedef {{ n: number, s: string }} Term a coefficient and a species such as 'CO2(g)' */
 /** @typedef {{ id: string, left: Term[], right: Term[] }} Reaction */

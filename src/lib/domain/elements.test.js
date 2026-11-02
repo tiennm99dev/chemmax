@@ -218,3 +218,39 @@ describe('unpaired electrons and TeX configurations', () => {
     expect(configTex(19)).toBe('\\mathrm{1s^{2}2s^{2}2p^{6}3s^{2}3p^{6}4s^{1}}');
   });
 });
+
+describe('the three classes of element', () => {
+  const of = (/** @type {string} */ kind) => ELEMENTS.filter((el) => metalKind(el) === kind);
+  const kindOf = (/** @type {string} */ symbol) => metalKind(/** @type {any} */ (element(symbol)));
+
+  it('has exactly 7 khí hiếm, all in group 18', () => {
+    const noble = of('khi-hiem');
+    expect(noble.map((el) => el.symbol)).toEqual(['He', 'Ne', 'Ar', 'Kr', 'Xe', 'Rn', 'Og']);
+    expect(noble.filter((el) => el.group !== 18)).toEqual([]);
+  });
+
+  it('has fewer than 20 phi kim and more than 90 kim loại', () => {
+    expect(of('phi-kim').length).toBeLessThan(20);
+    expect(of('kim-loai').length).toBeGreaterThan(90);
+    expect(of('phi-kim').length + of('kim-loai').length + of('khi-hiem').length).toBe(118);
+  });
+
+  it('makes every B-group element, lanthanide and actinide a metal', () => {
+    const bad = ELEMENTS.filter(
+      (el) =>
+        (el.group === null || (el.group >= 3 && el.group <= 12)) && metalKind(el) !== 'kim-loai',
+    );
+    expect(bad.map((el) => el.symbol)).toEqual([]);
+  });
+
+  it('keeps B the only phi kim of group IIIA', () => {
+    const phi = ELEMENTS.filter((el) => el.group === 13 && metalKind(el) === 'phi-kim');
+    expect(phi.map((el) => el.symbol)).toEqual(['B']);
+  });
+
+  it('sorts the elements at the borders', () => {
+    for (const symbol of ['H', 'C', 'Si', 'At', 'Ts'])
+      expect(kindOf(symbol), symbol).toBe('phi-kim');
+    expect(kindOf('Po')).toBe('kim-loai');
+  });
+});

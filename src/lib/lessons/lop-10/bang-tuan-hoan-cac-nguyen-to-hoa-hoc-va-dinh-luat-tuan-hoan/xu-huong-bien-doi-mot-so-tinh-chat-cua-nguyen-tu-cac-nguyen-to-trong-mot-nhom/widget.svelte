@@ -2,11 +2,11 @@
   import FeedbackNote from '#lib/core/feedback-note.svelte';
   import SegmentedControl from '#lib/core/segmented-control.svelte';
   import { focusRing } from '#lib/core/ui.js';
-  import { atom, valueOf } from '../_shared/main-group.js';
-  import { roman } from '../_shared/compounds.js';
+  import { atom, valueOf } from '#lib/domain/main-group.js';
+  import { roman } from '#lib/domain/compounds.js';
   import { GROUPS, PERIODS, PROPERTIES, atomAt, heat, trend, valueText } from './engine.js';
 
-  /** @typedef {import('../_shared/main-group.js').Property} Property */
+  /** @typedef {import('#lib/domain/main-group.js').Property} Property */
   /** @typedef {import('./engine.js').Direction} Direction */
 
   const PROPERTY_OPTIONS = [
@@ -26,7 +26,7 @@
   let selectedZ = $state(11);
 
   const selected = $derived(
-    /** @type {import('../_shared/main-group.js').MainGroupAtom} */ (atom(selectedZ)),
+    /** @type {import('#lib/domain/main-group.js').MainGroupAtom} */ (atom(selectedZ)),
   );
   const result = $derived(trend(selected, direction, property));
   const onLine = $derived(new Set(result.line.map((a) => a.z)));

@@ -520,9 +520,10 @@ export const STATE_LABELS = {
 };
 
 /**
- * Metalloids (á kim) that the KNTT books, which sort every element into
- * kim loại, phi kim or khí hiếm, colour as metals: germanium and antimony.
- * The other metalloids (B, Si, As, Te) count as non-metals there.
+ * Metalloids (á kim) this site counts as metals: germanium and antimony. The
+ * other metalloids (B, Si, As, Te) count as non-metals. The split follows the
+ * three classes of KNTT's text and exercises (kim loại, phi kim, khí hiếm); the
+ * colours of the book's printed table were not checked against it.
  */
 export const METALLIC_METALLOIDS = new Set([32, 51]);
 

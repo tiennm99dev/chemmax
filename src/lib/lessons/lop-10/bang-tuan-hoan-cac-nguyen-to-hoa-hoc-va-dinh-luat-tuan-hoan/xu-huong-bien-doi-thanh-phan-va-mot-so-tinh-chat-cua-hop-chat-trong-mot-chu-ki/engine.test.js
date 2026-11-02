@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { isBalancedText } from '#lib/domain/reaction.js';
 import { formulaParts } from '#lib/domain/formula.js';
-import { COMPOUNDS, oxideFormula } from '../_shared/compounds.js';
+import { COMPOUNDS, oxideFormula } from '#lib/domain/compounds.js';
 import { PERIOD3, judgeNature, periodSentence } from './engine.js';
 
 describe('highest compounds', () => {

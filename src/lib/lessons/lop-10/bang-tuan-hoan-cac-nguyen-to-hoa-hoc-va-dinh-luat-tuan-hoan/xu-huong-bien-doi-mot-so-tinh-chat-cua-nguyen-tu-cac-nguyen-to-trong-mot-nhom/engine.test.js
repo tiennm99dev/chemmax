@@ -1,9 +1,9 @@
 import { describe, expect, it } from 'vitest';
-import { MAIN_GROUP, atom } from '../_shared/main-group.js';
+import { MAIN_GROUP, atom } from '#lib/domain/main-group.js';
 import { atomAt, heat, lineThrough, trend, valueText } from './engine.js';
 
 const at = (/** @type {number} */ z) =>
-  /** @type {import('../_shared/main-group.js').MainGroupAtom} */ (atom(z));
+  /** @type {import('#lib/domain/main-group.js').MainGroupAtom} */ (atom(z));
 
 describe('main-group table', () => {
   it('places atoms by period and A group', () => {

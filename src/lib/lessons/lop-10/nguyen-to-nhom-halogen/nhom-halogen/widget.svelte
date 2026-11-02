@@ -4,7 +4,7 @@
   import { button } from '#lib/core/ui.js';
   import ChemFormula from '#lib/domain/chem-formula.svelte';
   import EquationLine from '#lib/domain/equation-line.svelte';
-  import TestTube from '../_shared/test-tube.svelte';
+  import TestTube from '#lib/domain/test-tube.svelte';
   import {
     PAIRS,
     SALT_COLOR,
