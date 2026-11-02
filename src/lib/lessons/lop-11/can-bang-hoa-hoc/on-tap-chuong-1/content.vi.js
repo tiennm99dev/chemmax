@@ -1,7 +1,7 @@
 /** @type {import('#lib/core/content-schema.js').LessonContent} */
 export default {
   summary:
-    'Ôn tập chương 1: hằng số cân bằng, chuyển dịch cân bằng theo nguyên lí Le Chatelier, sự điện li, thuyết Brønsted - Lowry, pH và chuẩn độ acid - base.',
+    'Ôn tập chương 1: hằng số cân bằng, chuyển dịch cân bằng theo nguyên lí Le Chatelier, sự điện li, thuyết Brønsted – Lowry, pH và chuẩn độ acid – base.',
   intro:
     'Chương 1 cho thấy nhiều phản ứng không đi đến cùng mà dừng ở một trạng thái cân bằng, và các cân bằng trong nước quyết định độ acid của dung dịch. Bài ôn tập này hệ thống lại kiến thức, luyện dự đoán chiều chuyển dịch và tính toán với $K_C$, pH, chuẩn độ.',
   objectives: [
@@ -41,7 +41,7 @@ export default {
               'Chất điện li',
               'Mạnh: phân li hoàn toàn ($\\rightarrow$); yếu: phân li một phần ($\\rightleftharpoons$)',
             ],
-            ['Brønsted - Lowry', 'Acid cho proton, base nhận proton'],
+            ['Brønsted – Lowry', 'Acid cho proton, base nhận proton'],
             [
               'pH',
               '$\\mathrm{pH} = -\\lg[\\mathrm{H^+}]$; ở $25\\,^\\circ\\mathrm{C}$, $[\\mathrm{H^+}] \\cdot [\\mathrm{OH^-}] = 10^{-14}$',
@@ -77,7 +77,7 @@ export default {
   examples: [
     {
       problem:
-        'Cho cân bằng $\\mathrm{N_2(g)} + \\mathrm{3H_2(g)} \\rightleftharpoons \\mathrm{2NH_3(g)}$, $\\Delta_{r}H < 0$. Muốn thu được nhiều $\\mathrm{NH_3}$ hơn, nên thay đổi áp suất và nồng độ $\\mathrm{NH_3}$ như thế nào? Vì sao không dùng nhiệt độ quá thấp?',
+        'Cho cân bằng $\\mathrm{N_2(g)} + \\mathrm{3H_2(g)} \\rightleftharpoons \\mathrm{2NH_3(g)}$, $\\Delta_r H^\\circ_{298} < 0$. Muốn thu được nhiều $\\mathrm{NH_3}$ hơn, nên thay đổi áp suất và nồng độ $\\mathrm{NH_3}$ như thế nào? Vì sao không dùng nhiệt độ quá thấp?',
       steps: [
         'Chiều thuận làm giảm số mol khí từ $4$ xuống $2$, nên cần tăng áp suất.',
         'Lấy bớt $\\mathrm{NH_3}$ ra khỏi hệ thì cân bằng chuyển dịch theo chiều thuận để tạo lại $\\mathrm{NH_3}$.',
@@ -127,7 +127,7 @@ export default {
     {
       type: 'choice',
       prompt:
-        'Cho cân bằng $\\mathrm{2SO_2(g)} + \\mathrm{O_2(g)} \\rightleftharpoons \\mathrm{2SO_3(g)}$, $\\Delta_{r}H < 0$. Tác động nào làm cân bằng chuyển dịch theo chiều nghịch?',
+        'Cho cân bằng $\\mathrm{2SO_2(g)} + \\mathrm{O_2(g)} \\rightleftharpoons \\mathrm{2SO_3(g)}$, $\\Delta_r H^\\circ_{298} < 0$. Tác động nào làm cân bằng chuyển dịch theo chiều nghịch?',
       options: [
         'Tăng nhiệt độ',
         'Tăng áp suất',

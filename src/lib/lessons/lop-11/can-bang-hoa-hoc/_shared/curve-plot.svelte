@@ -87,7 +87,7 @@
       y={HEIGHT - BOTTOM + 14}
       text-anchor="middle"
       font-size="11"
-      fill="#475569">{formatNumber(t)}</text
+      fill="#475569">{formatNumber(xStart + t)}</text
     >
   {/each}
   {#each yTicks as v (v)}

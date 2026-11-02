@@ -1,15 +1,15 @@
 /** @type {import('#lib/core/content-schema.js').LessonContent} */
 export default {
   summary:
-    'Sự điện li, chất điện li mạnh và yếu, thuyết acid - base Brønsted - Lowry, pH và ý nghĩa của pH, sự thuỷ phân của ion và chuẩn độ acid - base.',
+    'Sự điện li, chất điện li mạnh và yếu, thuyết acid – base Brønsted – Lowry, pH và ý nghĩa của pH, sự thuỷ phân của ion và chuẩn độ acid – base.',
   intro:
     'Nước muối dẫn điện còn nước đường thì không. Nước chanh chua còn nước xà phòng thì nhờn. Những khác biệt ấy bắt nguồn từ các ion có trong dung dịch và từ nồng độ ion $\\mathrm{H^+}$, được đo bằng pH.',
   objectives: [
     'Nêu được khái niệm sự điện li, chất điện li; viết được phương trình điện li của chất điện li mạnh và yếu.',
-    'Xác định được acid, base trong một phản ứng theo thuyết Brønsted - Lowry.',
+    'Xác định được acid, base trong một phản ứng theo thuyết Brønsted – Lowry.',
     'Tính được pH từ nồng độ ion và nêu được ý nghĩa của pH trong thực tiễn.',
-    'Giải thích được môi trường của một số dung dịch muối bằng sự thuỷ phân của ion.',
-    'Mô tả và tính được kết quả chuẩn độ dung dịch acid mạnh bằng dung dịch base mạnh.',
+    'Giải thích được môi trường của một số dung dịch muối bằng sự thuỷ phân của ion và nêu được ý nghĩa thực tiễn của sự thuỷ phân.',
+    'Mô tả được thí nghiệm chuẩn độ acid mạnh và base mạnh, tính được nồng độ từ kết quả chuẩn độ.',
   ],
   sections: [
     {
@@ -36,7 +36,7 @@ export default {
       ],
     },
     {
-      heading: 'Thuyết Brønsted - Lowry về acid - base',
+      heading: 'Thuyết Brønsted – Lowry về acid – base',
       blocks: [
         {
           type: 'callout',
@@ -50,7 +50,7 @@ export default {
         },
         {
           type: 'p',
-          text: 'Trong phương trình đầu, $\\mathrm{HCl}$ cho proton nên là acid, $\\mathrm{H_2O}$ nhận proton nên là base. Trong phương trình sau, $\\mathrm{NH_3}$ nhận proton nên là base, còn $\\mathrm{H_2O}$ cho proton nên là acid. Vai trò của một chất tuỳ thuộc vào phản ứng mà nó tham gia.',
+          text: 'Trong phương trình đầu, $\\mathrm{HCl}$ cho proton nên là acid, $\\mathrm{H_2O}$ nhận proton nên là base. Trong phương trình sau, $\\mathrm{NH_3}$ nhận proton nên là base, còn $\\mathrm{H_2O}$ cho proton nên là acid. Vai trò của một chất tuỳ thuộc vào phản ứng mà nó tham gia. Theo thuyết này, base không nhất thiết phải chứa nhóm $\\mathrm{OH}$, như $\\mathrm{NH_3}$ hay $\\mathrm{CO_3^{2-}}$.',
         },
       ],
     },
@@ -76,7 +76,7 @@ export default {
         { type: 'widget', name: 'thang-ph' },
         {
           type: 'p',
-          text: 'pH được xác định bằng máy đo pH, giấy pH hoặc chất chỉ thị như quỳ tím, phenolphthalein. pH có ý nghĩa lớn trong đời sống: máu người có pH khoảng $7{,}4$; mỗi loại cây trồng phát triển tốt trong đất có pH thích hợp; pH của nước bể bơi, thực phẩm và mĩ phẩm đều cần được kiểm soát.',
+          text: 'pH được xác định bằng máy đo pH, giấy pH hoặc chất chỉ thị như quỳ tím, phenolphthalein. pH có ý nghĩa lớn trong đời sống: máu người có pH khoảng $7{,}4$; mỗi loại cây trồng phát triển tốt trong đất có pH thích hợp, như cây chè ở pH từ $4{,}5$ đến $5{,}5$; pH của nước bể bơi, thực phẩm và mĩ phẩm đều cần được kiểm soát.',
         },
       ],
     },
@@ -103,25 +103,31 @@ export default {
             'Dung dịch $\\mathrm{NaCl}$ có môi trường trung tính, vì $\\mathrm{Na^+}$ và $\\mathrm{Cl^-}$ không thuỷ phân.',
           ],
         },
+        {
+          type: 'callout',
+          tone: 'note',
+          title: 'Ý nghĩa thực tiễn',
+          text: 'Phèn chua được dùng để làm trong nước: $\\mathrm{Al^{3+}}$ thuỷ phân tạo kết tủa keo $\\mathrm{Al(OH)_3}$, kéo theo các hạt lơ lửng lắng xuống; muối $\\mathrm{Fe^{3+}}$ cũng có tác dụng tương tự. Ở đất chua, $\\mathrm{Al^{3+}}$ tự do thuỷ phân tạo $\\mathrm{H^+}$, làm đất chua hơn và bất lợi cho cây trồng. Dung dịch $\\mathrm{Na_2CO_3}$ có môi trường base; muối này được dùng trong công nghiệp thực phẩm, dệt, nhuộm, thuỷ tinh.',
+        },
       ],
     },
     {
-      heading: 'Chuẩn độ acid - base',
+      heading: 'Chuẩn độ acid – base',
       blocks: [
         {
           type: 'callout',
           tone: 'definition',
           title: 'Chuẩn độ',
-          text: 'Chuẩn độ là phương pháp xác định nồng độ của một dung dịch bằng một dung dịch đã biết chính xác nồng độ (dung dịch chuẩn). Dung dịch chuẩn được nhỏ từ burette xuống đến khi hai chất vừa phản ứng hết, nhận ra nhờ chất chỉ thị đổi màu.',
+          text: 'Chuẩn độ là phương pháp xác định nồng độ của một chất bằng một dung dịch đã biết nồng độ (dung dịch chuẩn). Một dung dịch được nhỏ từ burette xuống bình tam giác chứa dung dịch kia đến khi hai chất vừa phản ứng hết, nhận ra nhờ chất chỉ thị đổi màu.',
         },
         {
           type: 'list',
           ordered: true,
           items: [
-            'Lấy chính xác một thể tích dung dịch $\\mathrm{HCl}$ cần xác định nồng độ vào bình tam giác, thêm vài giọt phenolphthalein.',
-            'Cho dung dịch $\\mathrm{NaOH}$ đã biết nồng độ vào burette, chỉnh về vạch $0$.',
-            'Mở khoá cho $\\mathrm{NaOH}$ nhỏ từ từ xuống bình, lắc đều. Gần điểm cuối thì nhỏ từng giọt.',
-            'Dừng khi dung dịch chuyển sang màu hồng nhạt bền trong khoảng $20$ giây. Đọc thể tích $\\mathrm{NaOH}$ đã dùng, lặp lại vài lần rồi lấy trung bình.',
+            'Dùng pipette lấy $10$ mL dung dịch chuẩn $\\mathrm{HCl}$ $0{,}1$ M cho vào bình tam giác, thêm $1$ đến $2$ giọt phenolphthalein.',
+            'Cho dung dịch $\\mathrm{NaOH}$ cần xác định nồng độ vào burette, chỉnh về mức $0$.',
+            'Mở khoá burette, nhỏ từng giọt $\\mathrm{NaOH}$ xuống bình tam giác, vừa nhỏ vừa lắc đều.',
+            'Dừng khi dung dịch chuyển sang màu hồng nhạt bền trong khoảng $10$ giây. Ghi thể tích $\\mathrm{NaOH}$ đã dùng, lặp lại ít nhất ba lần rồi lấy trung bình.',
           ],
         },
         {
@@ -134,9 +140,9 @@ export default {
     },
   ],
   explore: {
-    title: 'Chuẩn độ một mẫu acid chưa biết nồng độ',
+    title: 'Chuẩn độ một dung dịch base chưa biết nồng độ',
     instruction:
-      'Nhỏ dung dịch $\\mathrm{NaOH}$ $0{,}1$ M xuống bình chứa $10$ mL $\\mathrm{HCl}$, theo dõi màu dung dịch và đường pH. Dừng ngay khi chất chỉ thị đổi màu, đọc burette, rồi tính nồng độ $\\mathrm{HCl}$. Thử đổi chất chỉ thị để thấy cả ba đều đổi màu trong bước nhảy pH.',
+      'Nhỏ dung dịch $\\mathrm{NaOH}$ chưa biết nồng độ xuống bình chứa $10$ mL $\\mathrm{HCl}$ $0{,}1$ M, theo dõi màu dung dịch và đường pH. Dừng ngay khi chất chỉ thị đổi màu, đọc burette, rồi tính nồng độ $\\mathrm{NaOH}$. Thử đổi chất chỉ thị để thấy cả ba đều đổi màu trong bước nhảy pH.',
   },
   examples: [
     {
@@ -171,13 +177,13 @@ export default {
     },
     {
       problem:
-        'Chuẩn độ $10$ mL dung dịch $\\mathrm{HCl}$ bằng dung dịch $\\mathrm{NaOH}$ $0{,}1$ M với chất chỉ thị phenolphthalein. Ba lần đo cần $12{,}4$ mL, $12{,}5$ mL và $12{,}6$ mL $\\mathrm{NaOH}$. Tính nồng độ dung dịch $\\mathrm{HCl}$.',
+        'Chuẩn độ $10$ mL dung dịch $\\mathrm{HCl}$ $0{,}1$ M bằng dung dịch $\\mathrm{NaOH}$ với chất chỉ thị phenolphthalein. Ba lần đo cần $12{,}4$ mL, $12{,}5$ mL và $12{,}6$ mL $\\mathrm{NaOH}$. Tính nồng độ dung dịch $\\mathrm{NaOH}$.',
       steps: [
         'Thể tích trung bình: $V_{\\mathrm{NaOH}} = \\dfrac{12{,}4 + 12{,}5 + 12{,}6}{3} = 12{,}5$ mL.',
         'Tại điểm tương đương: $C_{\\mathrm{HCl}} \\cdot V_{\\mathrm{HCl}} = C_{\\mathrm{NaOH}} \\cdot V_{\\mathrm{NaOH}}$.',
-        '$C_{\\mathrm{HCl}} = \\dfrac{0{,}1 \\cdot 12{,}5}{10} = 0{,}125$ M.',
+        '$C_{\\mathrm{NaOH}} = \\dfrac{0{,}1 \\cdot 10}{12{,}5} = 0{,}08$ M.',
       ],
-      answer: '$C_{\\mathrm{HCl}} = 0{,}125$ M.',
+      answer: '$C_{\\mathrm{NaOH}} = 0{,}08$ M.',
     },
   ],
   practice: [
@@ -209,7 +215,7 @@ export default {
     {
       type: 'choice',
       prompt:
-        'Trong phản ứng $\\mathrm{CO_3^{2-}} + \\mathrm{H_2O} \\rightleftharpoons \\mathrm{HCO_3^-} + \\mathrm{OH^-}$, theo thuyết Brønsted - Lowry, $\\mathrm{H_2O}$ đóng vai trò gì?',
+        'Trong phản ứng $\\mathrm{CO_3^{2-}} + \\mathrm{H_2O} \\rightleftharpoons \\mathrm{HCO_3^-} + \\mathrm{OH^-}$, theo thuyết Brønsted – Lowry, $\\mathrm{H_2O}$ đóng vai trò gì?',
       options: ['Acid', 'Base', 'Chất không điện li', 'Vừa acid vừa base trong cùng phản ứng'],
       answer: 0,
       hints: ['Xem $\\mathrm{H_2O}$ cho hay nhận proton.'],
@@ -263,6 +269,20 @@ export default {
         '$\\mathrm{CO_3^{2-}}$ thuỷ phân tạo $\\mathrm{OH^-}$; $\\mathrm{Fe^{3+}}$ thuỷ phân tạo $\\mathrm{H^+}$; $\\mathrm{Na^+}$ và $\\mathrm{Cl^-}$ không thuỷ phân.',
     },
     {
+      type: 'choice',
+      prompt: 'Người dân dùng phèn chua để làm trong nước nhờ hiện tượng nào?',
+      options: [
+        '$\\mathrm{Al^{3+}}$ thuỷ phân tạo kết tủa keo $\\mathrm{Al(OH)_3}$ kéo cặn lắng xuống',
+        '$\\mathrm{K^+}$ thuỷ phân tạo $\\mathrm{OH^-}$ trung hoà nước',
+        '$\\mathrm{SO_4^{2-}}$ phản ứng hết với các chất bẩn trong nước',
+        'Phèn chua làm tăng pH của nước lên trên $7$',
+      ],
+      answer: 0,
+      hints: ['Ion kim loại nào trong phèn chua bị thuỷ phân?'],
+      solution:
+        '$\\mathrm{Al^{3+}}$ thuỷ phân tạo $\\mathrm{Al(OH)_3}$ dạng keo, kéo theo các hạt lơ lửng lắng xuống. Sự thuỷ phân này tạo $\\mathrm{H^+}$ nên làm pH giảm, không tăng.',
+    },
+    {
       type: 'number',
       prompt:
         'Chuẩn độ $10$ mL dung dịch $\\mathrm{HCl}$ cần vừa đủ $8$ mL dung dịch $\\mathrm{NaOH}$ $0{,}1$ M. Tính nồng độ dung dịch $\\mathrm{HCl}$, theo M.',
@@ -287,7 +307,7 @@ export default {
       prompt:
         'Chuẩn độ $\\mathrm{HCl}$ bằng $\\mathrm{NaOH}$, chất chỉ thị phenolphthalein cho vào bình. Dừng chuẩn độ khi dung dịch trong bình',
       options: [
-        'chuyển sang màu hồng nhạt bền trong khoảng $20$ giây',
+        'chuyển sang màu hồng nhạt bền trong khoảng $10$ giây',
         'mất hẳn màu hồng',
         'chuyển sang màu đỏ đậm',
         'chuyển sang màu xanh',
@@ -300,7 +320,7 @@ export default {
   ],
   takeaways: [
     'Chất điện li mạnh phân li hoàn toàn ($\\rightarrow$), chất điện li yếu phân li một phần ($\\rightleftharpoons$).',
-    'Theo Brønsted - Lowry: acid cho proton, base nhận proton.',
+    'Theo Brønsted – Lowry: acid cho proton, base nhận proton.',
     '$\\mathrm{pH} = -\\lg[\\mathrm{H^+}]$; ở $25\\,^\\circ\\mathrm{C}$, $[\\mathrm{H^+}] \\cdot [\\mathrm{OH^-}] = 10^{-14}$; $\\mathrm{pH} < 7$ là môi trường acid, $\\mathrm{pH} > 7$ là môi trường base.',
     '$\\mathrm{Al^{3+}}$, $\\mathrm{Fe^{3+}}$ thuỷ phân tạo môi trường acid; $\\mathrm{CO_3^{2-}}$ thuỷ phân tạo môi trường base.',
     'Chuẩn độ: tại điểm tương đương, $C_{\\mathrm{HCl}} \\cdot V_{\\mathrm{HCl}} = C_{\\mathrm{NaOH}} \\cdot V_{\\mathrm{NaOH}}$.',

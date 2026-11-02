@@ -1,10 +1,10 @@
 import { describe, expect, it } from 'vitest';
 import {
+  ACID_C,
   ACID_V,
-  BASE_C,
   INDICATORS,
   SAMPLES,
-  acidFromVolume,
+  baseFromVolume,
   equivalenceVolume,
   idealCurve,
   indicatorColor,
@@ -38,10 +38,10 @@ describe('titration of HCl with NaOH', () => {
   });
 
   it('turns phenolphthalein pink within one drop of the equivalence point', () => {
-    for (const ca of SAMPLES) {
-      const eq = equivalenceVolume(ca);
-      expect(reachedEnd(PHENOL, phAfter(ca, ACID_V, BASE_C, eq - 0.05))).toBe(false);
-      expect(reachedEnd(PHENOL, phAfter(ca, ACID_V, BASE_C, eq + 0.05))).toBe(true);
+    for (const cb of SAMPLES) {
+      const eq = equivalenceVolume(cb);
+      expect(reachedEnd(PHENOL, phAfter(ACID_C, ACID_V, cb, eq - 0.05))).toBe(false);
+      expect(reachedEnd(PHENOL, phAfter(ACID_C, ACID_V, cb, eq + 0.05))).toBe(true);
     }
   });
 
@@ -56,17 +56,18 @@ describe('titration of HCl with NaOH', () => {
 
   it('colours each indicator by its pH range', () => {
     expect(indicatorColor(PHENOL, 3)).toBe('rgb(248 250 252)');
+    expect(indicatorColor(PHENOL, 10)).toBe('rgb(249 168 212)');
     expect(indicatorColor(PHENOL, 12)).toBe('rgb(219 39 119)');
     expect(indicatorColor(ORANGE, 3)).toBe('rgb(220 38 38)');
   });
 
   it('checks the typed concentration against the reading', () => {
-    expect(acidFromVolume(12)).toBeCloseTo(0.12, 9);
-    expect(judgeResult(0.12, 12.05, null, PHENOL)).toBe('invalid');
-    expect(judgeResult(0.12, 11, 0.11, PHENOL)).toBe('too-early');
-    expect(judgeResult(0.12, 13, 0.13, PHENOL)).toBe('overshot');
-    expect(judgeResult(0.12, 12.05, 0.2, PHENOL)).toBe('wrong');
-    expect(judgeResult(0.12, 12.05, 0.12, PHENOL)).toBe('right');
-    expect(overshot(0.12, 12.1)).toBe(false);
+    expect(baseFromVolume(12.5)).toBeCloseTo(0.08, 9);
+    expect(judgeResult(0.08, 12.55, null, PHENOL)).toBe('invalid');
+    expect(judgeResult(0.08, 11, 0.09, PHENOL)).toBe('too-early');
+    expect(judgeResult(0.08, 14, 0.07, PHENOL)).toBe('overshot');
+    expect(judgeResult(0.08, 12.55, 0.2, PHENOL)).toBe('wrong');
+    expect(judgeResult(0.08, 12.55, 0.08, PHENOL)).toBe('right');
+    expect(overshot(0.08, 12.6)).toBe(false);
   });
 });

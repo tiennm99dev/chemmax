@@ -23,7 +23,7 @@
           text: 'Với nồng độ này, không có đủ chất để phản ứng theo chiều nào: cần cả $\\mathrm{H_2}$ và $\\mathrm{I_2}$, hoặc cần có $\\mathrm{HI}$.',
         };
       }
-      if (rows.length < 2) {
+      if (new Set(rows.map((r) => `${r.h2};${r.i2};${r.hi}`)).size < 2) {
         return {
           tone: 'info',
           text: 'Chọn nồng độ ban đầu rồi bấm “Cho phản ứng”. Làm ít nhất hai lần với các nồng độ khác hẳn nhau.',

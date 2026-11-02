@@ -2,17 +2,17 @@
   import { readNumber } from '#lib/core/decimal.js';
   import FeedbackNote from '#lib/core/feedback-note.svelte';
   import SegmentedControl from '#lib/core/segmented-control.svelte';
-  import { formatFixed, formatNumber, tidy } from '#lib/core/number-format.js';
+  import { formatFixed, formatNumber, numTex, tidy } from '#lib/core/number-format.js';
   import { button, textInput } from '#lib/core/ui.js';
   import LabGlassware from '#lib/domain/lab-glassware.svelte';
   import CurvePlot from '../_shared/curve-plot.svelte';
   import {
+    ACID_C,
     ACID_V,
-    BASE_C,
     INDICATORS,
     MAX_V,
     SAMPLES,
-    acidFromVolume,
+    baseFromVolume,
     idealCurve,
     indicatorColor,
     judgeResult,
@@ -33,21 +33,21 @@
   let indicatorId = $state(INDICATORS[0].id);
   let added = $state(0);
   /** @type {Array<[number, number]>} */
-  let points = $state.raw([[0, phAfter(SAMPLES[0], ACID_V, BASE_C, 0)]]);
+  let points = $state.raw([[0, phAfter(ACID_C, ACID_V, SAMPLES[0], 0)]]);
   let typed = $state('');
   /** @type {{ tone: 'ok' | 'warn' | 'info', text: string } | null} */
   let reply = $state(null);
   let solved = $state(false);
 
-  const ca = $derived(SAMPLES[sample]);
+  const cb = $derived(SAMPLES[sample]);
   const indicator = $derived(INDICATORS.find((i) => i.id === indicatorId) ?? INDICATORS[0]);
-  const ph = $derived(phAfter(ca, ACID_V, BASE_C, added));
+  const ph = $derived(phAfter(ACID_C, ACID_V, cb, added));
   const color = $derived(indicatorColor(indicator, ph));
   const ended = $derived(reachedEnd(indicator, ph));
-  const past = $derived(overshot(ca, added));
+  const past = $derived(overshot(cb, added));
 
   const series = $derived([
-    ...(solved ? [{ points: idealCurve(ca, MAX_V), color: '#94a3b8', dashed: true }] : []),
+    ...(solved ? [{ points: idealCurve(cb, MAX_V), color: '#94a3b8', dashed: true }] : []),
     { points, color: '#4f46e5' },
   ]);
   const band = $derived({ from: indicator.low, to: indicator.high, color: '#a78bfa' });
@@ -63,13 +63,13 @@
       if (ended) {
         return {
           tone: 'ok',
-          text: `Dừng lại: chất chỉ thị vừa đổi màu từ ${indicator.change}. Đọc thể tích trên burette rồi tính nồng độ $\\mathrm{HCl}$.`,
+          text: `Dừng lại: chất chỉ thị vừa đổi màu từ ${indicator.change}. Đọc thể tích trên burette rồi tính nồng độ $\\mathrm{NaOH}$.`,
         };
       }
       if (added === 0) {
         return {
           tone: 'info',
-          text: `Bình tam giác có $${ACID_V}$ mL $\\mathrm{HCl}$ chưa biết nồng độ. Burette chứa $\\mathrm{NaOH}$ $0{,}1$ M. Hãy mở khoá burette để nhỏ dung dịch xuống.`,
+          text: `Bình tam giác có $${ACID_V}$ mL $\\mathrm{HCl}$ $0{,}1$ M và chất chỉ thị. Burette chứa $\\mathrm{NaOH}$ chưa biết nồng độ. Hãy mở khoá burette để nhỏ dung dịch xuống.`,
         };
       }
       return {
@@ -84,13 +84,13 @@
     const next = Math.min(MAX_V, tidy(added + amount, 2));
     if (next === added) return;
     added = next;
-    points = [...points, [added, phAfter(ca, ACID_V, BASE_C, added)]];
+    points = [...points, [added, phAfter(ACID_C, ACID_V, cb, added)]];
     reply = null;
   }
 
   function restart() {
     added = 0;
-    points = [[0, phAfter(ca, ACID_V, BASE_C, 0)]];
+    points = [[0, phAfter(ACID_C, ACID_V, cb, 0)]];
     typed = '';
     reply = null;
     solved = false;
@@ -103,8 +103,7 @@
 
   function check() {
     const value = readNumber(typed);
-    const verdict = judgeResult(ca, added, value, indicator);
-    const workedOut = `$C_{\\mathrm{HCl}} = \\dfrac{C_{\\mathrm{NaOH}} \\cdot V_{\\mathrm{NaOH}}}{V_{\\mathrm{HCl}}} = \\dfrac{0{,}1 \\cdot ${texNumber(added)}}{${ACID_V}} \\approx ${texNumber(acidFromVolume(added), 3)}$ M`;
+    const verdict = judgeResult(cb, added, value, indicator);
     if (verdict === 'invalid') {
       reply = { tone: 'warn', text: 'Hãy nhập một số, ví dụ 0,12.' };
     } else if (verdict === 'too-early') {
@@ -124,19 +123,12 @@
       };
     } else {
       solved = true;
+      const workedOut = `$C_{\\mathrm{NaOH}} = \\dfrac{C_{\\mathrm{HCl}} \\cdot V_{\\mathrm{HCl}}}{V_{\\mathrm{NaOH}}} = \\dfrac{0{,}1 \\cdot ${ACID_V}}{${numTex(added, 2)}} \\approx ${numTex(baseFromVolume(added), 3)}$ M`;
       reply = {
         tone: 'ok',
         text: `Đúng. ${workedOut}. Đường nét đứt là đường chuẩn độ đầy đủ: pH nhảy rất nhanh quanh điểm tương đương.`,
       };
     }
-  }
-
-  /**
-   * @param {number} v
-   * @param {number} [places]
-   */
-  function texNumber(v, places = 2) {
-    return formatNumber(v, places).replace(',', '{,}');
   }
 </script>
 
@@ -161,7 +153,10 @@
           2,
         )}"
       >
-        <path d="M 22 118 L 98 118 L 72 62 L 48 62 Z" fill={color} />
+        <path
+          d="M 14 118 Q 11 125 18 125 L 102 125 Q 109 125 106 118 L 77 62 L 43 62 Z"
+          fill={color}
+        />
         <path
           d="M 50 6 L 50 46 L 12 120 Q 10 126 18 126 L 102 126 Q 110 126 108 120 L 70 46 L 70 6"
           fill="none"
@@ -204,7 +199,7 @@
       >
         <label class="min-w-40 flex-1">
           <span class="mb-1 block text-sm font-semibold text-slate-700"
-            >Nồng độ HCl tính được (mol/L)</span
+            >Nồng độ NaOH tính được (mol/L)</span
           >
           <input class={textInput} inputmode="decimal" autocomplete="off" bind:value={typed} />
         </label>

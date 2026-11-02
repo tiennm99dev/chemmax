@@ -10,6 +10,7 @@
   import CurvePlot from '../_shared/curve-plot.svelte';
   import {
     ACTION_NOTES,
+    ACTION_SHIFT,
     addGas,
     brownness,
     direction,
@@ -29,16 +30,22 @@
   const DOSE = 0.02;
   const MOST_MOLES = 0.24;
   const WINDOW = 20;
+  const X_STEP = 5;
   const COLORS = { no2: '#b45309', n2o4: '#4f46e5' };
   const DIRECTION_TEXT = {
     thuan: 'Đang chuyển dịch theo chiều thuận: $v_t > v_n$.',
     nghich: 'Đang chuyển dịch theo chiều nghịch: $v_n > v_t$.',
   };
 
+  /** Molecules drawn per mole of gas; the largest amount allowed fits in SPOTS. */
+  const DOTS_PER_MOL = 400;
   /** Fixed places for the drawn molecules, so they do not jump between frames. */
   const SPOTS = (() => {
     const rand = rng(23);
-    return Array.from({ length: 60 }, () => ({ x: rand(), y: rand() }));
+    return Array.from({ length: Math.ceil(MOST_MOLES * DOTS_PER_MOL) }, () => ({
+      x: rand(),
+      y: rand(),
+    }));
   })();
 
   let temperature = $state(START_T);
@@ -55,7 +62,8 @@
   const dir = $derived(direction(gas));
   const shares = $derived(rateShares(gas));
   const k = $derived(kc(gas.tC));
-  const windowStart = $derived(Math.max(0, clock - WINDOW));
+  /** The plot's left edge moves in whole axis steps, so its labels stay round. */
+  const windowStart = $derived(Math.max(0, Math.ceil((clock - WINDOW) / X_STEP) * X_STEP));
   const shown = $derived(trace.filter((p) => p[0] >= windowStart));
   const peak = $derived(Math.max(0.1, ...shown.map((p) => Math.max(p[1], p[2]))));
   const yMax = $derived(tidy(Math.ceil(peak / 0.05) * 0.05));
@@ -86,7 +94,9 @@
           text: `${ACTION_NOTES[action]} Cân bằng mới đã thiết lập: $v_t = v_n$.`,
         };
       }
-      return { tone: 'info', text: `${DIRECTION_TEXT[dir]} ${ACTION_NOTES[action]}` };
+      // A later change can leave the gas still answering an earlier, larger one.
+      const text = dir === ACTION_SHIFT[action] ? ACTION_NOTES[action] : '';
+      return { tone: 'info', text: `${DIRECTION_TEXT[dir]} ${text}`.trim() };
     },
   );
 
@@ -96,8 +106,8 @@
   const columnTop = $derived(BOX.bottom - columnH);
 
   const counts = $derived({
-    no2: Math.min(60, Math.round(gas.no2 * gas.volume * 400)),
-    n2o4: Math.min(30, Math.round(gas.n2o4 * gas.volume * 400)),
+    no2: Math.round(gas.no2 * gas.volume * DOTS_PER_MOL),
+    n2o4: Math.round(gas.n2o4 * gas.volume * DOTS_PER_MOL),
   });
   const dots = $derived(
     SPOTS.slice(0, counts.no2 + counts.n2o4).map((s, i) => ({
@@ -314,7 +324,7 @@
   <CurvePlot
     xMax={WINDOW}
     xStart={windowStart}
-    xStep={5}
+    xStep={X_STEP}
     {yMax}
     yStep={0.05}
     xName="t (s)"

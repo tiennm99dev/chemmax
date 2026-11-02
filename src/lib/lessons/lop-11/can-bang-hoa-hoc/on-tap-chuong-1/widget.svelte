@@ -20,6 +20,8 @@
   let answered = $state(/** @type {'thuan' | 'nghich' | 'khong' | null} */ (null));
   /** @type {HTMLButtonElement | undefined} */
   let nextButton = $state();
+  /** @type {HTMLElement | undefined} */
+  let board = $state();
 
   const current = $derived(round[index]);
   const finished = $derived(index >= round.length);
@@ -33,9 +35,16 @@
     nextButton?.focus();
   }
 
+  /** The button that just had focus is gone: hand focus to the first one on screen. */
+  async function focusFirstButton() {
+    await tick();
+    board?.querySelector('button')?.focus();
+  }
+
   function next() {
     answered = null;
     index += 1;
+    focusFirstButton();
   }
 
   function restart() {
@@ -43,10 +52,11 @@
     index = 0;
     score = 0;
     answered = null;
+    focusFirstButton();
   }
 </script>
 
-<div class="space-y-4">
+<div class="space-y-4" bind:this={board}>
   {#if finished}
     <FeedbackNote
       tone={score >= round.length - 1 ? 'ok' : 'info'}

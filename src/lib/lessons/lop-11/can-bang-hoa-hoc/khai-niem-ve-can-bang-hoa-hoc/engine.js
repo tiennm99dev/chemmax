@@ -136,6 +136,16 @@ export function brownness(no2) {
 
 /** @typedef {'heat' | 'cool' | 'compress' | 'expand' | 'add-no2' | 'add-n2o4'} GasAction */
 
+/** The direction Le Chatelier's principle gives for each action. */
+export const ACTION_SHIFT = /** @type {Record<GasAction, 'thuan' | 'nghich'>} */ ({
+  heat: 'nghich',
+  cool: 'thuan',
+  compress: 'thuan',
+  expand: 'nghich',
+  'add-no2': 'thuan',
+  'add-n2o4': 'nghich',
+});
+
 /** What Le Chatelier's principle says about each action. */
 export const ACTION_NOTES = /** @type {Record<GasAction, string>} */ ({
   heat: 'Tăng nhiệt độ: cân bằng chuyển dịch theo chiều nghịch, chiều thu nhiệt, để giảm tác động. Màu nâu đậm lên và $K_C$ giảm.',

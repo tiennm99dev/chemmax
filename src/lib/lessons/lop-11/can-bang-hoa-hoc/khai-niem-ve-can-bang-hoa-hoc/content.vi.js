@@ -103,8 +103,8 @@ export default {
             ['Giảm nồng độ một chất', 'Làm tăng nồng độ chất đó'],
             ['Tăng áp suất chung của hệ có chất khí', 'Làm giảm số mol khí'],
             ['Giảm áp suất chung của hệ có chất khí', 'Làm tăng số mol khí'],
-            ['Tăng nhiệt độ', 'Thu nhiệt ($\\Delta_{r}H > 0$)'],
-            ['Giảm nhiệt độ', 'Toả nhiệt ($\\Delta_{r}H < 0$)'],
+            ['Tăng nhiệt độ', 'Thu nhiệt ($\\Delta_r H^\\circ_{298} > 0$)'],
+            ['Giảm nhiệt độ', 'Toả nhiệt ($\\Delta_r H^\\circ_{298} < 0$)'],
           ],
         },
         {
@@ -150,7 +150,7 @@ export default {
     },
     {
       problem:
-        'Cho cân bằng $\\mathrm{2SO_2(g)} + \\mathrm{O_2(g)} \\rightleftharpoons \\mathrm{2SO_3(g)}$, $\\Delta_{r}H < 0$. Cân bằng chuyển dịch theo chiều nào khi: a) tăng nhiệt độ; b) tăng áp suất; c) thêm $\\mathrm{O_2}$; d) dùng xúc tác $\\mathrm{V_2O_5}$?',
+        'Cho cân bằng $\\mathrm{2SO_2(g)} + \\mathrm{O_2(g)} \\rightleftharpoons \\mathrm{2SO_3(g)}$, $\\Delta_r H^\\circ_{298} < 0$. Cân bằng chuyển dịch theo chiều nào khi: a) tăng nhiệt độ; b) tăng áp suất; c) thêm $\\mathrm{O_2}$; d) dùng xúc tác $\\mathrm{V_2O_5}$?',
       steps: [
         'a) Tăng nhiệt độ: cân bằng chuyển dịch theo chiều thu nhiệt. Chiều thuận toả nhiệt nên đó là chiều nghịch.',
         'b) Vế trái có $3$ mol khí, vế phải có $2$ mol khí. Tăng áp suất: cân bằng chuyển dịch theo chiều giảm số mol khí, là chiều thuận.',
@@ -165,15 +165,15 @@ export default {
       type: 'choice',
       prompt: 'Phản ứng nào sau đây là phản ứng thuận nghịch?',
       options: [
-        '$\\mathrm{N_2} + \\mathrm{3H_2} \\rightleftharpoons \\mathrm{2NH_3}$',
-        '$\\mathrm{C} + \\mathrm{O_2} \\rightarrow \\mathrm{CO_2}$',
-        '$\\mathrm{2Mg} + \\mathrm{O_2} \\rightarrow \\mathrm{2MgO}$',
-        '$\\mathrm{NaOH} + \\mathrm{HCl} \\rightarrow \\mathrm{NaCl} + \\mathrm{H_2O}$',
+        'Tổng hợp ammonia từ nitrogen và hydrogen',
+        'Đốt cháy carbon trong oxygen',
+        'Đốt cháy magnesium trong oxygen',
+        'Trung hoà $\\mathrm{NaOH}$ bằng $\\mathrm{HCl}$',
       ],
       answer: 0,
       hints: ['Tìm phương trình có thể xảy ra theo hai chiều trong cùng điều kiện.'],
       solution:
-        'Phản ứng tổng hợp ammonia xảy ra theo hai chiều nên được viết bằng $\\rightleftharpoons$. Các phản ứng còn lại xảy ra một chiều.',
+        'Phản ứng tổng hợp ammonia xảy ra theo hai chiều: $\\mathrm{N_2} + \\mathrm{3H_2} \\rightleftharpoons \\mathrm{2NH_3}$. Các phản ứng còn lại xảy ra một chiều.',
     },
     {
       type: 'multi',
@@ -234,7 +234,7 @@ export default {
     {
       type: 'choice',
       prompt:
-        'Cho cân bằng $\\mathrm{C(s)} + \\mathrm{CO_2(g)} \\rightleftharpoons \\mathrm{2CO(g)}$, $\\Delta_{r}H > 0$. Khi tăng nhiệt độ, cân bằng chuyển dịch theo chiều nào và $K_C$ thay đổi ra sao?',
+        'Cho cân bằng $\\mathrm{C(s)} + \\mathrm{CO_2(g)} \\rightleftharpoons \\mathrm{2CO(g)}$, $\\Delta_r H^\\circ_{298} > 0$. Khi tăng nhiệt độ, cân bằng chuyển dịch theo chiều nào và $K_C$ thay đổi ra sao?',
       options: [
         'Chiều thuận, $K_C$ tăng',
         'Chiều nghịch, $K_C$ giảm',
@@ -252,7 +252,7 @@ export default {
     {
       type: 'match',
       prompt:
-        'Với cân bằng $\\mathrm{N_2(g)} + \\mathrm{3H_2(g)} \\rightleftharpoons \\mathrm{2NH_3(g)}$, $\\Delta_{r}H < 0$, ghép mỗi tác động với kết quả.',
+        'Với cân bằng $\\mathrm{N_2(g)} + \\mathrm{3H_2(g)} \\rightleftharpoons \\mathrm{2NH_3(g)}$, $\\Delta_r H^\\circ_{298} < 0$, ghép mỗi tác động với kết quả.',
       left: ['Tăng nhiệt độ', 'Tăng áp suất', 'Dùng thêm xúc tác'],
       right: ['Chuyển dịch theo chiều nghịch', 'Chuyển dịch theo chiều thuận', 'Không chuyển dịch'],
       pairs: [

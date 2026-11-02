@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import {
   ACTION_NOTES,
+  ACTION_SHIFT,
   HI_K,
   addGas,
   brownness,
@@ -88,6 +89,24 @@ describe('the NO2 and N2O4 equilibrium', () => {
 
   it('has a note for every action', () => {
     expect(Object.keys(ACTION_NOTES)).toHaveLength(6);
+  });
+
+  it('runs the way the principle says after each action', () => {
+    const start = settled(25, 1, 0.1);
+    /** @type {Record<import('./engine.js').GasAction, import('./engine.js').GasState>} */
+    const after = {
+      heat: { ...start, tC: 40 },
+      cool: { ...start, tC: 10 },
+      compress: setVolume(start, 0.5),
+      expand: setVolume(start, 2),
+      'add-no2': addGas(start, 'no2', 0.02),
+      'add-n2o4': addGas(start, 'n2o4', 0.02),
+    };
+    const bad = Object.entries(after).filter(
+      ([action, gas]) =>
+        direction(gas) !== ACTION_SHIFT[/** @type {keyof typeof ACTION_SHIFT} */ (action)],
+    );
+    expect(bad).toEqual([]);
   });
 });
 

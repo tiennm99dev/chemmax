@@ -1,17 +1,18 @@
 /**
- * Titrating a hydrochloric acid sample of unknown strength with a standard
- * sodium hydroxide solution: the pH after each addition, the indicators and
- * their colours, and checking the learner's calculated concentration.
+ * The book's titration: a sodium hydroxide solution of unknown strength from
+ * the burette into a standard hydrochloric acid solution in the flask. Gives
+ * the pH after each addition, the indicators and their colours, and checks the
+ * learner's calculated concentration.
  * Volumes are in mL, concentrations in mol/L.
  */
 import { strongAcidPh, strongBasePh } from '#lib/domain/ph.js';
 
-/** Standard NaOH solution in the burette. */
-export const BASE_C = 0.1;
-/** Acid sample in the flask. */
+/** Standard HCl solution in the flask. */
+export const ACID_C = 0.1;
+/** Volume of standard acid taken with the pipette. */
 export const ACID_V = 10;
-/** Hidden acid concentrations to find; they keep the end point on the burette. */
-export const SAMPLES = [0.12, 0.08, 0.15, 0.09, 0.11];
+/** Hidden NaOH concentrations to find, all near 0,1 M like the book's solution. */
+export const SAMPLES = [0.08, 0.125, 0.1, 0.11, 0.09];
 /** Largest volume the burette gives in one run. */
 export const MAX_V = 25;
 /** Allowed gap between the typed and the worked-out concentration. */
@@ -32,8 +33,8 @@ export function phAfter(ca, va, cb, vb) {
   return excess > 0 ? strongAcidPh(excess) : strongBasePh(-excess);
 }
 
-/** @param {number} ca */
-export const equivalenceVolume = (ca) => (ca * ACID_V) / BASE_C;
+/** @param {number} cb */
+export const equivalenceVolume = (cb) => (ACID_C * ACID_V) / cb;
 
 /**
  * @typedef {object} Indicator
@@ -44,6 +45,7 @@ export const equivalenceVolume = (ca) => (ca * ACID_V) / BASE_C;
  * @property {number} endAt pH where the titration stops with it
  * @property {[number, number, number]} acidColor
  * @property {[number, number, number]} baseColor
+ * @property {[number, number, number]} [paleColor] colour at `high` when the shade deepens further up
  * @property {string} change
  */
 
@@ -56,8 +58,9 @@ export const INDICATORS = [
     high: 10,
     endAt: 8.2,
     acidColor: [248, 250, 252],
+    paleColor: [249, 168, 212],
     baseColor: [219, 39, 119],
-    change: 'không màu sang hồng',
+    change: 'không màu sang hồng nhạt',
   },
   {
     id: 'bromothymol',
@@ -81,27 +84,41 @@ export const INDICATORS = [
   },
 ];
 
+/** pH units above the colour change over which a pale shade reaches its deepest. */
+const DEEPEN_OVER = 2;
+
 /**
- * Colour of a solution holding the indicator at a pH.
- * @param {Indicator} indicator
- * @param {number} ph
+ * @param {[number, number, number]} from
+ * @param {[number, number, number]} to
+ * @param {number} t
  */
-export function indicatorColor(indicator, ph) {
-  const t = Math.min(1, Math.max(0, (ph - indicator.low) / (indicator.high - indicator.low)));
-  const [r, g, b] = indicator.acidColor.map((v, i) =>
-    Math.round(v + (indicator.baseColor[i] - v) * t),
-  );
+function mix(from, to, t) {
+  const share = Math.min(1, Math.max(0, t));
+  const [r, g, b] = from.map((v, i) => Math.round(v + (to[i] - v) * share));
   return `rgb(${r} ${g} ${b})`;
 }
 
 /**
+ * Colour of a solution holding the indicator at a pH. Phenolphthalein turns
+ * pale pink first and deep pink only when far too much base was added, which
+ * is how the book tells a good end point from an overshoot.
+ * @param {Indicator} indicator
+ * @param {number} ph
+ */
+export function indicatorColor(indicator, ph) {
+  const { low, high, acidColor, paleColor, baseColor } = indicator;
+  if (paleColor && ph > high) return mix(paleColor, baseColor, (ph - high) / DEEPEN_OVER);
+  return mix(acidColor, paleColor ?? baseColor, (ph - low) / (high - low));
+}
+
+/**
  * The titration curve up to `upTo` mL of base, finely spaced near the jump.
- * @param {number} ca
+ * @param {number} cb
  * @param {number} upTo
  * @returns {Array<[number, number]>}
  */
-export function idealCurve(ca, upTo) {
-  const eq = equivalenceVolume(ca);
+export function idealCurve(cb, upTo) {
+  const eq = equivalenceVolume(cb);
   /** @type {number[]} */
   const volumes = [];
   for (let v = 0; v < upTo; v += 0.5) volumes.push(v);
@@ -110,7 +127,7 @@ export function idealCurve(ca, upTo) {
   return volumes
     .filter((v) => v >= 0 && v <= upTo)
     .sort((a, b) => a - b)
-    .map((v) => [v, phAfter(ca, ACID_V, BASE_C, v)]);
+    .map((v) => [v, phAfter(ACID_C, ACID_V, cb, v)]);
 }
 
 /**
@@ -122,29 +139,29 @@ export const reachedEnd = (indicator, ph) => ph >= indicator.endAt;
 
 /**
  * Whether the base added went clearly past the equivalence point.
- * @param {number} ca
+ * @param {number} cb
  * @param {number} vb
  */
-export const overshot = (ca, vb) => vb - equivalenceVolume(ca) > CLEAN_OVERSHOOT;
+export const overshot = (cb, vb) => vb - equivalenceVolume(cb) > CLEAN_OVERSHOOT;
 
 /**
- * Concentration of the acid from the volume read off the burette:
+ * Concentration of the base from the volume read off the burette:
  * C(HCl)·V(HCl) = C(NaOH)·V(NaOH).
  * @param {number} vb
  */
-export const acidFromVolume = (vb) => (BASE_C * vb) / ACID_V;
+export const baseFromVolume = (vb) => (ACID_C * ACID_V) / vb;
 
 /**
- * Judges a typed acid concentration against the reading on the burette.
- * @param {number} ca
+ * Judges a typed base concentration against the reading on the burette.
+ * @param {number} cb
  * @param {number} vb
  * @param {number | null} typed
  * @param {Indicator} indicator
  * @returns {'invalid' | 'too-early' | 'overshot' | 'wrong' | 'right'}
  */
-export function judgeResult(ca, vb, typed, indicator) {
+export function judgeResult(cb, vb, typed, indicator) {
   if (typed === null || !Number.isFinite(typed)) return 'invalid';
-  if (!reachedEnd(indicator, phAfter(ca, ACID_V, BASE_C, vb))) return 'too-early';
-  if (overshot(ca, vb)) return 'overshot';
-  return Math.abs(typed - acidFromVolume(vb)) <= TOLERANCE ? 'right' : 'wrong';
+  if (!reachedEnd(indicator, phAfter(ACID_C, ACID_V, cb, vb))) return 'too-early';
+  if (overshot(cb, vb)) return 'overshot';
+  return Math.abs(typed - baseFromVolume(vb)) <= TOLERANCE ? 'right' : 'wrong';
 }
