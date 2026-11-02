@@ -58,7 +58,7 @@ export const copperSkill = {
       ],
       steps: [
         `$n_{\\mathrm{Cu}} = \\dfrac{${numTex(mass)}}{64} = ${numTex(copper)}$ mol.`,
-        `$${c.equation}$, nên $n = ${numTex(gas)}$ mol.`,
+        `$${c.equation}$, nên $n_{${c.gas}} = ${numTex(gas)}$ mol.`,
         `$V = ${numTex(gas)} \\cdot 24{,}79 = ${numTex(volume)}$ L.`,
       ],
     };

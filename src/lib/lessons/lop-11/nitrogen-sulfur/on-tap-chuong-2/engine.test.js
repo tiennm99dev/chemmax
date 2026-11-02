@@ -79,6 +79,35 @@ describe('conversion maps', () => {
     expect(bad).toEqual([]);
   });
 
+  it('changes the blanks on every new seed and brings every set round', () => {
+    const bad = [];
+    for (const map of ALL) {
+      const count = blankSets(map).length;
+      const seen = new Set();
+      for (let seed = 1; seed <= count; seed++) {
+        const set = blanksFor(map, seed).join();
+        if (set === blanksFor(map, seed + 1).join()) bad.push(`${map.id}:${seed}`);
+        seen.add(set);
+      }
+      if (seen.size !== count) bad.push(map.id);
+    }
+    expect(bad).toEqual([]);
+  });
+
+  it('does not keep the right formula on one button through a round', () => {
+    for (const map of ALL) {
+      let samePlace = 0;
+      for (let seed = 1; seed <= 60; seed++) {
+        const places = blanksFor(map, seed).map((id) => {
+          const node = nodeOf(map, id);
+          return optionsFor(node, seed).indexOf(node.formula);
+        });
+        if (new Set(places).size === 1) samePlace += 1;
+      }
+      expect(samePlace).toBeLessThan(30);
+    }
+  });
+
   it('offers the right formula among the options and explains the wrong ones', () => {
     const bad = [];
     for (const map of ALL) {
@@ -129,6 +158,34 @@ describe('chapter review skills', () => {
           ? (copper * 2) / 3
           : copper;
       if (Math.abs(gas * 24.79 - q.answer) > 1e-6) bad.push(q.prompt);
+    }
+    expect(bad).toEqual([]);
+  });
+
+  it('computes ammonia from the ammonium ions of each salt', () => {
+    const rand = rng(13);
+    const bad = [];
+    for (let i = 0; i < 80; i++) {
+      const q = REVIEW_SKILLS[1].make(rand);
+      const mass = Number(/\$([\d{},]+)\$ g/.exec(q.prompt)?.[1].replace('{,}', '.'));
+      const perMole = q.prompt.includes('NH_4Cl')
+        ? 1 / 53.5
+        : q.prompt.includes('NH_4NO_3')
+          ? 1 / 80
+          : 2 / 132;
+      if (Math.abs(mass * perMole * 24.79 - q.answer) > 1e-6) bad.push(q.prompt);
+    }
+    expect(bad).toEqual([]);
+  });
+
+  it('computes sulfur dioxide as twice the mass of sulfur in the coal', () => {
+    const rand = rng(17);
+    const bad = [];
+    for (let i = 0; i < 80; i++) {
+      const q = REVIEW_SKILLS[3].make(rand);
+      const coal = Number(/\$([\d\\,]+)\$ tấn/.exec(q.prompt)?.[1].replace(/\D/g, ''));
+      const percent = Number(/\$(\d+)\\%\$/.exec(q.prompt)?.[1]);
+      if (Math.abs((coal * percent * 2) / 100 - q.answer) > 1e-6) bad.push(q.prompt);
     }
     expect(bad).toEqual([]);
   });

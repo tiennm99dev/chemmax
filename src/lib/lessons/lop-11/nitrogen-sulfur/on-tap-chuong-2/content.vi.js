@@ -3,7 +3,7 @@ export default {
   summary:
     'Ôn tập chương 2: hệ thống hoá các hợp chất của nitrogen và sulfur, sơ đồ chuyển hoá, nhận biết ion, tính toán theo phương trình và các vấn đề môi trường.',
   intro:
-    'Sau chương này, từ khí trơ $\\mathrm{N_2}$ trong không khí đến phân đạm, từ sulfur vàng đến sulfuric acid đều nối với nhau bằng những phản ứng em đã học. Bài ôn tập này gom lại thành hai sơ đồ chuyển hoá, luyện cách suy ra chất còn thiếu từ số oxi hoá và tính toán theo phương trình.',
+    'Sau chương này, từ khí $\\mathrm{N_2}$ khá trơ trong không khí đến phân đạm, từ sulfur vàng đến sulfuric acid đều nối với nhau bằng những phản ứng em đã học. Bài ôn tập này gom lại thành hai sơ đồ chuyển hoá, luyện cách suy ra chất còn thiếu từ số oxi hoá và tính toán theo phương trình.',
   objectives: [
     'Lập được sơ đồ hệ thống hoá kiến thức về nitrogen, sulfur và các hợp chất quan trọng của chúng.',
     'Giải thích được tính oxi hoá, tính khử của các chất dựa vào số oxi hoá của N và S.',

@@ -20,6 +20,9 @@ import { prettyFormula } from '#lib/domain/formula.js';
 /** How many substances each round hides. */
 export const BLANKS = 3;
 
+/** Fixes the order the sets of blanks come round in. */
+const BLANK_ORDER_SEED = 11;
+
 /** @type {Record<'n' | 's', ConversionMap>} */
 export const MAPS = {
   n: {
@@ -69,7 +72,7 @@ export const MAPS = {
         traps: [
           {
             formula: 'NO2',
-            why: '$\\mathrm{NO_2}$ là sản phẩm của bước sau, khi NO gặp thêm oxygen. Tia lửa điện và xúc tác Pt chỉ dừng ở NO.',
+            why: '$\\mathrm{NO_2}$ là sản phẩm của bước sau, khi NO gặp thêm oxygen. Nhiệt độ $3000\\,^\\circ\\mathrm{C}$ và xúc tác Pt chỉ dừng ở NO.',
           },
           {
             formula: 'N2',
@@ -473,24 +476,28 @@ export function blankSets(map) {
 }
 
 /**
- * The substances a round hides.
+ * The substances a round hides. The sets run in one fixed mixed order, so a new
+ * seed always changes the blanks and every set comes round in turn.
  * @param {ConversionMap} map
  * @param {number} seed
  * @returns {string[]}
  */
 export function blanksFor(map, seed) {
-  const sets = blankSets(map);
-  return sets[Math.floor(rng(seed)() * sets.length)];
+  const sets = shuffle(rng(BLANK_ORDER_SEED), blankSets(map));
+  return sets[seed % sets.length];
 }
 
 /**
- * The formulas offered for one hidden substance, in an order fixed by the seed.
+ * The formulas offered for one hidden substance. The order depends on the
+ * substance as well as the seed, so the right formula does not sit on the same
+ * button for every blank of a round.
  * @param {MapNode} node
  * @param {number} seed
  * @returns {string[]}
  */
 export function optionsFor(node, seed) {
-  return shuffle(rng(seed), [node.formula, ...node.traps.map((t) => t.formula)]);
+  const mixed = [...node.id].reduce((sum, c) => sum * 31 + c.charCodeAt(0), seed);
+  return shuffle(rng(mixed), [node.formula, ...node.traps.map((t) => t.formula)]);
 }
 
 /**
