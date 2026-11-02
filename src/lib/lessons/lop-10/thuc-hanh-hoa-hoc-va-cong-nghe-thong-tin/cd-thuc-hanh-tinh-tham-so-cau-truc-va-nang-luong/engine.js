@@ -124,6 +124,17 @@ export function hasConverged(s) {
 }
 
 /**
+ * Whether the geometry really is the AM1 minimum. A fixed coordinate can stop
+ * the optimiser elsewhere, however small the heat left above the minimum looks.
+ * @param {OptState} s
+ */
+export function atMinimum(s) {
+  return (
+    Math.abs(s.r - WATER_MINIMUM.r) < TOL_R && Math.abs(s.angle - WATER_MINIMUM.angle) < TOL_ANGLE
+  );
+}
+
+/**
  * The MOPAC input file for this water molecule. It is a computer file, so its
  * numbers keep their decimal points. Each value is followed by 1 (optimise) or
  * 0 (keep fixed), then come the atoms it is measured from.

@@ -170,7 +170,7 @@
   const checkText = $derived.by(() => {
     if (checked === 'invalid') return 'Hãy nhập một số, ví dụ 0,1.';
     if (checked === 'bad') {
-      return `Chưa đúng. Dùng $C_{HCl} = \\dfrac{C_{NaOH} \\cdot V_{NaOH}}{V_{HCl}}$ với $V_{NaOH}$ là thể tích trung bình.`;
+      return `Chưa đúng. Dùng $C_{\\mathrm{HCl}} = \\dfrac{C_{\\mathrm{NaOH}} \\cdot V_{\\mathrm{NaOH}}}{V_{\\mathrm{HCl}}}$ với $V_{\\mathrm{NaOH}}$ là thể tích trung bình.`;
     }
     return `Đúng. Mô phỏng đặt ${sample.label} ở ${formatNumber(sample.concentration, 2)} M; sai lệch đến từ giọt cuối cùng làm dung dịch đổi màu.`;
   });

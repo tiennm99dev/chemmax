@@ -51,7 +51,7 @@ export default {
           type: 'callout',
           tone: 'theorem',
           title: 'Tốc độ trung bình theo thể tích khí',
-          text: '$\\bar{v} = \\dfrac{V_{khí}}{\\Delta t}$, đơn vị $\\mathrm{cm^3/s}$. Với số đo trong Yenka: sau $20$ s thu được $88\\ \\mathrm{cm^3}$ khí $\\mathrm{CO_2}$.',
+          text: '$\\bar{v} = \\dfrac{V_{\\text{khí}}}{\\Delta t}$, đơn vị $\\mathrm{cm^3/s}$. Với số đo trong Yenka: sau $20$ s thu được $88\\ \\mathrm{cm^3}$ khí $\\mathrm{CO_2}$.',
         },
         {
           type: 'p',
@@ -83,7 +83,7 @@ export default {
           type: 'callout',
           tone: 'note',
           title: 'Mở rộng: chuẩn độ acid - base',
-          text: 'Trong phần khám phá của bài có thí nghiệm ảo chuẩn độ, kĩ thuật sẽ được học kĩ ở lớp 11: nhỏ từ từ dung dịch NaOH đã biết nồng độ vào dung dịch HCl có sẵn phenolphthalein, đến khi vừa xuất hiện màu hồng nhạt bền thì dừng. Khi đó $C_{HCl} \\cdot V_{HCl} = C_{NaOH} \\cdot V_{NaOH}$.',
+          text: 'Trong phần khám phá của bài có thí nghiệm ảo chuẩn độ, kĩ thuật sẽ được học kĩ ở lớp 11: nhỏ từ từ dung dịch NaOH đã biết nồng độ vào dung dịch HCl có sẵn phenolphthalein, đến khi vừa xuất hiện màu hồng nhạt bền thì dừng. Khi đó $C_{\\mathrm{HCl}} \\cdot V_{\\mathrm{HCl}} = C_{\\mathrm{NaOH}} \\cdot V_{\\mathrm{NaOH}}$.',
         },
       ],
     },
@@ -163,9 +163,9 @@ export default {
       steps: [
         'Phương trình: $\\mathrm{HCl + NaOH \\rightarrow NaCl + H_2O}$, tỉ lệ mol $1:1$.',
         'Thể tích trung bình: $\\dfrac{12{,}4 + 12{,}5 + 12{,}6}{3} = 12{,}5$ mL.',
-        '$C_{HCl} = \\dfrac{0{,}1 \\cdot 12{,}5}{20} = 0{,}0625$ M.',
+        '$C_{\\mathrm{HCl}} = \\dfrac{0{,}1 \\cdot 12{,}5}{20} = 0{,}0625$ M.',
       ],
-      answer: '$C_{HCl} = 0{,}0625$ mol/L.',
+      answer: '$C_{\\mathrm{HCl}} = 0{,}0625$ mol/L.',
     },
   ],
   practice: [
@@ -249,8 +249,10 @@ export default {
         'Chuẩn độ $20$ mL HCl bằng NaOH $0{,}1$ M thì dùng hết $24$ mL. Tính nồng độ HCl theo mol/L.',
       answer: 0.12,
       tolerance: 0.001,
-      hints: ['$C_{HCl} \\cdot V_{HCl} = C_{NaOH} \\cdot V_{NaOH}$.'],
-      solution: '$C_{HCl} = \\dfrac{0{,}1 \\cdot 24}{20} = 0{,}12$ mol/L.',
+      hints: [
+        '$C_{\\mathrm{HCl}} \\cdot V_{\\mathrm{HCl}} = C_{\\mathrm{NaOH}} \\cdot V_{\\mathrm{NaOH}}$.',
+      ],
+      solution: '$C_{\\mathrm{HCl}} = \\dfrac{0{,}1 \\cdot 24}{20} = 0{,}12$ mol/L.',
     },
     {
       type: 'choice',
@@ -285,7 +287,7 @@ export default {
     'Yenka, ChemLab, Portable Virtual Chemistry Lab là các phần mềm thí nghiệm ảo; trong Yenka có thẻ Open-local để mở thí nghiệm mẫu, thẻ New để tự dựng thí nghiệm.',
     'Tốc độ trung bình theo thể tích khí: $\\bar{v} = \\dfrac{V}{\\Delta t}$.',
     'Mô phỏng cho thấy nồng độ, nhiệt độ, chất xúc tác làm tăng tốc độ phản ứng.',
-    'Chuẩn độ: dừng ở màu hồng nhạt bền, rồi tính $C_{HCl} \\cdot V_{HCl} = C_{NaOH} \\cdot V_{NaOH}$.',
+    'Chuẩn độ: dừng ở màu hồng nhạt bền, rồi tính $C_{\\mathrm{HCl}} \\cdot V_{\\mathrm{HCl}} = C_{\\mathrm{NaOH}} \\cdot V_{\\mathrm{NaOH}}$.',
     'Thí nghiệm ảo an toàn, tiết kiệm nhưng số liệu theo mô hình và ít rèn thao tác, nên chỉ bổ trợ cho thí nghiệm thật.',
   ],
 };

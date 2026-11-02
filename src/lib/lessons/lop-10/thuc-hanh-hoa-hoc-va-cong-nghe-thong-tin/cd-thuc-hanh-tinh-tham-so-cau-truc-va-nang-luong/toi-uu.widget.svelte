@@ -3,7 +3,14 @@
   import { MINUS, formatNumber } from '#lib/core/number-format.js';
   import SliderField from '#lib/core/slider-field.svelte';
   import { button, focusRing } from '#lib/core/ui.js';
-  import { hasConverged, inputFile, optimiseStep, WATER_MINIMUM, waterHeat } from './engine.js';
+  import {
+    atMinimum,
+    hasConverged,
+    inputFile,
+    optimiseStep,
+    WATER_MINIMUM,
+    waterHeat,
+  } from './engine.js';
 
   const W = 300;
   const H = 150;
@@ -43,9 +50,9 @@
     if (!done) {
       return `Bước ${now.steps}: nhiệt tạo thành còn giảm, chưa dừng được.`;
     }
-    const gap = heat - WATER_MINIMUM.heat;
-    if (gap > 0.05) {
-      return `Dừng sau ${now.steps} bước, nhưng nhiệt tạo thành còn cao hơn cực tiểu ${formatNumber(gap, 2)} kcal/mol, vì có tham số bị giữ cố định (cờ 0) ở giá trị chưa đúng.`;
+    if (!atMinimum(now)) {
+      const gap = heat - WATER_MINIMUM.heat;
+      return `Dừng sau ${now.steps} bước, nhưng nhiệt tạo thành còn cao hơn cực tiểu ${formatNumber(gap, 3)} kcal/mol, vì có tham số bị giữ cố định (cờ 0) ở giá trị chưa đúng.`;
     }
     return `Hội tụ sau ${now.steps} bước: O–H = ${formatNumber(now.r, 3)} Å, góc H–O–H = ${formatNumber(now.angle, 1)}°, khớp kết quả AM1 trong file.`;
   });

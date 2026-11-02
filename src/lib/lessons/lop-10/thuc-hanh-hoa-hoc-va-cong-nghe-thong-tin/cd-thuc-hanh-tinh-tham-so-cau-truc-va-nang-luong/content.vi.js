@@ -102,7 +102,7 @@ export default {
           type: 'callout',
           tone: 'theorem',
           title: 'Sai số tương đối',
-          text: '$\\delta = \\dfrac{|x_{tính} - x_{tn}|}{|x_{tn}|} \\cdot 100\\%$, với $x_{tính}$ là giá trị tính được, $x_{tn}$ là giá trị thực nghiệm.',
+          text: '$\\delta = \\dfrac{|x_{\\text{tính}} - x_{\\text{tn}}|}{|x_{\\text{tn}}|} \\cdot 100\\%$, với $x_{\\text{tính}}$ là giá trị tính được, $x_{\\text{tn}}$ là giá trị thực nghiệm.',
         },
       ],
     },
@@ -244,7 +244,9 @@ export default {
       answer: 1.4,
       tolerance: 0.05,
       unit: '%',
-      hints: ['$\\delta = \\dfrac{|x_{tính} - x_{tn}|}{|x_{tn}|} \\cdot 100\\%$.'],
+      hints: [
+        '$\\delta = \\dfrac{|x_{\\text{tính}} - x_{\\text{tn}}|}{|x_{\\text{tn}}|} \\cdot 100\\%$.',
+      ],
       solution: '$\\delta = \\dfrac{0{,}014}{1{,}012} \\cdot 100\\% \\approx 1{,}4\\%$.',
     },
     {
@@ -290,7 +292,7 @@ export default {
     'MOPAC tính theo các phương pháp bán kinh nghiệm như AM1; Avogadro dùng để xem hình phân tử.',
     'File đầu vào gồm từ khoá (AM1 OPT ENPART), tiêu đề, dòng trống và các nguyên tử với cờ $1$ (tối ưu) hoặc $0$ (cố định).',
     'File kết quả cho nhiệt tạo thành (FINAL HEAT OF FORMATION), năng lượng phân tử (ETOT), độ dài và góc liên kết.',
-    'Sai số tương đối so với thực nghiệm: $\\delta = \\dfrac{|x_{tính} - x_{tn}|}{|x_{tn}|} \\cdot 100\\%$.',
+    'Sai số tương đối so với thực nghiệm: $\\delta = \\dfrac{|x_{\\text{tính}} - x_{\\text{tn}}|}{|x_{\\text{tn}}|} \\cdot 100\\%$.',
     'AM1 cho hình học khá sát thực nghiệm và đúng xu hướng; nhiệt tạo thành của phân tử nhỏ có thể lệch nhiều.',
   ],
 };

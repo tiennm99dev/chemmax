@@ -105,7 +105,7 @@ export default {
               '$\\mathrm{C_2H_6}$',
               '$\\mathrm{C{-}C}$: $1{,}54$',
               '$\\mathrm{H{-}C{-}C}$: $111{,}2^\\circ$',
-              'Hai tứ diện nối đỉnh',
+              'Mỗi carbon ở tâm một tứ diện',
             ],
             [
               '$\\mathrm{C_2H_4}$',
@@ -201,7 +201,7 @@ export default {
         'Edit Atom Label',
       ],
       answer: 0,
-      hints: ['Tìm lệnh có từ Hydrogens.'],
+      hints: ['Trên khung carbon, nguyên tử nào chưa được hiện ra?'],
       solution:
         'Lệnh Add Explicit Hydrogens trong menu Tools hiện các nguyên tử H. Edit Atom Label chỉ để gõ kí hiệu nguyên tử.',
     },

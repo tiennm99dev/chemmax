@@ -3,6 +3,7 @@ import {
   KJ_PER_KCAL,
   PARAMS,
   WATER_MINIMUM,
+  atMinimum,
   hasConverged,
   inputFile,
   optimiseStep,
@@ -80,6 +81,11 @@ describe('geometry optimisation', () => {
     expect(end.r).toBeCloseTo(WATER_MINIMUM.r, 3);
     expect(Math.abs(end.angle - WATER_MINIMUM.angle)).toBeLessThan(0.05);
     expect(waterHeat(end.r, end.angle)).toBeCloseTo(WATER_MINIMUM.heat, 1);
+  });
+
+  it('tells a fixed angle near the minimum from the minimum itself', () => {
+    expect(atMinimum(runToEnd(start()))).toBe(true);
+    expect(atMinimum(runToEnd(start({ angle: 104.5, freeAngle: false })))).toBe(false);
   });
 
   it('stays above the minimum when a wrong angle is fixed', () => {

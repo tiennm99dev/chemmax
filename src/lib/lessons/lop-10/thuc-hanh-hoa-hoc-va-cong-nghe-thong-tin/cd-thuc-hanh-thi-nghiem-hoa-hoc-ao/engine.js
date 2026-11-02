@@ -158,7 +158,7 @@ export const flaskFill = (added) => 0.28 + (Math.min(50, added) / 50) * 0.3;
 
 /** Flask colours for the three stages. */
 export const STAGE_COLORS = /** @type {const} */ ({
-  before: '#bae6fd',
+  before: '#e2e8f0',
   end: '#fbcfe8',
   past: '#db2777',
 });
