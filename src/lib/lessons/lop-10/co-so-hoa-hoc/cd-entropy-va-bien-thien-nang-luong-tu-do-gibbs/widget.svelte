@@ -1,6 +1,6 @@
 <script>
   import LiveRichText from '#lib/components/live-rich-text.svelte';
-  import { formatNumber, numTex, tidy } from '#lib/core/number-format.js';
+  import { fmt, formatNumber, intText, numTex, tidy } from '#lib/core/number-format.js';
   import SegmentedControl from '#lib/core/segmented-control.svelte';
   import SliderField from '#lib/core/slider-field.svelte';
   import { textInput } from '#lib/core/ui.js';
@@ -22,7 +22,7 @@
     { key: 'never', dH: '$> 0$', dS: '$< 0$', text: 'Không tự xảy ra ở mọi nhiệt độ' },
   ];
   const MODES = [
-    { value: 'book', label: 'Phản ứng theo Bảng 4.1' },
+    { value: 'book', label: 'Phản ứng trong bảng giá trị' },
     { value: 'own', label: 'Tự chọn ΔH, ΔS' },
   ];
 
@@ -48,14 +48,14 @@
   );
 
   const working = $derived(
-    `$\\Delta_r G^\\circ_T = ${numTex(dH)} - ${temperature} \\cdot ${dS < 0 ? `(${numTex(dS / 1000)})` : numTex(dS / 1000)} = ${numTex(dG)}$ kJ`,
+    `$\\Delta_r G^\\circ_T = ${numTex(dH)} - ${numTex(temperature)} \\cdot ${dS < 0 ? `(${numTex(dS / 1000)})` : numTex(dS / 1000)} = ${numTex(dG)}$ kJ`,
   );
   const verdict = $derived(
     dG < 0
-      ? `$\\Delta_r G^\\circ_T < 0$: ở ${temperature} K phản ứng tự xảy ra.`
+      ? `$\\Delta_r G^\\circ_T < 0$: ở ${fmt(temperature)} K phản ứng tự xảy ra.`
       : dG > 0
-        ? `$\\Delta_r G^\\circ_T > 0$: ở ${temperature} K phản ứng không tự xảy ra.`
-        : `$\\Delta_r G^\\circ_T = 0$: ở ${temperature} K phản ứng đạt trạng thái cân bằng.`,
+        ? `$\\Delta_r G^\\circ_T > 0$: ở ${fmt(temperature)} K phản ứng không tự xảy ra.`
+        : `$\\Delta_r G^\\circ_T = 0$: ở ${fmt(temperature)} K phản ứng đạt trạng thái cân bằng.`,
   );
   const crossing = $derived.by(() => {
     if (tc === null)
@@ -103,9 +103,9 @@
     viewBox="0 0 {W} {H}"
     class="mx-auto block w-full max-w-md rounded-xl border border-slate-200 bg-white"
     role="img"
-    aria-label="Đồ thị biến thiên năng lượng tự do Gibbs theo nhiệt độ. Ở {temperature} K giá trị là {formatNumber(
-      dG,
-    )} kJ."
+    aria-label="Đồ thị biến thiên năng lượng tự do Gibbs theo nhiệt độ. Ở {fmt(
+      temperature,
+    )} K giá trị là {formatNumber(dG)} kJ."
   >
     <rect x={LEFT} y={TOP} width={W - LEFT - RIGHT} height={H - TOP - BOTTOM} fill="#fef2f2" />
     {#each spans as [from, to] (from)}
@@ -120,12 +120,12 @@
     {#each axis.ticks as g (g)}
       <line x1={LEFT} x2={W - RIGHT} y1={py(g)} y2={py(g)} stroke="#e2e8f0" />
       <text x={LEFT - 4} y={py(g) + 3} text-anchor="end" font-size="9" fill="#64748b">
-        {formatNumber(g)}
+        {intText(g)}
       </text>
     {/each}
     {#each X_TICKS as t (t)}
       <text x={px(t)} y={H - BOTTOM + 13} text-anchor="middle" font-size="9" fill="#64748b">
-        {t}
+        {fmt(t)}
       </text>
     {/each}
     <text x={(W + LEFT) / 2} y={H - 6} text-anchor="middle" font-size="11" fill="#334155">
@@ -155,7 +155,15 @@
     ra.
   </p>
 
-  <SliderField label="Nhiệt độ" bind:value={temperature} min={100} max={T_MAX} step={1} unit="K" />
+  <SliderField
+    label="Nhiệt độ"
+    bind:value={temperature}
+    min={100}
+    max={T_MAX}
+    step={1}
+    unit="K"
+    format={fmt}
+  />
 
   <div
     class="space-y-1 rounded-xl bg-indigo-50 px-4 py-3 text-sm text-indigo-900"

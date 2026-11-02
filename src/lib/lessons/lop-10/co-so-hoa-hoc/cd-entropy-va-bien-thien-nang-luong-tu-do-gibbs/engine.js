@@ -55,10 +55,12 @@ export function signCase(dH, dS) {
 export function gibbsAxis(dH, dS, tMax) {
   const a = gibbs(dH, dS, 0);
   const b = gibbs(dH, dS, tMax);
-  const span = Math.max(a, b, 0) - Math.min(a, b, 0) || 1;
-  const step = [10, 20, 50, 100, 200, 500, 1000, 2000].find((s) => span / s <= 5) ?? 5000;
-  const min = Math.floor(Math.min(a, b, 0) / step) * step;
-  const max = Math.ceil(Math.max(a, b, 0) / step) * step;
+  const low = Math.min(a, b, 0);
+  const high = Math.max(a, b, 0);
+  const step = [10, 20, 50, 100, 200, 500, 1000, 2000].find((s) => (high - low) / s <= 5) ?? 5000;
+  // ΔH = ΔS = 0 leaves a flat line on zero: keep one step either side so the axis has height.
+  const min = low === high ? -step : Math.floor(low / step) * step;
+  const max = low === high ? step : Math.ceil(high / step) * step;
   /** @type {number[]} */
   const ticks = [];
   for (let v = min; v <= max; v += step) ticks.push(v);

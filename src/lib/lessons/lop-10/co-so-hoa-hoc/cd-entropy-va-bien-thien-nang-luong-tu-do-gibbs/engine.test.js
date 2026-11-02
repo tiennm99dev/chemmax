@@ -79,4 +79,10 @@ describe('Gibbs', () => {
     expect(axis.ticks).toContain(0);
     expect(axis.ticks.length).toBeLessThanOrEqual(8);
   });
+
+  it('keeps the axis tall when the line lies flat on zero', () => {
+    const axis = gibbsAxis(0, 0, 2000);
+    expect(axis.max).toBeGreaterThan(axis.min);
+    expect(axis.ticks).toContain(0);
+  });
 });

@@ -93,7 +93,7 @@ export default {
       blocks: [
         {
           type: 'p',
-          text: 'Phản ứng hạt nhân nhân tạo do con người gây ra, bằng cách dùng các hạt như $\\alpha$, proton, neutron bắn phá hạt nhân. Năm 1919, Rutherford thực hiện phản ứng biến đổi hạt nhân nhân tạo đầu tiên. Năm 1934, vợ chồng Joliot-Curie tạo ra đồng vị phóng xạ nhân tạo đầu tiên.',
+          text: 'Phóng xạ nhân tạo (phản ứng hạt nhân nhân tạo) là quá trình biến đổi hạt nhân không tự xảy ra mà do con người gây ra, bằng cách dùng các hạt như $\\alpha$, proton, neutron bắn phá hạt nhân. Năm 1919, Rutherford thực hiện phản ứng biến đổi hạt nhân nhân tạo đầu tiên. Năm 1934, vợ chồng Joliot-Curie tạo ra đồng vị phóng xạ nhân tạo đầu tiên.',
         },
         {
           type: 'tex',

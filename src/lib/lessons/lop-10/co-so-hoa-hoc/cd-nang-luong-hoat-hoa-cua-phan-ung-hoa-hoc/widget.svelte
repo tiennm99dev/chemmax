@@ -103,7 +103,7 @@
 
     <line x1={END_X} x2={END_X} y1={sy(0)} y2={sy(dH)} stroke="#0f766e" stroke-width="2" />
     <text
-      x={END_X - 4}
+      x={W - 4}
       y={dH < 0 ? sy(dH) + 14 : sy(dH) - 6}
       font-size="11"
       font-weight="600"
@@ -189,8 +189,9 @@
   </div>
   {#if catalyst === 'on'}
     <p class="text-sm text-slate-600">
-      Xúc tác hạ đỉnh năng lượng nhưng giữ nguyên mức chất đầu và mức sản phẩm, nên biến thiên
-      enthalpy không đổi.
+      Đường nét đứt là phản ứng khi không có xúc tác, với năng lượng hoạt hoá trên thanh trượt;
+      trong mô hình này xúc tác hạ nó đi {CATALYST_DROP} kJ/mol. Xúc tác hạ đỉnh năng lượng nhưng giữ
+      nguyên mức chất đầu và mức sản phẩm, nên biến thiên enthalpy không đổi.
     </p>
   {/if}
 </div>

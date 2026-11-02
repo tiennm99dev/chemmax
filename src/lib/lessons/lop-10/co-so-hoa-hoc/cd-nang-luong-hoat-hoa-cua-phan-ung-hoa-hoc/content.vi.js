@@ -119,9 +119,9 @@ export default {
       problem:
         'Phản ứng $\\mathrm{2NOCl(g)} \\rightarrow \\mathrm{2NO(g)} + \\mathrm{Cl_2(g)}$ có $E_a = 100$ kJ/mol. Ở $350$ K, hằng số tốc độ là $k_1 = 8 \\cdot 10^{-6}$ L/(mol·s). Tính hằng số tốc độ ở $400$ K.',
       steps: [
-        '$\\ln\\dfrac{k_2}{k_1} = \\dfrac{100\\,000}{8{,}314}\\left(\\dfrac{1}{350} - \\dfrac{1}{400}\\right) \\approx 4{,}30$.',
-        'Suy ra $\\dfrac{k_2}{k_1} = \\mathrm{e}^{4{,}30} \\approx 73{,}3$.',
-        '$k_2 \\approx 73{,}3 \\cdot 8 \\cdot 10^{-6} \\approx 5{,}87 \\cdot 10^{-4}$ L/(mol·s).',
+        '$\\ln\\dfrac{k_2}{k_1} = \\dfrac{100\\,000}{8{,}314}\\left(\\dfrac{1}{350} - \\dfrac{1}{400}\\right) \\approx 4{,}296$.',
+        'Suy ra $\\dfrac{k_2}{k_1} = \\mathrm{e}^{4{,}296} \\approx 73{,}4$.',
+        '$k_2 \\approx 73{,}4 \\cdot 8 \\cdot 10^{-6} \\approx 5{,}87 \\cdot 10^{-4}$ L/(mol·s).',
       ],
       answer: '$k_2 \\approx 5{,}87 \\cdot 10^{-4}$ L/(mol·s).',
     },
@@ -177,7 +177,7 @@ export default {
     {
       type: 'number',
       prompt:
-        'Phản ứng $\\mathrm{2N_2O_5(g)} \\rightarrow \\mathrm{4NO_2(g)} + \\mathrm{O_2(g)}$ ở $45\\ ^\\circ\\mathrm{C}$ có $k_1 = 8{,}17 \\cdot 10^{-3}$ s⁻¹ và $E_a = 103{,}5$ kJ/mol. Tính hằng số tốc độ ở $65\\ ^\\circ\\mathrm{C}$ (đơn vị s⁻¹, làm tròn đến ba chữ số có nghĩa).',
+        'Phản ứng $\\mathrm{2N_2O_5(g)} \\rightarrow \\mathrm{4NO_2(g)} + \\mathrm{O_2(g)}$ ở $45\\ ^\\circ\\mathrm{C}$ có $k_1 = 8{,}17 \\cdot 10^{-3}$ s⁻¹ và $E_a = 103{,}5$ kJ/mol. Tính hằng số tốc độ ở $65\\ ^\\circ\\mathrm{C}$ (đơn vị s⁻¹, viết dưới dạng số thập phân, làm tròn đến ba chữ số có nghĩa).',
       answer: 0.0828,
       tolerance: 0.001,
       hints: [
@@ -209,7 +209,7 @@ export default {
       tolerance: 0.5,
       hints: ['Đổi $E_a$ sang J/mol trước khi thay số.'],
       solution:
-        '$\\ln\\dfrac{k_2}{k_1} = \\dfrac{60\\,000}{8{,}314}\\left(\\dfrac{1}{300} - \\dfrac{1}{350}\\right) \\approx 3{,}44$, nên tỉ số khoảng $31{,}1$ lần.',
+        '$\\ln\\dfrac{k_2}{k_1} = \\dfrac{60\\,000}{8{,}314}\\left(\\dfrac{1}{300} - \\dfrac{1}{350}\\right) \\approx 3{,}437$, nên tỉ số khoảng $31{,}1$ lần.',
     },
     {
       type: 'number',

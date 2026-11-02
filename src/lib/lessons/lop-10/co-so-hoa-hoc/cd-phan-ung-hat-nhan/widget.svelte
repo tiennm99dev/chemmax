@@ -1,7 +1,7 @@
 <script>
   import { onDestroy } from 'svelte';
   import LiveRichText from '#lib/components/live-rich-text.svelte';
-  import { formatNumber, numTex, tidy } from '#lib/core/number-format.js';
+  import { fmt, formatNumber, numTex, tidy } from '#lib/core/number-format.js';
   import { frameLoop, reducedMotion } from '#lib/core/motion.js';
   import SegmentedControl from '#lib/core/segmented-control.svelte';
   import SliderField from '#lib/core/slider-field.svelte';
@@ -48,7 +48,7 @@
   const PW = 340;
   const PH = 210;
   const LEFT = 40;
-  const RIGHT = 12;
+  const RIGHT = 20;
   const TOP = 12;
   const BOTTOM = 34;
   const px = (/** @type {number} */ h) => LEFT + (h / MAX_HALVES) * (PW - LEFT - RIGHT);
@@ -57,6 +57,9 @@
     const h = (i / 50) * MAX_HALVES;
     return { x: px(h), y: py(expectedLeft(N0, h, 1)) };
   });
+
+  /** A time on the book's axis: whole numbers grouped by threes, decimals with a comma. */
+  const timeText = (/** @type {number} */ v) => (Number.isInteger(v) ? fmt(v) : formatNumber(v));
 
   let id = $state('i131');
   let seed = $state(7);
@@ -166,7 +169,7 @@
       {#each [0, 1, 2, 3, 4, 5] as h (h)}
         <line x1={px(h)} x2={px(h)} y1={TOP} y2={PH - BOTTOM} stroke="#e2e8f0" />
         <text x={px(h)} y={PH - BOTTOM + 13} text-anchor="middle" font-size="10" fill="#64748b">
-          {formatNumber(tidy(h * iso.halfLife, 3))}
+          {timeText(tidy(h * iso.halfLife, 3))}
         </text>
       {/each}
       {#each [400, 200, 100, 50, 25] as c (c)}
@@ -206,7 +209,7 @@
     min={0}
     max={MAX_HALVES}
     step={0.1}
-    format={(h) => `${formatNumber(tidy(h * iso.halfLife, 3))} ${iso.unit}`}
+    format={(h) => `${timeText(tidy(h * iso.halfLife, 3))} ${iso.unit}`}
     oninput={halt}
   />
 
