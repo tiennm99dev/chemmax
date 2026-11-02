@@ -1,0 +1,65 @@
+<!-- Synced from tiennm99dev/mathmax by scripts/sync-core.sh. Do not edit it here; change it in mathmax and sync again. -->
+<script>
+  import { polar } from '#lib/core/visuals/svg-math.js';
+  import { handAngles } from '#lib/units-engine/clock.js';
+  import { handsText } from './time.js';
+
+  /**
+   * A still analog clock at any time: the short hand moves on between two
+   * numbers as the minutes pass, and both hands stop short of the numerals.
+   * Screen readers hear where the two hands point, which is what a child reads
+   * off the dial, so the picture never gives the time away.
+   *
+   * - `minutes`: the time as minutes since 0:00 (a whole hour is `hour * 60`).
+   * - `size`: CSS width class of the picture.
+   * - `label`: overrides the spoken description.
+   * - `decorative`: hidden from screen readers, when the parent names it.
+   * @type {{ minutes: number, size?: string, label?: string, decorative?: boolean }}
+   */
+  let { minutes, size = 'w-44', label, decorative = false } = $props();
+
+  const S = 200;
+  const C = S / 2;
+  const R = 92;
+  const angles = $derived(handAngles(minutes));
+  const hourTip = $derived(polar(C, C, R * 0.38, angles.hour));
+  const minuteTip = $derived(polar(C, C, R * 0.58, angles.minute));
+</script>
+
+<svg
+  viewBox="0 0 {S} {S}"
+  class="{size} mx-auto block shrink-0 select-none"
+  role={decorative ? undefined : 'img'}
+  aria-hidden={decorative ? 'true' : undefined}
+  aria-label={decorative ? undefined : (label ?? `Đồng hồ: ${handsText(minutes)}.`)}
+>
+  <circle cx={C} cy={C} r={R} fill="#fff" stroke="#334155" stroke-width="5" />
+  {#each { length: 12 } as _, h (h)}
+    {@const a = polar(C, C, R - 4, h * 30)}
+    {@const b = polar(C, C, R - 12, h * 30)}
+    {@const t = polar(C, C, R - 27, h * 30)}
+    <line x1={a.x} y1={a.y} x2={b.x} y2={b.y} stroke="#334155" stroke-width="3" />
+    <text x={t.x} y={t.y + 7} text-anchor="middle" font-size="19" font-weight="700" fill="#1e293b"
+      >{h === 0 ? 12 : h}</text
+    >
+  {/each}
+  <line
+    x1={C}
+    y1={C}
+    x2={hourTip.x}
+    y2={hourTip.y}
+    stroke="#1e293b"
+    stroke-width="8"
+    stroke-linecap="round"
+  />
+  <line
+    x1={C}
+    y1={C}
+    x2={minuteTip.x}
+    y2={minuteTip.y}
+    stroke="#D7263D"
+    stroke-width="5"
+    stroke-linecap="round"
+  />
+  <circle cx={C} cy={C} r="6" fill="#1e293b" />
+</svg>
