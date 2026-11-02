@@ -24,7 +24,11 @@ describe('the sulfur dioxide lab', () => {
   it('leaves the oxidants alone with carbon dioxide', () => {
     expect(turned('c', 'kmno4', 5)).toBe(0);
     expect(turned('c', 'br2', 5)).toBe(0);
-    expect(turned('c', 'quy', 5)).toBe(1);
+  });
+
+  it('turns litmus only part of the way with carbon dioxide', () => {
+    expect(turned('c', 'quy', 5)).toBe(0.5);
+    expect(turned('s', 'quy', 5)).toBe(1);
   });
 
   it('fades the colour towards the end colour', () => {

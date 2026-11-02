@@ -80,7 +80,7 @@ export const STAGES = [
     title: 'Giai đoạn 3: hấp thụ sulfur trioxide',
     plant: 'Tháp hấp thụ',
     question: 'Dùng chất nào để hấp thụ $\\mathrm{SO_3}$?',
-    made: 'H2SO4',
+    made: 'H2SO4·nSO3',
     options: [
       {
         id: 'h2so4',

@@ -99,7 +99,7 @@
       <li class="space-y-2 rounded-xl border border-slate-200 p-2 text-center">
         <div class="font-bold">
           Lọ {LETTERS[i]}
-          {#if verdict !== null}
+          {#if verdict === true}
             <span class="block text-sm font-semibold text-slate-600"
               ><ChemFormula formula={b.formula} /></span
             >

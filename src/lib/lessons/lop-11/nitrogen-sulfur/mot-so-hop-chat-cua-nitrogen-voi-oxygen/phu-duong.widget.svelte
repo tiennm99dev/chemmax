@@ -14,6 +14,10 @@
 </script>
 
 <div class="space-y-3">
+  <p class="text-sm text-slate-600">
+    Tăng lượng phân bón và nước thải, rồi thử xử lí nước thải hoặc sục khí. Các số là mô hình đơn
+    giản hoá để minh hoạ.
+  </p>
   <div class="grid gap-4 md:grid-cols-2">
     <svg
       viewBox="0 0 320 120"

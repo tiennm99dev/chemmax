@@ -8,6 +8,8 @@
 
 /** Molar mass of each fuel, g/mol. */
 const MOLAR = { s: 32, c: 12 };
+/** Carbonic acid is weak, so litmus stops half way to the red SO2 gives it. */
+const CO2_LITMUS_LIMIT = 0.5;
 
 /**
  * Each tube: its reagent, how much SO2 clears it, its colours and equation.
@@ -58,14 +60,15 @@ export function gasMmol(fuel, mg) {
 
 /**
  * How far the tube has turned, from 0 to 1, after this much gas.
- * Carbon dioxide reddens litmus but reduces neither oxidant.
+ * Carbon dioxide reddens litmus slightly but reduces neither oxidant.
  * @param {Fuel} fuel
  * @param {Tube} tube
  * @param {number} mmol gas that has reached the tube
  */
 export function turned(fuel, tube, mmol) {
   if (fuel === 'c' && tube !== 'quy') return 0;
-  return Math.min(1, mmol / TUBES[tube].needs);
+  const limit = fuel === 'c' ? CO2_LITMUS_LIMIT : 1;
+  return Math.min(limit, mmol / TUBES[tube].needs);
 }
 
 /**

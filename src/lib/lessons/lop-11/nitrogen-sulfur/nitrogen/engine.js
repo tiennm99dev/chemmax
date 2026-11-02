@@ -62,7 +62,7 @@ export const STEPS = [
     agent: 'Nước trong đất',
     equation: 'HNO3 → H^+ + NO3^-',
     text: 'Nitric acid là acid mạnh, phân li hoàn toàn cho ion nitrate. Đây là lí do mưa giông cung cấp đạm cho cây.',
-    path: [100, 280, 122, 292],
+    path: [60, 292, 118, 304],
   },
   {
     id: 5,

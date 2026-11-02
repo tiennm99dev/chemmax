@@ -15,13 +15,13 @@ export default {
       blocks: [
         {
           type: 'p',
-          text: 'Oxide của nitrogen, kí hiệu chung NOx, gồm nhiều chất như $\\mathrm{N_2O}$, $\\mathrm{NO}$, $\\mathrm{NO_2}$. Hai chất phổ biến là NO (nitrogen monoxide, khí không màu) và $\\mathrm{NO_2}$ (nitrogen dioxide, khí màu nâu đỏ, độc).',
+          text: 'Oxide của nitrogen, kí hiệu chung $\\mathrm{NO_x}$, gồm nhiều chất như $\\mathrm{N_2O}$, $\\mathrm{NO}$, $\\mathrm{NO_2}$. Hai chất phổ biến là NO (nitrogen monoxide, khí không màu) và $\\mathrm{NO_2}$ (nitrogen dioxide, khí màu nâu đỏ, độc).',
         },
         {
           type: 'list',
           items: [
             'Nguồn tự nhiên: tia sét và núi lửa cung cấp đủ năng lượng để $\\mathrm{N_2}$ kết hợp với $\\mathrm{O_2}$.',
-            'Nguồn nhân tạo: đốt nhiên liệu ở nhiệt độ rất cao trong động cơ, lò nhiệt điện, lò luyện kim; nitrogen có trong nhiên liệu cũng tạo NOx.',
+            'Nguồn nhân tạo: đốt nhiên liệu ở nhiệt độ rất cao trong động cơ, lò nhiệt điện, lò luyện kim; nitrogen có trong nhiên liệu cũng tạo $\\mathrm{NO_x}$.',
           ],
         },
         {
@@ -32,7 +32,7 @@ export default {
           type: 'callout',
           tone: 'definition',
           title: 'Mưa acid',
-          text: 'Nước mưa bình thường có pH khoảng $5{,}6$ do hoà tan $\\mathrm{CO_2}$. Mưa có pH nhỏ hơn $5{,}6$ gọi là mưa acid. Tác nhân chính là NOx và $\\mathrm{SO_2}$: $$\\mathrm{4NO_2} + \\mathrm{O_2} + \\mathrm{2H_2O} \\rightarrow \\mathrm{4HNO_3}$$',
+          text: 'Nước mưa bình thường có pH khoảng $5{,}6$ do hoà tan $\\mathrm{CO_2}$. Mưa có pH nhỏ hơn $5{,}6$ gọi là mưa acid. Tác nhân chính là $\\mathrm{NO_x}$ và $\\mathrm{SO_2}$: $$\\mathrm{4NO_2} + \\mathrm{O_2} + \\mathrm{2H_2O} \\rightarrow \\mathrm{4HNO_3}$$',
         },
         {
           type: 'p',
@@ -110,7 +110,7 @@ export default {
   explore: {
     title: 'Từ ống khói đến lòng hồ',
     instruction:
-      'Bấm lần lượt từng giai đoạn để xem NOx trở thành nitric acid. Sau đó tăng lượng NOx, cho thời gian trôi và đổi loại đá đáy hồ: hồ nào giữ được cá? Các số pH là mô hình đơn giản hoá để minh hoạ.',
+      'Bấm lần lượt từng giai đoạn để xem $\\mathrm{NO_x}$ trở thành nitric acid. Sau đó tăng lượng $\\mathrm{NO_x}$, cho thời gian trôi và đổi loại đá đáy hồ: hồ nào giữ được cá? Các số pH là mô hình đơn giản hoá để minh hoạ.',
   },
   examples: [
     {
@@ -225,8 +225,8 @@ export default {
     },
   ],
   takeaways: [
-    'NO không màu, hoá nâu đỏ thành $\\mathrm{NO_2}$ trong không khí; NOx đến từ sấm sét và đốt nhiên liệu.',
-    'Mưa acid có pH $< 5{,}6$, tác nhân chính là NOx và $\\mathrm{SO_2}$.',
+    'NO không màu, hoá nâu đỏ thành $\\mathrm{NO_2}$ trong không khí; $\\mathrm{NO_x}$ đến từ sấm sét và đốt nhiên liệu.',
+    'Mưa acid có pH $< 5{,}6$, tác nhân chính là $\\mathrm{NO_x}$ và $\\mathrm{SO_2}$.',
     '$\\mathrm{HNO_3}$ là acid mạnh và chất oxi hoá mạnh (N có số oxi hoá $+5$); Al, Fe, Cr thụ động trong acid đặc, nguội.',
     'Phú dưỡng do thừa N, P trong nước: tảo phát triển mạnh, thiếu oxygen, cá chết.',
   ],

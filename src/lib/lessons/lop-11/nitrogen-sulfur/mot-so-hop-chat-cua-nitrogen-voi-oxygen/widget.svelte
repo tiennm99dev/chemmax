@@ -57,7 +57,7 @@
       viewBox="0 0 360 230"
       class="mx-auto block w-full max-w-md"
       role="img"
-      aria-label="Nhà máy thải NOx, mây và hồ nước. Mưa có pH {formatFixed(
+      aria-label="Nhà máy thải NOₓ, mây và hồ nước. Mưa có pH {formatFixed(
         rain,
         1,
       )}, hồ có pH {formatFixed(lake, 1)}, còn {lakeNow.fish} đàn cá."
@@ -103,7 +103,7 @@
 
     <div class="space-y-3">
       <SliderField
-        label="Lượng NOx thải ra"
+        label="Lượng NOₓ thải ra"
         bind:value={level}
         min={0}
         max={100}

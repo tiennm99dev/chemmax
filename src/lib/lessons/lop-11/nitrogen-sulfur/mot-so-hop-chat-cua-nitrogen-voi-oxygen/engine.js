@@ -82,7 +82,7 @@ export const RAIN_STAGES = [
     id: 1,
     label: 'Đốt nhiên liệu',
     equation: 'N2 + O2 ⇌ 2NO',
-    text: 'Trong động cơ và lò đốt, nhiệt độ rất cao làm nitrogen kết hợp với oxygen của không khí. Nitrogen có sẵn trong nhiên liệu cũng tạo NOx.',
+    text: 'Trong động cơ và lò đốt, nhiệt độ rất cao làm nitrogen kết hợp với oxygen của không khí. Nitrogen có sẵn trong nhiên liệu cũng tạo NOₓ.',
   },
   {
     id: 2,

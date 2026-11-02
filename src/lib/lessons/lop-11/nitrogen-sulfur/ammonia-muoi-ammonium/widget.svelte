@@ -8,7 +8,7 @@
   const T_MIN = 200;
   const T_MAX = 700;
   const BOX = { left: 40, right: 350, top: 14, bottom: 180 };
-  const Y_MAX = 0.8;
+  const Y_MAX = 1;
 
   let temperature = $state(550);
   let pressure = $state(60);
@@ -88,10 +88,10 @@
       height={BOX.bottom - BOX.top}
       fill="#d1fae5"
     />
-    {#each [0, 0.2, 0.4, 0.6, 0.8] as y (y)}
+    {#each [0, 0.2, 0.4, 0.6, 0.8, 1] as y (y)}
       <line x1={BOX.left} x2={BOX.right} y1={sy(y)} y2={sy(y)} stroke="#e2e8f0" />
       <text x={BOX.left - 5} y={sy(y) + 4} text-anchor="end" font-size="11" fill="#475569"
-        >{y * 100}</text
+        >{Math.round(y * 100)}</text
       >
     {/each}
     {#each [200, 300, 400, 500, 600, 700] as t (t)}

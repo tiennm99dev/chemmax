@@ -65,7 +65,7 @@ export default {
         },
         {
           type: 'tex',
-          tex: '\\mathrm{FeS_2} \\xrightarrow{+\\mathrm{O_2}} \\mathrm{SO_2} \\xrightleftharpoons[\\mathrm{V_2O_5},\\,450-500\\,^\\circ\\mathrm{C}]{+\\mathrm{O_2}} \\mathrm{SO_3} \\xrightarrow{+\\mathrm{H_2SO_4}\\ 98\\%} \\mathrm{H_2SO_4 \\cdot nSO_3}',
+          tex: '\\mathrm{FeS_2} \\xrightarrow{+\\mathrm{O_2}} \\mathrm{SO_2} \\xrightleftharpoons[\\mathrm{V_2O_5},\\,450\\text{–}500\\,^\\circ\\mathrm{C}]{+\\mathrm{O_2}} \\mathrm{SO_3} \\xrightarrow{+\\mathrm{H_2SO_4}\\ 98\\%} \\mathrm{H_2SO_4 \\cdot nSO_3}',
         },
         {
           type: 'p',
