@@ -115,11 +115,11 @@ export default {
           head: ['Loại hợp chất', 'Liên kết', 'Số sóng ($\\mathrm{cm^{-1}}$)'],
           rows: [
             ['Alcohol', 'O–H', '$3\\,500$ – $3\\,200$'],
-            ['Amine', 'N–H', '$3\\,500$ – $3\\,300$'],
-            ['Aldehyde', 'C=O; C–H', '$1\\,740$ – $1\\,720$; $2\\,900$ – $2\\,700$'],
-            ['Ketone', 'C=O', '$1\\,725$ – $1\\,700$'],
-            ['Carboxylic acid', 'C=O; O–H', '$1\\,725$ – $1\\,700$; $3\\,300$ – $2\\,500$'],
-            ['Ester', 'C=O; C–O', '$1\\,750$ – $1\\,735$; $1\\,300$ – $1\\,000$'],
+            ['Amine', 'N–H', '$3\\,300$ – $3\\,000$'],
+            ['Aldehyde', 'C=O; C–H', '$1\\,740$ – $1\\,685$; $2\\,830$ – $2\\,695$'],
+            ['Ketone', 'C=O', '$1\\,715$ – $1\\,666$'],
+            ['Carboxylic acid', 'C=O; O–H', '$1\\,760$ – $1\\,690$; $3\\,300$ – $2\\,500$'],
+            ['Ester', 'C=O; C–O', '$1\\,750$ – $1\\,715$; $1\\,300$ – $1\\,000$'],
           ],
         },
         {
@@ -152,7 +152,7 @@ export default {
       problem:
         'Hai lọ mất nhãn chứa acetone ($\\mathrm{CH_3COCH_3}$) và ethanol ($\\mathrm{C_2H_5OH}$). Phổ IR của chất X có đỉnh mạnh ở $1\\,715$ $\\mathrm{cm^{-1}}$ và không có đỉnh nào trong vùng $3\\,500$ – $3\\,200$ $\\mathrm{cm^{-1}}$. X là chất nào?',
       steps: [
-        'Đỉnh $1\\,715$ $\\mathrm{cm^{-1}}$ nằm trong vùng $1\\,725$ – $1\\,700$ $\\mathrm{cm^{-1}}$ của C=O trong ketone.',
+        'Đỉnh $1\\,715$ $\\mathrm{cm^{-1}}$ nằm trong vùng $1\\,715$ – $1\\,666$ $\\mathrm{cm^{-1}}$ của C=O trong ketone.',
         'Không có đỉnh $3\\,500$ – $3\\,200$ $\\mathrm{cm^{-1}}$ nghĩa là không có liên kết O–H của alcohol.',
         'Acetone có nhóm C=O và không có O–H; ethanol thì ngược lại.',
       ],
@@ -256,9 +256,9 @@ export default {
         '$\\mathrm{CH_3CH_2COOH}$',
       ],
       answer: 0,
-      hints: ['Vùng $2\\,900$ – $2\\,700$ $\\mathrm{cm^{-1}}$ là của liên kết C–H trong nhóm nào?'],
+      hints: ['Vùng $2\\,830$ – $2\\,695$ $\\mathrm{cm^{-1}}$ là của liên kết C–H trong nhóm nào?'],
       solution:
-        'C=O ở $1\\,730$ $\\mathrm{cm^{-1}}$ cùng C–H của nhóm –CHO ở $2\\,900$ – $2\\,700$ $\\mathrm{cm^{-1}}$ cho biết Z là aldehyde: $\\mathrm{CH_3CH_2CHO}$. Còn $\\mathrm{CH_3CH_2COOH}$ có hai nguyên tử O nên không khớp công thức $\\mathrm{C_3H_6O}$.',
+        'C=O ở $1\\,730$ $\\mathrm{cm^{-1}}$ cùng C–H của nhóm –CHO ở $2\\,830$ – $2\\,695$ $\\mathrm{cm^{-1}}$ cho biết Z là aldehyde: $\\mathrm{CH_3CH_2CHO}$. Còn $\\mathrm{CH_3CH_2COOH}$ có hai nguyên tử O nên không khớp công thức $\\mathrm{C_3H_6O}$.',
     },
     {
       type: 'text',
@@ -274,6 +274,6 @@ export default {
     'Hợp chất hữu cơ thường có liên kết cộng hoá trị, dễ cháy, kém bền nhiệt, phản ứng chậm và theo nhiều hướng.',
     'Hai nhóm lớn là hydrocarbon (chỉ có C, H) và dẫn xuất của hydrocarbon.',
     'Nhóm chức quyết định tính chất hoá học đặc trưng của hợp chất.',
-    'Trên phổ IR, mỗi liên kết hấp thụ ở vùng số sóng đặc trưng: O–H trên $3\\,200$ $\\mathrm{cm^{-1}}$, C=O gần $1\\,700$ $\\mathrm{cm^{-1}}$.',
+    'Trên phổ IR, mỗi liên kết hấp thụ ở vùng số sóng đặc trưng: O–H của alcohol ở $3\\,500$ – $3\\,200$ $\\mathrm{cm^{-1}}$, C=O gần $1\\,700$ $\\mathrm{cm^{-1}}$.',
   ],
 };

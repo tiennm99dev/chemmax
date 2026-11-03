@@ -17,6 +17,11 @@ describe('the simplest formula', () => {
     expect(eugenol && formulaText(eugenol.counts)).toBe('C5H6O');
   });
 
+  it('keeps the true ratio of a long alkane instead of rounding it', () => {
+    const nonane = simplestCounts({ C: 84.38, H: 15.62 });
+    expect(nonane && formulaText(nonane.counts)).toBe('C9H20');
+  });
+
   it('multiplies up a ratio that is not whole at first', () => {
     const r = simplestCounts({ C: 62.07, H: 10.34, O: 27.59 });
     expect(r && formulaText(r.counts)).toBe('C3H6O');
@@ -70,6 +75,13 @@ describe('the molecular formula', () => {
     expect(molecularFrom({ C: 1, H: 2, O: 1 }, 15).n).toBeNull();
   });
 
+  it('refuses a fragment one mass unit off a whole multiple', () => {
+    const unit = { C: 2, H: 4, O: 1 };
+    expect(molecularFrom(unit, 43).n).toBeNull();
+    expect(molecularFrom(unit, 45).n).toBeNull();
+    expect(molecularFrom(unit, 88.1).formula).toBe('C4H8O2');
+  });
+
   it('accepts a fragment that happens to be a multiple, which is why the largest m/z matters', () => {
     expect(molecularFrom({ C: 1, H: 1 }, 52).formula).toBe('C4H4');
     expect(molecularFrom({ C: 1, H: 1 }, 78).formula).toBe('C6H6');
@@ -82,7 +94,8 @@ describe('oxygen by difference', () => {
     expect(oxygenLeft(92.31, 7.69, 0)).toBe(0);
   });
 
-  it('refuses shares over 100 percent', () => {
+  it('refuses shares over 100 percent or below zero', () => {
     expect(oxygenLeft(80, 30, 0)).toBeNull();
+    expect(oxygenLeft(-5, 10, 0)).toBeNull();
   });
 });

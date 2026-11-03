@@ -36,7 +36,7 @@ export default {
             [
               'Dự đoán nhóm chức',
               'Phổ hồng ngoại',
-              'O–H: $3\\,500$ – $3\\,200$ $\\mathrm{cm^{-1}}$ (alcohol), $3\\,300$ – $2\\,500$ $\\mathrm{cm^{-1}}$ (acid); C=O: gần $1\\,700$ $\\mathrm{cm^{-1}}$; N–H: $3\\,500$ – $3\\,300$ $\\mathrm{cm^{-1}}$',
+              'O–H: $3\\,500$ – $3\\,200$ $\\mathrm{cm^{-1}}$ (alcohol), $3\\,300$ – $2\\,500$ $\\mathrm{cm^{-1}}$ (acid); C=O: gần $1\\,700$ $\\mathrm{cm^{-1}}$; N–H: $3\\,300$ – $3\\,000$ $\\mathrm{cm^{-1}}$',
             ],
             [
               'Viết công thức cấu tạo',
@@ -94,11 +94,11 @@ export default {
     },
     {
       problem:
-        'Chất B có công thức phân tử $\\mathrm{C_3H_6O}$. Phổ IR của B có đỉnh mạnh ở $1\\,715$ $\\mathrm{cm^{-1}}$, không có đỉnh trong vùng $3\\,500$ – $3\\,200$ $\\mathrm{cm^{-1}}$ và không có đỉnh trong vùng $2\\,900$ – $2\\,700$ $\\mathrm{cm^{-1}}$. Xác định cấu tạo của B.',
+        'Chất B có công thức phân tử $\\mathrm{C_3H_6O}$. Phổ IR của B có đỉnh mạnh ở $1\\,715$ $\\mathrm{cm^{-1}}$, không có đỉnh trong vùng $3\\,500$ – $3\\,200$ $\\mathrm{cm^{-1}}$ và không có đỉnh trong vùng $2\\,830$ – $2\\,695$ $\\mathrm{cm^{-1}}$. Xác định cấu tạo của B.',
       steps: [
         'Đỉnh $1\\,715$ $\\mathrm{cm^{-1}}$ cho biết B có nhóm C=O.',
         'Không có đỉnh $3\\,500$ – $3\\,200$ $\\mathrm{cm^{-1}}$ nên B không có nhóm –OH.',
-        'Không có đỉnh $2\\,900$ – $2\\,700$ $\\mathrm{cm^{-1}}$ của nhóm –CHO nên B không phải aldehyde.',
+        'Không có đỉnh $2\\,830$ – $2\\,695$ $\\mathrm{cm^{-1}}$ của nhóm –CHO nên B không phải aldehyde.',
         'Vậy B là ketone có $3$ carbon, chỉ có thể là $\\mathrm{CH_3-CO-CH_3}$.',
       ],
       answer: 'B là acetone, $\\mathrm{CH_3COCH_3}$.',
@@ -139,8 +139,8 @@ export default {
       prompt: 'Ghép mỗi vùng hấp thụ trên phổ IR với liên kết tương ứng.',
       left: [
         '$3\\,500$ – $3\\,200$ $\\mathrm{cm^{-1}}$, đỉnh rộng',
-        '$1\\,750$ – $1\\,700$ $\\mathrm{cm^{-1}}$, đỉnh mạnh',
-        '$2\\,900$ – $2\\,700$ $\\mathrm{cm^{-1}}$',
+        '$1\\,760$ – $1\\,666$ $\\mathrm{cm^{-1}}$, đỉnh mạnh',
+        '$2\\,830$ – $2\\,695$ $\\mathrm{cm^{-1}}$',
       ],
       right: ['O–H trong alcohol', 'C=O', 'C–H trong nhóm –CHO', 'N–N'],
       pairs: [
@@ -152,7 +152,7 @@ export default {
         'Vùng số sóng lớn nhất thuộc về liên kết với H; C=O nằm gần $1\\,700$ $\\mathrm{cm^{-1}}$.',
       ],
       solution:
-        'O–H của alcohol ở $3\\,500$ – $3\\,200$ $\\mathrm{cm^{-1}}$; C=O ở khoảng $1\\,750$ – $1\\,700$ $\\mathrm{cm^{-1}}$; C–H của nhóm –CHO ở $2\\,900$ – $2\\,700$ $\\mathrm{cm^{-1}}$.',
+        'O–H của alcohol ở $3\\,500$ – $3\\,200$ $\\mathrm{cm^{-1}}$; C=O ở khoảng $1\\,760$ – $1\\,666$ $\\mathrm{cm^{-1}}$; C–H của nhóm –CHO ở $2\\,830$ – $2\\,695$ $\\mathrm{cm^{-1}}$.',
     },
     {
       type: 'choice',
@@ -231,14 +231,14 @@ export default {
         'Retinol có một nhóm –OH gắn vào mạch carbon. Trên phổ IR của retinol, em chờ đợi có dải hấp thụ đặc trưng nào?',
       options: [
         'Đỉnh rộng ở $3\\,500$ – $3\\,200$ $\\mathrm{cm^{-1}}$',
-        'Đỉnh mạnh ở $1\\,750$ – $1\\,735$ $\\mathrm{cm^{-1}}$',
+        'Đỉnh mạnh ở $1\\,750$ – $1\\,715$ $\\mathrm{cm^{-1}}$',
         'Dải rất rộng ở $3\\,300$ – $2\\,500$ $\\mathrm{cm^{-1}}$ kèm đỉnh C=O',
-        'Hai đỉnh ở $2\\,900$ – $2\\,700$ $\\mathrm{cm^{-1}}$',
+        'Hai đỉnh ở $2\\,830$ – $2\\,695$ $\\mathrm{cm^{-1}}$',
       ],
       answer: 0,
       hints: ['Nhóm –OH gắn vào mạch carbon là của loại hợp chất nào?'],
       solution:
-        'Retinol là alcohol, nên có đỉnh rộng của O–H ở $3\\,500$ – $3\\,200$ $\\mathrm{cm^{-1}}$. Các vùng khác lần lượt là của ester, carboxylic acid và aldehyde.',
+        'Retinol là alcohol, nên có đỉnh rộng của O–H ở $3\\,500$ – $3\\,200$ $\\mathrm{cm^{-1}}$. Đỉnh mạnh gần $1\\,750$ $\\mathrm{cm^{-1}}$ là của ester, dải rất rộng kèm C=O là của carboxylic acid, còn hai đỉnh ở $2\\,830$ – $2\\,695$ $\\mathrm{cm^{-1}}$ là của aldehyde.',
     },
   ],
   takeaways: [

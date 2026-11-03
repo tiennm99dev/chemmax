@@ -28,9 +28,9 @@ export const BANDS = {
   },
   nh: {
     bond: 'N–H',
-    low: 3300,
-    high: 3500,
-    note: 'Liên kết N–H trong amine. Nhóm –NH₂ cho hai đỉnh nhọn hơn đỉnh O–H.',
+    low: 3000,
+    high: 3300,
+    note: 'Liên kết N–H trong amine. Đỉnh này thường nhọn và yếu hơn đỉnh O–H của alcohol.',
   },
   ch: {
     bond: 'C–H',
@@ -40,14 +40,14 @@ export const BANDS = {
   },
   chAld: {
     bond: 'C–H',
-    low: 2700,
-    high: 2900,
+    low: 2695,
+    high: 2830,
     note: 'Liên kết C–H trong nhóm –CHO, đặc trưng cho aldehyde.',
   },
   co: {
     bond: 'C=O',
-    low: 1700,
-    high: 1750,
+    low: 1666,
+    high: 1760,
     note: 'Đỉnh mạnh của liên kết C=O. Aldehyde, ketone, carboxylic acid và ester đều có, nên phải xét thêm các đỉnh khác.',
   },
   cSingleO: {
@@ -132,13 +132,12 @@ export const SAMPLES = [
     ],
   },
   {
-    id: 'propylamine',
-    name: 'propylamine',
-    formula: 'CH3CH2CH2NH2',
+    id: 'diethylamine',
+    name: 'diethylamine',
+    formula: 'C2H5NHC2H5',
     type: 'amine',
     peaks: [
-      { at: 3450, width: 28, depth: 0.35, band: 'nh' },
-      { at: 3350, width: 28, depth: 0.4, band: 'nh' },
+      { at: 3290, width: 28, depth: 0.35, band: 'nh' },
       { at: 2960, width: 35, depth: 0.7, band: 'ch' },
     ],
   },
@@ -193,11 +192,11 @@ export function classFromBands(bands) {
 export const CLASS_REASONS = {
   alcohol: 'có đỉnh rộng O–H ở $3\\,500$ – $3\\,200$ $\\mathrm{cm^{-1}}$ và không có đỉnh C=O.',
   aldehyde:
-    'có đỉnh C=O gần $1\\,730$ $\\mathrm{cm^{-1}}$, kèm các đỉnh C–H của nhóm –CHO ở $2\\,900$ – $2\\,700$ $\\mathrm{cm^{-1}}$.',
+    'có đỉnh C=O gần $1\\,730$ $\\mathrm{cm^{-1}}$, kèm các đỉnh C–H của nhóm –CHO ở $2\\,830$ – $2\\,695$ $\\mathrm{cm^{-1}}$.',
   ketone: 'có đỉnh C=O gần $1\\,715$ $\\mathrm{cm^{-1}}$ mà không có O–H, C–O hay C–H của –CHO.',
   acid: 'có dải O–H rất rộng ở $3\\,300$ – $2\\,500$ $\\mathrm{cm^{-1}}$ cùng đỉnh C=O.',
   ester: 'có đỉnh C=O gần $1\\,740$ $\\mathrm{cm^{-1}}$ và đỉnh C–O mạnh, nhưng không có O–H.',
-  amine: 'có hai đỉnh N–H ở $3\\,500$ – $3\\,300$ $\\mathrm{cm^{-1}}$ và không có đỉnh C=O.',
+  amine: 'có đỉnh N–H ở $3\\,300$ – $3\\,000$ $\\mathrm{cm^{-1}}$ và không có đỉnh C=O.',
   hydrocarbon: 'chỉ có các đỉnh của liên kết C–H, không có đỉnh của nhóm chức nào.',
 };
 

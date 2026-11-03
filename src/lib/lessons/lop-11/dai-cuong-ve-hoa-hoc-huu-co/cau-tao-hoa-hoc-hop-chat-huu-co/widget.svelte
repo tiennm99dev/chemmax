@@ -69,12 +69,12 @@
   function clear() {
     board = {};
     tool = 'C';
+    message = null;
   }
 
   function changeTarget() {
     clear();
     found = [];
-    message = null;
   }
 
   function recordIfComplete() {

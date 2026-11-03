@@ -118,8 +118,8 @@ export function ratioRows(percent) {
 }
 
 /** How far a scaled ratio may sit from a whole number, for percentages rounded to two decimals. */
-const WHOLE_TOLERANCE = 0.12;
-const MAX_MULTIPLIER = 8;
+const WHOLE_TOLERANCE = 0.08;
+const MAX_MULTIPLIER = 10;
 
 /**
  * Lowest whole-number ratio of the atoms, or null when no small multiplier
@@ -154,6 +154,9 @@ export function formulaText(counts) {
   }).join('');
 }
 
+/** Allows a molecular mass given to one decimal, but not a fragment one unit off. */
+const WHOLE_MASS_TOLERANCE = 0.015;
+
 /**
  * The factor n and, when it is whole, the molecular formula.
  * @param {Partial<Record<El, number>>} counts the simplest formula
@@ -164,7 +167,8 @@ export function molecularFrom(counts, molecularMass) {
   const unit = massOfCounts(Object.entries(counts));
   const ratio = molecularMass / unit;
   const n = Math.round(ratio);
-  if (n < 1 || Math.abs(ratio - n) > 0.03) return { unit, ratio, n: null, formula: null };
+  if (n < 1 || Math.abs(ratio - n) > WHOLE_MASS_TOLERANCE)
+    return { unit, ratio, n: null, formula: null };
   const scaled = Object.fromEntries(Object.entries(counts).map(([el, c]) => [el, c * n]));
   return { unit, ratio, n, formula: formulaText(scaled) };
 }
@@ -179,13 +183,13 @@ export function molecularIon(peaks) {
 
 /**
  * The share of oxygen left once the other elements are given, null when they
- * already exceed 100 %.
+ * already exceed 100 % or one of them is negative.
  * @param {number} c
  * @param {number} h
  * @param {number} n
  */
 export function oxygenLeft(c, h, n) {
   const rest = 100 - c - h - n;
-  if (rest < -0.005) return null;
+  if (rest < -0.005 || c < 0 || h < 0 || n < 0) return null;
   return Math.max(0, Math.round(rest * 100) / 100);
 }

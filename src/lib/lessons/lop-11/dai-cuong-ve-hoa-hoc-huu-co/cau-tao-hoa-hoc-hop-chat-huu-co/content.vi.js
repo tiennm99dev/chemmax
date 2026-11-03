@@ -249,7 +249,7 @@ export default {
         'Một nhóm chức',
       ],
       answer: 0,
-      hints: ['Công thức khung bỏ bớt ký hiệu của nguyên tố xuất hiện nhiều nhất trên mạch.'],
+      hints: ['Công thức khung bỏ bớt kí hiệu của nguyên tố xuất hiện nhiều nhất trên mạch.'],
       solution:
         'Mỗi đỉnh là một nguyên tử carbon; số H gắn với carbon không viết ra mà suy từ hoá trị IV.',
     },

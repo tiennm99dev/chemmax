@@ -23,6 +23,10 @@ export default {
           type: 'p',
           text: 'Đun nóng để chuyển chất lỏng thành hơi, sau đó làm lạnh cho hơi ngưng tụ và hứng lấy chất lỏng. Chất có nhiệt độ sôi thấp hơn bay hơi trước. Nấu rượu là cách chưng cất quen thuộc: đun hỗn hợp cơm rượu đã lên men, hơi ethanol và nước đi qua ống dẫn được làm lạnh rồi chảy xuống bình hứng.',
         },
+        {
+          type: 'p',
+          text: 'Hãy tự chạy một mẻ chưng cất: bấm đun từng phút, xem đồ thị nhiệt độ rồi đổi bình hứng đúng lúc để mỗi bình chỉ chứa một chất. Đây là mô hình lí tưởng hoá: chất sôi thấp bay hơi hết rồi chất sôi cao mới bay hơi. Thực tế hơi luôn có cả hai chất, chỉ giàu chất sôi thấp hơn, nên sản phẩm thu được không hoàn toàn tinh khiết.',
+        },
         { type: 'widget', name: 'chung-cat' },
         {
           type: 'list',
