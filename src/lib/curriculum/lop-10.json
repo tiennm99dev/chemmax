@@ -397,7 +397,11 @@
           "title": "Bài 7. Hoá học về phản ứng cháy, nổ",
           "slug": "cd-hoa-hoc-ve-phan-ung-chay-no",
           "kind": "chuyen-de",
-          "keyIdeas": ["Các yếu tố ảnh hưởng phản ứng cháy", "Giới hạn nổ", "Tính toán năng lượng"],
+          "keyIdeas": [
+            "Biến thiên enthalpy và nhiệt lượng toả ra",
+            "Ảnh hưởng của nồng độ oxygen đến tốc độ cháy và hô hấp",
+            "Giới hạn nổ (mở rộng)"
+          ],
           "interactiveIdea": "Thanh trượt nồng độ khí trong không khí đánh dấu vùng giới hạn nổ."
         },
         {

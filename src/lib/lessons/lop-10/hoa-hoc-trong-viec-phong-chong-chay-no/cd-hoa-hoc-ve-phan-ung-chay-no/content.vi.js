@@ -1,14 +1,14 @@
 /** @type {import('#lib/core/content-schema.js').LessonContent} */
 export default {
   summary:
-    'Tính biến thiên enthalpy và nhiệt lượng toả ra của các phản ứng cháy, nổ; ảnh hưởng của nồng độ oxygen đến tốc độ cháy và hô hấp; giới hạn nổ của khí trong không khí.',
+    'Tính biến thiên enthalpy và nhiệt lượng toả ra của các phản ứng cháy, nổ; ảnh hưởng của nồng độ oxygen đến tốc độ cháy và hô hấp; mở rộng thêm về giới hạn nổ của khí trong không khí.',
   intro:
     'Phản ứng cháy, nổ toả nhiệt mạnh và xảy ra nhanh, phản ứng trước cấp nhiệt cho phản ứng sau. Vì sao $1$ kg khí gas cho nhiều nhiệt hơn $1$ kg cồn? Vì sao trong phòng kín người ta dễ ngạt, và vì sao gas rò rỉ chỉ nổ khi nồng độ nằm trong một khoảng nhất định? Các phép tính trong bài này trả lời những câu hỏi đó.',
   objectives: [
     'Nêu được các yếu tố ảnh hưởng đến tốc độ phản ứng cháy.',
     'Tính được biến thiên enthalpy và nhiệt lượng toả ra của một số phản ứng cháy, nổ từ enthalpy tạo thành.',
     'Tính được sự thay đổi của tốc độ phản ứng cháy và "tốc độ phản ứng hô hấp" theo giả định phụ thuộc vào nồng độ oxygen.',
-    'Nêu được khái niệm giới hạn nổ và vận dụng để đánh giá nguy cơ của khí rò rỉ.',
+    '(Mở rộng) Nêu được khái niệm giới hạn nổ và vận dụng để đánh giá nguy cơ của khí rò rỉ.',
   ],
   sections: [
     {
@@ -84,8 +84,12 @@ export default {
       ],
     },
     {
-      heading: 'Giới hạn nổ',
+      heading: 'Mở rộng: Giới hạn nổ',
       blocks: [
+        {
+          type: 'p',
+          text: 'Phần này mở rộng ngoài nội dung Bài 7 của sách Kết nối tri thức, giúp em hiểu vì sao khí rò rỉ nguy hiểm.',
+        },
         {
           type: 'callout',
           tone: 'definition',
@@ -321,7 +325,7 @@ export default {
     '$\\Delta_r H^\\circ_{298} = \\sum \\Delta_f H^\\circ_{298}(sp) - \\sum \\Delta_f H^\\circ_{298}(cd)$; chú ý số mol trong phương trình khi tính nhiệt lượng.',
     'Cùng khối lượng, khí methane, gas và xăng cho nhiều nhiệt hơn than và cồn.',
     'Giả định tốc độ cháy, tốc độ hô hấp tỉ lệ với nồng độ oxygen thì $\\dfrac{v_1}{v_2}$ bằng tỉ số áp suất riêng phần của oxygen.',
-    'Khí cháy trong không khí chỉ nổ giữa giới hạn nổ dưới và giới hạn nổ trên.',
-    'Hỗn hợp quá giàu khí vẫn nguy hiểm vì thông gió sẽ đưa nó đi qua vùng nổ.',
+    '(Mở rộng) Khí cháy trong không khí chỉ nổ giữa giới hạn nổ dưới và giới hạn nổ trên.',
+    '(Mở rộng) Hỗn hợp quá giàu khí vẫn nguy hiểm vì thông gió sẽ đưa nó đi qua vùng nổ.',
   ],
 };
