@@ -2,6 +2,8 @@
 <script>
   import { button, card as cardClass, focusRing } from './ui.js';
   import { clearWrong, isCorrect, moveFeedback, place, progress } from './card-sorter.js';
+  import { richText } from './tex-text.js';
+  import LiveRichText from '#lib/components/live-rich-text.svelte';
 
   /**
    * Sort cards into bins. Pick a card (tap or Enter/Space), then pick a bin;
@@ -10,6 +12,7 @@
    * back, or take back every wrong card at once.
    *
    * - `cards`: each with its correct `bin` and the `why` shown after placing.
+   *   Labels and `why` are rich text: `$...$` shows as math.
    * - `bins`: the bins, in display order.
    * - `label`: names the whole activity for screen readers.
    * - `face`: optional snippet drawing a card's face (the label is used otherwise).
@@ -75,7 +78,7 @@
 </script>
 
 {#snippet cardFace(/** @type {import('./card-sorter.js').SortCard} */ c)}
-  {#if face}{@render face(c)}{:else}{c.label}{/if}
+  {#if face}{@render face(c)}{:else}<LiveRichText text={c.label} />{/if}
 {/snippet}
 
 <div class="space-y-4" role="group" aria-label={label}>
@@ -119,7 +122,7 @@
           class="min-h-14 rounded-xl border-2 border-dashed px-3 py-2 text-base font-bold transition {focusRing} {selected
             ? 'border-indigo-400 bg-indigo-50 text-indigo-800 hover:bg-indigo-100'
             : 'border-slate-300 bg-slate-50 text-slate-700'}"
-          aria-label="Đặt thẻ đang chọn vào ô {b.label}"
+          aria-label="Đặt thẻ đang chọn vào ô {richText(b.label)}"
           onclick={() => drop(b.id)}
           ondragover={(e) => e.preventDefault()}
           ondrop={(e) => {
@@ -129,7 +132,7 @@
             drop(b.id);
           }}
         >
-          {b.label}
+          <LiveRichText text={b.label} />
         </button>
         <ul class="flex flex-wrap gap-2">
           {#each cards.filter((c) => placements[c.id] === b.id) as c (c.id)}
@@ -140,7 +143,7 @@
                 class="min-h-11 rounded-lg border px-3 py-2 text-left text-sm font-medium {focusRing} {ok
                   ? 'border-emerald-400 bg-emerald-50 text-emerald-900'
                   : 'border-rose-400 bg-rose-50 text-rose-900'}"
-                aria-label="{c.label}: {ok ? 'đúng' : 'chưa đúng'}. Bấm để lấy lại thẻ."
+                aria-label="{richText(c.label)}: {ok ? 'đúng' : 'chưa đúng'}. Bấm để lấy lại thẻ."
                 onclick={() => takeBack(c.id)}
               >
                 <span aria-hidden="true">{ok ? '✓' : '✗'}</span>
@@ -159,7 +162,9 @@
       : 'bg-slate-100 text-slate-700'}"
     aria-live="polite"
   >
-    {stats.done ? `Hoàn thành: cả ${stats.total} thẻ đều đúng chỗ! ` : ''}{message}
+    {stats.done ? `Hoàn thành: cả ${stats.total} thẻ đều đúng chỗ! ` : ''}<LiveRichText
+      text={message}
+    />
   </p>
   <div class="flex flex-wrap items-center gap-3">
     <span class="text-sm text-slate-600 tabular-nums">

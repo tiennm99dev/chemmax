@@ -1,7 +1,7 @@
 <!-- Synced from tiennm99dev/mathmax by scripts/sync-core.sh. Do not edit it here; change it in mathmax and sync again. -->
 <script>
   import katex from 'katex';
-  import { texOptions } from '#lib/core/katex-options.js';
+  import { texOptions, texSource } from '#lib/core/katex-options.js';
   import { texHtml } from '#lib/core/tex-text.js';
 
   /**
@@ -16,7 +16,9 @@
    */
   let { math, display = false, ariaLabel } = $props();
 
-  const html = $derived(texHtml(katex.renderToString(math, texOptions(display)), math, ariaLabel));
+  const html = $derived(
+    texHtml(katex.renderToString(texSource(math), texOptions(display)), math, ariaLabel),
+  );
 </script>
 
 <!-- KaTeX escapes its input and runs with `trust: false`, and the accessible text is escaped, so the markup is safe to inject. -->
