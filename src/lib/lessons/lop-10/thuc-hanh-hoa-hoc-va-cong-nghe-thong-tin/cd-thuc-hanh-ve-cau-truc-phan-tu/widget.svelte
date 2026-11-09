@@ -5,7 +5,7 @@
   import { button, focusRing } from '#lib/core/ui.js';
   import ChemFormula from '#lib/domain/chem-formula.svelte';
   import { atomColor, bondSegments, covalentRadius } from '#lib/domain/molecule.js';
-  import { clampPitch, turnByKey, viewPoint, wrapYaw } from '#lib/geom-engine/solid.js';
+  import { arrowView, dragView, viewPoint } from '#lib/geom-engine/solid.js';
   import { clientToSvg } from '#lib/utils/svg.js';
   import {
     MODELS,
@@ -15,6 +15,9 @@
     nearestAtom,
     togglePick,
   } from '../_shared/molecule-3d.js';
+
+  /** How a drag or an arrow turns the view: the near side follows it. */
+  const TURN = { yawRate: 0.6, pitchRate: 0.6, minPitch: -80 };
 
   const W = 340;
   const MID = W / 2;
@@ -152,7 +155,7 @@
     if (!press.moved && Math.hypot(dx, dy) < TAP_SLOP) return;
     press = { x: e.clientX, y: e.clientY, moved: true };
     if (mode !== '3d') return;
-    view = { yaw: wrapYaw(view.yaw - dx * 0.6), pitch: clampPitch(view.pitch + dy * 0.6, -80) };
+    view = dragView(view, dx, dy, TURN);
   }
 
   /** @param {PointerEvent} e */
@@ -168,7 +171,7 @@
   /** @param {KeyboardEvent} e */
   function key(e) {
     if (mode !== '3d') return;
-    const next = turnByKey(view, e.key, e.shiftKey, -80);
+    const next = arrowView(view, e.key, e.shiftKey, TURN);
     if (!next) return;
     e.preventDefault();
     view = next;

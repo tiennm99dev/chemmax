@@ -2,8 +2,11 @@
   import FeedbackNote from '#lib/core/feedback-note.svelte';
   import SegmentedControl from '#lib/core/segmented-control.svelte';
   import { focusRing } from '#lib/core/ui.js';
-  import { turnByKey, viewPoint, wrapYaw, clampPitch } from '#lib/geom-engine/solid.js';
+  import { arrowView, dragView, viewPoint } from '#lib/geom-engine/solid.js';
   import { PLACE_LABELS, ionName, latticeIons, neighbourText, neighbours } from './engine.js';
+
+  /** How a drag or an arrow turns the view: the near side follows it. */
+  const TURN = { yawRate: 0.6, pitchRate: 0.6 };
 
   /** @typedef {import('./engine.js').Place} Place */
 
@@ -77,12 +80,12 @@
     }
     press.x = e.clientX;
     press.y = e.clientY;
-    view = { yaw: wrapYaw(view.yaw - dx * 0.6), pitch: clampPitch(view.pitch + dy * 0.6) };
+    view = dragView(view, dx, dy, TURN);
   }
 
   /** @param {KeyboardEvent} e */
   function key(e) {
-    const next = turnByKey(view, e.key, e.shiftKey);
+    const next = arrowView(view, e.key, e.shiftKey, TURN);
     if (!next) return;
     e.preventDefault();
     view = next;

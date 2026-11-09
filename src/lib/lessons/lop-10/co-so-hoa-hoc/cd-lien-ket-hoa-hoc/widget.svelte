@@ -4,9 +4,12 @@
   import Stepper from '#lib/core/stepper.svelte';
   import { focusRing } from '#lib/core/ui.js';
   import { atomColor } from '#lib/domain/molecule.js';
-  import { clampPitch, turnByKey, viewPoint, wrapYaw } from '#lib/geom-engine/solid.js';
+  import { arrowView, dragView, viewPoint } from '#lib/geom-engine/solid.js';
   import { pointsAttr } from '#lib/utils/svg.js';
   import { MODELS, arcBetween, modelFor, vseprTex } from './engine.js';
+
+  /** How a drag or an arrow turns the view: the near side follows it. */
+  const TURN = { yawRate: 0.6, pitchRate: 0.6, minPitch: -80 };
 
   const W = 340;
   const MID = W / 2;
@@ -91,12 +94,12 @@
     const dx = e.clientX - press.x;
     const dy = e.clientY - press.y;
     press = { x: e.clientX, y: e.clientY };
-    view = { yaw: wrapYaw(view.yaw - dx * 0.6), pitch: clampPitch(view.pitch + dy * 0.6, -80) };
+    view = dragView(view, dx, dy, TURN);
   }
 
   /** @param {KeyboardEvent} e */
   function key(e) {
-    const next = turnByKey(view, e.key, e.shiftKey, -80);
+    const next = arrowView(view, e.key, e.shiftKey, TURN);
     if (!next) return;
     e.preventDefault();
     view = next;
