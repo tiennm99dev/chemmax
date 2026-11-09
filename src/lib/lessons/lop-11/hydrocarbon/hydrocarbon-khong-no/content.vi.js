@@ -116,7 +116,7 @@ export default {
         },
         {
           type: 'tex',
-          tex: 'n\\,\\mathrm{CH_2=CH_2} \\xrightarrow{t^\\circ,\\,p,\\,\\mathrm{xt}} (\\mathrm{-CH_2{-}CH_2{-}})_n \\quad (\\text{polyethylene, PE})',
+          tex: 'n\\,\\mathrm{CH_2=CH_2} \\xrightarrow{t^\\circ,\\,p,\\,\\mathrm{xt}} (\\mathrm{{-}CH_2{-}CH_2{-}})_n \\quad (\\text{polyethylene, PE})',
         },
         {
           type: 'p',

@@ -118,7 +118,9 @@
                 ? 'border-sky-600 bg-sky-50'
                 : 'border-indigo-400 bg-white hover:bg-indigo-50'} {focusRing}"
               aria-pressed={hAt === i}
-              aria-label="Gắn H vào carbon số {i + 1}, {carbonText(c)}, có {c.h} nguyên tử H"
+              aria-label="Gắn H vào carbon số {i + 1}, {prettyFormula(
+                carbonText(c),
+              )}, có {c.h} nguyên tử H"
               onclick={() => pick(i)}
             >
               <ChemFormula formula={carbonText(c)} />
