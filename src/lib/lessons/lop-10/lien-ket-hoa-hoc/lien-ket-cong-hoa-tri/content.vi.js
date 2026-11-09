@@ -134,7 +134,7 @@ export default {
         {
           type: 'table',
           caption:
-            'Năng lượng của một số liên kết (giá trị làm tròn, có thể chênh lệch nhỏ giữa các tài liệu)',
+            'Năng lượng của một số liên kết (giá trị làm tròn; H–F, H–Br, H–I theo tài liệu tham khảo, có thể lệch vài $\\mathrm{kJ \\cdot mol^{-1}}$ so với sách)',
           head: [
             'Liên kết',
             '$E_b$ ($\\mathrm{kJ \\cdot mol^{-1}}$)',

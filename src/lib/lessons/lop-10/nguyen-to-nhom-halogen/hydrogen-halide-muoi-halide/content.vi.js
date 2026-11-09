@@ -21,7 +21,8 @@ export default {
         },
         {
           type: 'table',
-          caption: 'Một số đặc điểm của các hydrogen halide',
+          caption:
+            'Một số đặc điểm của các hydrogen halide (năng lượng liên kết của HF, HBr, HI theo tài liệu tham khảo, có thể lệch vài kJ/mol so với sách)',
           head: [
             'Chất',
             'Độ dài liên kết (pm)',
