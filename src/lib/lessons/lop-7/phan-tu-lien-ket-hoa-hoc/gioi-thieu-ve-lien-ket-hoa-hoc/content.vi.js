@@ -250,7 +250,7 @@ export default {
       type: 'text',
       prompt:
         'Liên kết giữa hai nguyên tử trong phân tử chlorine $\\mathrm{Cl_2}$ thuộc loại liên kết gì?',
-      accept: ['cộng hoá trị', 'liên kết cộng hoá trị', 'cộng hóa trị', 'liên kết cộng hóa trị'],
+      accept: ['cộng hoá trị', 'liên kết cộng hoá trị', 'cộng hoá trị', 'liên kết cộng hoá trị'],
       hints: ['Hai nguyên tử Cl giống nhau, đều có xu hướng nhận electron.'],
       solution:
         'Hai nguyên tử Cl ($2, 8, 7$) mỗi nguyên tử góp chung $1$ electron tạo $1$ cặp electron dùng chung: đó là liên kết cộng hoá trị.',

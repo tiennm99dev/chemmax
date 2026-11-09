@@ -195,7 +195,7 @@ export default {
     {
       type: 'text',
       prompt: 'Phản ứng thuỷ phân chất béo trong môi trường kiềm được gọi là phản ứng gì?',
-      accept: ['xà phòng hoá', 'xà phòng hóa', 'phản ứng xà phòng hoá', 'phản ứng xà phòng hóa'],
+      accept: ['xà phòng hoá', 'xà phòng hoá', 'phản ứng xà phòng hoá', 'phản ứng xà phòng hoá'],
       hints: ['Muối sodium của acid béo dùng để làm gì?'],
       solution:
         'Muối sodium (potassium) của acid béo là thành phần chính của xà phòng, nên phản ứng này gọi là phản ứng xà phòng hoá.',

@@ -279,7 +279,7 @@ export default {
       type: 'text',
       prompt:
         'Lĩnh vực nào của khoa học tự nhiên nghiên cứu về chất và sự biến đổi của chất? (Viết tên lĩnh vực.)',
-      accept: ['hoá học', 'hóa học', 'hoa hoc'],
+      accept: ['hoá học', 'hoá học', 'hoa hoc'],
       hints: ['Sắt bị gỉ, nến cháy là ví dụ của lĩnh vực này.'],
       solution: 'Hoá học nghiên cứu về chất và sự biến đổi của chất.',
     },
