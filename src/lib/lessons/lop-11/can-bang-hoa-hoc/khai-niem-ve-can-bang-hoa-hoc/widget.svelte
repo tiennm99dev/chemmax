@@ -7,7 +7,7 @@
   import { rng } from '#lib/core/drill.js';
   import { button } from '#lib/core/ui.js';
   import ChemFormula from '#lib/domain/chem-formula.svelte';
-  import CurvePlot from '../_shared/curve-plot.svelte';
+  import CurvePlot from '#lib/domain/curve-plot.svelte';
   import {
     ACTION_NOTES,
     ACTION_SHIFT,

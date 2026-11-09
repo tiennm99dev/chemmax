@@ -5,7 +5,7 @@
   import { formatFixed, formatNumber, numTex, tidy } from '#lib/core/number-format.js';
   import { button, textInput } from '#lib/core/ui.js';
   import LabGlassware from '#lib/domain/lab-glassware.svelte';
-  import CurvePlot from '../_shared/curve-plot.svelte';
+  import CurvePlot from '#lib/domain/curve-plot.svelte';
   import {
     ACID_C,
     ACID_V,
