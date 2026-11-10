@@ -40,6 +40,7 @@ describe('organic conversion map of grade 11', () => {
     expect(react('C2H2', 'H2-Ni')?.to).toBe('C2H6');
     expect(react('C2H2', 'H2O')?.to).toBe('CH3CHO');
     expect(react('C2H4', 'H2O')?.to).toBe('C2H5OH');
+    expect(react('CH3CHO', 'NaBH4')?.to).toBe('C2H5OH');
     expect(react('CH3COOC2H5', 'HCl')).toBeNull();
   });
 

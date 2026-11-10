@@ -71,9 +71,11 @@
       note = {
         tone: 'ok',
         text:
-          tested <= 8
-            ? `Đúng cả bốn mẫu sau ${tested} thí nghiệm. Thuốc thử Tollens tách aldehyde khỏi ketone, phản ứng iodoform tìm ra chất có nhóm $\\mathrm{CH_3CO{-}}$. Làm lại thí nghiệm để xem phương trình.`
-            : `Đúng cả bốn mẫu, nhưng dùng tới ${tested} thí nghiệm. Chỉ cần Tollens và $\\mathrm{I_2/NaOH}$: hai phép thử đủ phân biệt bốn chất. Làm lại thí nghiệm để xem phương trình.`,
+          tested === 0
+            ? 'Đúng cả bốn mẫu, nhưng chưa làm thí nghiệm nào. Hãy kiểm chứng: thuốc thử Tollens tách aldehyde khỏi ketone, phản ứng iodoform tìm ra chất có nhóm $\\mathrm{CH_3CO{-}}$.'
+            : tested <= 8
+              ? `Đúng cả bốn mẫu sau ${tested} thí nghiệm. Thuốc thử Tollens tách aldehyde khỏi ketone, phản ứng iodoform tìm ra chất có nhóm $\\mathrm{CH_3CO{-}}$. Làm lại thí nghiệm để xem phương trình.`
+              : `Đúng cả bốn mẫu, nhưng dùng tới ${tested} thí nghiệm. Chỉ cần Tollens và $\\mathrm{I_2/NaOH}$: hai phép thử đủ phân biệt bốn chất. Làm lại thí nghiệm để xem phương trình.`,
       };
     } else {
       note = {

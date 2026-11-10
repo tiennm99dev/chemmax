@@ -7,7 +7,7 @@
  */
 
 /** @typedef {'C2H2' | 'C2H4' | 'C2H6' | 'C2H5Br' | 'C2H5OH' | 'CH3CHO' | 'CH3COOH' | 'CH3COOC2H5' | 'CH3COONa'} CompoundId */
-/** @typedef {'H2-Pd' | 'H2-Ni' | 'H2O' | 'Br2-light' | 'HBr' | 'NaOH' | 'H2SO4-170' | 'CuO' | 'O2-Pd' | 'Br2-water' | 'O2-enzyme' | 'C2H5OH' | 'HCl'} ReagentId */
+/** @typedef {'H2-Pd' | 'H2-Ni' | 'NaBH4' | 'H2O' | 'Br2-light' | 'HBr' | 'NaOH' | 'H2SO4-170' | 'CuO' | 'O2-Pd' | 'Br2-water' | 'O2-enzyme' | 'C2H5OH' | 'HCl'} ReagentId */
 
 /** @type {{ id: CompoundId, name: string, formula: string, family: string }[]} */
 export const COMPOUNDS = [
@@ -26,6 +26,7 @@ export const COMPOUNDS = [
 export const REAGENTS = [
   { id: 'H2-Pd', label: 'H₂, Pd/PbCO₃, t°' },
   { id: 'H2-Ni', label: 'H₂, Ni, t°' },
+  { id: 'NaBH4', label: 'NaBH₄' },
   { id: 'H2O', label: 'H₂O, xúc tác' },
   { id: 'Br2-light', label: 'Br₂, ánh sáng' },
   { id: 'HBr', label: 'HBr' },
@@ -133,9 +134,9 @@ export const REACTIONS = [
   },
   {
     from: 'CH3CHO',
-    reagent: 'H2-Ni',
+    reagent: 'NaBH4',
     to: 'C2H5OH',
-    equation: 'CH3CHO + H2 → CH3–CH2OH',
+    equation: 'CH3CHO + 2[H] → CH3–CH2OH',
     kind: 'khử aldehyde',
   },
   {

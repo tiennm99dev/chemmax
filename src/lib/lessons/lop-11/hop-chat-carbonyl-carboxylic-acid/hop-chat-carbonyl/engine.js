@@ -130,7 +130,7 @@ export function observe(id, reagent) {
   }
   if (s.family === 'ketone') {
     return reagent === 'copper'
-      ? { ...nothing, text: 'Kết tủa xanh nhạt không chuyển màu đỏ gạch' }
+      ? { ...nothing, text: 'Kết tủa xanh lam Cu(OH)₂ không chuyển thành đỏ gạch' }
       : nothing;
   }
   if (reagent === 'tollens') {
