@@ -131,8 +131,8 @@
         <p class="text-sm text-slate-700">Sản phẩm: {alcohol.oxidisedName}.</p>
       {:else}
         <p class="text-sm text-slate-700">
-          Alcohol bậc III: carbon mang OH không còn nguyên tử H nên không bị CuO oxi hoá, chất rắn
-          màu đen vẫn giữ nguyên.
+          Alcohol bậc III: carbon mang OH không còn nguyên tử H nên khó bị CuO oxi hoá, chất rắn màu
+          đen hầu như giữ nguyên.
         </p>
       {/if}
     </div>

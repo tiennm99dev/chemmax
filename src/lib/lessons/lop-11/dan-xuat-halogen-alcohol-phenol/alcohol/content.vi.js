@@ -45,7 +45,7 @@ export default {
           type: 'callout',
           tone: 'theorem',
           title: 'Tên thay thế',
-          text: 'Số chỉ vị trí nhánh – tên nhánh + tên hydrocarbon mạch chính (bỏ chữ e ở cuối) – số chỉ vị trí nhóm OH – ol. Mạch chính là mạch carbon dài nhất có chứa nhóm OH, đánh số từ đầu gần nhóm OH hơn. Tên thông thường: alcohol + tên gốc hydrocarbon + ic, ví dụ ethyl alcohol.',
+          text: 'Số chỉ vị trí nhánh – tên nhánh + tên hydrocarbon mạch chính (bỏ chữ e ở cuối) – số chỉ vị trí nhóm OH – ol. Mạch chính là mạch carbon dài nhất có chứa nhóm OH, đánh số từ đầu gần nhóm OH hơn. Tên thông thường: tên gốc alkyl + alcohol, ví dụ ethyl alcohol.',
         },
         {
           type: 'table',
@@ -293,7 +293,7 @@ export default {
       type: 'multi',
       prompt: 'Những phát biểu nào đúng?',
       options: [
-        'Alcohol bậc III không bị CuO oxi hoá khi đun nóng.',
+        'Alcohol bậc III khó bị CuO oxi hoá khi đun nóng.',
         'Methanol, ethanol tan vô hạn trong nước.',
         'Mọi alcohol đa chức đều hoà tan $\\mathrm{Cu(OH)_2}$.',
         'Ethanol tác dụng với Na giải phóng khí $\\mathrm{H_2}$.',

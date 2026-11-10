@@ -186,7 +186,7 @@ export default {
     {
       type: 'text',
       prompt: 'Gọi tên thay thế của $\\mathrm{CH_3{-}CH_2{-}CH_2Br}$.',
-      accept: ['1-bromopropane', '1 bromopropane', 'bromopropane-1'],
+      accept: ['1-bromopropane', '1 bromopropane'],
       hints: ['Đánh số mạch chính từ đầu gần nguyên tử Br.'],
       solution: 'Mạch chính propane, Br ở carbon số 1: 1-bromopropane.',
     },

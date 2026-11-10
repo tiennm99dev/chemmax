@@ -44,7 +44,7 @@ export default {
             ],
             [
               'Nhận biết',
-              'Đun với NaOH, axit hoá bằng $\\mathrm{HNO_3}$ rồi thử ion halide bằng $\\mathrm{AgNO_3}$',
+              'Đun với NaOH, acid hoá bằng $\\mathrm{HNO_3}$ rồi thử ion halide bằng $\\mathrm{AgNO_3}$',
               'Polyalcohol có OH liền kề hoà tan $\\mathrm{Cu(OH)_2}$: dung dịch xanh lam',
               'Nước bromine: kết tủa trắng 2,4,6-tribromophenol',
             ],

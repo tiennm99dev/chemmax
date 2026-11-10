@@ -48,13 +48,13 @@
       if (outcome.result === 'same') {
         return {
           tone: 'info',
-          text: `${baseFormula} là muối của chính ${a.label}, nên không có phản ứng nào để xét. Chọn một muối khác.`,
+          text: `${baseFormula} ứng với chính ${a.label}, nên không có phản ứng nào để xét. Chọn một muối hoặc base khác.`,
         };
       }
       if (guess === null) {
         return {
           tone: 'info',
-          text: `Muối ${baseFormula} ứng với acid ${p.label}. Dựa vào thang pKa, dự đoán ${acidFormula} có phản ứng với ${baseFormula} không.`,
+          text: `${baseFormula} ứng với acid ${p.label}. Dựa vào thang pKa, dự đoán ${acidFormula} có phản ứng với ${baseFormula} không.`,
         };
       }
       const why =
