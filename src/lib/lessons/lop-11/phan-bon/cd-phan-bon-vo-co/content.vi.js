@@ -302,7 +302,8 @@ export default {
     },
     {
       type: 'multi',
-      prompt: 'Những chất nào là thành phần của phân phức hợp?',
+      prompt:
+        'Những chất nào chứa từ hai nguyên tố dinh dưỡng đa lượng trong cùng một hợp chất, nên dùng riêng là phân phức hợp?',
       options: [
         '$\\mathrm{NH_4H_2PO_4}$',
         '$\\mathrm{(NH_4)_2HPO_4}$',

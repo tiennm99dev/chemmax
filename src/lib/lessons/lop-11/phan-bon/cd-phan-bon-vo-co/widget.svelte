@@ -1,7 +1,7 @@
 <script>
   import LiveRichText from '#lib/components/live-rich-text.svelte';
   import FeedbackNote from '#lib/core/feedback-note.svelte';
-  import { formatNumber, numTex } from '#lib/core/number-format.js';
+  import { formatNumber, numTex, tidy } from '#lib/core/number-format.js';
   import SegmentedControl from '#lib/core/segmented-control.svelte';
   import SliderField from '#lib/core/slider-field.svelte';
   import { button } from '#lib/core/ui.js';
@@ -37,10 +37,22 @@
   const total = $derived(PRODUCTS.reduce((s, p) => s + (masses[p.id] ?? 0), 0));
   /** Scale of the bars: the larger of the need and the supply, plus room. */
   const scale = $derived(Math.max(...NUTRIENTS.map((k) => Math.max(plan.need[k], got[k]))) * 1.15);
+  /**
+   * One line of the worked calculation with a straight fertiliser.
+   * @param {string} name TeX subscript of the fertiliser
+   * @param {number} need kg of nutrient
+   * @param {number} grade percent
+   */
+  function howLine(name, need, grade) {
+    const exact = fertiliserFor(need, grade);
+    const shown = tidy(exact, 1);
+    const sign = shown === exact ? '=' : '\\approx';
+    return `$m_{${name}} = \\dfrac{${numTex(need)} \\cdot 100}{${grade}} ${sign} ${numTex(shown)}$ kg`;
+  }
   const how = $derived([
-    `$m_{\\text{urea}} = \\dfrac{${numTex(plan.need.N)} \\cdot 100}{46} \\approx ${numTex(fertiliserFor(plan.need.N, 46), 1)}$ kg`,
-    `$m_{\\text{supe}} = \\dfrac{${numTex(plan.need.P2O5)} \\cdot 100}{16} \\approx ${numTex(fertiliserFor(plan.need.P2O5, 16), 1)}$ kg`,
-    `$m_{\\mathrm{KCl}} = \\dfrac{${numTex(plan.need.K2O)} \\cdot 100}{60} \\approx ${numTex(fertiliserFor(plan.need.K2O, 60), 1)}$ kg`,
+    howLine('\\text{urea}', plan.need.N, 46),
+    howLine('\\text{supe}', plan.need.P2O5, 16),
+    howLine('\\mathrm{KCl}', plan.need.K2O, 60),
   ]);
 
   function reset() {

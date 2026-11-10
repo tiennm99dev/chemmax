@@ -82,7 +82,7 @@
   {:else}
     <div class="rounded-xl border border-slate-200 bg-white p-3">
       <p class="text-xs font-semibold text-slate-500">
-        Ca {(round % CASES.length) + 1}/{CASES.length} · Đúng ngay lần đầu: {score}/{tries}
+        Tình huống {(round % CASES.length) + 1}/{CASES.length} · Đúng ngay lần đầu: {score}/{tries}
       </p>
       <p class="mt-1 text-sm font-semibold text-slate-800">
         Một ruộng có cây biểu hiện: “{nutrient(answer).lack}” Cây đang thiếu nguyên tố nào?
@@ -112,6 +112,6 @@
         ? 'Gợi ý: nguyên tố dễ di chuyển trong cây (N, P, K, Mg) được chuyển từ lá già sang lá non, nên triệu chứng thiếu hiện ở lá già trước.'
         : verdict.text}
     />
-    <button type="button" class={button.secondary} onclick={next}>Ca tiếp theo</button>
+    <button type="button" class={button.secondary} onclick={next}>Tình huống tiếp theo</button>
   {/if}
 </div>
