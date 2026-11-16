@@ -291,7 +291,7 @@ export default {
       answer: 0,
       hints: ['Chất nào không tạo được liên kết hydrogen giữa các phân tử?'],
       solution:
-        'Methyl acetate là ester, không có liên kết hydrogen giữa các phân tử nên sôi thấp nhất (khoảng $57$ °C), thấp hơn butan-1-ol ($118$ °C) và propanoic acid ($141$ °C).',
+        'Methyl acetate là ester, không có liên kết hydrogen giữa các phân tử nên sôi thấp nhất (khoảng $57$ °C), thấp hơn butan-1-ol ($118$ °C) và propionic acid ($141$ °C).',
     },
     {
       type: 'multi',
