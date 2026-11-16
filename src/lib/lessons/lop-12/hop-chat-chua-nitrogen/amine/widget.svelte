@@ -60,7 +60,7 @@
           text: 'Chưa có gốc hydrocarbon nào trên nguyên tử N: đây là ammonia $\\mathrm{NH_3}$. Hãy thay một nguyên tử H bằng gốc hydrocarbon.',
         };
       }
-      const base = `Amine bậc ${a.order} (${a.order} gốc hydrocarbon gắn với N), loại ${a.type}. Dung dịch làm quỳ tím ${litmus(a)}.`;
+      const base = `Amine bậc ${a.order} (${a.order} gốc hydrocarbon gắn với N), loại ${a.type}. Dung dịch ${litmus(a)}.`;
       if (a.pka === null) {
         return {
           tone: 'info',

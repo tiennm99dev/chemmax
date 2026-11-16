@@ -9,9 +9,9 @@
  *   temperature (37 °C), doubling for every 10 °C, then falls quickly as the
  *   protein loses its shape; at 60 °C or above the enzyme is denatured.
  * - pH: each enzyme works best near its own pH (pepsin in the acidic stomach
- *   near pH 2, salivary amylase near 6,8, pancreatic lipase near 8); four
- *   pH units or more away from it the enzyme is denatured too.
- * Denaturing does not undo itself when the conditions come back. The
+ *   near pH 2, salivary amylase near 6,8, pancreatic lipase near 8); far
+ *   from it the rate falls to almost nothing.
+ * Heat denaturing does not undo itself when the temperature comes back. The
  * numbers are a teaching model, not measured data.
  */
 

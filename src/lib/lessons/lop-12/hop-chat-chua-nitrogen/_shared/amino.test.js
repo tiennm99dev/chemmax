@@ -60,6 +60,7 @@ describe('peptides', () => {
     expect(biuret(['gly', 'ala'])).toBe(false);
     expect(biuret(['gly', 'ala', 'gly'])).toBe(true);
     expect(peptideKind(2)).toBe('dipeptide');
+    expect(peptideKind(6)).toBe('hexapeptide');
     expect(peptideKind(9)).toBe('polypeptide');
     expect(hydrolysisText(['gly', 'ala', 'gly'])).toBe('2 glycine, 1 alanine');
   });

@@ -30,7 +30,7 @@
         pI: isoelectric(id),
         form: mainForm(id, pH),
         way: drift(id, pH),
-        x: running ? MID - q * SPAN : MID,
+        x: running ? MID - (Math.max(-2, Math.min(2, q)) / 2) * SPAN : MID,
       };
     }),
   );
@@ -56,7 +56,7 @@
       const parts = rows.map((r) => `${r.aa.symbol} ${wayText(r.way)}`);
       return {
         tone: 'ok',
-        text: `pH = ${formatNumber(pH, 1)}: ${parts.join('; ')}. Ở pH nhỏ hơn điểm đẳng điện, amino acid tồn tại chủ yếu ở dạng cation, đi về cực âm; ở pH lớn hơn, dạng anion đi về cực dương.`,
+        text: `pH = ${formatNumber(pH, 1)}: ${parts.join('; ')}. Ở pH nhỏ hơn điểm đẳng điện, amino acid tồn tại chủ yếu ở dạng cation, đi về cực âm; ở pH lớn hơn, dạng anion đi về cực dương. pH càng xa điểm đẳng điện, điện tích càng lớn và chất di chuyển càng xa; gần điểm đẳng điện, chất gần như đứng yên.`,
       };
     },
   );

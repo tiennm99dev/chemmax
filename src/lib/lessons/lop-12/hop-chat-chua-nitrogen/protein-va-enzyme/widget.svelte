@@ -8,13 +8,16 @@
   import {
     DENATURE_T,
     ENZYMES,
+    OPTIMUM_T,
     SUBSTRATES,
     activity,
     curve,
     denatures,
     enzyme,
     fits,
+    phFactor,
     substrate,
+    temperatureFactor,
   } from './engine.js';
 
   /** @typedef {import('./engine.js').EnzymeId} EnzymeId */
@@ -73,6 +76,9 @@
     return `M ${cx - 18} ${cy - 14} L ${cx + 18} ${cy - 14} L ${cx + 18} ${cy + 14} L ${cx - 18} ${cy + 14} Z`;
   }
 
+  /** @param {string} w */
+  const cap = (w) => w.charAt(0).toUpperCase() + w.slice(1);
+
   const subY = $derived(bound ? 118 : 50);
   const subX = $derived(bound || match ? 180 : 250);
 
@@ -93,7 +99,7 @@
       if (!match) {
         return {
           tone: 'warn',
-          text: `${s.name} không khớp với trung tâm hoạt động của ${e.name}: enzyme có tính chọn lọc cao, ${e.name} chỉ xúc tác cho phản ứng thuỷ phân ${substrate(e.substrate).name}.`,
+          text: `${cap(s.name)} không khớp với trung tâm hoạt động của ${e.name}: enzyme có tính chọn lọc cao, ${e.name} chỉ xúc tác cho phản ứng thuỷ phân ${substrate(e.substrate).name}.`,
         };
       }
       if (broken) {
@@ -103,23 +109,29 @@
         };
       }
       const r = Math.round(rate);
+      if (r < 5 && phFactor(enzymeId, pH) >= temperatureFactor(t)) {
+        return {
+          tone: 'info',
+          text: `${cap(s.name)} khớp với ${e.name}, nhưng ở ${t} °C phản ứng xảy ra rất chậm: nhiệt độ thích hợp là khoảng ${OPTIMUM_T} °C.`,
+        };
+      }
       if (r < 5) {
         return {
           tone: 'info',
-          text: `${s.name} khớp với ${e.name}, nhưng ở pH ${formatNumber(pH, 1)} enzyme gần như không hoạt động: pH thích hợp của ${e.name} là khoảng ${formatNumber(e.pH, 1)}.`,
+          text: `${cap(s.name)} khớp với ${e.name}, nhưng ở pH ${formatNumber(pH, 1)} enzyme gần như không hoạt động: pH thích hợp của ${e.name} là khoảng ${formatNumber(e.pH, 1)}.`,
         };
       }
       const how =
         r >= 80
           ? 'gần tốc độ lớn nhất'
-          : t < 37 - 5
-            ? 'nhiệt độ thấp nên phản ứng chậm'
-            : Math.abs(pH - e.pH) > 1
-              ? 'pH lệch khỏi pH thích hợp nên phản ứng chậm'
+          : phFactor(enzymeId, pH) < temperatureFactor(t)
+            ? 'pH lệch khỏi pH thích hợp nên phản ứng chậm'
+            : t < OPTIMUM_T
+              ? 'nhiệt độ thấp nên phản ứng chậm'
               : 'nhiệt độ cao làm enzyme bắt đầu mất hoạt tính';
       return {
         tone: r >= 50 ? 'ok' : 'info',
-        text: `${s.name} khớp với trung tâm hoạt động của ${e.name} như chìa với khoá và bị thuỷ phân thành ${s.products}. Tốc độ bằng ${r}% tốc độ lớn nhất: ${how}.`,
+        text: `${cap(s.name)} khớp với trung tâm hoạt động của ${e.name} như chìa với khoá và bị thuỷ phân thành ${s.products}. Tốc độ bằng ${r}% tốc độ lớn nhất: ${how}.`,
       };
     },
   );

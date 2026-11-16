@@ -214,7 +214,15 @@ export function biuret(ids) {
  * @param {number} n
  */
 export function peptideKind(n) {
-  const words = ['', 'amino acid', 'dipeptide', 'tripeptide', 'tetrapeptide', 'pentapeptide'];
+  const words = [
+    '',
+    'amino acid',
+    'dipeptide',
+    'tripeptide',
+    'tetrapeptide',
+    'pentapeptide',
+    'hexapeptide',
+  ];
   return words[n] ?? 'polypeptide';
 }
 

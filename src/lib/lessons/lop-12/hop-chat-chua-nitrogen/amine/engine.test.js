@@ -44,7 +44,7 @@ group('building an amine on the nitrogen atom', () => {
   });
 
   it('turns litmus blue only for alkylamines', () => {
-    expect(litmus(describe(['CH3', 'H', 'H']))).toBe('xanh');
-    expect(litmus(describe(['C6H5', 'H', 'H']))).toBe('không đổi màu');
+    expect(litmus(describe(['CH3', 'H', 'H']))).toBe('làm quỳ tím hoá xanh');
+    expect(litmus(describe(['C6H5', 'H', 'H']))).toBe('không làm quỳ tím đổi màu');
   });
 });

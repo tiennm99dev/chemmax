@@ -162,6 +162,6 @@ export function kbRatio(pka) {
  * @param {Amine} a
  */
 export function litmus(a) {
-  if (!a.isAmine) return 'xanh';
-  return a.type === 'alkylamine' ? 'xanh' : 'không đổi màu';
+  if (!a.isAmine || a.type === 'alkylamine') return 'làm quỳ tím hoá xanh';
+  return 'không làm quỳ tím đổi màu';
 }
