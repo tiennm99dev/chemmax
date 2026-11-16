@@ -1,4 +1,6 @@
 // Synced from tiennm99dev/mathmax by scripts/sync-core.sh. Do not edit it here; change it in mathmax and sync again.
+import { spokenUnits } from './tex-text.js';
+
 /** Marks the end of a table cell and of a table row in the copied text. */
 const CELL = '\u2063';
 const ROW = '\u2064';
@@ -28,12 +30,13 @@ export function speechText(el) {
  * Plain text tidied for a speech voice: the signs a voice may skip or read in
  * another language become words, the way a child reads them (6 × 3 → 6 nhân 3,
  * 18 : 3 → 18 chia 3), digit groups join (1 000 → 1000) so the number is read
- * whole, and the separators `speechText` adds collapse.
+ * whole, unit symbols become words (`cm²` → xăng-ti-mét vuông) and the
+ * separators `speechText` adds collapse.
  * @param {string} text
  * @returns {string}
  */
 export function spokenMath(text) {
-  return text
+  return spokenUnits(text)
     .replace(/[\s\u2063\u2064]+$/, '')
     .replace(/(\d)[\u202f\u00a0 ](?=\d{3}(?!\d))/g, '$1')
     .replace(/\s*[×✕]\s*/g, ' nhân ')

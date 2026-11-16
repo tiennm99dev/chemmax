@@ -7,6 +7,8 @@ import {
   countLabel,
   takeawayLabel,
   drawFresh,
+  FALLBACK_HINT,
+  feedbackText,
   isSettled,
   mixOptions,
   numberOptions,
@@ -77,6 +79,14 @@ describe('tapping an option', () => {
     expect(two).toEqual({ phase: 'shown', wrong: [0, 2], first: null });
     expect(isSettled(two.phase)).toBe(true);
     expect(tapOption(two, 1, 1).phase).toBe('shown');
+  });
+
+  it('shows the hint after a wrong first tap, or a general one when there is none', () => {
+    expect(feedbackText(question, 'retry')).toBe('Chưa đúng. Gợi ý: Đếm xem. Em thử lại nhé.');
+    expect(feedbackText({ ...question, hint: '  ' }, 'retry')).toContain(FALLBACK_HINT);
+    expect(feedbackText(question, 'right')).toBe('Đúng rồi! 2 < 3.');
+    expect(feedbackText(question, 'shown')).toBe('Đáp án: 2 < 3.');
+    expect(feedbackText(question, 'ask')).toBe('Em chạm vào đáp án đúng.');
   });
 
   it('lists the parts with a wrong first try in the order of the labels', () => {

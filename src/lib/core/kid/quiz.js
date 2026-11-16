@@ -10,6 +10,7 @@
  */
 import { nextSkill, statusOf, tally } from '#lib/core/adaptive.js';
 import { shuffle } from '#lib/core/drill.js';
+import { fmt } from '#lib/core/number-format.js';
 import { SIGNS, SIGN_WORDS } from './numbers.js';
 
 /**
@@ -79,6 +80,26 @@ export function optionName(q, i) {
  */
 export function isSettled(phase) {
   return phase === 'right' || phase === 'shown';
+}
+
+/** Said after a wrong first tap when a question carries no hint of its own. */
+export const FALLBACK_HINT = 'Em đọc lại câu hỏi và nhìn kĩ hình.';
+
+/**
+ * The feedback line under the options for each phase. A wrong first tap
+ * always shows a hint: the question's own, or a general one when it has none.
+ * @param {KidQuestion<any>} q
+ * @param {Phase} phase
+ * @returns {string}
+ */
+export function feedbackText(q, phase) {
+  if (phase === 'ask') return 'Em chạm vào đáp án đúng.';
+  if (phase === 'retry') {
+    const hint = q.hint?.trim() || FALLBACK_HINT;
+    return `Chưa đúng. Gợi ý: ${hint} Em thử lại nhé.`;
+  }
+  if (phase === 'right') return `Đúng rồi! ${q.solution}`;
+  return `Đáp án: ${q.solution}`;
 }
 
 /**
@@ -197,6 +218,33 @@ export function numberOptions(rand, right, lo = 0, hi = 10) {
   }
   const values = [right, ...shuffle(rand, near).slice(0, 3)].sort((x, y) => x - y);
   return { options: values.map(String), answer: values.indexOf(right) };
+}
+
+/**
+ * Up to four number options in increasing order: the right one and the
+ * slips a child makes, then the numbers `near` it (offsets from the right
+ * value, in the order they are tried), so a question always has four
+ * different choices. Only whole numbers from `min` to `max` other than the
+ * right one are kept. Each value is written the way the book groups digits,
+ * followed by `unit` when one is given.
+ * @param {number} right
+ * @param {number[]} slips
+ * @param {{ near?: number[], min?: number, max?: number, unit?: string }} [options]
+ * @returns {{ options: string[], answer: number }}
+ */
+export function slipOptions(
+  right,
+  slips,
+  { near = [1, 2, 3], min = 0, max = Infinity, unit } = {},
+) {
+  const others = [...new Set([...slips, ...near.map((d) => right + d)])].filter(
+    (v) => v !== right && v >= min && v <= max && Number.isInteger(v),
+  );
+  const values = [right, ...others.slice(0, 3)].sort((x, y) => x - y);
+  return {
+    options: values.map((v) => (unit ? `${fmt(v)} ${unit}` : fmt(v))),
+    answer: values.indexOf(right),
+  };
 }
 
 /**

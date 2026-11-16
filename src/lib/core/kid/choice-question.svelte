@@ -1,7 +1,7 @@
 <!-- Synced from tiennm99dev/mathmax by scripts/sync-core.sh. Do not edit it here; change it in mathmax and sync again. -->
 <script>
   import { button, focusRing } from '#lib/core/ui.js';
-  import { isSettled, optionName, optionText } from './quiz.js';
+  import { feedbackText, isSettled, optionName, optionText } from './quiz.js';
 
   /**
    * One kid tap-the-answer question: the prompt, an optional picture, large
@@ -9,8 +9,8 @@
    * and a second try; a second miss shows the answer. The parent keeps the
    * state (`tapOption` in `quiz.js` moves it on) and calls `focus()` to move
    * keyboard focus to the prompt of a new question. Once a question settles
-   * its options leave the tab order, so Tab from the tapped option reaches the
-   * next button. Used by
+   * its options leave the tab order and focus moves to the next button, so
+   * Enter goes on at once. Used by
    * `choice-round.svelte` and `adaptive-quiz.svelte`.
    *
    * - `q`: the question (`KidQuestion` in `quiz.js`).
@@ -41,6 +41,8 @@
 
   /** @type {HTMLHeadingElement | undefined} */
   let heading = $state();
+  /** @type {HTMLButtonElement | undefined} */
+  let nextButton = $state();
 
   /** Moves keyboard focus to the prompt. */
   export function focus() {
@@ -48,6 +50,12 @@
   }
 
   const settled = $derived(isSettled(phase));
+
+  // The tapped option leaves the tab order when the question ends; move focus
+  // on to the next button rather than leave it on that option.
+  $effect(() => {
+    if (settled && nextButton) nextButton.focus();
+  });
   const long = $derived(q.options.some((o) => optionText(o).length > 3));
   const list = $derived(listOptions?.(q) ?? false);
 
@@ -109,19 +117,16 @@
       : 'bg-amber-100 text-amber-900'}"
   aria-live="polite"
 >
-  {#if phase === 'ask'}
-    Em chạm vào đáp án đúng.
-  {:else if phase === 'retry'}
-    Chưa đúng. Gợi ý: {q.hint} Em thử lại nhé.
-  {:else if phase === 'right'}
-    <span aria-hidden="true">⭐ </span>Đúng rồi! {q.solution}
-  {:else}
-    Đáp án: {q.solution}
-  {/if}
+  {#if phase === 'right'}<span aria-hidden="true">⭐ </span>{/if}{feedbackText(q, phase)}
 </p>
 
 {#if settled}
-  <button type="button" class="min-h-12 text-lg {button.primary}" onclick={onnext}>
+  <button
+    bind:this={nextButton}
+    type="button"
+    class="min-h-12 text-lg {button.primary}"
+    onclick={onnext}
+  >
     {nextLabel}
   </button>
 {/if}

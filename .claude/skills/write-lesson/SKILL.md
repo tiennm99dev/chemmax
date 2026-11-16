@@ -389,8 +389,44 @@ Other shared pieces:
     `option` snippet with `pictureOption` draws picture options, and
     `listOptions` stacks sentence options. Build options with `numberOptions`,
     `bigOptions` (numbers to 100, with the mistakes one off, ten off and digits
-    swapped), `mixOptions`, `signOptions`; `weakLabels` and `tapOption` are the
-    round logic, so an engine never re-implements them.
+    swapped), `mixOptions`, `signOptions` and `slipOptions(right, slips, { near,
+    min, max, unit })` (the right answer among the slips a child makes, filled
+    up from offsets `near` within `min`..`max`, digits grouped); `weakLabels`,
+    `tapOption` and `feedbackText` (the line under the options; a wrong first
+    tap always shows a hint) are the round logic, so an engine never
+    re-implements them.
+  - `whole-numbers.js`: natural numbers of any length (grades 3-4):
+    `PLACE_NAMES`/`CLASS_NAMES` by power of ten, `placeColumns(count)` (a
+    place table's columns with titles, units and the blocks of the first four),
+    `placeDigits(n, count)`, `placesText`, `digitsOf`, `digitAt`, `valueAt`,
+    `sumParts`/`sumText` ("3 892 = 3 000 + 800 + 90 + 2"), `classParts`,
+    `readWhole` (the book's reading class by class, "ba nghìn không trăm sáu
+    mươi bảy") and `capitalReading`, `roundTo`/`roundingDigit`/
+    `roundingPlaces`/`roundWhy` for any place, `firstDiff`/`compareWhy`, and
+    the grade 3 Roman numerals (`toRoman`, `fromRoman`, `romanSum`, `sticksOf`,
+    `ROMAN_DIGITS`). A chapter keeps only its own `TOP`.
+  - `column-steps.js` with `column-worker.svelte`, `column-sheet.svelte`,
+    `digit-pad.svelte` and `kid-note.svelte`: column addition, subtraction and
+    multiplication by a digit of numbers of any length and division by a digit,
+    read the grade 3 book's way (`stepsOf`, `columnWords`, `equation`,
+    `carriesOf`, `noCarry`, `divText`, `divWords`, `checkText`), and the board a
+    child fills in (`planOf`, `sheetAt(a, b, op, done, columns)`, `askFor`,
+    `borrowLabel` "Lấy 12 trừ, nhớ 1", `wrongFor`). A chapter writes only how it
+    draws its tasks and renders `<ColumnWorker op columns draw kinds … />`;
+    `digit-pad` is the ten big digit buttons and `kid-note` the live sentence
+    under a kid widget.
+  - `times-table.js` with `table-grid.svelte`: the tables' sentences
+    (`mulLine` "3 × 4 = 12", `divLine`, `repeatedSum`) and options
+    (`productOptions`, `quotientOptions`), and the ten rows of a table with the
+    found rows, the current one and an optional `onpick`; `dot-grid.svelte`
+    draws rows of dots with the counted rows ringed.
+  - `tally.js` with `tally-marks.svelte`: counting by category for grades 2
+    and 3 (`ChartSymbol`, `tallyBundles`, `tallyWords` "1 bó 5 vạch và 2
+    vạch", `countBy`, `totalOf`, `extremes`) and the tally strokes, read one
+    word per stroke until `settled`. `chance.js`: the book's three words
+    (`CHANCES`) and `wordOf(outcomes, holds)`.
+  - `pass-focus.js`: `passFocus(from, to)` hands keyboard focus on when a
+    press has just disabled the button that had it.
   - `shapes.js` with `shape-figure.svelte` and `object-figure.svelte`: the
     four plane shapes and two solids (`FIGURE_NAMES`, `plainFigure(kind)` for
     a picture-card look, or a full `Figure` with colour, size, turn and
@@ -416,7 +452,13 @@ Other shared pieces:
   - `time.js` with `clock-picture.svelte` (a still clock at any time) and
     `month-sheet.svelte`: `WEEKDAYS`, `DAY_PARTS`, `namesOf`, `handsText`,
     `dayAfter`, `dayTitle`, `dialHour`, `hourOptions`, `monthRows` and
-    `weekdayOf`/`weekdayFrom`. `clock-face` (section 6) is the draggable one.
+    `weekdayOf`/`weekdayFrom`; `handsText` and `minuteHandWords` say where the
+    hands point to the minute, and `minute-clock.svelte` is a still clock with
+    the 60 minute marks. `clock-face` (section 6) is the draggable one.
+  - `money.js` with `banknote.svelte`: the notes of grade 2 (`GRADE2_NOTES`,
+    100 to 1000 đồng, written without a group space: `grouped: false`) and
+    grade 3 (`GRADE3_NOTES`), `NOTE_WORDS`, `isNote`, `moneyText`,
+    `sumNotes`, `fewestNotes(amount, notes)`, `notesText` and `spareNote`.
   - `place-value.js` with `block.svelte`, `block-pile.svelte` and
     `count-stepper.svelte`: numbers to 1 000 (`PLACES`, `readTo1000` "hai
     trăm linh năm", `placesOf`, `valueOf`, `sumParts`, `sumText`,
@@ -430,6 +472,10 @@ Other shared pieces:
     and `cup.svelte` (the 1 l mug).
   Kid tap targets are at least 48 px at 390 px wide; a grid too wide for
   that (the 1-100 board) scrolls sideways inside its card.
+- `#lib/core/visuals/protractor.svelte` with `protractor.js`: the half-circle
+  protractor with its two scales, drawn inside an SVG, and the angle facts of
+  grades 4 and 6 (`KINDS`, `KIND_NAME`, `kindOf`, `rayDirection`,
+  `measureFrom`, `foldUpper`, `clockAngle`).
 - Engines, pure and tested: `#lib/geom-engine/index.js`, `#lib/algebra-engine/index.js`
   (with `polynomial.js` for one-variable polynomials and `long-division.js`
   for polynomial and natural-number long division),
@@ -450,7 +496,10 @@ Other shared pieces:
   `ticks.js` (`ticksUpTo`), `force-arrow`, `push-motion.js` (`pushState`),
   `scatter.js` (seeded measuring noise), `circular.js` (a point going round a
   circle: `pointAt`, `tangentAt`, `arcPath`, `slicePath`), `galvanometer` (centre-zero, drawn inside
-  an SVG) and `current-trace` (current against time, with `pushSample`); ChemMax has `periodic-table`, `atom-model`, `molecule-viewer`,
+  an SVG), `current-trace` (current against time, with `pushSample`), `oscillation.js`
+  (harmonic motion: `stateAt`, `piTex`, `equationTex`, `phaseRelation`) with `osc-graph` (a signed
+  graph against time that can be a time slider) and `spring-mass` (a horizontal spring
+  pendulum), and `renewable-power.js` (solar, wind and hydro power); ChemMax has `periodic-table`, `atom-model`, `molecule-viewer`,
   `equation-balancer`, `ph-scale`, `lab-glassware`, `equation-line` (a
   book-style equation such as "Zn + 2HCl → ZnCl2 + H2↑" with real subscripts)
   with `reaction.js` (`terms`, `isBalancedText`, which also checks condensed
@@ -458,7 +507,9 @@ Other shared pieces:
   `elements.js` (`electronConfiguration`, `outerElectrons`,
   `unpairedElectrons`, `configTex`), `main-group.js` (radius and ionisation
   energy), `compounds.js` (highest oxides and hydroxides), `bond-energy.js`
-  (`BOND_ENERGY`, the book's values), `test-tube` and `curve-plot` (a curve
+  (`BOND_ENERGY`, the book's values), `test-tube`, `sample-bench` (telling unknown samples apart with reagents and a results
+  table), `alkane-name.js` (IUPAC names of alkanes from a drawn skeleton, `judgeName`) and
+  `curve-plot` (a curve
   against time or volume with dashed series and a shaded band); BioMax has
   `diagram-hotspots`, `punnett-square`, `pedigree-chart`, `food-web` (`mode`
   opens it in "Loại bỏ" mode), `dna-codon-translator`, `population-chart`,

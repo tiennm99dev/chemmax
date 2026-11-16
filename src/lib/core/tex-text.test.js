@@ -10,10 +10,13 @@ describe('texText', () => {
     ['\\sqrt[3]{8}', 'căn bậc ba của 8'],
     ['\\sqrt[5]{8}', 'căn bậc 5 của 8'],
     ['10\\times', '10×'],
-    ['-1', 'trừ 1'],
+    ['-1', 'âm 1'],
+    ['-37{,}7', 'âm 37,7'],
+    ['x = -2', 'x= âm 2'],
+    ['3 - (-2)', '3 trừ (âm 2)'],
     ['x - 1', 'x trừ 1'],
     ['\\frac{3}{4}', '3/4'],
-    ['\\dfrac{-3}{x+1}', '(trừ 3)/(x+1)'],
+    ['\\dfrac{-3}{x+1}', '(âm 3)/(x+1)'],
     ['x^2 + y^{3}', 'x mũ 2 +y mũ 3'],
     ['2^{10}', '2 mũ 10'],
     ['10^{-3}', '10 mũ trừ 3'],
@@ -29,7 +32,8 @@ describe('texText', () => {
     ['K_C = \\frac{1}{2}', 'K C =1/2'],
     ['\\mathrm{O{-}H}', 'O–H'],
     ['\\mathrm{CH_3{-}CH_2{-}OH}', 'CH₃–CH₂–OH'],
-    ['5\\text{ cm}', '5 cm'],
+    ['5\\text{ cm}', '5 xăng-ti-mét'],
+    ['12\\text{ cm}^2', '12 xăng-ti-mét vuông'],
     ['\\widehat{ABC} = 60^\\circ', 'góc ABC=60°'],
     ['x \\in \\mathbb{N}', 'x∈ℕ'],
     ['a \\ne b', 'a khác b'],
@@ -81,7 +85,7 @@ describe('texHtml', () => {
 describe('htmlText', () => {
   it('reads rendered rich text the way a screen reader names it', () => {
     expect(htmlText(renderRichText('Số $\\sqrt{144}$ & $-1$'))).toBe(
-      'Số căn bậc hai của 144 & trừ 1',
+      'Số căn bậc hai của 144 & âm 1',
     );
   });
 

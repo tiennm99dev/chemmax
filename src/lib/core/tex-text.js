@@ -2,7 +2,7 @@
 /**
  * Accessible text for TeX. Rendered TeX is shown to the eye only; screen
  * readers get a spoken form of the same source instead, such as
- * `căn bậc hai của 144`, `10×` or `trừ 1`. The browser computes a radio's,
+ * `căn bậc hai của 144`, `10×` or `âm 1`. The browser computes a radio's,
  * button's or textbox label's name from that text, so options that differ only
  * in their formula keep distinct names, and the read-aloud button speaks it too.
  *
@@ -562,12 +562,33 @@ const SPOKEN = {
   '−': ' trừ ',
 };
 
+// A minus sign at the start or after an opening bracket, a relation or another
+// sign, followed by a number, is the sign of a negative number: `âm`.
+const NEGATIVE = /(^|[([{=<>≤≥≠≈∼,;:+−×·/±∓∈])(\s*)−(?=\s*\d)/g;
+
+// Units a voice spells letter by letter, as the words a child reads; `²`/`³`
+// may still be superscripts or, in TeX, the `²` a power has become.
+const UNITS = [
+  [/(?<![\p{L}_])cm(?:²|\^2)(?![\p{L}\p{N}])/gu, 'xăng-ti-mét vuông'],
+  [/(?<![\p{L}_])cm(?![\p{L}\p{N}²³])/gu, 'xăng-ti-mét'],
+];
+
+/**
+ * Unit symbols read as words: `cm²` → `xăng-ti-mét vuông`, `cm` →
+ * `xăng-ti-mét`.
+ * @param {string} text
+ */
+export function spokenUnits(text) {
+  return UNITS.reduce((out, [re, word]) => out.replace(re, String(word)), text);
+}
+
 /**
  * Math signs a screen reader skips or reads in English, as Vietnamese words.
  * @param {string} linear
  */
 function spokenWords(linear) {
-  return linear
+  return spokenUnits(linear)
+    .replace(NEGATIVE, (_, before) => `${before} âm `)
     .replace(SUPER_ROOT, (_, n) => ` căn bậc ${unsuper(n)} của `)
     .replace(
       SUPER_POWER,
@@ -583,7 +604,7 @@ function spokenWords(linear) {
 /**
  * The spoken form of TeX source for screen readers and read-aloud:
  * `\sqrt{144}` → `căn bậc hai của 144`, `\frac{3}{4}` → `3/4`, `x^2` → `x mũ 2`,
- * `-1` → `trừ 1`, `a \le b` → `a nhỏ hơn hoặc bằng b`, `10\times` → `10×`,
+ * `-1` → `âm 1`, `x - 1` → `x trừ 1`, `5\text{ cm}^2` → `5 xăng-ti-mét vuông`, `a \le b` → `a nhỏ hơn hoặc bằng b`, `10\times` → `10×`,
  * `90^\circ` → `90°`, `3{,}5` → `3,5`, `\widehat{ABC}` → `góc ABC`,
  * `\frac{1}{6x^2}` → `1/(6x mũ 2)`, `\mathcal{P}` → `P`,
  * `\xrightleftharpoons[b]{a}` → `⇌ (a, b)`, `\square` → `ô trống` (a blank to

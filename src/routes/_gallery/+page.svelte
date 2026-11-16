@@ -27,15 +27,23 @@
   import { formatTime, toMinutes } from '#lib/units-engine/clock.js';
   import { formatNumber } from '#lib/core/number-format.js';
 
-  // The kid visuals in src/lib/core/kid/ and a sister site's subject components
+  // The kid visuals in src/lib/core/kid/, the shared visuals in
+  // src/lib/core/visuals/ that ship one and a sister site's subject components
   // in src/lib/domain/ each ship a `<name>.gallery.svelte` demo, exporting its
   // section `title` from a module script, so the gallery lists them without an
   // edit to this synced page.
   const domainModules =
     /** @type {Record<string, { default: import('svelte').Component, title?: string }>} */ (
-      import.meta.glob(['/src/lib/core/kid/*.gallery.svelte', '/src/lib/domain/*.gallery.svelte'], {
-        eager: true,
-      })
+      import.meta.glob(
+        [
+          '/src/lib/core/kid/*.gallery.svelte',
+          '/src/lib/core/visuals/*.gallery.svelte',
+          '/src/lib/domain/*.gallery.svelte',
+        ],
+        {
+          eager: true,
+        },
+      )
     );
   const domainDemos = Object.entries(domainModules)
     .map(([file, mod]) => {

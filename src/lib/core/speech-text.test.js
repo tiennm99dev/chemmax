@@ -18,6 +18,13 @@ describe('spokenMath', () => {
     expect(spokenMath('Có 3 000 đồng')).toBe('Có 3000 đồng');
   });
 
+  it('reads centimetres and square centimetres as words', () => {
+    expect(spokenMath('Cạnh 5 cm, diện tích 25 cm².')).toBe(
+      'Cạnh 5 xăng-ti-mét, diện tích 25 xăng-ti-mét vuông.',
+    );
+    expect(spokenMath('8cm^2 và acm')).toBe('8xăng-ti-mét vuông và acm');
+  });
+
   it('tidies the separators added between table cells', () => {
     expect(spokenMath('Đơn vị\u2063Dụng cụ\u2063\u2064 2,5 kg\u2063Cân\u2063\u2064')).toBe(
       'Đơn vị, Dụng cụ. 2,5 kg, Cân',
