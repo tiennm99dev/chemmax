@@ -4,18 +4,11 @@
   import Stepper from '#lib/core/stepper.svelte';
   import { button, textInput } from '#lib/core/ui.js';
   import ChemFormula from '#lib/domain/chem-formula.svelte';
-  import {
-    MAX_LENGTH,
-    MIN_LENGTH,
-    branchKey,
-    buildSkeleton,
-    judgeName,
-    nameAlkane,
-    randomBench,
-  } from './engine.js';
+  import { branchKey, buildSkeleton, judgeName, nameAlkane } from '#lib/domain/alkane-name.js';
+  import { MAX_LENGTH, MIN_LENGTH, randomBench } from './engine.js';
 
-  /** @typedef {import('./engine.js').Side} Side */
-  /** @typedef {import('./engine.js').BranchSize} BranchSize */
+  /** @typedef {import('#lib/domain/alkane-name.js').Side} Side */
+  /** @typedef {import('#lib/domain/alkane-name.js').BranchSize} BranchSize */
 
   const COL = 56;
   const ROW = 42;
@@ -24,7 +17,9 @@
   const BRANCH_NAMES = ['trống', 'nhánh CH₃', 'nhánh C₂H₅'];
 
   let length = $state(5);
-  let branches = $state(/** @type {import('./engine.js').Branches} */ ({ '1:up': 1, '2:down': 2 }));
+  let branches = $state(
+    /** @type {import('#lib/domain/alkane-name.js').Branches} */ ({ '1:up': 1, '2:down': 2 }),
+  );
   let typed = $state('');
   let shown = $state(false);
   let note = $state(
