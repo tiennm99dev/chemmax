@@ -48,10 +48,10 @@
         KOH tương đương: {chosen.sap} · {fat} = {formatNumber(chosen.sap * fat)} mg = {formatNumber(
           need.koh,
           2,
-        )} g, tức {formatNumber(need.mol, 3)} mol.
+        )} g, tức {formatNumber(need.mol, 4)} mol.
       </li>
       <li>
-        NaOH cần (cùng số mol): {formatNumber(need.mol, 3)} · 40 ≈ {formatNumber(need.naoh, 2)} g, hay
+        NaOH cần (cùng số mol): {formatNumber(need.mol, 4)} · 40 ≈ {formatNumber(need.naoh, 2)} g, hay
         {formatNumber(need.ml, 1)} mL dung dịch NaOH {NAOH_MOLARITY} M.
       </li>
       <li>

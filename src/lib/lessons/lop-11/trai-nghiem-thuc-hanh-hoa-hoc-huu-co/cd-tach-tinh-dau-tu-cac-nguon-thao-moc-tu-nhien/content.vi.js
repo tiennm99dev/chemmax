@@ -86,7 +86,7 @@ export default {
             ],
             [
               'Dùng được cho nhiều loại nguyên liệu: lá, thân, vỏ, hạt (sả, tràm, quế, vỏ bưởi…).',
-              'Không phù hợp với hoa có hương dễ bị phá huỷ (hoa nhài, hoa hồng) và với tinh dầu tan nhiều trong nước.',
+              'Không phù hợp với hoa có hương dễ bị phá huỷ khi đun nóng (như hoa nhài) và với tinh dầu tan nhiều trong nước.',
             ],
           ],
           caption: 'Ưu điểm và hạn chế của chưng cất lôi cuốn hơi nước',

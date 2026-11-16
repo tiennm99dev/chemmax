@@ -10,6 +10,7 @@
     LOAD,
     MATERIALS,
     PARTS,
+    boilingTogether,
     placePart,
     runAdvice,
     runDistillation,
@@ -41,6 +42,7 @@
   const run = $derived(runDistillation(setup));
   const tip = $derived(runAdvice(setup));
   const running = $derived(ready && minutes > 0);
+  const together = $derived(boilingTogether(material));
 
   /** Receiver: up to 480 mL drawn in 50 px; the thin oil layer is magnified. */
   const waterH = $derived(Math.min(50, (run.waterMl / 480) * 50));
@@ -122,7 +124,7 @@
       />
       {#if running}
         <path d="M 122 175 Q 128 158 135 172 Q 142 158 148 175 Z" fill="#fb923c" opacity="0.8" />
-        <text x="135" y="66" text-anchor="middle" font-size="10" fill="#b45309">
+        <text x="145" y="86" font-size="10" fill="#b45309">
           {formatNumber(run.temp, 1)} °C
         </text>
       {/if}
@@ -161,7 +163,7 @@
       <text x="196" y="22" font-size="9" fill="#0369a1">
         {coolant === 'duoi-len' ? 'nước ra' : 'nước vào'}
       </text>
-      <text x="250" y="122" font-size="9" fill="#0369a1">
+      <text x="255" y="114" text-anchor="end" font-size="9" fill="#0369a1">
         {coolant === 'duoi-len' ? 'nước vào' : 'nước ra'}
       </text>
     {:else}
@@ -231,8 +233,8 @@
       {#each OFFER as p (p.id)}
         <button
           type="button"
-          class="{button.quiet} text-sm"
-          disabled={placed.includes(p.id)}
+          class="{button.quiet} text-sm {placed.includes(p.id) ? 'opacity-50' : ''}"
+          aria-disabled={placed.includes(p.id)}
           onclick={() => choose(p.id)}
         >
           {p.name}
@@ -277,7 +279,7 @@
           run.yieldPct,
           2,
         )}% so với khối lượng nguyên liệu. Hỗn hợp nước và {material.main} sôi ở khoảng {formatNumber(
-          run.temp,
+          together,
           1,
         )} °C, dù {material.main} sôi ở {material.boil} °C.
       </p>

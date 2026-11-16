@@ -1,4 +1,5 @@
 <script>
+  import { tick } from 'svelte';
   import FeedbackNote from '#lib/core/feedback-note.svelte';
   import LiveRichText from '#lib/components/live-rich-text.svelte';
   import { button } from '#lib/core/ui.js';
@@ -25,23 +26,40 @@
   let { steps, label, doneText, onstep } = $props();
 
   let quiz = $state(startQuiz());
+  /** @type {HTMLElement | undefined} */
+  let root = $state();
   const over = $derived(finished(steps, quiz));
   const current = $derived(steps[quiz.index]);
 
-  /** @param {number} i */
-  function choose(i) {
-    const before = quiz.index;
-    quiz = pick(steps, quiz, i);
-    if (quiz.index !== before) onstep?.(quiz.index);
+  /**
+   * Keep keyboard focus inside the quiz once the clicked button is gone: on
+   * the first option of the new step, or on the restart button at the end.
+   */
+  async function focusNext() {
+    await tick();
+    /** @type {HTMLElement | null | undefined} */ (
+      root?.querySelector('[data-step-focus]')
+    )?.focus();
   }
 
-  function restart() {
+  /** @param {number} i */
+  async function choose(i) {
+    const before = quiz.index;
+    quiz = pick(steps, quiz, i);
+    if (quiz.index !== before) {
+      onstep?.(quiz.index);
+      await focusNext();
+    }
+  }
+
+  async function restart() {
     quiz = startQuiz();
     onstep?.(0);
+    await focusNext();
   }
 </script>
 
-<section class="space-y-3" aria-label={label}>
+<section class="space-y-3" aria-label={label} bind:this={root}>
   <ol class="space-y-1 text-sm">
     {#each steps as s, i (s.title)}
       <li
@@ -71,9 +89,10 @@
             class="{button.quiet} justify-start text-left text-sm font-medium {quiz.wrong.includes(
               i,
             )
-              ? 'line-through'
+              ? 'line-through opacity-60'
               : ''}"
-            disabled={quiz.wrong.includes(i)}
+            aria-disabled={quiz.wrong.includes(i)}
+            data-step-focus={i === 0 ? '' : undefined}
             onclick={() => choose(i)}
           >
             <LiveRichText text={o.label} />
@@ -87,6 +106,8 @@
 
   {#if over}
     <FeedbackNote tone="ok" text="{doneText} Số lần chọn sai: {quiz.misses}." />
-    <button type="button" class={button.secondary} onclick={restart}>Làm lại từ đầu</button>
+    <button type="button" class={button.secondary} data-step-focus onclick={restart}
+      >Làm lại từ đầu</button
+    >
   {/if}
 </section>
