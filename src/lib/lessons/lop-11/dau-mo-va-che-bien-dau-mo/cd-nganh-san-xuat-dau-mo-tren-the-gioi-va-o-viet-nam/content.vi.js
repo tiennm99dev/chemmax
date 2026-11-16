@@ -158,9 +158,9 @@ export default {
         'Một tấn dầu có khối lượng riêng $850$ kg/m³ tràn ra biển và loang thành màng dày $0{,}1$ mm. Tính diện tích màng dầu.',
       steps: [
         'Thể tích dầu: $V = \\dfrac{1\\,000}{850} \\approx 1{,}176$ m³.',
-        'Bề dày $0{,}1$ mm $= 10^{-4}$ m, nên diện tích $S = \\dfrac{V}{d} = \\dfrac{1{,}176}{10^{-4}} \\approx 11\\,760$ m².',
+        'Bề dày $0{,}1$ mm $= 10^{-4}$ m, nên diện tích $S = \\dfrac{V}{d} = \\dfrac{1\\,000}{850 \\cdot 10^{-4}} \\approx 11\\,765$ m².',
       ],
-      answer: 'Khoảng $11\\,760$ m², hơn một hecta mặt biển chỉ từ một tấn dầu.',
+      answer: 'Khoảng $11\\,765$ m², hơn một hecta mặt biển chỉ từ một tấn dầu.',
     },
   ],
   practice: [

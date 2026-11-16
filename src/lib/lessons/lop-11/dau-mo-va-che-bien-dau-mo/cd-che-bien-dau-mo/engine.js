@@ -32,7 +32,6 @@ export function boilingPoint(n) {
  *   name: string,
  *   upTo: number,
  *   range: string,
- *   carbons: string,
  *   use: string,
  * }} Fraction
  */
@@ -48,7 +47,6 @@ export const FRACTIONS = [
     name: 'Khí dầu mỏ',
     upTo: 30,
     range: 'dưới 30 °C',
-    carbons: 'C1 – C4',
     use: 'khí hoá lỏng (LPG) làm nhiên liệu, nguyên liệu hoá dầu',
   },
   {
@@ -56,7 +54,6 @@ export const FRACTIONS = [
     name: 'Xăng (naphtha)',
     upTo: 180,
     range: '30 – 180 °C',
-    carbons: 'C5 – C10',
     use: 'nhiên liệu động cơ xăng, nguyên liệu reforming',
   },
   {
@@ -64,7 +61,6 @@ export const FRACTIONS = [
     name: 'Dầu hoả (kerosene)',
     upTo: 250,
     range: '180 – 250 °C',
-    carbons: 'khoảng C11 – C15',
     use: 'nhiên liệu phản lực, đun nấu, thắp sáng',
   },
   {
@@ -72,7 +68,6 @@ export const FRACTIONS = [
     name: 'Dầu diesel (gas oil)',
     upTo: 350,
     range: '250 – 350 °C',
-    carbons: 'khoảng C15 – C20',
     use: 'nhiên liệu động cơ diesel, nguyên liệu cracking',
   },
   {
@@ -80,7 +75,6 @@ export const FRACTIONS = [
     name: 'Cặn (mazut)',
     upTo: Infinity,
     range: 'trên 350 °C',
-    carbons: 'trên C20',
     use: 'chưng cất chân không lấy dầu nhờn, paraffin, nhựa đường; dầu đốt lò (FO)',
   },
 ];

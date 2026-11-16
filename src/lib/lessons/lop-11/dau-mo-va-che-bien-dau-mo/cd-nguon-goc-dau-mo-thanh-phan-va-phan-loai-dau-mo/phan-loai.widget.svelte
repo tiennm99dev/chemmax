@@ -25,11 +25,13 @@
   );
   const verdict = $derived(
     `${formatNumber(api, 1)} độ API: ${DENSITY_NAMES[kind]}; lưu huỳnh ${formatNumber(sulfur, 2)}% ${sulfur > SOUR_LIMIT ? 'lớn hơn' : 'không quá'} $0{,}5\\%$: ${sour}. ` +
-      (kind === 'light' && sour === 'dầu ngọt'
-        ? 'Dầu nhẹ, ngọt cho nhiều xăng, dầu, ít phải xử lí lưu huỳnh nên có giá trị cao.'
-        : kind === 'light' || kind === 'medium'
-          ? 'Dầu này cho nhiều sản phẩm nhẹ, nhưng cần xử lí bớt lưu huỳnh trước khi dùng.'
-          : 'Dầu nặng nhớt, nhiều nhựa, cặn và kim loại nặng, cho ít xăng hơn nên giá trị thấp hơn.'),
+      (kind === 'heavy' || kind === 'extra'
+        ? `Dầu nặng nhớt, nhiều nhựa, cặn và kim loại nặng, cho ít xăng hơn nên giá trị thấp hơn${sulfur > SOUR_LIMIT ? '; lại nhiều lưu huỳnh nên còn tốn công xử lí' : ''}.`
+        : sulfur > SOUR_LIMIT
+          ? 'Dầu này cho khá nhiều sản phẩm nhẹ, nhưng cần xử lí bớt lưu huỳnh trước khi dùng.'
+          : kind === 'light'
+            ? 'Dầu nhẹ, ngọt cho nhiều xăng, dầu, ít phải xử lí lưu huỳnh nên có giá trị cao.'
+            : 'Dầu trung bình cho ít xăng hơn dầu nhẹ, nhưng ít lưu huỳnh nên ít phải xử lí.'),
   );
   /** Position of the API value on the 0 – 50 scale, in percent. */
   const marker = $derived(Math.min(100, Math.max(0, (api / 50) * 100)));

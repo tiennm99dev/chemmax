@@ -1,3 +1,4 @@
+import { formatNumber } from '#lib/core/number-format.js';
 import { describe, expect, it } from 'vitest';
 import {
   CRUDES,
@@ -56,7 +57,9 @@ describe('crude classification', () => {
   it('computes API gravity and its class', () => {
     expect(apiGravity(1)).toBe(10);
     expect(apiGravity(0.85)).toBeCloseTo(34.97, 2);
-    expect(apiGravity(0.842)).toBeCloseTo(36.55, 2);
+    expect(apiGravity(0.842)).toBeCloseTo(36.552, 3);
+    // Bạch Hổ reads 36,6 as the book quotes, not 36,5 from a double rounding.
+    expect(formatNumber(apiGravity(0.842), 1)).toBe('36,6');
     expect(densityClass(36.6)).toBe('light');
     expect(densityClass(25)).toBe('medium');
     expect(densityClass(18)).toBe('heavy');

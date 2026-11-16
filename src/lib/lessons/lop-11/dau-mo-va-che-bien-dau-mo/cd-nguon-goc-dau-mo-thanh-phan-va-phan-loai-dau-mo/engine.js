@@ -129,7 +129,7 @@ export function fieldText(t, seal, format) {
  * API gravity of a crude from its specific gravity at 15,6 °C.
  * @param {number} sg
  */
-export const apiGravity = (sg) => tidy(141.5 / sg - 131.5, 2);
+export const apiGravity = (sg) => tidy(141.5 / sg - 131.5);
 
 /** @typedef {'light' | 'medium' | 'heavy' | 'extra'} DensityClass */
 

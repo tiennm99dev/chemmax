@@ -140,7 +140,7 @@
           onclick={() => pick(f.id)}
         >
           <span class="font-semibold">{i + 1}. {f.name}</span>
-          <span class="block text-xs text-slate-600">{f.range} · {f.carbons}</span>
+          <span class="block text-xs text-slate-600">sôi {f.range}</span>
         </button>
       {/each}
     </div>
