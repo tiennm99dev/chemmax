@@ -259,16 +259,11 @@ export default {
     {
       type: 'choice',
       prompt: 'Thuốc thử dùng để phân biệt hồ tinh bột với dung dịch saccharose là',
-      options: [
-        'dung dịch iodine',
-        '$\\mathrm{Cu(OH)_2}$ ở nhiệt độ thường',
-        'thuốc thử Tollens',
-        'nước bromine',
-      ],
+      options: ['dung dịch iodine', 'dung dịch NaOH', 'thuốc thử Tollens', 'nước bromine'],
       answer: 0,
       hints: ['Phản ứng màu đặc trưng của tinh bột.'],
       solution:
-        'Hồ tinh bột tạo màu xanh tím với iodine, saccharose thì không. Hai chất đều không tráng bạc, không làm mất màu nước bromine.',
+        'Hồ tinh bột tạo màu xanh tím với iodine, saccharose thì không. Hai chất đều không tráng bạc, không làm mất màu nước bromine, và không có hiện tượng gì với dung dịch NaOH.',
     },
     {
       type: 'number',

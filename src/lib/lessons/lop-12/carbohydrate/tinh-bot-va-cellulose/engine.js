@@ -168,6 +168,9 @@ export function chainModel(id, { heated = false, iodine = false } = {}) {
  * @param {boolean} iodine
  */
 export function iodineNote(id, heated, iodine) {
+  if (!iodine && heated) {
+    return 'Đun nóng: các đoạn mạch xoắn duỗi ra. Nhỏ dung dịch iodine để xem màu, rồi để nguội và quan sát lại.';
+  }
   if (!iodine) {
     return id === 'cellulose'
       ? 'Mạch cellulose duỗi thẳng; các mạch nằm song song, liên kết với nhau bằng liên kết hydrogen (nét đứt) tạo thành sợi. Nhỏ dung dịch iodine để thử.'

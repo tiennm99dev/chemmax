@@ -42,5 +42,6 @@ describe('polysaccharide chain models', () => {
   it('explains each case', () => {
     expect(iodineNote('amylose', true, true)).toContain('nguội');
     expect(iodineNote('cellulose', false, true)).toContain('không xoắn');
+    expect(iodineNote('amylose', true, false)).toContain('duỗi ra');
   });
 });

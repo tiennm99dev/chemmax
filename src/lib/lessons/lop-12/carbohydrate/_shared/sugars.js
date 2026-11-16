@@ -283,7 +283,7 @@ export function reason(id, reagent) {
   if (reagent === 'cu-oh2') {
     return s.polyol
       ? `Phân tử ${s.name} có nhiều nhóm $\\mathrm{{-}OH}$ kề nhau (tính chất của polyalcohol), nên hoà tan $\\mathrm{Cu(OH)_2}$ thành phức chất màu xanh lam.`
-      : `${capital(s.name)} không tan trong nước lạnh như các đường, không hoà tan được $\\mathrm{Cu(OH)_2}$ ở nhiệt độ thường.`;
+      : `${capital(s.name)} là polysaccharide có phân tử rất lớn, không hoà tan được $\\mathrm{Cu(OH)_2}$ ở nhiệt độ thường như các đường nhỏ.`;
   }
   if (reagent === 'iodine') {
     if (s.iodine) {
