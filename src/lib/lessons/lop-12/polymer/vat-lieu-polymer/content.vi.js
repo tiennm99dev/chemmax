@@ -1,7 +1,7 @@
 /** @type {import('#lib/core/content-schema.js').LessonContent} */
 export default {
   summary:
-    'Vật liệu polymer: chất dẻo và thành phần của chất dẻo, các chất dẻo thông dụng và ký hiệu tái chế, vật liệu composite, tơ thiên nhiên, tơ tổng hợp và tơ bán tổng hợp, cao su thiên nhiên, lưu hoá cao su và cao su tổng hợp, keo dán; ô nhiễm rác thải nhựa và cách hạn chế.',
+    'Vật liệu polymer: chất dẻo và thành phần của chất dẻo, các chất dẻo thông dụng và ký hiệu tái chế, vật liệu composite, tơ tự nhiên và tơ hoá học (tơ tổng hợp, tơ bán tổng hợp), cao su thiên nhiên, lưu hoá cao su và cao su tổng hợp, keo dán; ô nhiễm rác thải nhựa và cách hạn chế.',
   intro:
     'Lật đáy một chai nước, một hộp sữa chua hay một chiếc hộp xốp, em sẽ thấy một hình tam giác bằng ba mũi tên với một con số bên trong. Con số ấy cho biết sản phẩm làm từ loại chất dẻo nào, để người ta phân loại và tái chế. Bài học giới thiệu các vật liệu polymer quen thuộc: chất dẻo, vật liệu composite, tơ, cao su và keo dán.',
   objectives: [
@@ -129,6 +129,10 @@ export default {
             ],
           ],
         },
+        {
+          type: 'p',
+          text: 'Tơ tổng hợp và tơ bán tổng hợp (tơ nhân tạo) đều do con người chế tạo bằng phương pháp hoá học, nên được gọi chung là tơ hoá học.',
+        },
         { type: 'widget', name: 'loai-to' },
         {
           type: 'list',
@@ -137,6 +141,14 @@ export default {
             'Tơ capron (nylon-6) tổng hợp bằng phản ứng trùng hợp mở vòng caprolactam.',
             'Tơ nitron (olon) tổng hợp bằng phản ứng trùng hợp acrylonitrile; dai, bền nhiệt, giữ nhiệt tốt, dùng dệt vải may quần áo ấm, bện thành sợi len đan áo.',
           ],
+        },
+        {
+          type: 'tex',
+          tex: '\\begin{aligned} &n\\,\\mathrm{H_2N{-}[CH_2]_6{-}NH_2} + n\\,\\mathrm{HOOC{-}[CH_2]_4{-}COOH} \\\\ &\\xrightarrow{t^\\circ} \\mathrm{({-}NH{-}[CH_2]_6{-}NH{-}CO{-}[CH_2]_4{-}CO{-})_n} + 2n\\,\\mathrm{H_2O} \\end{aligned}',
+        },
+        {
+          type: 'tex',
+          tex: 'n\\,\\text{caprolactam} \\xrightarrow{t^\\circ,\\,\\mathrm{xt}} \\mathrm{({-}NH{-}[CH_2]_5{-}CO{-})_n}',
         },
         {
           type: 'tex',
@@ -180,7 +192,7 @@ export default {
             [
               'Cao su isoprene',
               'trùng hợp isoprene',
-              'đàn hồi tốt, bền, chống mài mòn, chịu nhiệt tốt',
+              'tính đàn hồi và độ bền gần giống cao su thiên nhiên',
             ],
             [
               'Cao su buna-S',

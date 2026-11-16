@@ -80,7 +80,7 @@
         </ul>
       {/if}
       <p class="mt-3 text-sm">
-        Mắt xích: <Tex math={polymerTex(o.polymer)} />
+        Polymer tạo thành: <Tex math={polymerTex(o.polymer)} />
       </p>
     {:else}
       <p
