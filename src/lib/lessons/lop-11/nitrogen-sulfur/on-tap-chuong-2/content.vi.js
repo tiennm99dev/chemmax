@@ -125,7 +125,7 @@ export default {
   examples: [
     {
       problem:
-        'Giai đoạn đầu của quá trình Ostwald: $\\mathrm{4NH_3(g)} + \\mathrm{5O_2(g)} \\rightarrow \\mathrm{4NO(g)} + \\mathrm{6H_2O(g)}$. a) Tính $\\Delta_r H^\\circ_{298}$, biết $\\Delta_f H^\\circ_{298}$ của $\\mathrm{NH_3(g)}$, NO(g), $\\mathrm{H_2O(g)}$ lần lượt là $-45{,}9$; $90{,}3$; $-241{,}8$ kJ/mol. b) Tính năng lượng liên kết trong phân tử NO, biết $E_{\\mathrm{N-H}} = 386$, $E_{\\mathrm{O=O}} = 494$, $E_{\\mathrm{O-H}} = 459$ kJ/mol.',
+        'Giai đoạn đầu của quá trình Ostwald: $\\mathrm{4NH_3(g)} + \\mathrm{5O_2(g)} \\rightarrow \\mathrm{4NO(g)} + \\mathrm{6H_2O(g)}$. a) Tính $\\Delta_r H^\\circ_{298}$, biết $\\Delta_f H^\\circ_{298}$ của $\\mathrm{NH_3(g)}$, NO(g), $\\mathrm{H_2O(g)}$ lần lượt là $-45{,}9$; $90{,}3$; $-241{,}8$ kJ/mol. b) Tính năng lượng liên kết trong phân tử NO, biết $E_{\\mathrm{N{-}H}} = 386$, $E_{\\mathrm{O=O}} = 494$, $E_{\\mathrm{O{-}H}} = 459$ kJ/mol.',
       steps: [
         'a) $\\Delta_r H^\\circ_{298} = 4 \\cdot 90{,}3 + 6 \\cdot (-241{,}8) - 4 \\cdot (-45{,}9) - 5 \\cdot 0 = -906$ kJ.',
         'Giá trị âm nên phản ứng toả nhiệt. Sau khi khơi mào, nhiệt toả ra giúp duy trì phản ứng mà không cần đun nóng liên tục.',

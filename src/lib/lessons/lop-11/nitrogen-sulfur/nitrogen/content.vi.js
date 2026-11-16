@@ -34,7 +34,7 @@ export default {
           type: 'callout',
           tone: 'note',
           title: 'Liên kết ba rất bền',
-          text: 'Liên kết ba gồm $1$ liên kết $\\sigma$ và $2$ liên kết $\\pi$, có năng lượng liên kết $945$ kJ/mol, lớn hơn nhiều so với $\\mathrm{O=O}$ ($494$ kJ/mol) hay $\\mathrm{Cl-Cl}$ ($243$ kJ/mol). Vì vậy ở nhiệt độ thường, nitrogen khá trơ về mặt hoá học.',
+          text: 'Liên kết ba gồm $1$ liên kết $\\sigma$ và $2$ liên kết $\\pi$, có năng lượng liên kết $945$ kJ/mol, lớn hơn nhiều so với $\\mathrm{O=O}$ ($494$ kJ/mol) hay $\\mathrm{Cl{-}Cl}$ ($243$ kJ/mol). Vì vậy ở nhiệt độ thường, nitrogen khá trơ về mặt hoá học.',
         },
         {
           type: 'p',

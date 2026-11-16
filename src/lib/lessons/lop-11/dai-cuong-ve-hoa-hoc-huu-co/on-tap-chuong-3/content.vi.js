@@ -99,7 +99,7 @@ export default {
         'Đỉnh $1\\,715$ $\\mathrm{cm^{-1}}$ cho biết B có nhóm C=O.',
         'Không có đỉnh $3\\,500$ – $3\\,200$ $\\mathrm{cm^{-1}}$ nên B không có nhóm –OH.',
         'Không có đỉnh $2\\,830$ – $2\\,695$ $\\mathrm{cm^{-1}}$ của nhóm –CHO nên B không phải aldehyde.',
-        'Vậy B là ketone có $3$ carbon, chỉ có thể là $\\mathrm{CH_3-CO-CH_3}$.',
+        'Vậy B là ketone có $3$ carbon, chỉ có thể là $\\mathrm{CH_3{-}CO{-}CH_3}$.',
       ],
       answer: 'B là acetone, $\\mathrm{CH_3COCH_3}$.',
     },

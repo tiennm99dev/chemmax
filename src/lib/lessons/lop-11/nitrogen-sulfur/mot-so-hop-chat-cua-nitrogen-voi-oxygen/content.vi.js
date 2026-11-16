@@ -45,7 +45,7 @@ export default {
       blocks: [
         {
           type: 'p',
-          text: 'Trong phân tử $\\mathrm{HNO_3}$, nguyên tử H liên kết với O bằng liên kết $\\mathrm{O-H}$ phân cực mạnh, nên dễ cho proton. Nguyên tử N có số oxi hoá $+5$, cao nhất, nên $\\mathrm{HNO_3}$ có tính oxi hoá mạnh.',
+          text: 'Trong phân tử $\\mathrm{HNO_3}$, nguyên tử H liên kết với O bằng liên kết $\\mathrm{O{-}H}$ phân cực mạnh, nên dễ cho proton. Nguyên tử N có số oxi hoá $+5$, cao nhất, nên $\\mathrm{HNO_3}$ có tính oxi hoá mạnh.',
         },
         {
           type: 'p',

@@ -28,7 +28,7 @@ export default {
           caption: 'Hai chất cùng công thức $\\mathrm{C_2H_6O}$, khác cấu tạo',
           head: ['Đặc điểm', 'Ethanol', 'Dimethyl ether'],
           rows: [
-            ['Công thức cấu tạo', '$\\mathrm{CH_3-CH_2-OH}$', '$\\mathrm{CH_3-O-CH_3}$'],
+            ['Công thức cấu tạo', '$\\mathrm{CH_3{-}CH_2{-}OH}$', '$\\mathrm{CH_3{-}O{-}CH_3}$'],
             [
               'Trạng thái ở điều kiện thường',
               'Lỏng, sôi ở $78{,}3\\,^\\circ\\mathrm{C}$',
@@ -68,9 +68,15 @@ export default {
           caption: 'Các loại đồng phân cấu tạo',
           head: ['Khác nhau ở', 'Ví dụ'],
           rows: [
-            ['Mạch carbon', '$\\mathrm{CH_3-CH_2-CH_2-CH_3}$ và $\\mathrm{CH_3-CH(CH_3)-CH_3}$'],
-            ['Loại nhóm chức', '$\\mathrm{CH_3-CH_2-OH}$ và $\\mathrm{CH_3-O-CH_3}$'],
-            ['Vị trí nhóm chức', '$\\mathrm{CH_3-CH_2-CH_2-OH}$ và $\\mathrm{CH_3-CH(OH)-CH_3}$'],
+            [
+              'Mạch carbon',
+              '$\\mathrm{CH_3{-}CH_2{-}CH_2{-}CH_3}$ và $\\mathrm{CH_3{-}CH(CH_3){-}CH_3}$',
+            ],
+            ['Loại nhóm chức', '$\\mathrm{CH_3{-}CH_2{-}OH}$ và $\\mathrm{CH_3{-}O{-}CH_3}$'],
+            [
+              'Vị trí nhóm chức',
+              '$\\mathrm{CH_3{-}CH_2{-}CH_2{-}OH}$ và $\\mathrm{CH_3{-}CH(OH){-}CH_3}$',
+            ],
           ],
         },
         {
@@ -81,7 +87,7 @@ export default {
           type: 'callout',
           tone: 'warning',
           title: 'Uốn mạch không tạo chất mới',
-          text: 'Công thức cấu tạo chỉ cho biết thứ tự liên kết. $\\mathrm{CH_3-CH_2-CH_2-CH_3}$ viết thẳng hay viết gấp khúc vẫn là một chất, vì mỗi nguyên tử vẫn liên kết với đúng những nguyên tử ấy.',
+          text: 'Công thức cấu tạo chỉ cho biết thứ tự liên kết. $\\mathrm{CH_3{-}CH_2{-}CH_2{-}CH_3}$ viết thẳng hay viết gấp khúc vẫn là một chất, vì mỗi nguyên tử vẫn liên kết với đúng những nguyên tử ấy.',
         },
       ],
     },
@@ -134,9 +140,9 @@ export default {
       problem: 'Viết công thức cấu tạo thu gọn các đồng phân của $\\mathrm{C_5H_{12}}$.',
       steps: [
         '$\\mathrm{C_5H_{12}}$ thuộc dãy alkane $\\mathrm{C_nH_{2n+2}}$, chỉ có liên kết đơn và mạch hở, nên chỉ cần xét mạch carbon.',
-        'Mạch dài $5$ carbon: $\\mathrm{CH_3-CH_2-CH_2-CH_2-CH_3}$.',
-        'Mạch dài $4$ carbon và một nhánh $\\mathrm{CH_3}$: $\\mathrm{CH_3-CH(CH_3)-CH_2-CH_3}$. Đặt nhánh vào carbon thứ ba cũng chỉ là cùng chất này đọc từ đầu kia.',
-        'Mạch dài $3$ carbon và hai nhánh $\\mathrm{CH_3}$ cùng ở carbon giữa: $\\mathrm{CH_3-C(CH_3)_2-CH_3}$.',
+        'Mạch dài $5$ carbon: $\\mathrm{CH_3{-}CH_2{-}CH_2{-}CH_2{-}CH_3}$.',
+        'Mạch dài $4$ carbon và một nhánh $\\mathrm{CH_3}$: $\\mathrm{CH_3{-}CH(CH_3){-}CH_2{-}CH_3}$. Đặt nhánh vào carbon thứ ba cũng chỉ là cùng chất này đọc từ đầu kia.',
+        'Mạch dài $3$ carbon và hai nhánh $\\mathrm{CH_3}$ cùng ở carbon giữa: $\\mathrm{CH_3{-}C(CH_3)_2{-}CH_3}$.',
       ],
       answer: 'Có $3$ đồng phân cấu tạo.',
     },
@@ -145,8 +151,8 @@ export default {
         'Viết công thức cấu tạo các đồng phân mạch hở của $\\mathrm{C_3H_8O}$ và chỉ ra loại đồng phân.',
       steps: [
         'Số H ứng đúng với công thức no, mạch hở, nên O chỉ có thể ở nhóm –OH hoặc ở cầu –O–.',
-        'Có nhóm –OH (alcohol), ở đầu mạch hoặc giữa mạch: $\\mathrm{CH_3-CH_2-CH_2-OH}$ và $\\mathrm{CH_3-CH(OH)-CH_3}$. Hai chất này là đồng phân vị trí nhóm chức.',
-        'Có cầu –O– (ether): $\\mathrm{CH_3-O-CH_2-CH_3}$, là đồng phân loại nhóm chức của hai chất trên.',
+        'Có nhóm –OH (alcohol), ở đầu mạch hoặc giữa mạch: $\\mathrm{CH_3{-}CH_2{-}CH_2{-}OH}$ và $\\mathrm{CH_3{-}CH(OH){-}CH_3}$. Hai chất này là đồng phân vị trí nhóm chức.',
+        'Có cầu –O– (ether): $\\mathrm{CH_3{-}O{-}CH_2{-}CH_3}$, là đồng phân loại nhóm chức của hai chất trên.',
       ],
       answer: 'Có $3$ đồng phân cấu tạo: hai alcohol và một ether.',
     },
@@ -172,7 +178,7 @@ export default {
       answer: 2,
       hints: ['Thử mạch $4$ carbon, rồi mạch $3$ carbon có một nhánh.'],
       solution:
-        'Chỉ có $\\mathrm{CH_3-CH_2-CH_2-CH_3}$ và $\\mathrm{CH_3-CH(CH_3)-CH_3}$, nên có $2$ đồng phân.',
+        'Chỉ có $\\mathrm{CH_3{-}CH_2{-}CH_2{-}CH_3}$ và $\\mathrm{CH_3{-}CH(CH_3){-}CH_3}$, nên có $2$ đồng phân.',
     },
     {
       type: 'number',
@@ -191,7 +197,7 @@ export default {
       left: [
         '$\\mathrm{CH_3CH_2CH_2CH_3}$ và $\\mathrm{CH_3CH(CH_3)CH_3}$',
         '$\\mathrm{CH_3CH_2CHO}$ và $\\mathrm{CH_3COCH_3}$',
-        '$\\mathrm{CH_2=CH-CH_2-CH_3}$ và $\\mathrm{CH_3-CH=CH-CH_3}$',
+        '$\\mathrm{CH_2=CH{-}CH_2{-}CH_3}$ và $\\mathrm{CH_3{-}CH=CH{-}CH_3}$',
       ],
       right: ['Mạch carbon', 'Loại nhóm chức', 'Vị trí liên kết đôi', 'Số nguyên tử carbon'],
       pairs: [

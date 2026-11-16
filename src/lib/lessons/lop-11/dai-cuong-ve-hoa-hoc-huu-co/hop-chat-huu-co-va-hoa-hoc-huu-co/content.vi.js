@@ -90,14 +90,14 @@ export default {
           caption: 'Một số nhóm chức cơ bản',
           head: ['Loại hợp chất', 'Nhóm chức', 'Ví dụ'],
           rows: [
-            ['Dẫn xuất halogen', '$-\\mathrm{X}$ (F, Cl, Br, I)', '$\\mathrm{CH_3Cl}$'],
-            ['Alcohol', '$-\\mathrm{OH}$', '$\\mathrm{C_2H_5OH}$'],
-            ['Ether', '$-\\mathrm{O}-$', '$\\mathrm{CH_3OCH_3}$'],
-            ['Aldehyde', '$-\\mathrm{CHO}$', '$\\mathrm{CH_3CHO}$'],
-            ['Ketone', '$-\\mathrm{CO}-$', '$\\mathrm{CH_3COCH_3}$'],
-            ['Carboxylic acid', '$-\\mathrm{COOH}$', '$\\mathrm{CH_3COOH}$'],
-            ['Ester', '$-\\mathrm{COO}-$', '$\\mathrm{CH_3COOC_2H_5}$'],
-            ['Amine', '$-\\mathrm{NH_2}$, $-\\mathrm{NH}-$', '$\\mathrm{CH_3NH_2}$'],
+            ['Dẫn xuất halogen', '$\\mathrm{{-}X}$ (F, Cl, Br, I)', '$\\mathrm{CH_3Cl}$'],
+            ['Alcohol', '$\\mathrm{{-}OH}$', '$\\mathrm{C_2H_5OH}$'],
+            ['Ether', '$\\mathrm{{-}O{-}}$', '$\\mathrm{CH_3OCH_3}$'],
+            ['Aldehyde', '$\\mathrm{{-}CHO}$', '$\\mathrm{CH_3CHO}$'],
+            ['Ketone', '$\\mathrm{{-}CO{-}}$', '$\\mathrm{CH_3COCH_3}$'],
+            ['Carboxylic acid', '$\\mathrm{{-}COOH}$', '$\\mathrm{CH_3COOH}$'],
+            ['Ester', '$\\mathrm{{-}COO{-}}$', '$\\mathrm{CH_3COOC_2H_5}$'],
+            ['Amine', '$\\mathrm{{-}NH_2}$, $\\mathrm{{-}NH{-}}$', '$\\mathrm{CH_3NH_2}$'],
           ],
         },
       ],
@@ -221,7 +221,7 @@ export default {
     {
       type: 'choice',
       prompt:
-        'Glutamic acid (trong mì chính là muối của acid này) có công thức $\\mathrm{HOOC-CH_2-CH_2-}$ $\\mathrm{CH(NH_2)-COOH}$. Phân tử này có những nhóm chức nào?',
+        'Glutamic acid (trong mì chính là muối của acid này) có công thức $\\mathrm{HOOC{-}CH_2{-}CH_2{-}}$ $\\mathrm{CH(NH_2){-}COOH}$. Phân tử này có những nhóm chức nào?',
       options: [
         'Carboxyl (–COOH) và amino (–NH₂)',
         'Hydroxy (–OH) và ketone (–CO–)',
@@ -252,7 +252,7 @@ export default {
       options: [
         '$\\mathrm{CH_3CH_2CHO}$',
         '$\\mathrm{CH_3COCH_3}$',
-        '$\\mathrm{CH_2=CH-CH_2OH}$',
+        '$\\mathrm{CH_2=CH{-}CH_2OH}$',
         '$\\mathrm{CH_3CH_2COOH}$',
       ],
       answer: 0,
