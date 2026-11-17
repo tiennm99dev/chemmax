@@ -119,7 +119,7 @@ export const CHAINS = [
         options: ['CaCO3', 'Ca(OH)2', 'CaO'],
         equation: 'Ca(HCO3)2 → CaCO3↓ + CO2↑ + H2O',
         condition: 'đun nóng',
-        why: 'Đun nóng phân huỷ $\\mathrm{Ca(HCO_3)_2}$: cặn trong ấm đun nước và nhũ đá trong hang động đều hình thành theo cách này.',
+        why: 'Đun nóng phân huỷ $\\mathrm{Ca(HCO_3)_2}$ tạo cặn trong ấm đun nước. Nhũ đá trong hang động cũng do phản ứng phân huỷ này, xảy ra chậm ở nhiệt độ thường khi $\\mathrm{CO_2}$ thoát ra.',
       },
       {
         to: 'CaO',

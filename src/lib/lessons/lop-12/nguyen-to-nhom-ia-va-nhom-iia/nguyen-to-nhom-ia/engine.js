@@ -74,7 +74,7 @@ export function flameOf(s, cobalt) {
     return {
       hex: BLANK_FLAME,
       shown: null,
-      text: 'gần như không thấy màu: kính cobalt đã hấp thụ ánh vàng của sodium',
+      text: 'ngọn lửa gần như không màu (kính cobalt đã hấp thụ ánh vàng của sodium)',
     };
   // Without the glass, sodium's yellow outshines every other colour.
   const shown = seen.includes('Na') ? 'Na' : seen[0];

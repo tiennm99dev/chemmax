@@ -100,7 +100,7 @@
         };
       return {
         tone: /** @type {const} */ ('info'),
-        text: `Em thấy ${flame.text}${cobalt ? ' (qua kính cobalt)' : ''}. Mẫu chứa ion nào?`,
+        text: `Em ${cobalt ? 'nhìn qua kính cobalt và ' : ''}thấy ${flame.text}. Mẫu chứa ion nào?`,
       };
     }
     if (!current)
@@ -115,7 +115,7 @@
         : '';
     return {
       tone: /** @type {const} */ ('info'),
-      text: `Muối chứa ${ions}: em thấy ${flame.text}${cobalt ? ' qua kính cobalt' : ''}.${hidden}`,
+      text: `Muối chứa ${ions}: ${cobalt ? 'nhìn qua kính cobalt, ' : ''}em thấy ${flame.text}.${hidden}`,
     };
   });
 

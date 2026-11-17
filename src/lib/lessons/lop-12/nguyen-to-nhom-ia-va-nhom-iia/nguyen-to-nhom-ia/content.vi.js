@@ -100,7 +100,7 @@ export default {
           type: 'callout',
           tone: 'definition',
           title: 'Sodium hydrogencarbonate ($\\mathrm{NaHCO_3}$, baking soda)',
-          text: 'Chất rắn màu trắng, ít tan trong nước, kém bền nhiệt (bắt đầu phân huỷ ở khoảng 120 °C). Ion $\\mathrm{HCO_3^-}$ vừa tác dụng với acid, vừa tác dụng với base. Dùng làm bột nở, chất chữa cháy dạng bột, thuốc giảm đau dạ dày do thừa acid.',
+          text: 'Chất rắn màu trắng, ít tan trong nước, kém bền nhiệt, bị phân huỷ khi đun nóng. Ion $\\mathrm{HCO_3^-}$ vừa tác dụng với acid, vừa tác dụng với base. Dùng làm bột nở, chất chữa cháy dạng bột, thuốc giảm đau dạ dày do thừa acid.',
         },
         {
           type: 'tex',
