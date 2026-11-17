@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { frameProblems } from './frame-check.js';
-import { askFeedback } from './player.js';
+import { askFeedback, askOrder } from './player.js';
 import { arrowPath, bondLines, endPoint, labelSpans, sceneText } from './scene.js';
 
 /** @type {import('./scene.js').Scene} */
@@ -64,5 +64,20 @@ describe('mechanism scene', () => {
     ).toHaveLength(1);
     expect(askFeedback(ask, 1).tone).toBe('ok');
     expect(askFeedback(ask, 0).text).toContain('h');
+  });
+});
+
+describe('prediction order', () => {
+  it('shows every option once, in a stable seeded order', () => {
+    const ask = {
+      prompt: 'Liên kết đứt theo kiểu nào?',
+      options: ['Đồng li', 'Dị li', 'Không đứt'],
+      answer: 0,
+      hint: 'h',
+      why: 'w',
+    };
+    const order = askOrder(ask);
+    expect([...order].sort()).toEqual([0, 1, 2]);
+    expect(askOrder(ask)).toEqual(order);
   });
 });

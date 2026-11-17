@@ -3,7 +3,7 @@
   import FeedbackNote from '#lib/core/feedback-note.svelte';
   import { button } from '#lib/core/ui.js';
   import MechanismScene from './mechanism-scene.svelte';
-  import { askFeedback } from './player.js';
+  import { askFeedback, askOrder } from './player.js';
 
   /**
    * Steps through a mechanism frame by frame. A frame may ask the learner to
@@ -28,6 +28,7 @@
 
   const frame = $derived(frames[index]);
   const blocked = $derived(Boolean(frame.ask) && !solved.has(index));
+  const order = $derived(frame.ask ? askOrder(frame.ask) : []);
   const feedback = $derived(frame.ask && picked !== null ? askFeedback(frame.ask, picked) : null);
 
   /** @param {number} to */
@@ -59,7 +60,7 @@
         <LiveRichText text={frame.ask.prompt} />
       </legend>
       <div class="flex flex-wrap gap-2">
-        {#each frame.ask.options as option, i (i)}
+        {#each order as i (i)}
           <button
             type="button"
             class={picked === i
@@ -70,7 +71,7 @@
             aria-pressed={picked === i}
             onclick={() => choose(i)}
           >
-            <LiveRichText text={option} />
+            <LiveRichText text={frame.ask.options[i]} />
           </button>
         {/each}
       </div>

@@ -312,19 +312,19 @@ export const SE_FRAMES = [
   {
     scene: {
       atoms: [
-        { id: 'b1', x: 70, y: 100, label: 'Br' },
+        { id: 'b1', x: 50, y: 100, label: 'Br' },
         { id: 'b2', x: 130, y: 100, label: 'Br' },
         { id: 'fe', x: 230, y: 100, label: 'FeBr3' },
       ],
       bonds: [{ a: 'b1', b: 'b2' }],
       arrows: [
         { from: 'b2', to: 'fe', bend: 28 },
-        { from: 'b1~b2', to: 'b1', bend: 28 },
+        { from: 'b1~b2', to: 'b2', bend: -28 },
       ],
       notes: [{ x: 180, y: 165, text: 'Tạo tác nhân electrophile' }],
     },
     caption:
-      'Xúc tác $\\mathrm{FeBr_3}$ (orbital trống) hút cặp electron của một nguyên tử Br, làm liên kết $\\mathrm{Br{-}Br}$ phân cực rồi đứt: $\\mathrm{Br_2} + \\mathrm{FeBr_3} \\rightarrow \\mathrm{Br^+} + \\mathrm{FeBr_4^-}$.',
+      'Xúc tác $\\mathrm{FeBr_3}$ (orbital trống) nhận một cặp electron tự do của một nguyên tử Br. Liên kết $\\mathrm{Br{-}Br}$ phân cực rồi đứt dị li, cặp electron chung về nguyên tử Br gắn với Fe, nguyên tử Br kia tách ra thành $\\mathrm{Br^+}$: $\\mathrm{Br_2} + \\mathrm{FeBr_3} \\rightarrow \\mathrm{Br^+} + \\mathrm{FeBr_4^-}$.',
   },
   {
     scene: {

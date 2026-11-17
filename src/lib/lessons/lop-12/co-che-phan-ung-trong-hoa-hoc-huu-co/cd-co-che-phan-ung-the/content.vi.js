@@ -224,7 +224,7 @@ export default {
       answer: 0,
       hints: ['Giai đoạn chậm của $S_N1$ tạo ra tiểu phân gì? Tiểu phân đó bền nhất ở bậc nào?'],
       solution:
-        '$S_N1$ đi qua carbocation; $\\mathrm{(CH_3)_3C^+}$ là carbocation bậc III, bền nhất, nên tert-butyl chloride dễ phản ứng theo $S_N1$ nhất.',
+        '$S_N1$ đi qua carbocation; $\\mathrm{(CH_3)_3C^+}$ là carbocation bậc III, bền nhất, nên 2-chloro-2-methylpropane dễ phản ứng theo $S_N1$ nhất.',
     },
     {
       type: 'multi',

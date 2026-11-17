@@ -3,6 +3,8 @@
  * a frame.
  */
 
+import { choiceOrder } from '#lib/core/practice-state.js';
+
 /**
  * @typedef {object} FrameAsk
  * @property {string} prompt rich text
@@ -27,4 +29,23 @@
 export function askFeedback(ask, picked) {
   if (picked === ask.answer) return { tone: 'ok', text: `Đúng. ${ask.why}` };
   return { tone: 'warn', text: `Chưa đúng, thử lại. Gợi ý: ${ask.hint}` };
+}
+
+/**
+ * Display order of a prediction's options: `order[row]` is the authored option
+ * index shown on that row. Seeded from the prediction like a choice exercise,
+ * so the right option does not always sit where the author wrote it and the
+ * prerendered page and the browser agree.
+ * @param {FrameAsk} ask
+ * @returns {number[]}
+ */
+export function askOrder(ask) {
+  return choiceOrder({
+    type: 'choice',
+    prompt: ask.prompt,
+    options: ask.options,
+    answer: ask.answer,
+    hints: [ask.hint],
+    solution: ask.why,
+  });
 }

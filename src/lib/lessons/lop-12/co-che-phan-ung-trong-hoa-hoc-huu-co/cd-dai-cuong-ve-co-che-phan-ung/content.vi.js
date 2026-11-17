@@ -28,7 +28,7 @@ export default {
           type: 'callout',
           tone: 'note',
           title: 'Mũi tên cong',
-          text: 'Mũi tên cong đi từ nơi có electron (cặp electron tự do, liên kết) đến nơi electron chuyển tới. Mũi tên cong đầy đủ (hai nửa đầu) chỉ sự chuyển dịch một cặp electron; mũi tên cong nửa đầu (hình móc câu) chỉ sự chuyển dịch một electron.',
+          text: 'Mũi tên cong đi từ nơi có electron (cặp electron tự do, liên kết) đến nơi electron chuyển tới. Mũi tên cong có đầu đầy đủ chỉ sự chuyển dịch một cặp electron; mũi tên cong nửa đầu (hình móc câu) chỉ sự chuyển dịch một electron.',
         },
       ],
     },

@@ -155,7 +155,7 @@ export function addition(alkene, reagent, site) {
     .replace('X', group === 'OH' ? '(OH)' : group);
   const product = `\\mathrm{${written}}`;
   const attacker =
-    reagent === 'hbr' ? '$\\mathrm{Br^-}$' : 'phân tử $\\mathrm{H_2O}$ (rồi tách $\\mathrm{H^+}$)';
+    reagent === 'hbr' ? '$\\mathrm{Br^-}$' : 'Phân tử $\\mathrm{H_2O}$ (rồi tách $\\mathrm{H^+}$)';
   const text = main
     ? `H⁺ cộng vào $\\mathrm{${alkene.carbons[site]}}$ tạo carbocation ${orderWord(chosen.order)}, bền hơn carbocation ${orderWord(other.order)} ở hướng kia, nên đi qua rào năng lượng thấp hơn. ${attacker} kết hợp với carbocation cho sản phẩm chính ${chosen.names[reagent]}. Đúng quy tắc Markovnikov.`
     : `H⁺ cộng vào $\\mathrm{${alkene.carbons[site]}}$ tạo carbocation ${orderWord(chosen.order)}, kém bền hơn carbocation ${orderWord(other.order)} ở hướng kia, rào năng lượng cao hơn. Hướng này chỉ cho sản phẩm phụ ${chosen.names[reagent]}.`;

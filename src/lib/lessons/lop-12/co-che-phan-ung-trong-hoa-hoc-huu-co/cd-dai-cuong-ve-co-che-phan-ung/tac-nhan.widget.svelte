@@ -55,7 +55,7 @@
         id: 'br',
         label: '$\\mathrm{Br^+}$',
         bin: 'e',
-        why: '$\\mathrm{Br^+}$ thiếu electron, tấn công vào vòng benzene khi brom hoá có xúc tác.',
+        why: '$\\mathrm{Br^+}$ thiếu electron, tấn công vào vòng benzene khi bromine hoá có xúc tác.',
       },
       {
         id: 'carbocation',
