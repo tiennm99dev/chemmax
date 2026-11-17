@@ -55,7 +55,7 @@ export default {
             'Dãy điện hoá: $\\mathrm{K^+/K}$, $\\mathrm{Na^+/Na}$, $\\mathrm{Mg^{2+}/Mg}$, $\\mathrm{Al^{3+}/Al}$, $\\mathrm{Zn^{2+}/Zn}$, $\\mathrm{Fe^{2+}/Fe}$, $\\mathrm{Ni^{2+}/Ni}$, $\\mathrm{Sn^{2+}/Sn}$, $\\mathrm{Pb^{2+}/Pb}$, $\\mathrm{2H^+/H_2}$, $\\mathrm{Cu^{2+}/Cu}$, $\\mathrm{Ag^+/Ag}$, theo chiều $E^\\circ$ tăng dần: tính khử của kim loại giảm dần, tính oxi hoá của ion kim loại tăng dần.',
             'Kim loại nhóm IA và Ca, Sr, Ba khử được nước ở nhiệt độ thường; kim loại có $E^\\circ < 0$ khử được ion $\\mathrm{H^+}$ trong dung dịch $\\mathrm{HCl}$, $\\mathrm{H_2SO_4}$ loãng.',
             'Quy tắc α: kim loại của cặp có $E^\\circ$ nhỏ hơn khử được ion kim loại của cặp có $E^\\circ$ lớn hơn trong dung dịch muối (trừ các kim loại tác dụng mạnh với nước).',
-            'Chọn phương pháp tách theo độ hoạt động: K đến Al dùng điện phân nóng chảy; kim loại trung bình (Zn, Fe, Sn, Pb) dùng nhiệt luyện hoặc điện phân dung dịch; kim loại yếu (Cu, Ag, Au) dùng thuỷ luyện hoặc điện phân dung dịch.',
+            'Chọn phương pháp tách theo độ hoạt động: kim loại mạnh (K đến Al) dùng điện phân nóng chảy; kim loại trung bình (Zn, Fe, Sn, Pb) dùng nhiệt luyện hoặc điện phân dung dịch; kim loại yếu (Cu, Ag, Au) dùng thuỷ luyện hoặc điện phân dung dịch, riêng Cu còn được tách bằng nhiệt luyện.',
           ],
         },
         {
@@ -91,7 +91,7 @@ export default {
   explore: {
     title: 'Dãy điện hoá và ăn mòn',
     instruction:
-      'Mỗi câu là một tình huống: một kim loại cho vào dung dịch, hoặc hai kim loại tiếp xúc nhau. Các chất đang xét được đánh dấu trên dãy điện hoá. Chọn câu trả lời, đọc lời giải dựa vào thế điện cực chuẩn rồi bấm "Câu tiếp theo".',
+      'Mỗi câu là một tình huống: một kim loại cho vào dung dịch, hoặc hai kim loại đặt trong cùng một môi trường. Các chất đang xét được đánh dấu trên dãy điện hoá. Chọn câu trả lời, đọc lời giải dựa vào thế điện cực chuẩn rồi bấm "Câu tiếp theo"; hết 16 câu, xem số câu đúng và làm lại từ đầu.',
   },
   examples: [
     {

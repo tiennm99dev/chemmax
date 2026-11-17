@@ -35,7 +35,13 @@
     if (value === c.answer) right += 1;
   }
 
+  const last = $derived(index === QUESTIONS.length - 1);
+
   async function next() {
+    if (last) {
+      right = 0;
+      answered = 0;
+    }
     index = (index + 1) % QUESTIONS.length;
     pick = null;
     await tick();
@@ -133,7 +139,13 @@
 
   <FeedbackNote tone={note.tone} text={note.text} />
 
+  {#if done && last}
+    <p class="text-sm font-semibold text-slate-700" role="status">
+      Hoàn thành: đúng {right}/{answered} câu.
+    </p>
+  {/if}
+
   <button type="button" class={button.primary} disabled={!done} onclick={next}>
-    Câu tiếp theo
+    {last ? 'Làm lại từ đầu' : 'Câu tiếp theo'}
   </button>
 </div>
