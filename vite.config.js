@@ -15,7 +15,9 @@ export default defineConfig({
     sveltekit({
       preprocess: vitePreprocess(),
       adapter: adapter(),
-      paths: { base },
+      // origin is the live host that url.origin reports while prerendering, so the
+      // sitemap names absolute URLs; SITE_ORIGIN overrides it like SITE_BASE does base.
+      paths: { base, origin: process.env.SITE_ORIGIN ?? 'https://tiennm99dev.github.io' },
       prerender: {
         // A site with no old URLs has an empty legacy redirect table, so its
         // redirect route renders nothing. Any other unseen route is a bug.

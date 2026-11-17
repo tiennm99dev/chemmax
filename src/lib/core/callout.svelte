@@ -26,7 +26,9 @@
   };
 </script>
 
-<aside class="rounded-r-xl border-l-4 px-4 py-3 {tones[tone]}" aria-labelledby={id}>
+<!-- A note, not an aside: a lesson holds many callouts, often with the same label, and each
+     aside would be another complementary landmark with a duplicate name. -->
+<div role="note" class="rounded-r-xl border-l-4 px-4 py-3 {tones[tone]}" aria-labelledby={id}>
   <p {id} class="mb-1 font-bold">
     <span class="text-sm uppercase tracking-wide">{label}</span>
     {#if title && title !== label}
@@ -40,4 +42,4 @@
       <RichText {html} />
     {/if}
   </div>
-</aside>
+</div>

@@ -2,6 +2,8 @@
 <script>
   import RichText from './rich-text.svelte';
   import Callout from './callout.svelte';
+  import { focusRing } from './ui.js';
+  import { scrollFocus } from '#lib/actions/scroll-focus.js';
 
   /**
    * One rendered content block. Widget blocks look up their component in
@@ -19,7 +21,9 @@
 {#if block.type === 'p'}
   <RichText as="p" class="leading-relaxed text-slate-800" html={block.html} />
 {:else if block.type === 'tex'}
-  <RichText as="div" class="overflow-x-auto py-1 text-slate-900" html={block.html} />
+  <div class="overflow-x-auto rounded py-1 text-slate-900 {focusRing}" use:scrollFocus>
+    <RichText as="div" html={block.html} />
+  </div>
 {:else if block.type === 'list'}
   <svelte:element
     this={block.ordered ? 'ol' : 'ul'}
@@ -34,7 +38,10 @@
 {:else if block.type === 'callout'}
   <Callout tone={block.tone} title={block.title} html={block.html} {kid} />
 {:else if block.type === 'table'}
-  <div class="overflow-x-auto rounded-xl border border-slate-200 bg-white">
+  <div
+    class="overflow-x-auto rounded-xl border border-slate-200 bg-white {focusRing}"
+    use:scrollFocus
+  >
     <table class="w-full border-collapse text-left tabular-nums">
       {#if block.caption}
         <caption class="px-3 py-2 text-left text-sm text-slate-600">

@@ -3,6 +3,7 @@
   import { percentages } from '#lib/stats-engine/frequency.js';
   import { formatNumber } from '#lib/core/number-format.js';
   import { focusRing } from '../ui.js';
+  import { scrollFocus } from '#lib/actions/scroll-focus.js';
 
   /**
    * A statistics table (bảng thống kê): one row per category with its count,
@@ -73,7 +74,7 @@
   </span>
 {/snippet}
 
-<div class="max-w-full overflow-x-auto">
+<div class="max-w-full overflow-x-auto rounded {focusRing}" use:scrollFocus>
   <table class="mx-auto border-collapse bg-white text-left text-slate-800">
     {#if caption}
       <caption class="pb-2 text-center font-semibold text-slate-700">{caption}</caption>
