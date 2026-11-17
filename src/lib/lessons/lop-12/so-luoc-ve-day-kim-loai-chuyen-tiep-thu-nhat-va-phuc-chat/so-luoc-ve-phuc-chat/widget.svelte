@@ -6,6 +6,7 @@
   import { turnSolid } from '#lib/actions/turn-solid.js';
   import { viewPoint } from '#lib/geom-engine/solid.js';
   import ChemFormula from '#lib/domain/chem-formula.svelte';
+  import { prettyFormula } from '#lib/domain/formula.js';
   import {
     CENTRES,
     GEOMETRIES,
@@ -121,7 +122,7 @@
     const n = GEOMETRIES[geometry].count;
     const known = KNOWN.find((k) => k.formula === formula);
     const real = !known
-      ? ''
+      ? ' Tổ hợp tự do này dùng để luyện cách tính: không phải tổ hợp ion trung tâm – phối tử – dạng hình học nào cũng là một phức chất có thật.'
       : known.geometry === geometry
         ? ` Phức chất $${formulaTex(formula)}$ có thật và đúng có dạng ${GEOMETRIES[geometry].name}.`
         : ` Thực tế, phức chất $${formulaTex(formula)}$ có dạng ${GEOMETRIES[known.geometry].name}.`;
@@ -206,7 +207,7 @@
       aria-valuemax="180"
       aria-valuenow={Math.round(view.yaw)}
       aria-valuetext="Đã xoay {Math.round(view.yaw)} độ"
-      aria-label="Mô hình phức chất {formula}, dạng {GEOMETRIES[geometry]
+      aria-label="Mô hình phức chất {prettyFormula(formula)}, dạng {GEOMETRIES[geometry]
         .name}: ion trung tâm {c.symbol} và {GEOMETRIES[geometry]
         .count} phối tử. Kéo hoặc dùng phím mũi tên để xoay."
       use:turnSolid={{ view: () => view, onturn: (v) => (view = v) }}

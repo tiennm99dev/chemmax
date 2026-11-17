@@ -6,6 +6,7 @@
   import { button, focusRing } from '#lib/core/ui.js';
   import Tex from '#lib/components/tex.svelte';
   import ChemFormula from '#lib/domain/chem-formula.svelte';
+  import { prettyFormula } from '#lib/domain/formula.js';
   import TestTube from '#lib/domain/test-tube.svelte';
   import {
     METALS,
@@ -146,7 +147,10 @@
       </div>
       <div class="flex flex-col items-center gap-1 text-sm">
         {#if cur.form === 'dd'}
-          <TestTube liquid={cur.hex} label={`Dung dịch chứa ${cur.species}, màu ${cur.colour}`} />
+          <TestTube
+            liquid={cur.hex}
+            label={`Dung dịch chứa ${prettyFormula(cur.species)}, màu ${cur.colour}`}
+          />
         {:else}
           <svg viewBox="0 0 80 80" class="w-20" role="img" aria-label="Chất rắn màu {cur.colour}">
             <ellipse cx="40" cy="62" rx="34" ry="10" fill="#e2e8f0" />

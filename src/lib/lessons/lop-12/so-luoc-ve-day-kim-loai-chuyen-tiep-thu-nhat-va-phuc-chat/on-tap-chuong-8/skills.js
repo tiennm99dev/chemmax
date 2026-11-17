@@ -6,14 +6,7 @@
  */
 import { pick } from '#lib/core/drill.js';
 import { numTex, tidy } from '#lib/core/number-format.js';
-import {
-  CENTRES,
-  GEOMETRIES,
-  LIGANDS,
-  complexCharge,
-  complexFormula,
-  formulaTex,
-} from '../_shared/complexes.js';
+import { complexCharge, complexFormula, formulaTex, ligand } from '../_shared/complexes.js';
 import { METALS, ionTex, ionValence, valenceOf, valenceTex } from '../_shared/transition.js';
 
 /** @param {number} q */
@@ -25,9 +18,10 @@ export const dElectronSkill = {
   label: 'Electron 3d của ion',
   make(rand) {
     const m = pick(rand, METALS);
+    // Only charges that real simple ions carry: there is no free Mn7+ or Cr6+ ion.
     const ox = pick(
       rand,
-      m.states.map((s) => s.ox),
+      m.states.map((s) => s.ox).filter((o) => o <= 3),
     );
     const atom = valenceOf(m.z);
     const ion = ionValence(m.z, ox);
@@ -43,25 +37,84 @@ export const dElectronSkill = {
   },
 };
 
-/** Ligand counts drawn with the shapes of the lesson. */
-const COUNTS = [...new Set(Object.values(GEOMETRIES).map((g) => g.count))];
+/**
+ * Complexes that exist, as [symbol, charge of the centre, parts]: the drill
+ * names only real complexes, never an arbitrary pairing of ion and ligands.
+ * @type {Array<[string, number, import('../_shared/complexes.js').Part[]]>}
+ */
+const REAL = [
+  ['Cu', 2, [{ ligand: 'H2O', count: 6 }]],
+  ['Cu', 2, [{ ligand: 'Cl', count: 4 }]],
+  [
+    'Cu',
+    2,
+    [
+      { ligand: 'OH', count: 2 },
+      { ligand: 'H2O', count: 4 },
+    ],
+  ],
+  ['Zn', 2, [{ ligand: 'OH', count: 4 }]],
+  ['Zn', 2, [{ ligand: 'NH3', count: 4 }]],
+  ['Fe', 2, [{ ligand: 'CN', count: 6 }]],
+  ['Fe', 2, [{ ligand: 'H2O', count: 6 }]],
+  ['Fe', 3, [{ ligand: 'CN', count: 6 }]],
+  ['Fe', 3, [{ ligand: 'H2O', count: 6 }]],
+  ['Co', 2, [{ ligand: 'H2O', count: 6 }]],
+  ['Co', 2, [{ ligand: 'Cl', count: 4 }]],
+  ['Co', 3, [{ ligand: 'NH3', count: 6 }]],
+  [
+    'Co',
+    3,
+    [
+      { ligand: 'NH3', count: 5 },
+      { ligand: 'Cl', count: 1 },
+    ],
+  ],
+  ['Ni', 2, [{ ligand: 'CN', count: 4 }]],
+  ['Ni', 2, [{ ligand: 'NH3', count: 6 }]],
+  ['Cr', 3, [{ ligand: 'H2O', count: 6 }]],
+  ['Cr', 3, [{ ligand: 'OH', count: 6 }]],
+  ['Pt', 2, [{ ligand: 'Cl', count: 4 }]],
+  [
+    'Pt',
+    2,
+    [
+      { ligand: 'Cl', count: 3 },
+      { ligand: 'NH3', count: 1 },
+    ],
+  ],
+  [
+    'Pt',
+    2,
+    [
+      { ligand: 'Cl', count: 2 },
+      { ligand: 'NH3', count: 2 },
+    ],
+  ],
+];
+
+/** Charged real complexes with one kind of ligand: the charge of a complex. */
+const SINGLE = REAL.filter(([, q, parts]) => parts.length === 1 && complexCharge(q, parts) !== 0);
+
+/** Real complexes with a charged ligand: the charge of the central atom. */
+const CHARGED = REAL.filter(([, , parts]) => parts.some((p) => ligand(p.ligand).charge !== 0));
 
 /** @type {import('#lib/core/drill.js').Skill} */
 export const complexChargeSkill = {
   id: 'dien-tich-phuc-chat',
   label: 'Điện tích phức chất',
   make(rand) {
-    const c = pick(rand, CENTRES);
-    const l = pick(rand, LIGANDS);
-    const n = pick(rand, COUNTS);
-    const q = complexCharge(c.charge, [{ ligand: l.id, count: n }]);
+    const [symbol, charge, parts] = pick(rand, SINGLE);
+    const l = ligand(parts[0].ligand);
+    const n = parts[0].count;
+    const q = complexCharge(charge, parts);
     return {
-      prompt: `Ion $\\mathrm{${c.symbol}^{${c.charge}+}}$ liên kết với ${n} phối tử $${formulaTex(l.ion)}$ tạo thành phức chất. Tính điện tích của phức chất.`,
+      prompt: `Ion $\\mathrm{${symbol}^{${charge}+}}$ liên kết với ${n} phối tử $${formulaTex(l.ion)}$ tạo thành phức chất. Tính điện tích của phức chất.`,
       answer: q,
       hints: ['Điện tích phức chất = điện tích nguyên tử trung tâm + tổng điện tích các phối tử.'],
       steps: [
-        `$(+${c.charge}) + ${n} \\cdot (${l.charge}) = ${q}$.`,
-        `Phức chất $${formulaTex(complexFormula(c.symbol, c.charge, [{ ligand: l.id, count: n }]))}$ có điện tích $${signed(q)}$.`,
+        `$(+${charge}) + ${n} \\cdot (${l.charge}) = ${q}$.`,
+        `Phức chất $${formulaTex(complexFormula(symbol, charge, parts))}$ có điện tích $${signed(q)}$.`,
       ],
     };
   },
@@ -72,21 +125,22 @@ export const centreChargeSkill = {
   id: 'dien-tich-nguyen-tu-trung-tam',
   label: 'Điện tích nguyên tử trung tâm',
   make(rand) {
-    const c = pick(rand, CENTRES);
-    const l = pick(
-      rand,
-      LIGANDS.filter((x) => x.charge !== 0),
-    );
-    const n = pick(rand, COUNTS);
-    const formula = complexFormula(c.symbol, c.charge, [{ ligand: l.id, count: n }]);
-    const q = complexCharge(c.charge, [{ ligand: l.id, count: n }]);
+    const [symbol, charge, parts] = pick(rand, CHARGED);
+    const formula = complexFormula(symbol, charge, parts);
+    const q = complexCharge(charge, parts);
+    const sum = complexCharge(0, parts);
+    const terms = parts.map((p) => `${p.count} \\cdot (${ligand(p.ligand).charge})`).join(' + ');
+    const each = parts.map((p) => {
+      const l = ligand(p.ligand);
+      return `phối tử $${formulaTex(l.ion)}$ mang điện tích $${l.charge}$`;
+    });
     return {
-      prompt: `Tính điện tích (số oxi hoá) của nguyên tử trung tâm ${c.symbol} trong phức chất $${formulaTex(formula)}$.`,
-      answer: c.charge,
-      hints: [`Mỗi phối tử $${formulaTex(l.ion)}$ mang điện tích $${l.charge}$.`],
+      prompt: `Tính điện tích (số oxi hoá) của nguyên tử trung tâm ${symbol} trong phức chất $${formulaTex(formula)}$.`,
+      answer: charge,
+      hints: [`Mỗi ${each.join('; mỗi ')}.`],
       steps: [
-        `Gọi điện tích của ${c.symbol} là $x$: $x + ${n} \\cdot (${l.charge}) = ${q}$.`,
-        `$x = ${q} + ${n} = ${c.charge}$.`,
+        `Gọi điện tích của ${symbol} là $x$: $x + ${terms} = ${q}$.`,
+        `$x = ${q} - (${sum}) = ${charge}$.`,
       ],
     };
   },
