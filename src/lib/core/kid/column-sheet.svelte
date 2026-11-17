@@ -25,9 +25,13 @@
 
   /** Columns from the left, as indices from the ones. */
   const ORDER = $derived(Array.from({ length: columns }, (_, i) => columns - 1 - i));
+  // Each place is at most 3.25rem wide and shrinks with the card, so a sheet
+  // of six places still fits a 390 px phone; digits step down a size there.
+  const sign = $derived(columns > 4 ? 1.75 : 2);
   const grid = $derived(
-    `grid-template-columns: ${columns > 4 ? 1.75 : 2}rem repeat(${columns}, 3.25rem)`,
+    `grid-template-columns: ${sign}rem repeat(${columns}, minmax(0, 1fr)); max-width: ${sign + columns * 3.25}rem`,
   );
+  const digits = $derived(columns > 5 ? 'text-2xl' : 'text-3xl');
 
   const top = $derived(onesDigits(a));
   const bottom = $derived(onesDigits(b));
@@ -47,7 +51,7 @@
 </script>
 
 <div
-  class="inline-grid overflow-hidden rounded-2xl border-4 border-slate-300 bg-white text-center text-3xl font-bold tabular-nums"
+  class="mx-auto grid w-full overflow-hidden rounded-2xl border-4 border-slate-300 bg-white text-center {digits} font-bold tabular-nums"
   style={grid}
   role="img"
   aria-label={label}

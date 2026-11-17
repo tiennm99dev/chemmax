@@ -11,6 +11,7 @@ import {
   polar,
   sectorPath,
   snap,
+  curvePath,
 } from './svg-math.js';
 
 describe('snap and clamp', () => {
@@ -94,5 +95,28 @@ describe('palette', () => {
     expect(colorAt(0)).toBe(PALETTE[0]);
     expect(colorAt(PALETTE.length)).toBe(PALETTE[0]);
     expect(colorAt(-1)).toBe(PALETTE[PALETTE.length - 1]);
+  });
+});
+
+describe('curvePath', () => {
+  const plane = planeScale({ xMin: -4, xMax: 4, yMin: -4, yMax: 4 });
+
+  it('lifts the pen where the function is undefined', () => {
+    const d = curvePath((x) => 1 / x, plane);
+    expect(d.match(/M/g)?.length).toBe(2);
+    const root = curvePath((x) => Math.sqrt(x - 1), plane, { extra: [1] });
+    expect(root.startsWith(`M${plane.mx(1).toFixed(1)} ${plane.my(0).toFixed(1)}`)).toBe(true);
+  });
+
+  it('breaks the path where the curve leaves the plane', () => {
+    const wide = planeScale({ xMin: -5, xMax: 5, yMin: -5, yMax: 5 });
+    const d = curvePath((x) => 3 * x * x, wide);
+    expect(d.startsWith('M')).toBe(true);
+    expect(d.split('M').length - 1).toBe(1);
+    expect(curvePath((x) => x, wide).split('M').length - 1).toBe(1);
+  });
+
+  it('samples as many steps as asked', () => {
+    expect(curvePath((x) => x, plane, { steps: 160 }).split('L').length).toBe(161);
   });
 });

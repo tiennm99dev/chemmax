@@ -100,6 +100,9 @@ const SYMBOLS = {
   int: '∫',
   partial: '∂',
   nabla: '∇',
+  bullet: '•',
+  odot: '⊙',
+  otimes: '⊗',
   alpha: 'α',
   beta: 'β',
   gamma: 'γ',
@@ -243,8 +246,6 @@ const ACCENTS = {
   hat: '̂',
   tilde: '̃',
   widetilde: '̃',
-  vec: '⃗',
-  overrightarrow: '⃗',
   dot: '̇',
   ddot: '̈',
 };
@@ -291,8 +292,56 @@ const SUB = /** @type {Record<string, string>} */ ({
  * @param {string} s
  */
 function atom(s) {
-  return /^[\p{L}\p{N}.,′²³]*$/u.test(s) || /^\(.*\)$/.test(s) ? s : `(${s})`;
+  return /^[\p{L}\p{N}.,′²³]*$/u.test(s) || wrapped(s) ? s : `(${s})`;
 }
+
+/**
+ * Whether the whole string sits inside one matched pair of brackets: true for
+ * `(x+1)`, false for `(x−2)(x+3)`, whose first bracket closes early.
+ * @param {string} s
+ */
+function wrapped(s) {
+  if (!s.startsWith('(') || !s.endsWith(')')) return false;
+  let depth = 0;
+  for (let i = 0; i < s.length; i++) {
+    if (s[i] === '(') depth++;
+    else if (s[i] === ')' && --depth === 0) return i === s.length - 1;
+  }
+  return false;
+}
+
+/**
+ * A bound or a number standing after a word (`từ −1`, `bằng −1`), where the
+ * sign rule of `spokenWords` cannot see it: a leading minus becomes `âm`.
+ * @param {string} s
+ */
+const signedWord = (s) => s.replace(/^−(?=\s*\d)/, 'âm ');
+
+/** Relations that `\not` turns into their own crossed-out sign. */
+const NEGATED = /** @type {Record<string, string>} */ ({
+  '=': '≠',
+  '∈': '∉',
+  '⊂': '⊄',
+  '⊆': '⊈',
+  '⊃': '⊅',
+  '⊇': '⊉',
+  '∥': '∦',
+  '≡': '≢',
+  '∼': '≁',
+  '<': '≮',
+  '>': '≯',
+});
+
+/** Arrow glyphs that can carry a condition written over or under them. */
+const ARROW_GLYPHS = /^[→⟶⇌←⟵↔⟷⇀↽⇒⇐⇔]$/;
+
+/**
+ * An exponent body that has a Unicode superscript form read as one token: a
+ * signed number (`−2`), a lone `n` or `i`, an ion charge (`2−`, `+`) or a
+ * bracketed derivative order (`(4)`). Anything else stays `^(…)`.
+ * @param {string} body
+ */
+const oneToken = (body) => /^[+−]?\d+$|^[ni]$|^\d*[+−]$|^\([\dn]+\)$/.test(body);
 
 /**
  * Text for a denominator: like `atom`, but a product that starts with a
@@ -328,6 +377,8 @@ class Reader {
   constructor(src) {
     this.src = src;
     this.i = 0;
+    /** What `read` had written before the command it is reading now. */
+    this.before = '';
   }
 
   skipSpace() {
@@ -374,6 +425,62 @@ class Reader {
     return out;
   }
 
+  /**
+   * After a `|`: an evaluation bar `|_a^b` reads `lấy cận từ a đến b`. Null,
+   * reading nothing, unless both bounds follow.
+   */
+  evaluationBar() {
+    const start = this.i;
+    const marks = this.limits();
+    if (marks?.lower && marks.upper) return ` lấy cận từ ${marks.lower} đến ${marks.upper} `;
+    this.i = start;
+    return null;
+  }
+
+  /**
+   * Reads the `_{a}` and `^{b}` that follow, in either order.
+   * @returns {{ lower: string; upper: string } | null} null when neither is there
+   */
+  limits() {
+    /** @type {Record<string, string>} */
+    const got = {};
+    for (let k = 0; k < 2; k++) {
+      this.skipSpace();
+      const mark = this.src[this.i];
+      if ((mark !== '_' && mark !== '^') || mark in got) break;
+      this.i++;
+      got[mark] = signedWord(this.arg());
+    }
+    if (!('_' in got) && !('^' in got)) return null;
+    return { lower: got._ ?? '', upper: got['^'] ?? '' };
+  }
+
+  /**
+   * A nuclide written with prescripts on an empty group, `{}^{14}_{7}\mathrm{N}`:
+   * `N, A bằng 14, Z bằng 7`. Null, reading nothing, when no prescript and
+   * symbol follow.
+   */
+  nuclide() {
+    const start = this.i;
+    const marks = this.limits();
+    this.skipSpace();
+    const rest = this.src.slice(this.i);
+    let symbol = '';
+    const command = /^\\(mathrm|text|textrm)\s*\{([^{}]*)\}/.exec(rest);
+    const letter = /^(?:[A-Z][a-z]?|[a-z])/.exec(rest);
+    if (command) symbol = command[2].trim();
+    else if (letter) symbol = letter[0];
+    if (!marks || !symbol) {
+      this.i = start;
+      return null;
+    }
+    this.i += (command ?? letter)?.[0].length ?? 0;
+    const parts = [symbol];
+    if (marks.upper) parts.push(`A bằng ${marks.upper}`);
+    if (marks.lower) parts.push(`Z bằng ${marks.lower}`);
+    return parts.join(', ');
+  }
+
   /** Text of the next argument. */
   arg() {
     return linearText(this.rawArg());
@@ -386,11 +493,16 @@ class Reader {
     while (this.i < s.length) {
       const ch = s[this.i];
       if (ch === '\\') {
+        this.before = out;
         out += this.command();
       } else if (ch === '{') {
         const raw = this.rawArg();
+        const nuclide = raw.trim() === '' ? this.nuclide() : null;
         // `{-}` is a bond or hyphen (\mathrm{O{-}H}), never a minus sign.
-        out += raw.trim() === '-' ? '–' : linearText(raw);
+        out += nuclide ?? (raw.trim() === '-' ? '–' : linearText(raw));
+      } else if (ch === '|') {
+        this.i++;
+        out += this.evaluationBar() ?? '|';
       } else if (ch === '}') {
         this.i++;
       } else if (ch === '^') {
@@ -432,11 +544,36 @@ class Reader {
     const body = linearText(raw);
     if (up && (body === '°' || body === '∘')) return '°';
     if (up && /^′+$/.test(body)) return body;
-    const mapped = mapAll(body, up ? SUPER : SUB);
+    if (up && body === '•') return body;
+    const mapped = up && !oneToken(body) ? null : mapAll(body, up ? SUPER : SUB);
     if (mapped !== null) return mapped;
     // A subscript with no Unicode form is a label (K_C, v_{tb}): read it after
     // its base, never as an underscore.
     return up ? `^${atom(body)}` : ` ${atom(body)} `;
+  }
+
+  /**
+   * `\overset{a}{b}`, `\stackrel{a}{b}` (`over`) or `\underset{a}{b}`: the
+   * base with its annotation read, not dropped.
+   * @param {boolean} over
+   */
+  annotated(over) {
+    const raw = this.rawArg().trim();
+    const note = linearText(raw);
+    const base = this.arg();
+    if (!note) return base;
+    if (ARROW_GLYPHS.test(base)) return ` ${base} (${note}) `;
+    if (over) {
+      if (raw === '\\frown') return `cung ${base}`;
+      if (/^(\+|-|−|\\oplus)$/.test(raw)) return `${base}⁺`;
+      if (/^(−|\\ominus)$/.test(raw) || raw === '-') return `${base}⁻`;
+      if (raw === '\\bullet' || raw === '\\cdot') return `${base}•`;
+      if (/^[+−]?\d+$/.test(note)) return `${base} (số oxi hoá ${signedWord(note)})`;
+      // A double bond drawn as O over `\|`, itself set over the carbon.
+      if (base === '‖' || base === '=') return `=${note}`;
+      if (note.startsWith('=')) return `${base}(${note})`;
+    }
+    return `${base} (${note})`;
   }
 
   command() {
@@ -460,9 +597,14 @@ class Reader {
     if (KEEP_ARG.has(name)) return this.arg();
     if (name === 'not') {
       const next = this.arg();
-      if (next === '=') return '≠';
-      if (next === '∈') return '∉';
-      return `¬${next}`;
+      return NEGATED[next] ?? ` không ${next}`;
+    }
+    if (name === 'int') {
+      this.skipSpace();
+      const limits = /^\\(no)?limits(?![A-Za-z])/.exec(this.src.slice(this.i));
+      if (limits) this.i += limits[0].length;
+      const marks = this.limits();
+      return marks ? ` tích phân từ ${marks.lower} đến ${marks.upper} của ` : ' nguyên hàm của ';
     }
     if (DROP.has(name)) {
       if (name === 'left' || name === 'right' || name.startsWith('big') || name.startsWith('Big')) {
@@ -478,6 +620,16 @@ class Reader {
     if (name === 'frac' || name === 'dfrac' || name === 'tfrac' || name === 'cfrac') {
       const a = this.arg();
       const b = this.arg();
+      // A digit run right before a fraction of plain digits is a mixed number:
+      // 2\dfrac{3}{4} is `2 và 3/4`, never 23/4.
+      if (
+        name !== 'cfrac' &&
+        /\d\s*$/.test(this.before ?? '') &&
+        /^\d+$/.test(a) &&
+        /^\d+$/.test(b)
+      ) {
+        return ` và ${a}/${b}`;
+      }
       return `${atom(a)}/${denominator(b)}`;
     }
     if (name === 'sqrt') {
@@ -501,6 +653,7 @@ class Reader {
       return conditions.length ? ` ${arrow} (${conditions.join(', ')}) ` : ` ${arrow} `;
     }
     if (name === 'widehat') return `góc ${this.arg()}`;
+    if (name === 'vec' || name === 'overrightarrow') return ` vectơ ${this.arg()}`;
     if (name in ACCENTS) {
       const body = this.arg();
       return [...body].map((c) => c + ACCENTS[name]).join('');
@@ -510,8 +663,7 @@ class Reader {
       return this.arg();
     }
     if (name === 'overset' || name === 'underset' || name === 'stackrel') {
-      this.rawArg();
-      return this.arg();
+      return this.annotated(name !== 'underset');
     }
     if (name === 'begin' || name === 'end') {
       const env = this.rawArg();
@@ -560,6 +712,8 @@ const SPOKEN = {
   '≥': ' lớn hơn hoặc bằng ',
   '≠': ' khác ',
   '−': ' trừ ',
+  '⊙': ' vòng tròn có chấm ',
+  '⊗': ' vòng tròn có dấu chéo ',
 };
 
 // A minus sign at the start or after an opening bracket, a relation or another
@@ -570,6 +724,7 @@ const NEGATIVE = /(^|[([{=<>≤≥≠≈∼,;:+−×·/±∓∈])(\s*)−(?=\s*\
 // may still be superscripts or, in TeX, the `²` a power has become.
 const UNITS = [
   [/(?<![\p{L}_])cm(?:²|\^2)(?![\p{L}\p{N}])/gu, 'xăng-ti-mét vuông'],
+  [/(?<![\p{L}_])cm(?:³|\^3)(?![\p{L}\p{N}])/gu, 'xăng-ti-mét khối'],
   [/(?<![\p{L}_])cm(?![\p{L}\p{N}²³])/gu, 'xăng-ti-mét'],
 ];
 
@@ -592,9 +747,10 @@ function spokenWords(linear) {
     .replace(SUPER_ROOT, (_, n) => ` căn bậc ${unsuper(n)} của `)
     .replace(
       SUPER_POWER,
-      (_, sign, power) => ` mũ ${sign ? `${SPOKEN['−']}` : ''}${unsuper(power)} `,
+      (_, sign, power) => ` mũ ${sign === '⁻' ? `${SPOKEN['−']}` : ''}${unsuper(power)} `,
     )
-    .replace(/[√∛∜≤≥≠−]/g, (c) => SPOKEN[c])
+    .replace(/\^/g, ' mũ ')
+    .replace(/[√∛∜≤≥≠−⊙⊗]/g, (c) => SPOKEN[c])
     .replace(/\s+/g, ' ')
     .replace(/\( /g, '(')
     .replace(/ \)/g, ')')
@@ -608,7 +764,10 @@ function spokenWords(linear) {
  * `90^\circ` → `90°`, `3{,}5` → `3,5`, `\widehat{ABC}` → `góc ABC`,
  * `\frac{1}{6x^2}` → `1/(6x mũ 2)`, `\mathcal{P}` → `P`,
  * `\xrightleftharpoons[b]{a}` → `⇌ (a, b)`, `\square` → `ô trống` (a blank to
- * fill). Spacing commands become spaces; layout-only commands (`\left`,
+ * fill), `2\dfrac{3}{4}` → `2 và 3/4`, `x^{n-1}` → `x mũ (n trừ 1)`,
+ * `\int_0^2` → `tích phân từ 0 đến 2 của`, `F(x)\Big|_a^b` → `F(x) lấy cận từ
+ * a đến b`, `\vec{B}` → `vectơ B`, `{}^{14}_{7}\mathrm{N}` → `N, A bằng 14, Z
+ * bằng 7`, `\overset{+5}{N}` → `N (số oxi hoá +5)`. Spacing commands become spaces; layout-only commands (`\left`,
  * `\displaystyle`) are dropped.
  * @param {string} tex
  * @returns {string}

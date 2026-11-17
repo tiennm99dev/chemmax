@@ -146,3 +146,37 @@ export function hopPath(x0, x1, y, height) {
   const mid = (x0 + x1) / 2;
   return `M ${x0} ${y} Q ${mid} ${y - height * 2} ${x1} ${y}`;
 }
+
+/**
+ * Points of y = f(x) for x from lo to hi (the plane's x range by default) as
+ * an SVG path in the plane's scale. Where f is undefined (NaN) or far outside
+ * the plane's y range the pen lifts, so a branch leaves the picture instead
+ * of being drawn across a gap; draw it inside a clip path for a clean edge.
+ * `extra` adds sample points, such as the end of a domain, so the curve
+ * starts exactly there.
+ * @param {(x: number) => number} f
+ * @param {{ mx: (x: number) => number, my: (y: number) => number, xMin: number, xMax: number, yMin: number, yMax: number }} plane
+ * @param {{ lo?: number, hi?: number, steps?: number, extra?: number[] }} [opts]
+ */
+export function curvePath(f, plane, opts = {}) {
+  const { lo = plane.xMin, hi = plane.xMax, steps = 200, extra = [] } = opts;
+  const margin = (plane.yMax - plane.yMin) * 0.5;
+  const top = plane.yMax + margin;
+  const bottom = plane.yMin - margin;
+  const xs = [];
+  for (let i = 0; i <= steps; i++) xs.push(lo + ((hi - lo) * i) / steps);
+  for (const x of extra) if (x >= lo && x <= hi) xs.push(x);
+  xs.sort((p, q) => p - q);
+  let d = '';
+  let pen = false;
+  for (const x of xs) {
+    const y = f(x);
+    if (!Number.isFinite(y) || y > top || y < bottom) {
+      pen = false;
+      continue;
+    }
+    d += `${pen ? 'L' : 'M'}${plane.mx(x).toFixed(1)} ${plane.my(y).toFixed(1)} `;
+    pen = true;
+  }
+  return d.trim();
+}

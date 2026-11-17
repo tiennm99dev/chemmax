@@ -234,6 +234,40 @@ describe('checkAnswer: number', () => {
     expect(reason(withUnit, '13 cm²')).toBe('wrong');
   });
 
+  it('reads the micro prefix in either code point, or as an ASCII u', () => {
+    for (const unit of ['\u00b5m', '\u03bcm']) {
+      /** @type {Exercise} */
+      const wave = { ...base, type: 'number', answer: 0.5, unit };
+      expect(reason(wave, '0,5 \u03bcm')).toBe('correct');
+      expect(reason(wave, '0,5 \u00b5m')).toBe('correct');
+      expect(reason(wave, '0,5 um')).toBe('correct');
+    }
+    /** @type {Exercise} */
+    const charge = { ...base, type: 'number', answer: 72, unit: '\u00b5C' };
+    expect(reason(charge, '72 uC')).toBe('correct');
+    /** @type {Exercise} */
+    const metre = { ...base, type: 'number', answer: 3, unit: 'm' };
+    expect(reason(metre, '3 um')).toBe('unit');
+  });
+
+  it('flags a right quantity written with another SI prefix as a unit slip', () => {
+    /** @type {Exercise} */
+    const heat = { ...base, type: 'number', answer: 44, unit: 'kJ' };
+    expect(reason(heat, '44000 J')).toBe('unit');
+    expect(reason(heat, '0,044 MJ')).toBe('unit');
+    expect(reason(heat, '45000 J')).toBe('wrong');
+    /** @type {Exercise} */
+    const length = { ...base, type: 'number', answer: 1.5, unit: 'm' };
+    expect(reason(length, '150 cm')).toBe('unit');
+    expect(reason(length, '150 m')).toBe('wrong');
+    /** @type {Exercise} */
+    const area = { ...base, type: 'number', answer: 12, unit: 'cm²' };
+    expect(reason(area, '1200 m²')).toBe('wrong');
+    /** @type {Exercise} */
+    const speed = { ...base, type: 'number', answer: 10, unit: 'm/s' };
+    expect(reason(speed, '36 km/h')).toBe('wrong');
+  });
+
   it('honours tolerance', () => {
     expect(reason(approx, '3,14')).toBe('correct');
     expect(reason(approx, '3,15')).toBe('correct');

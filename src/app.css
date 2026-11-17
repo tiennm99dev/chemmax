@@ -25,6 +25,28 @@
     position: relative;
   }
 
+  /* A display formula wider than its column scrolls inside its own box, in a
+     callout, paragraph, list item, hint or solution alike, instead of widening
+     the page on a phone. The block padding keeps tall fractions and the focus
+     ring inside the box. */
+  .katex-display {
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-block: 0.5rem;
+  }
+
+  /* Scrolling boxes that `use:scrollRegions` puts in the tab order get the
+     same ring as `focusRing` in core/ui.js. */
+  .overflow-x-auto:focus-visible,
+  .katex-display:focus-visible {
+    outline: none;
+    border-radius: 0.25rem;
+    box-shadow:
+      0 0 0 2px #fff,
+      0 0 0 4px #6366f1;
+  }
+
   /* A focused <g> slider would also get the browser's default outline around
      the bounding box of the whole group, ruler and labels included; the ring
      below on its knob or shapes marks the focus instead. */

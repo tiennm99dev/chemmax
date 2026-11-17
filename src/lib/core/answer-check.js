@@ -91,6 +91,69 @@ const UNIT_WORDS = {
   om: 'ω',
 };
 
+/** The micro sign; the Greek letter mu is folded into it. */
+const MICRO = '\u00b5';
+
+/** SI prefixes a learner may write in place of the expected one, as powers of ten. */
+const PREFIX_POWERS = /** @type {Record<string, number>} */ ({
+  n: -9,
+  [MICRO]: -6,
+  m: -3,
+  c: -2,
+  d: -1,
+  k: 3,
+  M: 6,
+  G: 9,
+});
+
+/**
+ * Whether two units are the same: equal once normalised, or the expected unit
+ * starts with the micro sign and the learner typed an ASCII `u` for it (`uC`
+ * for `µC`), as a keyboard without µ makes them do.
+ * @param {string} given
+ * @param {string} expected
+ */
+function sameUnit(given, expected) {
+  const g = normalizeUnit(given);
+  const e = normalizeUnit(expected);
+  return g === e || (e.startsWith(MICRO) && g.startsWith('u') && MICRO + g.slice(1) === e);
+}
+
+/**
+ * The ways to read a unit as an SI prefix plus a base symbol made of letters:
+ * `cm` is `c` + `m` or a bare `cm`; `m` is only a bare `m`.
+ * @param {string} unit
+ * @returns {{ power: number; base: string }[]}
+ */
+function prefixSplits(unit) {
+  const u = unit.trim().replace(/\u03bc/g, MICRO);
+  if (!/^[A-Za-zΩ\u00b5]+$/u.test(u)) return [];
+  const splits = [{ power: 0, base: u }];
+  const head = u[0];
+  if (u.length > 1 && head in PREFIX_POWERS)
+    splits.push({ power: PREFIX_POWERS[head], base: u.slice(1) });
+  return splits;
+}
+
+/**
+ * Whether a value typed in a unit with another SI prefix than the expected one
+ * (`44000 J` for `44 kJ`, `150 cm` for `1,5 m`) is the right quantity.
+ * @param {number} value
+ * @param {string} given
+ * @param {string} expected
+ * @param {(v: number) => boolean} close
+ */
+function rightAfterPrefix(value, given, expected, close) {
+  for (const g of prefixSplits(given)) {
+    for (const e of prefixSplits(expected)) {
+      if (g.base === e.base && g.power !== e.power && close(value * 10 ** (g.power - e.power))) {
+        return true;
+      }
+    }
+  }
+  return false;
+}
+
 /**
  * Normalises a unit for comparison: case, spaces, `^` and superscript digits
  * are ignored, so `cm²`, `cm^2` and `CM2` match, and a Vietnamese unit word
@@ -99,11 +162,13 @@ const UNIT_WORDS = {
  * `Ω`). A dot, star or dot operator between the factors of a compound unit
  * reads as the middle dot, so `N.m` matches `N·m`, and a trailing full stop is
  * dropped (`35 %.`). Any other unit word is compared without its diacritics, so
- * `te bao` matches `tế bào`.
+ * `te bao` matches `tế bào`. The Greek letter mu is read as the micro sign, so
+ * `μm` matches `µm`.
  * @param {string} unit
  */
 export function normalizeUnit(unit) {
   const u = unit
+    .replace(/\u03bc/g, MICRO)
     .toLowerCase()
     .replace(SPACE_RE, '')
     .replace(/[.!?;]+$/, '')
@@ -274,11 +339,16 @@ export function checkAnswer(exercise, response) {
         typeof response === 'number' ? { value: response, unit: '' } : parseNumber(response);
       if (!parsed || !Number.isFinite(parsed.value)) return result('invalid');
       const tol = exercise.tolerance ?? 1e-9 * Math.max(1, Math.abs(exercise.answer));
-      const close = Math.abs(parsed.value - exercise.answer) <= tol;
+      /** @param {number} v */
+      const near = (v) => Math.abs(v - exercise.answer) <= tol;
+      const close = near(parsed.value);
       if (parsed.unit !== '') {
         if (!exercise.unit) return result('invalid');
-        if (normalizeUnit(parsed.unit) !== normalizeUnit(exercise.unit)) {
-          return result(close ? 'unit' : 'wrong');
+        if (!sameUnit(parsed.unit, exercise.unit)) {
+          // A value right only after converting the prefix is still not the
+          // answer asked for, but the learner learns that only the unit is off.
+          const converted = rightAfterPrefix(parsed.value, parsed.unit, exercise.unit, near);
+          return result(close || converted ? 'unit' : 'wrong');
         }
       }
       return result(close ? 'correct' : 'wrong');

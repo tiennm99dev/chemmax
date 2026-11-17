@@ -201,3 +201,54 @@ export function roundToTotal(values, total) {
   for (let k = 0; left > 0 && k < order.length; k++, left--) out[order[k].i] += 1;
   return out;
 }
+
+/**
+ * A value as mantissa × 10^exponent, the mantissa rounded to `digits` decimals
+ * and kept below 10 in size: 9,999·10⁵ with 2 digits is 1·10⁶.
+ * @param {number} value
+ * @param {number} [digits]
+ */
+export function sciParts(value, digits = 2) {
+  if (value === 0) return { mantissa: 0, exponent: 0 };
+  let exponent = Math.floor(Math.log10(Math.abs(value)));
+  let mantissa = Number((value / 10 ** exponent).toFixed(digits));
+  if (Math.abs(mantissa) >= 10) {
+    exponent += 1;
+    mantissa = Number((value / 10 ** exponent).toFixed(digits));
+  }
+  return { mantissa, exponent };
+}
+
+/** @param {number} n */
+const supSigned = (n) => (n < 0 ? `⁻${sup(-n)}` : sup(n));
+
+/**
+ * Scientific notation as plain text the book's way: 3,6·10⁻³, 10⁻¹² for a
+ * mantissa of 1; a value with an exponent from −2 to 3 is written as a
+ * decimal (0,9; 4 500).
+ * @param {number} value
+ * @param {number} [digits]
+ */
+export function sciText(value, digits = 2) {
+  const { mantissa, exponent } = sciParts(value, digits);
+  if (exponent >= -2 && exponent <= 3) return formatNumber(value, Math.max(0, digits - exponent));
+  const m = formatNumber(mantissa, digits);
+  if (m === '1') return `10${supSigned(exponent)}`;
+  if (m === `${MINUS}1`) return `${MINUS}10${supSigned(exponent)}`;
+  return `${m}·10${supSigned(exponent)}`;
+}
+
+/**
+ * Scientific notation as TeX source, `3{,}6 \cdot 10^{-3}`, with the same
+ * decimal range as `sciText`.
+ * @param {number} value
+ * @param {number} [digits]
+ */
+export function sciTex(value, digits = 2) {
+  const { mantissa, exponent } = sciParts(value, digits);
+  if (exponent >= -2 && exponent <= 3) return numTex(value, Math.max(0, digits - exponent));
+  const m = numTex(mantissa, digits);
+  if (m === '1') return `10^{${exponent}}`;
+  if (m === '-1') return `-10^{${exponent}}`;
+  return `${m} \\cdot 10^{${exponent}}`;
+}

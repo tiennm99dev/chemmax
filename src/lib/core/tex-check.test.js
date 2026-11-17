@@ -13,4 +13,10 @@ describe('strictTexFailures', () => {
     expect(failures).toHaveLength(1);
     expect(failures[0]).toContain('\\notacommand');
   });
+
+  it('applies the page policy: a Vietnamese letter passes, other strict errors fail', () => {
+    expect(strictTexFailures(['$\\text{số dư} = 3$', '$x = \\text{hằng số}$'])).toEqual([]);
+    expect(strictTexFailures(['$x = đ$'])).toEqual([]);
+    expect(strictTexFailures(['$x = 中$'])).toHaveLength(1);
+  });
 });

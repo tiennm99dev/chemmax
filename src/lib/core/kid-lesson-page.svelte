@@ -12,6 +12,7 @@
   import PrevNext from './prev-next.svelte';
   import KidCard from './kid/kid-card.svelte';
   import { crumbs } from './crumbs.js';
+  import { scrollRegions } from '#lib/actions/scroll-focus.js';
   import { lesson as copy, readAloud } from './copy.vi.js';
 
   /**
@@ -47,7 +48,7 @@
 </script>
 
 <SiteShell>
-  <div class="kid space-y-6 text-[20px] leading-relaxed">
+  <div class="kid space-y-6 text-[20px] leading-relaxed" use:scrollRegions>
     <Breadcrumbs items={crumbs(grade, chapter, lesson)} />
 
     <KidCard what={lesson.title} labelledby="lesson-title">

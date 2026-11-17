@@ -1,6 +1,7 @@
 <!-- Synced from tiennm99dev/mathmax by scripts/sync-core.sh. Do not edit it here; change it in mathmax and sync again. -->
 <script>
   import { button, focusRing } from '#lib/core/ui.js';
+  import FractionText from './fraction-text.svelte';
   import { feedbackText, isSettled, optionName, optionText } from './quiz.js';
 
   /**
@@ -8,7 +9,8 @@
    * option buttons and the feedback line. A wrong first tap shows the hint
    * and a second try; a second miss shows the answer. The parent keeps the
    * state (`tapOption` in `quiz.js` moves it on) and calls `focus()` to move
-   * keyboard focus to the prompt of a new question. Once a question settles
+   * keyboard focus to the prompt of a new question. Fractions written with a
+   * slash in the prompt and the feedback line (3/8, 2 3/4) are drawn stacked. Once a question settles
    * its options leave the tab order and focus moves to the next button, so
    * Enter goes on at once. Used by
    * `choice-round.svelte` and `adaptive-quiz.svelte`.
@@ -87,7 +89,7 @@
 </script>
 
 <h3 bind:this={heading} tabindex="-1" class="text-2xl font-bold text-slate-900 outline-none">
-  {q.prompt}
+  <FractionText text={q.prompt} />
 </h3>
 
 {#key q}
@@ -117,7 +119,9 @@
       : 'bg-amber-100 text-amber-900'}"
   aria-live="polite"
 >
-  {#if phase === 'right'}<span aria-hidden="true">⭐ </span>{/if}{feedbackText(q, phase)}
+  {#if phase === 'right'}<span aria-hidden="true">⭐ </span>{/if}<FractionText
+    text={feedbackText(q, phase)}
+  />
 </p>
 
 {#if settled}

@@ -2,17 +2,20 @@
 import { describe, it, expect } from 'vitest';
 import {
   GROUP,
-  intText,
-  operand,
-  readInteger,
   fmt,
   formatFixed,
   formatNumber,
   hoursText,
+  intText,
   numTex,
+  operand,
   powText,
+  readInteger,
   readNatural,
   roundToTotal,
+  sciParts,
+  sciTex,
+  sciText,
   sup,
   texNumber,
   tidy,
@@ -159,5 +162,25 @@ describe('tidy', () => {
     expect(tidy(0.1 + 0.2)).toBe(0.3);
     expect(tidy(1.1 * 1.1, 6)).toBe(1.21);
     expect(Object.is(tidy(-1e-12), 0)).toBe(true);
+  });
+});
+
+describe('scientific notation', () => {
+  it('splits a value into a mantissa below ten and a power of ten', () => {
+    expect(sciParts(9.999e5)).toEqual({ mantissa: 1, exponent: 6 });
+    expect(sciParts(3.6e-3)).toEqual({ mantissa: 3.6, exponent: -3 });
+    expect(sciParts(0)).toEqual({ mantissa: 0, exponent: 0 });
+  });
+
+  it('writes text and TeX the book way', () => {
+    expect(sciText(3.6e-3)).toBe('3,6·10⁻³');
+    expect(sciText(-1.6e-19)).toBe('−1,6·10⁻¹⁹');
+    expect(sciText(1e-12)).toBe('10⁻¹²');
+    expect(sciText(-1e-12)).toBe('−10⁻¹²');
+    expect(sciText(0.9)).toBe('0,9');
+    expect(sciTex(9e9)).toBe('9 \\cdot 10^{9}');
+    expect(sciTex(-1e-6)).toBe('-10^{-6}');
+    expect(sciTex(4500)).toBe('4\\,500');
+    expect(sciTex(3.6e-3)).toBe('3{,}6 \\cdot 10^{-3}');
   });
 });

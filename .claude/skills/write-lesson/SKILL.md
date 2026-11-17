@@ -208,6 +208,7 @@ Core visuals, `#lib/core/visuals/<name>.svelte`:
 | `coordinate-plane` | Cartesian plane; children snippet gets the scale (`planeScale()` in `svg-math.js`) |
 | `geometry-board` | SVG surface for geometry drawings with drag handles |
 | `drag-point` | round drag handle for a point (pointer and arrow keys) |
+| `vector-arrow` | an arrow from one plane point to another; `grid-handle.js` (`gridHandle`) snaps a dragged point to the grid of a `planeScale` |
 | `tick-marks` | equal-length marks on a segment |
 | `number-line` | number line with marker, marks and hop arcs |
 | `fraction-bars` | fraction strips, numerators draggable |
@@ -223,11 +224,21 @@ Core visuals, `#lib/core/visuals/<name>.svelte`:
 | `counting-tray` | kid ten-frame tray filled with pictures |
 
 `#lib/core/visuals/svg-math.js` has `clamp`, `snap`, `linear`, `planeScale`,
-`polar`, `angleOf`, `sectorPath`, `hopPath` and `PALETTE`/`colorAt`.
+`polar`, `angleOf`, `sectorPath`, `hopPath`, `curvePath(f, plane, { lo, hi, steps, extra })`
+(a function graph as an SVG path that lifts the pen where f is undefined or
+leaves the plane) and `PALETTE`/`colorAt`.
 `#lib/core/visuals/angle-math.js` works in degrees on SVG points: `norm`,
 `dirOf`, `along`, `directionTo`, `measure`, `ccwSides`, `bisectorDir`,
 `intersect`, `degText` ('32,5°') and the angle drawings `arcPath`,
 `sectorPath`, `insidePath`, `rightMarkPath`.
+
+`#lib/stats-engine/grouped.js` (also exported from `#lib/stats-engine/index.js`)
+holds grouped samples the KNTT way: `groupValues`, `makeGroups`, `midpoint`,
+`cumulative`, `groupedMean`, `groupedQuartile`/`groupedMedian`,
+`groupedModes` (written $M_o$), `groupedRange`, `groupedIqr`,
+`groupedVariance`, `groupedStd` and their TeX writers (`quartileTex`,
+`modeTex`, `meanTex`, `varianceWorkTex`, `stdTex`, `eqTex`); never copy them
+into a chapter.
 
 `#lib/geom-engine/plane.js` is point geometry on `{ x, y }`: `dist`, `lerp`,
 `midpoint`, `angleAt(vertex, p, q)` in degrees, `cross`, `isParallel`, `foot`
@@ -237,7 +248,12 @@ board), `polygonArea`, and for quadrilaterals `quadAngles`, `splittingSide`
 and `isConvex`. `#lib/geom-engine/centers.js` has the circles of a
 triangle: `circumcircle` and `incircle` (`{ center, radius }`, null when
 flat) and `touchPoints` (where the incircle meets the sides).
-`#lib/geom-engine/solid.js` draws solids in a turning orthographic view:
+`#lib/geom-engine/space.js` is points, lines and planes in space (`planeThrough`,
+`meetPlane`, `lineRelation`, `meetLines`, `projectAlong`, `footOnPlane`,
+`footOnLine`, `lineAngle`, `linePlaneAngle`, `commonPerpendicular`,
+`orientFaces`, `isHidden`, `cube`, `angleFan`), drawn by
+`#lib/core/visuals/space-scene.svelte` (a turning scene with dashed hidden
+edges). `#lib/geom-engine/solid.js` draws solids in a turning orthographic view:
 `add3`, `sub3`, `mul3`, `dot3`, `cross3` on `{ x, y, z }`, `viewPoint`,
 `facesViewer`, `drawOrder` (faces far to near) and the view controls
 `clampPitch`, `wrapYaw`, `dragView` and `arrowView` (the near side follows
@@ -284,7 +300,9 @@ Other shared pieces:
   add up (four angles to 360°, shares to 100%). In generated TeX write numbers
   with `numTex` (`12\,345{,}5`: thin-space thousands, braced comma, ASCII
   minus), never `formatNumber` with a comma swap, and durations with
-  `hoursText` (`$1$ giờ $12$ phút`). `tidy(v, places = 9)` rounds away binary
+  `hoursText` (`$1$ giờ $12$ phút`), and powers of ten with `sciText`
+  (`3,6·10⁻³`), `sciTex` (`3{,}6 \cdot 10^{-3}`) and `sciParts`; never copy
+  a scientific-notation writer into a lesson. `tidy(v, places = 9)` rounds away binary
   noise (0.1 + 0.2) before comparing or writing a computed value.
 - `#lib/core/fractions.js`: `fracText` (`−3/4`), `fracOperand`, `mixedText`
   (`1 3/4`), `texFrac`, `texOperand`, `toFraction`, `valueText`,
@@ -341,12 +359,24 @@ Other shared pieces:
 - `#lib/core/feedback-note.svelte` (a coloured live feedback line, tone `ok`,
   `warn` or `info`; its text is rich text, so `$C_M$` shows as math) and `#lib/core/right-wrong-sorter.svelte` (sort actions
   into "Làm đúng" and "Làm sai" on top of the card sorter).
+- `#lib/core/counting.js`: `factorial`, `arrangeCount` ($A_n^k$), `choose`
+  ($C_n^k$, 0 out of range) and `pascalRow`; never write a local copy.
+- `#lib/core/sentence-case.js`: `lowerFirst(text)` puts a name into the middle
+  of a sentence (`Thiên địch` → `thiên địch`), keeping an abbreviation or
+  formula that starts it (`DNA …`, `CO₂`); never write a local copy.
 - `#lib/core/motion.js`: `frameLoop` (per-frame callback with elapsed seconds;
   the `stop` it returns may be called from inside the callback),
   `reducedMotion()` and `wrap` for animated widgets.
 - `#lib/core/tex-text.js`: `texText` turns TeX into the words screen readers
   hear (`căn bậc hai của 144`, `x mũ 2`, `nhỏ hơn hoặc bằng`, `trừ 1`, `3/4`,
-  `K C` for `K_C`, a bond `\mathrm{O{-}H}` as `O–H`, never "trừ");
+  `K C` for `K_C`, a bond `\mathrm{O{-}H}` as `O–H`, never "trừ"; a mixed
+  number `2\dfrac{3}{4}` as `2 và 3/4`; `x^{n-1}` as `x mũ (n trừ 1)`;
+  `\int_a^b` as `tích phân từ a đến b của`, `\int` alone as `nguyên hàm của`
+  and `\Big|_a^b` as `lấy cận từ a đến b`; `\vec{AB}` as `vectơ AB`;
+  `\not\subset` as `⊄`; `{}^{14}_{7}\mathrm{N}` as `N, A bằng 14, Z bằng 7`;
+  `\overset` and `\underset` keep their annotation: `\overset{+5}{N}` is
+  `N (số oxi hoá +5)`, `\overset{+}{C}` is `C⁺`, `\overset{\frown}{AB}` is
+  `cung AB` and an arrow keeps its condition);
   `richText` does the same for rich text with `$...$`;
   prerendered content and `tex.svelte` already use it, so TeX in options, labels
   and buttons keeps a distinct accessible name. `htmlText` reads rendered rich
@@ -368,7 +398,11 @@ Other shared pieces:
   Vietnamese letters in TeX are allowed (`\text{số dư}`); any other strict-mode
   warning fails `content.test.js`.
 - `#lib/core/kid/picture.svelte` and `#lib/core/kid/pictures/index.js`
-  (`pictures`, `pictureGroups`).
+  (`pictures`, `pictureGroups`). `pictures/angle-picture.svelte` draws an
+  angle (with an optional protractor) and `pictures/quad-picture.svelte` a
+  rectangle, parallelogram or rhombus on a small grid, from
+  `pictures/quad-shapes.js` (`CORNERS`, `SHAPE_NAME`, `VERTEX_SETS`,
+  `sideName`, `oppositeSide`, `sidesAt`).
 - Kid building blocks for grades 1-5, `#lib/core/kid/` (each drawing has a
   `<name>.gallery.svelte` demo on `/_gallery/`). Use them before writing a
   `_shared/` copy:
@@ -394,7 +428,10 @@ Other shared pieces:
     up from offsets `near` within `min`..`max`, digits grouped); `weakLabels`,
     `tapOption` and `feedbackText` (the line under the options; a wrong first
     tap always shows a hint) are the round logic, so an engine never
-    re-implements them.
+    re-implements them. Write fractions in prompts, hints and solutions as
+    plain `3/8` or `2 3/4`: the prompt and the feedback line draw them
+    stacked (`fraction-text.svelte`, `fractionParts` in `fraction-text.js`),
+    so never put a date or a ratio with a slash in a kid quiz line.
   - `whole-numbers.js`: natural numbers of any length (grades 3-4):
     `PLACE_NAMES`/`CLASS_NAMES` by power of ten, `placeColumns(count)` (a
     place table's columns with titles, units and the blocks of the first four),
@@ -425,8 +462,22 @@ Other shared pieces:
     vạch", `countBy`, `totalOf`, `extremes`) and the tally strokes, read one
     word per stroke until `settled`. `chance.js`: the book's three words
     (`CHANCES`) and `wordOf(outcomes, holds)`.
+  - `fractions.js` with `fraction-note.svelte`: grade 4-5 fractions on
+    `{ n, d }`: `fracTex`, `fracRich`, `fracText`, `fracWords` ("ba phần tư")
+    and `denominatorWords` (a denominator of 1 collapses unless `{ keepOne:
+    true }`), `reduce`, `sameValue` and `add`/`sub`/`mul`/`div` in lowest
+    terms; `fraction-note` is the big live sentence with inline TeX under a
+    fraction widget. A chapter keeps only its own writers.
+  - `decimals.js`: grade 5 decimals kept exact: `partsOf`, `toScaled`,
+    `decText`, `trimZeros`, `placesText`, `readScaled` ("hai phẩy bốn mươi
+    bảy"), `num` (a computed value written the book's way), `DECIMAL_PLACES`
+    and `valueOptions` (tap-the-answer options with a unit).
+  - `cabinet-view.js`: `cabinet(depth)` gives `project`, `boxFaces` and
+    `boxGrid` for boxes of unit cubes in the books' cabinet view.
   - `pass-focus.js`: `passFocus(from, to)` hands keyboard focus on when a
-    press has just disabled the button that had it.
+    press has just disabled the button that had it; `to` may be a getter
+    (`() => restartButton`), read after the update, for a target that only
+    renders then. Never write a lesson's own tick-then-focus code.
   - `shapes.js` with `shape-figure.svelte` and `object-figure.svelte`: the
     four plane shapes and two solids (`FIGURE_NAMES`, `plainFigure(kind)` for
     a picture-card look, or a full `Figure` with colour, size, turn and
