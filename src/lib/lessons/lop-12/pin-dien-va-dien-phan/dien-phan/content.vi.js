@@ -3,7 +3,7 @@ export default {
   summary:
     'Điện phân: nguyên tắc điện phân, điện phân chất điện li nóng chảy và dung dịch, thứ tự khử ở cathode và oxi hoá ở anode, ứng dụng điện phân để điều chế, tinh chế kim loại và mạ điện.',
   intro:
-    'Nhôm làm vỏ lon, natri dùng trong đèn đường hay xút dùng nấu xà phòng đều được sản xuất nhờ dòng điện. Trong pin Galvani, phản ứng oxi hoá – khử tự xảy ra và sinh ra dòng điện; còn khi điện phân, ta dùng dòng điện một chiều để buộc một phản ứng oxi hoá – khử không tự xảy ra phải diễn ra. Ở mỗi điện cực, chất nào phản ứng trước và thu được sản phẩm gì?',
+    'Nhôm làm vỏ lon, sodium dùng trong đèn đường hay xút (NaOH) dùng nấu xà phòng đều được sản xuất nhờ dòng điện. Trong pin Galvani, phản ứng oxi hoá – khử tự xảy ra và sinh ra dòng điện; còn khi điện phân, ta dùng dòng điện một chiều để buộc một phản ứng oxi hoá – khử không tự xảy ra phải diễn ra. Ở mỗi điện cực, chất nào phản ứng trước và thu được sản phẩm gì?',
   objectives: [
     'Nêu được khái niệm điện phân và các quá trình xảy ra ở cathode, anode.',
     'Viết được các quá trình ở điện cực và phương trình điện phân chất điện li nóng chảy và dung dịch với điện cực trơ.',

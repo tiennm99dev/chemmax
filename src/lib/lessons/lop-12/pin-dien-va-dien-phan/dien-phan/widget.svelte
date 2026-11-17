@@ -67,11 +67,13 @@
     <!-- power supply -->
     <path d="M 110 70 L 110 25 L 160 25" fill="none" stroke="#334155" stroke-width="2.5" />
     <path d="M 200 25 L 250 25 L 250 70" fill="none" stroke="#334155" stroke-width="2.5" />
-    <line x1="168" y1="12" x2="168" y2="38" stroke="#334155" stroke-width="2" />
-    <line x1="160" y1="25" x2="168" y2="25" stroke="#334155" stroke-width="2.5" />
-    <line x1="178" y1="18" x2="178" y2="32" stroke="#334155" stroke-width="5" />
-    <line x1="188" y1="12" x2="188" y2="38" stroke="#334155" stroke-width="2" />
-    <line x1="188" y1="25" x2="200" y2="25" stroke="#334155" stroke-width="2.5" />
+    <!-- short thick plate: negative terminal, to the cathode; long thin plate: positive, to the anode -->
+    <line x1="160" y1="25" x2="172" y2="25" stroke="#334155" stroke-width="2.5" />
+    <line x1="172" y1="18" x2="172" y2="32" stroke="#334155" stroke-width="5" />
+    <line x1="186" y1="12" x2="186" y2="38" stroke="#334155" stroke-width="2" />
+    <line x1="186" y1="25" x2="200" y2="25" stroke="#334155" stroke-width="2.5" />
+    <text x="164" y="14" text-anchor="middle" font-size="10" fill="#4f46e5">−</text>
+    <text x="195" y="14" text-anchor="middle" font-size="10" fill="#dc2626">+</text>
     <text x="180" y="52" text-anchor="middle" font-size="9" fill="#475569"
       >nguồn một chiều {formatNumber(current)} A</text
     >

@@ -48,7 +48,7 @@
       };
     return {
       tone: /** @type {const} */ ('ok'),
-      text: `Cặp $${coupleTex(c.anode)}$ có thế điện cực chuẩn nhỏ hơn nên $\\mathrm{${c.anode.metal}}$ là anode (cực âm), bị oxi hoá; electron đi qua dây dẫn sang cathode (cực dương), nơi $\\mathrm{${c.cathode.ion.replace(/^2/, '')}}$ bị khử. Sức điện động chuẩn $E^\\circ_{\\text{pin}} = ${numTex(c.emf, 3)}$ V.`,
+      text: `Cặp $${coupleTex(c.anode)}$ có thế điện cực chuẩn nhỏ hơn nên ${c.anode.id === 'H' ? 'điện cực hydrogen' : `điện cực $\\mathrm{${c.anode.metal}}$`} là anode (cực âm), nơi $\\mathrm{${c.anode.metal}}$ bị oxi hoá; electron đi qua dây dẫn sang cathode (cực dương), nơi $\\mathrm{${c.cathode.ion.replace(/^2/, '')}}$ bị khử. Sức điện động chuẩn $E^\\circ_{\\text{pin}} = ${numTex(c.emf, 3)}$ V.`,
     };
   });
 
@@ -142,7 +142,7 @@
       stroke-width="12"
       stroke-linecap="round"
     />
-    <text x="180" y="80" text-anchor="middle" font-size="9" fill="#525252">cầu muối</text>
+    <text x="180" y="74" text-anchor="middle" font-size="9" fill="#525252">cầu muối</text>
 
     {#if c}
       <text
@@ -197,14 +197,21 @@
       >
     {/if}
     {#each [left, right] as id, i (i)}
+      {@const x = sx(couple(id).E)}
+      {@const other = sx(couple(i === 0 ? right : left).E)}
+      {@const near = c !== null && Math.abs(x - other) < 14}
       <circle
-        cx={sx(couple(id).E)}
+        cx={x}
         cy="40"
         r="5"
         fill={c && c.anode.id === id ? '#4f46e5' : c ? '#dc2626' : '#64748b'}
       />
-      <text x={sx(couple(id).E)} y="31" text-anchor="middle" font-size="8" fill="#0f172a"
-        >{id === 'H' ? 'H' : id}</text
+      <text
+        x={near ? (x < other || (x === other && i === 0) ? x - 2 : x + 2) : x}
+        y="31"
+        text-anchor={near ? (x < other || (x === other && i === 0) ? 'end' : 'start') : 'middle'}
+        font-size="8"
+        fill="#0f172a">{id}</text
       >
     {/each}
   </svg>
