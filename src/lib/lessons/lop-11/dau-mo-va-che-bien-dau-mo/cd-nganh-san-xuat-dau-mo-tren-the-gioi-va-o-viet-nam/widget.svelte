@@ -86,7 +86,7 @@
     <svg
       viewBox="0 0 {MAP.width} {MAP.height}"
       class="w-full rounded-xl border border-slate-200 bg-sky-50"
-      role="img"
+      role="group"
       aria-label="Sơ đồ các mỏ dầu khí, nhà máy lọc dầu và nhà máy dùng khí của Việt Nam (không theo tỉ lệ). Chọn địa điểm trong danh sách bên cạnh để xem thông tin."
     >
       <polygon points={OUTLINE_POINTS} fill="#fef3c7" stroke="#a16207" stroke-width="1" />

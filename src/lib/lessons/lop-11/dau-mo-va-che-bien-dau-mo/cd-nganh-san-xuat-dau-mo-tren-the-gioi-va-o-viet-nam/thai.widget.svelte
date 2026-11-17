@@ -4,6 +4,7 @@
   import { formatNumber, numTex } from '#lib/core/number-format.js';
   import SliderField from '#lib/core/slider-field.svelte';
   import { focusRing } from '#lib/core/ui.js';
+  import { scrollFocus } from '#lib/actions/scroll-focus.js';
   import ChemFormula from '#lib/domain/chem-formula.svelte';
   import { FUELS, co2For } from './engine.js';
 
@@ -61,7 +62,10 @@
     {/each}
   </div>
 
-  <div class="overflow-x-auto rounded-xl border border-slate-200 bg-white p-3">
+  <div
+    class="overflow-x-auto rounded-xl border border-slate-200 bg-white p-3 {focusRing}"
+    use:scrollFocus
+  >
     <Tex {math} display />
   </div>
   <FeedbackNote tone="info" text={note} />
