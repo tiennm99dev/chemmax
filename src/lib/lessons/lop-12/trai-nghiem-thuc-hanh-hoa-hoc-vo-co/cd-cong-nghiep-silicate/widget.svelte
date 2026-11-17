@@ -87,11 +87,23 @@
         >{productName}</text
       >
     {:else if load.length}
-      <text x="160" y="80" text-anchor="middle" font-size="11" fill="#1c1917"
-        >{loadedNames.join(' + ')}</text
+      <text
+        x="160"
+        y="80"
+        text-anchor="middle"
+        font-size="11"
+        fill="#1c1917"
+        textLength={loadedNames.join(' + ').length > 34 ? 196 : undefined}
+        lengthAdjust="spacingAndGlyphs">{loadedNames.join(' + ')}</text
       >
     {:else}
-      <text x="160" y="80" text-anchor="middle" font-size="11" fill="#fafaf9">lò trống</text>
+      <text
+        x="160"
+        y="80"
+        text-anchor="middle"
+        font-size="11"
+        fill={temperature >= 1200 ? '#1c1917' : '#fafaf9'}>lò trống</text
+      >
     {/if}
     <text x="160" y="14" text-anchor="middle" font-size="11" fill="#334155"
       >{formatNumber(temperature)} °C</text

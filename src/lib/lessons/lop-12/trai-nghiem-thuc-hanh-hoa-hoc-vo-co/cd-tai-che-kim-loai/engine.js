@@ -178,7 +178,7 @@ export const SCRAP_CARDS = [
   },
   {
     id: 'ong-dieu-hoa',
-    label: 'Ống dẫn nước của điều hoà, màu đỏ',
+    label: 'Ống dẫn gas của máy điều hoà, màu đỏ',
     bin: 'dong',
     why: 'Ống đồng dẫn nhiệt tốt, dễ uốn, dùng trong máy điều hoà, tủ lạnh.',
   },

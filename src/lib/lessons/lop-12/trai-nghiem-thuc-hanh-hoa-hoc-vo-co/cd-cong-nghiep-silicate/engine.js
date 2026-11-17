@@ -109,7 +109,7 @@ export function fire(load, t) {
     return {
       product: null,
       tone: 'warn',
-      text: 'Thiếu soda làm chất trợ chảy: $\\mathrm{SiO_2}$ tinh khiết chỉ nóng chảy ở trên $1\\,700$ °C, lò này không đạt tới. Thuỷ tinh thạch anh phải nấu ở nhiệt độ rất cao nên đắt.',
+      text: 'Thiếu soda làm chất trợ chảy: $\\mathrm{SiO_2}$ tinh khiết chỉ nóng chảy ở trên $1\\,700$ °C, lò này không đạt tới. Thuỷ tinh thạch anh phải nấu ở nhiệt độ rất cao nên đắt. Nếu định làm clinker thì cần đá vôi với đất sét, không phải cát.',
     };
   }
 

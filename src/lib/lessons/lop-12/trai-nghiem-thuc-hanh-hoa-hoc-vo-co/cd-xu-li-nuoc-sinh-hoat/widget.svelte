@@ -1,4 +1,5 @@
 <script>
+  import { tick } from 'svelte';
   import LiveRichText from '#lib/components/live-rich-text.svelte';
   import FeedbackNote from '#lib/core/feedback-note.svelte';
   import { formatNumber } from '#lib/core/number-format.js';
@@ -61,10 +62,26 @@
     return { tone: /** @type {const} */ ('warn'), text: `Chưa đạt: ${why.join(', ')}.` };
   });
 
-  /** @param {string} id @param {-1 | 1} step */
-  function move(id, step) {
+  /** @type {HTMLOListElement | undefined} */
+  let list = $state();
+  let moved = $state('');
+
+  /**
+   * Move a layer and keep keyboard focus on the arrow that was pressed (or the
+   * other arrow once the layer reaches the top or the bottom), since the keyed
+   * list moves the button in the DOM and the browser drops its focus.
+   * @param {string} id @param {-1 | 1} step
+   */
+  async function move(id, step) {
     order = moveLayer(order, id, step);
     result = null;
+    moved = `Lớp ${nameOf(id).toLowerCase()} giờ ở vị trí thứ ${order.indexOf(id) + 1} từ trên xuống.`;
+    await tick();
+    /** @param {number} s */
+    const at = (s) =>
+      list?.querySelector(`button[data-layer="${id}"][data-step="${s}"]:not(:disabled)`);
+    const target = at(step) ?? at(-step);
+    if (target instanceof HTMLButtonElement) target.focus();
   }
 
   /** @param {string} id */
@@ -80,7 +97,7 @@
 
 <div class="space-y-3">
   <div class="grid gap-3 sm:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
-    <ol class="space-y-1.5" aria-label="Các lớp trong chai, từ trên xuống">
+    <ol bind:this={list} class="space-y-1.5" aria-label="Các lớp trong chai, từ trên xuống">
       {#each order as id, i (id)}
         {@const off = removed.includes(id)}
         <li
@@ -99,27 +116,31 @@
           <button
             type="button"
             class="min-h-11 min-w-11 rounded-lg border border-slate-300 bg-white {focusRing} disabled:opacity-40"
-            aria-label="Đưa lớp {nameOf(id).toLowerCase()} lên trên"
+            aria-label="Đưa lớp {nameOf(id).toLowerCase()} (thứ {i + 1} từ trên) lên trên"
+            data-layer={id}
+            data-step="-1"
             disabled={i === 0}
             onclick={() => move(id, -1)}>↑</button
           >
           <button
             type="button"
             class="min-h-11 min-w-11 rounded-lg border border-slate-300 bg-white {focusRing} disabled:opacity-40"
-            aria-label="Đưa lớp {nameOf(id).toLowerCase()} xuống dưới"
+            aria-label="Đưa lớp {nameOf(id).toLowerCase()} (thứ {i + 1} từ trên) xuống dưới"
+            data-layer={id}
+            data-step="1"
             disabled={i === order.length - 1}
             onclick={() => move(id, 1)}>↓</button
           >
           <button
             type="button"
             class="min-h-11 rounded-lg border border-slate-300 bg-white px-2 text-xs {focusRing}"
-            aria-pressed={!off}
-            aria-label="Có lớp {nameOf(id).toLowerCase()} trong chai"
+            aria-label="{off ? 'Thêm' : 'Bỏ'} lớp {nameOf(id).toLowerCase()} (thứ {i + 1} từ trên)"
             onclick={() => toggle(id)}>{off ? 'Thêm' : 'Bỏ'}</button
           >
         </li>
       {/each}
     </ol>
+    <p class="sr-only" aria-live="polite">{moved}</p>
 
     <svg
       viewBox="0 0 160 {60 + LAYERS.length * LAYER_H + 90}"
