@@ -138,7 +138,7 @@ export default {
   explore: {
     title: 'Bản đồ ứng dụng của phức chất',
     instruction:
-      'Ở chế độ "Khám phá", chọn lĩnh vực rồi bấm từng thẻ để xem nguyên tử trung tâm, phối tử, số phối trí và vai trò của phức chất. Ở chế độ "Đoán kim loại", đọc vai trò của phức chất rồi chọn kim loại làm nguyên tử trung tâm.',
+      'Ở chế độ "Khám phá", chọn lĩnh vực rồi bấm từng thẻ để xem nguyên tử trung tâm, phối tử, số phối trí và vai trò của phức chất. Ở chế độ "Đoán kim loại", đọc mô tả phức chất (không nêu tên kim loại) rồi chọn kim loại làm nguyên tử trung tâm.',
   },
   examples: [
     {

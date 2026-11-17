@@ -24,6 +24,7 @@ export const AREAS = [
  * @property {string} ligands rich text
  * @property {number} cn coordination number
  * @property {string} role rich text
+ * @property {string} clue rich text for the game: the role told without naming the metal
  */
 
 /** @type {Card[]} */
@@ -38,6 +39,7 @@ export const CARDS = [
       '4 nguyên tử N của vòng porphyrin (nhóm heme), 1 nguyên tử N của gốc histidine trong protein globin và 1 phân tử $\\mathrm{O_2}$',
     cn: 6,
     role: 'Vận chuyển oxygen trong máu: $\\mathrm{O_2}$ gắn vào $\\mathrm{Fe^{2+}}$ ở phổi và được nhả ra ở các mô. Khí CO gắn vào $\\mathrm{Fe^{2+}}$ bền hơn $\\mathrm{O_2}$ khoảng 200 lần nên gây ngộ độc.',
+    clue: 'Phức chất trong hồng cầu, vận chuyển oxygen từ phổi tới các mô. Khí CO chiếm chỗ của oxygen trong phức chất này nên gây ngộ độc.',
   },
   {
     id: 'chlorophyll',
@@ -48,6 +50,7 @@ export const CARDS = [
     ligands: '4 nguyên tử N của vòng chlorin (một vòng kiểu porphyrin)',
     cn: 4,
     role: 'Sắc tố xanh của lá cây, hấp thụ ánh sáng đỏ và xanh tím để thực hiện quang hợp.',
+    clue: 'Sắc tố xanh của lá cây, hấp thụ ánh sáng đỏ và xanh tím để thực hiện quang hợp.',
   },
   {
     id: 'vitamin-b12',
@@ -59,6 +62,7 @@ export const CARDS = [
       '4 nguyên tử N của vòng corrin, 1 nguyên tử N của nhóm benzimidazole và 1 nhóm như $\\mathrm{CN^-}$ hoặc $\\mathrm{CH_3}$',
     cn: 6,
     role: 'Cần cho sự tạo thành hồng cầu và hoạt động của hệ thần kinh; thiếu vitamin B12 gây thiếu máu.',
+    clue: 'Vitamin cần cho sự tạo thành hồng cầu và hoạt động của hệ thần kinh; thiếu nó gây thiếu máu.',
   },
   {
     id: 'cisplatin',
@@ -69,6 +73,7 @@ export const CARDS = [
     ligands: '2 ion $\\mathrm{Cl^-}$ và 2 phân tử $\\mathrm{NH_3}$ ở vị trí cis, dạng vuông phẳng',
     cn: 4,
     role: 'Thuốc điều trị ung thư: liên kết với DNA của tế bào ung thư, ngăn tế bào nhân lên.',
+    clue: 'Thuốc điều trị ung thư dạng vuông phẳng: liên kết với DNA của tế bào ung thư, ngăn tế bào nhân lên.',
   },
   {
     id: 'edta-chi',
@@ -79,6 +84,7 @@ export const CARDS = [
     ligands: '1 phối tử $\\mathrm{EDTA^{4-}}$ sáu càng, trong $\\mathrm{Na_2[Ca(EDTA)]}$',
     cn: 6,
     role: 'Ion $\\mathrm{Pb^{2+}}$ trong cơ thể thay thế $\\mathrm{Ca^{2+}}$, tạo $\\mathrm{[Pb(EDTA)]^{2-}}$ bền hơn, tan trong nước và được đào thải qua nước tiểu.',
+    clue: 'Thuốc tiêm giải độc chì chứa phối tử EDTA sáu càng: ion chì thay thế ion kim loại trung tâm của thuốc, tạo phức chất bền hơn, tan và được đào thải qua nước tiểu.',
   },
   {
     id: 'chuan-do-edta',
@@ -90,6 +96,7 @@ export const CARDS = [
       '1 phối tử $\\mathrm{EDTA^{4-}}$ sáu càng (cũng tạo phức tương tự với $\\mathrm{Mg^{2+}}$)',
     cn: 6,
     role: 'EDTA tạo phức với $\\mathrm{Ca^{2+}}$ và $\\mathrm{Mg^{2+}}$ theo tỉ lệ mol 1 : 1, dùng để xác định độ cứng của nước bằng phép chuẩn độ.',
+    clue: 'EDTA tạo phức chất tỉ lệ mol 1 : 1 với ion kim loại có nhiều trong đá vôi và xương; cùng với ion magnesium, ion này gây ra độ cứng của nước.',
   },
   {
     id: 'nhan-biet-cu',
@@ -101,6 +108,7 @@ export const CARDS = [
       '4 phân tử $\\mathrm{NH_3}$ và 2 phân tử $\\mathrm{H_2O}$, trong $\\mathrm{[Cu(NH_3)_4(H_2O)_2]^{2+}}$',
     cn: 6,
     role: 'Nhỏ dung dịch $\\mathrm{NH_3}$ đến dư vào dung dịch chứa $\\mathrm{Cu^{2+}}$: kết tủa xanh tan, tạo dung dịch xanh lam đậm đặc trưng.',
+    clue: 'Nhỏ dung dịch $\\mathrm{NH_3}$ đến dư vào dung dịch muối của kim loại này: kết tủa xanh tan, tạo dung dịch xanh lam đậm đặc trưng.',
   },
   {
     id: 'nhan-biet-fe',
@@ -112,6 +120,7 @@ export const CARDS = [
       '1 ion $\\mathrm{SCN^-}$ và 5 phân tử $\\mathrm{H_2O}$, trong $\\mathrm{[Fe(SCN)(H_2O)_5]^{2+}}$',
     cn: 6,
     role: 'Thêm dung dịch KSCN vào dung dịch chứa $\\mathrm{Fe^{3+}}$ thấy màu đỏ máu, rất nhạy, dùng để nhận biết và định lượng $\\mathrm{Fe^{3+}}$.',
+    clue: 'Thêm dung dịch KSCN vào dung dịch chứa ion của kim loại này (số oxi hoá +3) thấy màu đỏ máu, rất nhạy.',
   },
   {
     id: 'tach-vang',
@@ -122,6 +131,7 @@ export const CARDS = [
     ligands: '2 ion $\\mathrm{CN^-}$, trong $\\mathrm{[Au(CN)_2]^-}$ dạng đường thẳng',
     cn: 2,
     role: 'Quặng vàng được ngâm trong dung dịch NaCN có không khí; vàng tan thành $\\mathrm{Na[Au(CN)_2]}$, sau đó dùng Zn đẩy vàng ra khỏi phức chất.',
+    clue: 'Quặng nghèo được ngâm trong dung dịch NaCN có sục không khí: kim loại quý tan thành phức chất cyanide dạng đường thẳng, rồi được kẽm đẩy ra khỏi dung dịch.',
   },
   {
     id: 'trang-guong',
@@ -132,6 +142,7 @@ export const CARDS = [
     ligands: '2 phân tử $\\mathrm{NH_3}$, trong $\\mathrm{[Ag(NH_3)_2]^+}$ (thuốc thử Tollens)',
     cn: 2,
     role: 'Phức chất bạc bị glucose hoặc aldehyde khử, tạo lớp bạc mỏng sáng bám lên mặt kính.',
+    clue: 'Thuốc thử Tollens: phức chất ammine của kim loại này bị glucose hoặc aldehyde khử, tạo lớp kim loại mỏng sáng bám lên mặt kính.',
   },
   {
     id: 'xanh-prussian',
@@ -143,6 +154,7 @@ export const CARDS = [
       '6 ion $\\mathrm{CN^-}$ quanh mỗi ion $\\mathrm{Fe^{2+}}$, trong $\\mathrm{Fe_4[Fe(CN)_6]_3}$',
     cn: 6,
     role: 'Chất màu xanh đậm bền, dùng trong sơn, mực in và men gốm; cũng dùng làm thuốc giải độc caesium và thallium.',
+    clue: 'Chất màu xanh đậm bền dùng trong sơn, mực in và men gốm: phối tử $\\mathrm{CN^-}$ bao quanh ion của kim loại này.',
   },
 ];
 
@@ -185,10 +197,9 @@ export const HINTS = {
   'chuan-do-edta': 'độ cứng của nước do ion của kim loại này và magnesium gây ra.',
   'nhan-biet-cu': 'dung dịch muối của kim loại này có màu xanh.',
   'nhan-biet-fe': 'ion cần nhận biết có trong muối $\\mathrm{FeCl_3}$.',
-  'tach-vang': 'đây chính là kim loại được tách ra.',
+  'tach-vang': 'kim loại quý có kí hiệu bắt nguồn từ tên Latin aurum.',
   'trang-guong': 'lớp kim loại sáng bám trên kính.',
-  'xanh-prussian':
-    'phối tử $\\mathrm{CN^-}$ bao quanh ion của kim loại phổ biến nhất trong sắt thép.',
+  'xanh-prussian': 'kim loại phổ biến nhất trong gang và thép.',
 };
 
 /** Cards that have their own hint. */

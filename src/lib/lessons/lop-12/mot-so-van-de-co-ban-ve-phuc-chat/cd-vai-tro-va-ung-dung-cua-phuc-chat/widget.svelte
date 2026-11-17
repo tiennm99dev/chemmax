@@ -66,7 +66,7 @@
           }
         : {
             tone: /** @type {const} */ ('info'),
-            text: 'Đọc vai trò của phức chất rồi chọn kim loại làm nguyên tử trung tâm.',
+            text: 'Đọc mô tả phức chất rồi chọn kim loại làm nguyên tử trung tâm.',
           };
     return {
       tone: /** @type {const} */ ('info'),
@@ -119,10 +119,8 @@
         {AREAS.find((a) => a.value === quiz.area)?.label} · thẻ {(round % CARDS.length) +
           1}/{CARDS.length}
       </p>
-      <h3 class="text-lg font-bold text-slate-800">{quiz.title}</h3>
-      <p class="text-sm">
-        <span class="font-semibold">Vai trò:</span>
-        <LiveRichText text={quiz.role} />
+      <p class="text-base text-slate-800">
+        <LiveRichText text={quiz.clue} />
       </p>
     </article>
     <div role="group" aria-label="Kim loại làm nguyên tử trung tâm" class="flex flex-wrap gap-2">

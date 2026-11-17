@@ -9,6 +9,24 @@ describe('application map', () => {
     expect(new Set(CARDS.map((c) => c.id)).size).toBe(CARDS.length);
   });
 
+  it('keeps the metal out of every game clue', () => {
+    /** @type {Record<string, string[]>} */
+    const words = {
+      Fe: ['Fe', 'sắt', 'iron'],
+      Mg: ['Mg', 'magnesium'],
+      Co: ['Co^', 'Co ', 'cobalt'],
+      Pt: ['Pt', 'platin'],
+      Ca: ['Ca', 'calcium'],
+      Cu: ['Cu', 'đồng', 'copper'],
+      Au: ['Au', 'vàng', 'gold'],
+      Ag: ['Ag', 'bạc', 'silver'],
+    };
+    const leaks = CARDS.filter((c) => words[c.metal].some((w) => c.clue.includes(w))).map(
+      (c) => c.id,
+    );
+    expect(leaks).toEqual([]);
+  });
+
   it('matches the coordination numbers of the lesson', () => {
     expect(card('hemoglobin').cn).toBe(6);
     expect(card('cisplatin').cn).toBe(4);
