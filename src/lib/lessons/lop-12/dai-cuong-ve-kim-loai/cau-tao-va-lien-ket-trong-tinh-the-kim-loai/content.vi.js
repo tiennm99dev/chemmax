@@ -201,7 +201,7 @@ export default {
       answers: [0, 1, 3, 5],
       hints: [
         'Nguyên tố khối s (trừ H, He), khối d đều là kim loại; nhóm IIIA trừ B là kim loại.',
-        'Si (nhóm IVA, chu kì 3) và S (nhóm VIA) là phi kim.',
+        'Xác định khối và nhóm của từng nguyên tố; ở nhóm IVA, VIA, các nguyên tố ở chu kì nhỏ là phi kim.',
       ],
       solution:
         'Na (IA), Ca (IIA), Al (IIIA) và Fe (khối d, nhóm VIIIB) là kim loại; Si và S là phi kim.',
@@ -268,7 +268,7 @@ export default {
     {
       type: 'choice',
       prompt: 'Ở nhiệt độ phòng, kim loại nào ở thể lỏng?',
-      options: ['Thuỷ ngân (Hg)', 'Sodium (Na)', 'Copper (Cu)', 'Gallium (Ga)'],
+      options: ['Thuỷ ngân (Hg)', 'Sodium (Na)', 'Copper (Cu)', 'Iron (Fe)'],
       answer: 0,
       hints: ['Kim loại này được dùng trong nhiệt kế kiểu cũ.'],
       solution: 'Ở nhiệt độ phòng, các kim loại đều ở thể rắn, riêng thuỷ ngân (Hg) ở thể lỏng.',

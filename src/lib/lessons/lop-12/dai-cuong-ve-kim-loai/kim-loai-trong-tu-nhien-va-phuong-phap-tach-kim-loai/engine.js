@@ -40,17 +40,17 @@ export const SOURCES = [
     main: 'dpnc',
   },
   {
-    id: 'Na',
-    activity: 'strong',
-    found: 'muối $\\mathrm{NaCl}$ trong nước biển, mỏ muối',
-    ways: { dpnc: { equation: '2NaCl → 2Na + Cl2↑', condition: 'điện phân nóng chảy' } },
-    main: 'dpnc',
-  },
-  {
     id: 'Ca',
     activity: 'strong',
     found: 'đá vôi $\\mathrm{CaCO_3}$, thạch cao $\\mathrm{CaSO_4 \\cdot 2H_2O}$',
     ways: { dpnc: { equation: 'CaCl2 → Ca + Cl2↑', condition: 'điện phân nóng chảy' } },
+    main: 'dpnc',
+  },
+  {
+    id: 'Na',
+    activity: 'strong',
+    found: 'muối $\\mathrm{NaCl}$ trong nước biển, mỏ muối',
+    ways: { dpnc: { equation: '2NaCl → 2Na + Cl2↑', condition: 'điện phân nóng chảy' } },
     main: 'dpnc',
   },
   {
@@ -183,14 +183,14 @@ function whyNot(s, method) {
     if (method === 'nhiet')
       return `${s.id} là kim loại hoạt động mạnh: các chất khử C, CO, $\\mathrm{H_2}$ không khử được oxide của ${s.id} thành kim loại.`;
     if (method === 'thuy')
-      return `Không có kim loại nào đẩy được ${s.id} ra khỏi dung dịch muối: các kim loại mạnh hơn ${s.id} đều tác dụng với nước trước.`;
+      return `Ion của ${s.id} rất khó bị khử: trong dung dịch, kim loại mạnh hơn ${s.id} (nếu có) khử nước trước, nên không đẩy được ${s.id} ra khỏi dung dịch muối.`;
     return `Khi điện phân dung dịch, nước bị khử ở cathode thay cho ${ion}, nên thu được khí $\\mathrm{H_2}$ chứ không thu được ${s.id}.`;
   }
   if (method === 'dpnc')
     return `Điện phân nóng chảy tốn rất nhiều năng lượng nên chỉ dùng cho kim loại hoạt động mạnh (từ K đến Al). ${s.id} được tách bằng cách rẻ hơn.`;
   if (method === 'thuy')
     return `Thuỷ luyện thường dùng cho kim loại hoạt động yếu như Cu, Ag, Au; ${s.id} không được tách theo cách này.`;
-  return `${s.id} không có trong quặng ở dạng oxide dễ khử; người ta không tách ${s.id} bằng nhiệt luyện.`;
+  return `${s.id} tồn tại chủ yếu ở dạng đơn chất hoặc hợp chất lẫn rất ít trong quặng; người ta hoà tan ${s.id} bằng dung dịch thích hợp rồi khử (thuỷ luyện) chứ không dùng nhiệt luyện.`;
 }
 
 /**

@@ -14,7 +14,7 @@ describe('extraction methods', () => {
 
   it('keeps molten electrolysis for the metals from K to Al only', () => {
     const molten = SOURCES.filter((s) => verdict(s.id, 'dpnc').ok).map((s) => s.id);
-    expect(molten).toEqual(['K', 'Na', 'Ca', 'Mg', 'Al']);
+    expect(molten).toEqual(['K', 'Ca', 'Na', 'Mg', 'Al']);
   });
 
   it('never accepts reduction by carbon or a solution method for an active metal', () => {
@@ -30,5 +30,10 @@ describe('extraction methods', () => {
     const missing = SOURCES.filter((s) => !s.ways[s.main]).map((s) => s.id);
     expect(missing).toEqual([]);
     expect(verdict('Cu', 'thuy').text).toContain('nhiệt luyện');
+  });
+
+  it('orders the metals by falling reducing power', () => {
+    const order = ['K', 'Ca', 'Na', 'Mg', 'Al', 'Zn', 'Fe', 'Sn', 'Pb', 'Cu', 'Ag', 'Au'];
+    expect(SOURCES.map((s) => s.id)).toEqual(order);
   });
 });
