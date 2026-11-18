@@ -2,6 +2,7 @@
 import { error } from '@sveltejs/kit';
 import { errorPage } from '#lib/core/copy.vi.js';
 import { gradeSlug, grades, lesson } from '#lib/curriculum/index.js';
+import { termsForLesson } from '#lib/core/glossary.js';
 import { renderLesson } from '#lib/core/render-content.server.js';
 
 /** @typedef {import('#lib/core/content-schema.js').LessonContent} LessonContent */
@@ -35,11 +36,15 @@ export function entries() {
 
 /**
  * Renders the lesson's TeX to HTML here, so the client never loads KaTeX for
- * content. A stub returns `content: null`.
+ * content, and picks the lesson's glossary entries, so glossary data never
+ * ships to the client. A stub returns `content: null`.
  * @type {import('./$types').PageServerLoad}
  */
 export function load({ params }) {
   if (!lesson(params.grade, params.chapter, params.lesson)) error(404, errorPage.notFound);
   const content = contents[`${params.grade}/${params.chapter}/${params.lesson}`];
-  return { content: content ? renderLesson(content) : null };
+  return {
+    content: content ? renderLesson(content) : null,
+    terms: termsForLesson(Number(params.grade.slice('lop-'.length)), params.chapter, params.lesson),
+  };
 }

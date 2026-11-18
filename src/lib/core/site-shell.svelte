@@ -43,6 +43,11 @@
           href={resolve('/')}
           class="rounded px-2 py-2 text-sm text-slate-600 hover:underline {focusRing}">{nav.home}</a
         >
+        <a
+          href={resolve(/** @type {import('$app/types').Path} */ ('/thuat-ngu/'))}
+          class="rounded px-2 py-2 text-sm text-slate-600 hover:underline {focusRing}"
+          >{nav.glossary}</a
+        >
       </nav>
     </div>
   </header>

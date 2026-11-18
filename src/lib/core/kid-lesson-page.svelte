@@ -11,6 +11,7 @@
   import PracticeBlock from './practice-block.svelte';
   import PrevNext from './prev-next.svelte';
   import KidCard from './kid/kid-card.svelte';
+  import GlossaryTerms from './glossary-terms.svelte';
   import { crumbs } from './crumbs.js';
   import { scrollRegions } from '#lib/actions/scroll-focus.js';
   import { lesson as copy, readAloud } from './copy.vi.js';
@@ -129,6 +130,8 @@
         </ul>
       </KidCard>
     {/if}
+
+    <GlossaryTerms terms={props.terms ?? []} kid />
 
     <PrevNext {prev} {next} />
   </div>

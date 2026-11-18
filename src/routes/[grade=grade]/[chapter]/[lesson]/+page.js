@@ -51,7 +51,7 @@ export async function load({ params, data }) {
   const l = lesson(params.grade, params.chapter, params.lesson);
   if (!g || !c || !l) error(404, errorPage.notFound);
   const { prev, next } = prevNext(g.grade, c.slug, l.slug);
-  const base = { grade: g, chapter: c, lesson: l, prev, next };
+  const base = { grade: g, chapter: c, lesson: l, prev, next, terms: data.terms ?? [] };
   if (!data.content) return { ...base, content: null, widget: null, widgets: {} };
   return {
     ...base,

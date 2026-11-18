@@ -16,6 +16,7 @@
     next={data.next}
     widget={data.widget}
     widgets={data.widgets}
+    terms={data.terms}
   />
 {:else}
   <StubPage

@@ -5,6 +5,7 @@
   import { gradeSlug, grades, strands } from '#lib/curriculum/index.js';
   import SiteShell from '#lib/core/site-shell.svelte';
   import { bandOf } from '#lib/core/band.js';
+  import { glossary } from '#lib/core/copy.vi.js';
   import { hubCard, hubCardShape } from '#lib/core/ui.js';
 
   const copy = t();
@@ -109,5 +110,16 @@
         </li>
       {/each}
     </ul>
+  </section>
+
+  <section aria-labelledby="glossary" class="pb-6">
+    <h2 id="glossary" class="sr-only">{glossary.title}</h2>
+    <a
+      href={resolve(/** @type {import('$app/types').Path} */ ('/thuat-ngu/'))}
+      class="{cardClass} sm:max-w-sm"
+    >
+      <span class="font-bold text-slate-900">{glossary.title}</span>
+      <span class="text-sm text-slate-500">{glossary.blurb}</span>
+    </a>
   </section>
 </SiteShell>

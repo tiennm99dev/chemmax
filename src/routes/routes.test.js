@@ -8,6 +8,7 @@ import * as lessonServer from './[grade=grade]/[chapter]/[lesson]/+page.server.j
 import * as lessonRoute from './[grade=grade]/[chapter]/[lesson]/+page.js';
 import * as strandRoute from './[strand=strand]/+page.js';
 import * as legacyRoute from './[strand=strand]/[slug]/+page.js';
+import * as glossaryServer from './thuat-ngu/+page.server.js';
 import { grade as matchGrade } from '../params/grade.js';
 import { strand as matchStrand } from '../params/strand.js';
 
@@ -110,7 +111,7 @@ describe('lesson loads', () => {
   const params = { grade: `lop-${g.grade}`, chapter: c.slug, lesson: l.slug };
 
   it('returns null content for an unwritten lesson and 404s outside the curriculum', () => {
-    expect(run(lessonServer.load, UNWRITTEN)).toEqual({ content: null });
+    expect(run(lessonServer.load, UNWRITTEN)).toEqual({ content: null, terms: [] });
     expect(statusOf(() => run(lessonServer.load, { ...params, lesson: 'missing' }))).toBe(404);
   });
 
@@ -119,6 +120,23 @@ describe('lesson loads', () => {
     expect(out).toMatchObject({ grade: g, chapter: c, lesson: l, content: null, widget: null });
     expect(out.prev).toBeNull();
     expect(out.next?.lesson).toBe(c.lessons[1]);
+  });
+});
+
+describe('glossary page', () => {
+  it('owns /thuat-ngu/: no strand or chapter takes the slug', () => {
+    expect(matchStrand('thuat-ngu')).toBeUndefined();
+    expect(strands().map((s) => s.slug)).not.toContain('thuat-ngu');
+    for (const g of grades()) {
+      expect(g.chapters.map((c) => c.slug)).not.toContain('thuat-ngu');
+    }
+  });
+
+  it('loads one section per curriculum grade', () => {
+    const out = /** @type {{ sections: Array<{ grade: number }> }} */ (
+      run(glossaryServer.load, {})
+    );
+    expect(out.sections.map((s) => s.grade)).toEqual(grades().map((g) => g.grade));
   });
 });
 

@@ -38,7 +38,7 @@ lesson folders are independent pages. Code two lessons need goes in the
 chapter's `_shared/`, or comes from core.
 
 Never edit anything else: not `src/lib/core/`, `src/lib/curriculum/`,
-`src/lib/domain/`, `src/lib/site/`, `src/routes/`, `src/params/`, `scripts/`, configs,
+`src/lib/domain/`, `src/lib/site/`, `src/lib/glossary/`, `src/routes/`, `src/params/`, `scripts/`, configs,
 `package.json`, workflows or another chapter. No registry, route or hub needs an
 edit: a lesson goes live when its `content.vi.js` exists. Before writing a
 helper, check core (section 6): number, integer, fraction and decimal writing

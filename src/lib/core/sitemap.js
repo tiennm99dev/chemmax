@@ -9,6 +9,7 @@ import { gradeSlug, grades, lessonPath, strands } from '#lib/curriculum/index.js
 export function sitemapPaths() {
   return [
     '/',
+    '/thuat-ngu/',
     ...grades().flatMap((g) => [
       `/${gradeSlug(g.grade)}/`,
       ...g.chapters.flatMap((c) => [

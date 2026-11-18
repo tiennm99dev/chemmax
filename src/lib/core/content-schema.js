@@ -613,4 +613,5 @@ export function checkMinimums(content, ctx) {
  * @property {import('#lib/curriculum/index.js').LessonRef | null} next
  * @property {import('svelte').Component<any> | null} [widget] The lesson's `widget.svelte`.
  * @property {Record<string, import('svelte').Component<any>>} [widgets] `*.widget.svelte` by name.
+ * @property {import('./glossary.js').LessonTerm[]} [terms] Glossary entries this lesson defines.
  */

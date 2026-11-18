@@ -6,6 +6,7 @@
 
 export const nav = {
   home: 'Trang chủ',
+  glossary: 'Thuật ngữ',
   skip: 'Bỏ qua đến nội dung',
   breadcrumbs: 'Đường dẫn',
   main: 'Điều hướng chính',
@@ -163,6 +164,29 @@ export const hub = {
   preview: 'Phần tương tác dự kiến',
   stubNote: 'Bài này đang được soạn. Em có thể xem các bài khác trong chương.',
   backToChapter: 'Về chương',
+};
+
+/** The "Thuật ngữ" page and the links to it. */
+export const glossary = {
+  title: 'Thuật ngữ',
+  lead: 'Giải thích ngắn gọn các thuật ngữ em gặp trong bài học.',
+  /** The home page card under the title. */
+  blurb: 'Tra nhanh nghĩa của các thuật ngữ trong từng lớp.',
+  empty: 'Thuật ngữ đang được cập nhật.',
+  jump: 'Chọn lớp',
+  search: 'Tìm thuật ngữ',
+  /** @param {number} n */
+  found: (n) => `Tìm thấy ${n} thuật ngữ`,
+  none: 'Không tìm thấy thuật ngữ nào.',
+  /** @param {number} n */
+  count: (n) => `${n} thuật ngữ`,
+  learnedIn: 'Học ở:',
+  seeAlso: 'Xem thêm:',
+  aka: 'Tên khác, kí hiệu:',
+  /** @param {string} grade the grade's label, "Lớp N" */
+  forGrade: (grade) => `Thuật ngữ ${grade.toLowerCase()}`,
+  inLesson: 'Thuật ngữ trong bài',
+  all: 'Xem tất cả thuật ngữ',
 };
 
 /** The error page, and the message of every 404 a route throws. */
