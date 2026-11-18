@@ -199,3 +199,19 @@ export function prettyFormula(text) {
     )
     .join('');
 }
+
+/**
+ * Bare TeX of a condensed formula, to be placed inside `$...$`: every count
+ * after a symbol or bracket becomes a braced subscript, a bond mark (`=`,
+ * `-`, `–`) is braced so it is not read as an operator, and an optional
+ * caret charge becomes a superscript. "CH2=CHCOONa" →
+ * "\mathrm{CH_{2}{=}CHCOONa}", "[Cu(NH3)4]^2+" → "\mathrm{[Cu(NH_{3})_{4}]^{2+}}".
+ * @param {string} formula
+ */
+export function formulaTex(formula) {
+  const [body, charge] = formula.split('^');
+  const tex = body
+    .replace(/([A-Za-z)\]])(\d+)/g, '$1_{$2}')
+    .replace(/[=–-]/g, (c) => (c === '=' ? '{=}' : '{-}'));
+  return `\\mathrm{${tex}${charge ? `^{${charge}}` : ''}}`;
+}

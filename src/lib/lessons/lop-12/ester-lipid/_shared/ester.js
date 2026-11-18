@@ -250,15 +250,5 @@ export const FATS = [
   },
 ];
 
-/**
- * A condensed formula as TeX: digits after a symbol or a bracket become
- * subscripts and bond marks are braced, so 'CH2=CHCOONa' becomes
- * '\mathrm{CH_{2}{=}CHCOONa}'.
- * @param {string} formula
- */
-export function texFormula(formula) {
-  const body = formula
-    .replace(/([A-Za-z)\]])(\d+)/g, '$1_{$2}')
-    .replace(/[=–-]/g, (c) => (c === '=' ? '{=}' : '{-}'));
-  return `\\mathrm{${body}}`;
-}
+/** A condensed formula as TeX, `\mathrm{CH_{2}{=}CHCOONa}`. */
+export { formulaTex as texFormula } from '#lib/domain/formula.js';

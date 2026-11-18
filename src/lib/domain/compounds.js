@@ -3,6 +3,7 @@
  * (oxygen, fluorine and the noble gases have none), as the KNTT Hoá học 10
  * book lists them for period 3, with the acid–base character of each.
  */
+import { formulaTex as bareFormulaTex } from './formula.js';
 
 /** @typedef {'base' | 'luong-tinh' | 'acid'} Nature */
 
@@ -93,5 +94,5 @@ export function oxideFormula(symbol, valence) {
  * @param {string} formula
  */
 export function formulaTex(formula) {
-  return `$\\mathrm{${formula.replace(/([A-Za-z)\]])(\d+)/g, '$1_{$2}')}}$`;
+  return `$${bareFormulaTex(formula)}$`;
 }

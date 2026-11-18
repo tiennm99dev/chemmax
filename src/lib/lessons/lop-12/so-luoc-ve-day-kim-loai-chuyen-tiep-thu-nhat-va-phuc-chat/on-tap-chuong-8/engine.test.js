@@ -97,7 +97,7 @@ describe('the chapter review drill', () => {
       const c = complexChargeSkill.make(rng(seed));
       const charge = Number(/\^\{(\d)\+\}/.exec(c.prompt)?.[1]);
       const n = Number(/với (\d) phối tử/.exec(c.prompt)?.[1]);
-      const ligandCharge = /NH_3|H_2O/.test(c.prompt.split('phối tử')[1]) ? 0 : -1;
+      const ligandCharge = /NH_\{3\}|H_\{2\}O/.test(c.prompt.split('phối tử')[1]) ? 0 : -1;
       if (c.answer !== charge + n * ligandCharge) bad.push(['complex', seed]);
 
       const k = centreChargeSkill.make(rng(seed));

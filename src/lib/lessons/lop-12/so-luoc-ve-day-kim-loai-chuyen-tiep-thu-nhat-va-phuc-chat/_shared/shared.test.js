@@ -104,7 +104,7 @@ describe('complexes', () => {
       ]),
     ).toBe('[PtCl2(NH3)2]');
     expect(chargeSup(-1)).toBe('-');
-    expect(formulaTex('[Cu(NH3)4(H2O)2]^2+')).toBe('\\mathrm{[Cu(NH_3)_4(H_2O)_2]^{2+}}');
+    expect(formulaTex('[Cu(NH3)4(H2O)2]^2+')).toBe('\\mathrm{[Cu(NH_{3})_{4}(H_{2}O)_{2}]^{2+}}');
   });
 
   it('builds every known complex from its centre and ligands, with a matching shape', () => {

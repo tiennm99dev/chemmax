@@ -6,6 +6,16 @@
  * uses (ligands in alphabetical order, "-ido" anions, "-ate" anionic
  * complexes, oxidation number in Roman numerals).
  */
+import { roman } from '#lib/domain/compounds.js';
+import {
+  CENTRE_BASE,
+  LIGAND_BASE,
+  chargeSup,
+  complexCharge as chargeOf,
+} from '#lib/domain/complex.js';
+
+export { chargeSup, roman };
+export { formulaTex } from '#lib/domain/formula.js';
 
 /**
  * @typedef {object} Ligand
@@ -21,12 +31,12 @@
 
 /** @type {Ligand[]} */
 export const LIGANDS = [
-  { id: 'NH3', formula: 'NH3', ion: 'NH3', name: 'ammine', charge: 0, dentate: 1, donor: 'N' },
-  { id: 'H2O', formula: 'H2O', ion: 'H2O', name: 'aqua', charge: 0, dentate: 1, donor: 'O' },
-  { id: 'Cl', formula: 'Cl', ion: 'Cl^-', name: 'chlorido', charge: -1, dentate: 1, donor: 'Cl' },
+  { ...LIGAND_BASE.NH3, name: 'ammine', dentate: 1 },
+  { ...LIGAND_BASE.H2O, name: 'aqua', dentate: 1 },
+  { ...LIGAND_BASE.Cl, name: 'chlorido', dentate: 1 },
   { id: 'F', formula: 'F', ion: 'F^-', name: 'fluorido', charge: -1, dentate: 1, donor: 'F' },
-  { id: 'OH', formula: 'OH', ion: 'OH^-', name: 'hydroxido', charge: -1, dentate: 1, donor: 'O' },
-  { id: 'CN', formula: 'CN', ion: 'CN^-', name: 'cyanido', charge: -1, dentate: 1, donor: 'C' },
+  { ...LIGAND_BASE.OH, name: 'hydroxido', dentate: 1 },
+  { ...LIGAND_BASE.CN, name: 'cyanido', dentate: 1 },
   {
     id: 'en',
     formula: 'en',
@@ -67,13 +77,13 @@ export function ligand(id) {
 /** @type {Centre[]} */
 export const CENTRES = [
   { id: 'Ag1', symbol: 'Ag', charge: 1, name: 'silver', anion: 'argentate' },
-  { id: 'Cu2', symbol: 'Cu', charge: 2, name: 'copper', anion: 'cuprate' },
-  { id: 'Zn2', symbol: 'Zn', charge: 2, name: 'zinc', anion: 'zincate' },
-  { id: 'Ni2', symbol: 'Ni', charge: 2, name: 'nickel', anion: 'nickelate' },
-  { id: 'Pt2', symbol: 'Pt', charge: 2, name: 'platinum', anion: 'platinate' },
-  { id: 'Fe2', symbol: 'Fe', charge: 2, name: 'iron', anion: 'ferrate' },
-  { id: 'Fe3', symbol: 'Fe', charge: 3, name: 'iron', anion: 'ferrate' },
-  { id: 'Co3', symbol: 'Co', charge: 3, name: 'cobalt', anion: 'cobaltate' },
+  { ...CENTRE_BASE.Cu2, name: 'copper', anion: 'cuprate' },
+  { ...CENTRE_BASE.Zn2, name: 'zinc', anion: 'zincate' },
+  { ...CENTRE_BASE.Ni2, name: 'nickel', anion: 'nickelate' },
+  { ...CENTRE_BASE.Pt2, name: 'platinum', anion: 'platinate' },
+  { ...CENTRE_BASE.Fe2, name: 'iron', anion: 'ferrate' },
+  { ...CENTRE_BASE.Fe3, name: 'iron', anion: 'ferrate' },
+  { ...CENTRE_BASE.Co3, name: 'cobalt', anion: 'cobaltate' },
   { id: 'Cr3', symbol: 'Cr', charge: 3, name: 'chromium', anion: 'chromate' },
 ];
 
@@ -84,32 +94,13 @@ export function centre(id) {
   return c;
 }
 
-/** @typedef {{ ligand: string, count: number }} Part */
-
-/**
- * A charge as the superscript of a formula: 2 → "2+", −1 → "-", 0 → "".
- * @param {number} q
- */
-export function chargeSup(q) {
-  if (q === 0) return '';
-  const size = Math.abs(q) === 1 ? '' : String(Math.abs(q));
-  return `${size}${q > 0 ? '+' : '-'}`;
-}
+/** @typedef {import('#lib/domain/complex.js').Part} Part */
 
 /** A signed charge the book's way: "+3", "−2", "0". @param {number} q */
 export const chargeText = (q) => (q === 0 ? '0' : q > 0 ? `+${q}` : `−${-q}`);
 
-const ROMAN = ['0', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII'];
-
-/** Oxidation number in Roman numerals, 1 → "I". @param {number} n */
-export function roman(n) {
-  if (!Number.isInteger(n) || n < 0 || n >= ROMAN.length) throw new Error(`Số oxi hoá ${n}`);
-  return ROMAN[n];
-}
-
 /** The charge of a complex: centre plus every ligand. @param {number} q @param {Part[]} parts */
-export const complexCharge = (q, parts) =>
-  parts.reduce((s, p) => s + p.count * ligand(p.ligand).charge, q);
+export const complexCharge = (q, parts) => chargeOf(q, parts, ligand);
 
 /** Coordination number: σ bonds to the centre, count × denticity. @param {Part[]} parts */
 export const coordinationNumber = (parts) =>
@@ -141,17 +132,6 @@ export function complexFormula(centreId, parts) {
     .join('');
   const q = complexCharge(c.charge, parts);
   return `[${c.symbol}${inner}]${q === 0 ? '' : `^${chargeSup(q)}`}`;
-}
-
-/**
- * Inline TeX of a `ChemFormula` formula: "[Cu(NH3)4]^2+" →
- * "\mathrm{[Cu(NH_3)_4]^{2+}}".
- * @param {string} formula
- */
-export function formulaTex(formula) {
-  const [body, sup] = formula.split('^');
-  const subbed = body.replace(/([A-Za-z)\]])(\d+)/g, '$1_$2');
-  return `\\mathrm{${subbed}${sup ? `^{${sup}}` : ''}}`;
 }
 
 const SIMPLE = ['', '', 'di', 'tri', 'tetra', 'penta', 'hexa'];

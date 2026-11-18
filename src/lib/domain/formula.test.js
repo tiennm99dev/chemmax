@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import {
   FormulaError,
   formulaParts,
+  formulaTex,
   molarMass,
   normalizeFormula,
   parseFormula,
@@ -60,5 +61,23 @@ describe('formula parser', () => {
     expect(prettyFormula('CuSO4·5H2O')).toBe('CuSO₄·5H₂O');
     expect(prettyFormula('SO4^2-')).toBe('SO₄²⁻');
     expect(prettyFormula('Na+')).toBe('Na⁺');
+  });
+});
+
+describe('formula TeX', () => {
+  it('braces every subscript, even a two-digit one', () => {
+    expect(formulaTex('C12H22O11')).toBe('\\mathrm{C_{12}H_{22}O_{11}}');
+    expect(formulaTex('(C17H35COO)3C3H5')).toBe('\\mathrm{(C_{17}H_{35}COO)_{3}C_{3}H_{5}}');
+  });
+
+  it('writes a caret charge as a superscript', () => {
+    expect(formulaTex('[Cu(NH3)4(H2O)2]^2+')).toBe('\\mathrm{[Cu(NH_{3})_{4}(H_{2}O)_{2}]^{2+}}');
+    expect(formulaTex('[Fe(CN)6]^4-')).toBe('\\mathrm{[Fe(CN)_{6}]^{4-}}');
+    expect(formulaTex('Cl^-')).toBe('\\mathrm{Cl^{-}}');
+  });
+
+  it('braces bond marks', () => {
+    expect(formulaTex('CH2=CHCOONa')).toBe('\\mathrm{CH_{2}{=}CHCOONa}');
+    expect(formulaTex('H2N–CH2')).toBe('\\mathrm{H_{2}N{-}CH_{2}}');
   });
 });
