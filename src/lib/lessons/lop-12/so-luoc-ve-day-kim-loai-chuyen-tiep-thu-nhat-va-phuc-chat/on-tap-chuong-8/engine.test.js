@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { rng } from '#lib/core/drill.js';
 import { strictTexFailures, texSpans } from '#lib/core/tex-check.js';
 import { formulaParts } from '#lib/domain/formula.js';
-import { ITEMS, buildQuiz, judgePick } from './engine.js';
+import { ITEMS, buildQuiz, hueOf, judgePick } from './engine.js';
 import {
   REVIEW_SKILLS,
   centreChargeSkill,
@@ -31,6 +31,19 @@ describe('the colour and formula quiz', () => {
     expect(bad).toEqual([]);
     expect(quiz.filter((q) => q.options[0] === q.item).length).toBeLessThan(ITEMS.length / 2);
     expect(new Set(quiz.map((q) => q.kind))).toEqual(new Set(['colour', 'formula']));
+  });
+
+  it('never offers two colours of the same hue in a formula question', () => {
+    expect(hueOf('Xanh lam đậm')).toBe('xanh');
+    expect(hueOf('không màu')).toBe('không');
+    for (let seed = 1; seed <= 40; seed++) {
+      const bad = buildQuiz(seed).filter(
+        (q) =>
+          q.kind === 'formula' &&
+          (q.options.length !== 4 || new Set(q.options.map((o) => hueOf(o.colour))).size !== 4),
+      );
+      expect(bad).toEqual([]);
+    }
   });
 
   it('parses every formula and keeps the answer hidden until the last try', () => {

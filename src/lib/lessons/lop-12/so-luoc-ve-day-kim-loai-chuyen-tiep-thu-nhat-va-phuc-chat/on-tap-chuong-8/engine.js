@@ -82,7 +82,16 @@ export const ITEMS = [
  */
 
 /**
- * The quiz: one question per item, colour and formula questions in turn.
+ * The hue word of a colour, its first word: "xanh lam đậm" → "xanh".
+ * @param {string} colour
+ */
+export const hueOf = (colour) => colour.normalize('NFC').trim().toLowerCase().split(/\s+/)[0];
+
+/**
+ * The quiz: one question per item, colour and formula questions in turn. A
+ * formula question never offers two colours of the same hue ("vàng" beside
+ * "vàng nhạt"), so it tests the chemistry, not the book's adjective; a colour
+ * question shows how the solution was made, which tells such shades apart.
  * @param {number} [seed]
  * @returns {Question[]}
  */
@@ -90,10 +99,21 @@ export function buildQuiz(seed = 8) {
   const rand = rng(seed);
   return ITEMS.map((item, i) => {
     const kind = i % 2 === 0 ? /** @type {const} */ ('colour') : /** @type {const} */ ('formula');
-    const others = shuffle(
+    const pool = shuffle(
       rand,
       ITEMS.filter((x) => x !== item && (kind === 'colour' || x.colour !== item.colour)),
-    ).slice(0, 3);
+    );
+    /** @type {Item[]} */
+    const others = [];
+    const hues = new Set([hueOf(item.colour)]);
+    for (const x of pool) {
+      if (others.length === 3) break;
+      if (kind === 'formula') {
+        if (hues.has(hueOf(x.colour))) continue;
+        hues.add(hueOf(x.colour));
+      }
+      others.push(x);
+    }
     return { kind, item, options: shuffle(rand, [item, ...others]) };
   });
 }
