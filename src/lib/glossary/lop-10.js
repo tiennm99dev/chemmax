@@ -39,14 +39,6 @@ export default [
     lesson: MO_DAU,
   },
   {
-    id: 'hat-nhan-nguyen-tu',
-    term: 'hạt nhân nguyên tử',
-    en: 'atomic nucleus',
-    def: 'Vùng rất nhỏ mang điện tích dương ở tâm nguyên tử, gồm các proton và neutron. Khối lượng nguyên tử tập trung chủ yếu ở hạt nhân.',
-    lesson: THANH_PHAN,
-    see: ['electron'],
-  },
-  {
     id: 'electron',
     term: 'electron',
     en: 'electron',
@@ -95,20 +87,12 @@ export default [
     see: ['orbital-nguyen-tu'],
   },
   {
-    id: 'chu-ki',
-    term: 'chu kì',
-    en: 'period',
-    def: 'Dãy các nguyên tố mà nguyên tử có cùng số lớp electron, xếp theo chiều điện tích hạt nhân tăng dần. Số thứ tự của chu kì bằng số lớp electron.',
-    lesson: CAU_TAO_BTH,
-    see: ['nhom'],
-  },
-  {
     id: 'nhom',
     term: 'nhóm',
     en: 'group',
     def: 'Tập hợp các nguyên tố có cấu hình electron tương tự nhau nên tính chất hoá học gần giống nhau, xếp thành một cột.',
     lesson: CAU_TAO_BTH,
-    see: ['chu-ki'],
+    see: ['lop-7/chu-ki'],
   },
   {
     id: 'do-am-dien',
@@ -281,14 +265,6 @@ export default [
     see: ['toc-do-phan-ung'],
   },
   {
-    id: 'chat-xuc-tac',
-    term: 'chất xúc tác',
-    en: 'catalyst',
-    def: 'Chất làm tăng tốc độ phản ứng nhưng vẫn được bảo toàn về chất và lượng khi phản ứng kết thúc.',
-    lesson: TOC_DO,
-    see: ['nang-luong-hoat-hoa'],
-  },
-  {
     id: 'halogen',
     term: 'halogen',
     en: 'halogen',
@@ -342,7 +318,7 @@ export default [
     en: 'activation energy',
     def: 'Năng lượng tối thiểu mà các hạt chất đầu cần có để va chạm giữa chúng gây ra phản ứng hoá học, kí hiệu Eₐ. Chất xúc tác làm giảm năng lượng này.',
     lesson: CD_HOAT_HOA,
-    see: ['chat-xuc-tac'],
+    see: ['lop-8/chat-xuc-tac'],
     aka: ['Ea'],
   },
   {

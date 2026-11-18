@@ -12,7 +12,6 @@ export default [
     def: 'Phản ứng trong cùng điều kiện xảy ra theo hai chiều trái ngược nhau, viết bằng kí hiệu ⇌. Chiều từ trái sang phải là chiều thuận, chiều từ phải sang trái là chiều nghịch.',
     lesson: 'can-bang-hoa-hoc/khai-niem-ve-can-bang-hoa-hoc',
     see: ['can-bang-hoa-hoc'],
-    aka: ['phản ứng một chiều'],
   },
   {
     id: 'can-bang-hoa-hoc',
@@ -65,7 +64,7 @@ export default [
     id: 'chuan-do',
     term: 'chuẩn độ',
     en: 'titration',
-    def: 'Phương pháp xác định nồng độ của một chất bằng một dung dịch đã biết nồng độ (dung dịch chuẩn); lúc hai chất vừa phản ứng hết nhận ra nhờ chất chỉ thị đổi màu.',
+    def: 'Phương pháp xác định nồng độ của một chất bằng một dung dịch đã biết nồng độ (dung dịch chuẩn); lúc hai chất vừa phản ứng hết (điểm tương đương) nhận ra nhờ chất chỉ thị đổi màu.',
     lesson: 'can-bang-hoa-hoc/can-bang-trong-dung-dich-nuoc',
     aka: ['chuẩn độ acid – base', 'điểm tương đương', 'dung dịch chuẩn'],
   },
@@ -210,7 +209,6 @@ export default [
     def: 'Hydrocarbon mạch hở có một liên kết đôi C=C, công thức chung CₙH₂ₙ (n ≥ 2).',
     lesson: 'hydrocarbon/hydrocarbon-khong-no',
     see: ['alkyne'],
-    aka: ['hydrocarbon không no'],
   },
   {
     id: 'alkyne',
