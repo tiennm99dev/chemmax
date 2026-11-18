@@ -60,7 +60,7 @@ describe('perpendicular relations in space', () => {
   });
 
   it('draws an angle fan between its two sides', () => {
-    const fan = angleFan(P(), P(1, 0, 0), P(0, 1, 0), 1, 4);
+    const fan = angleFan(P(), P(1, 0, 0), P(0, 1, 0), 1, { steps: 4 });
     expect(fan).toHaveLength(6);
     expect(dist3(fan[1], P(1, 0, 0))).toBeCloseTo(0);
     expect(dist3(fan[5], P(0, 1, 0))).toBeCloseTo(0);

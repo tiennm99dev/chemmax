@@ -8,7 +8,11 @@ import { add3, cross3, dot3, mul3, sub3 } from '#lib/geom-engine/solid.js';
  * parallel projection onto a plane, the angle between two lines and between a
  * line and a plane, the foot of a perpendicular on a plane or a line, the
  * common perpendicular of two skew lines and the hidden (dashed) lines of a
- * convex solid, drawn by `#lib/core/visuals/space-scene.svelte`.
+ * convex solid, drawn by `#lib/core/visuals/space-scene.svelte`. Also the
+ * coordinate helpers of the grade 12 chapters: vectors given by coordinates,
+ * planes by their general equation Ax + By + Cz + D = 0 (`planeValue`,
+ * `planeD`, `footOnEquation`), plane patches and circles to draw;
+ * `#lib/geom-engine/space-tex.js` writes them the book's way.
  *
  * Model space as in `#lib/geom-engine/solid.js`: z points up.
  */
@@ -20,7 +24,9 @@ import { add3, cross3, dot3, mul3, sub3 } from '#lib/geom-engine/solid.js';
 /**
  * @typedef {{ key: string, from: Spot, to: Spot, color?: string, width?: number, dash?: 'auto' | boolean }} SceneSegment
  * @typedef {{ key: string, pts: Spot[], fill: string, opacity?: number, stroke?: string }} ScenePolygon
- * @typedef {{ text: string, at: Spot, color?: string, dx?: number, dy?: number }} SceneLabel
+ * @typedef {{ text: string, at: Spot, color?: string, dx?: number, dy?: number, key?: string }} SceneLabel
+ * @typedef {{ at: Spot, color?: string, r?: number, key?: string }} SceneDot
+ * @typedef {{ key: string, at: P3, r: number, fill: string, opacity?: number, stroke?: string }} SceneDisc
  */
 
 export const EPS = 1e-7;
@@ -334,23 +340,128 @@ export function direction(azimuth, elevation) {
 }
 
 /**
- * A fan marking the angle from direction u to direction v at the point o,
- * as a polygon of radius r (empty when the angle is next to nothing).
+ * A fan marking the angle from direction u to direction v at the point o, as
+ * a polygon of radius r: empty when the angle is next to 0°. A straight angle
+ * (180°) has no plane to be drawn in, so it is empty too unless `across`
+ * gives a direction off the line: then it is the half disc on that side.
  * @param {P3} o @param {P3} u @param {P3} v @param {number} r
+ * @param {{ steps?: number, across?: P3 }} [options]
  * @returns {P3[]}
  */
-export function angleFan(o, u, v, r, steps = 16) {
+export function angleFan(o, u, v, r, { steps = 16, across } = {}) {
   const a = unit3(u);
   const b = unit3(v);
   const cos = Math.max(-1, Math.min(1, dot3(a, b)));
   const theta = Math.acos(cos);
   if (theta < 1e-3) return [];
-  const across = len3(sub3(b, mul3(a, cos))) < 1e-9 ? null : unit3(sub3(b, mul3(a, cos)));
-  if (!across) return [];
+  let side = sub3(b, mul3(a, cos));
+  if (len3(side) < 1e-9 && across) side = sub3(across, mul3(a, dot3(across, a)));
+  if (len3(side) < 1e-9) return [];
+  const w = unit3(side);
   const out = [o];
   for (let i = 0; i <= steps; i++) {
     const k = (theta * i) / steps;
-    out.push(add3(o, mul3(add3(mul3(a, Math.cos(k)), mul3(across, Math.sin(k))), r)));
+    out.push(add3(o, mul3(add3(mul3(a, Math.cos(k)), mul3(w, Math.sin(k))), r)));
   }
   return out;
+}
+
+/** @param {P3} a */
+export const isZero3 = (a) => a.x === 0 && a.y === 0 && a.z === 0;
+
+/** @param {P3} a @param {P3} b */
+export const same3 = (a, b) => a.x === b.x && a.y === b.y && a.z === b.z;
+
+/**
+ * The three coordinates, with −0 (from a product such as 0 · (−2)) written
+ * as 0.
+ * @param {P3} a @returns {[number, number, number]}
+ */
+export const coords = (a) => [a.x + 0, a.y + 0, a.z + 0];
+
+/**
+ * True when u and v are parallel (the zero vector counts as parallel).
+ * @param {P3} u @param {P3} v
+ */
+export const parallel3 = (u, v) => isZero3(cross3(u, v));
+
+/**
+ * The angle between two non-zero vectors in degrees, from 0° to 180°, or
+ * null when one of them is the zero vector.
+ * @param {P3} u @param {P3} v
+ */
+export function angleDeg(u, v) {
+  // One square root of the product keeps |u|·|v| exact when it is whole
+  // (√5 · √5 would give 5.000000000000001 and a false 0.000001°).
+  const l = Math.sqrt(dot3(u, u) * dot3(v, v));
+  if (l === 0) return null;
+  const cos = Math.max(-1, Math.min(1, dot3(u, v) / l));
+  return Math.acos(cos) * DEG;
+}
+
+/**
+ * The value of Ax + By + Cz + D at a point, for the plane with normal
+ * n = (A; B; C) and general equation Ax + By + Cz + D = 0.
+ * @param {P3} n @param {number} D @param {P3} p
+ */
+export const planeValue = (n, D, p) => dot3(n, p) + D;
+
+/**
+ * D of the plane through M0 with normal n: A(x − x0) + B(y − y0) + C(z − z0) = 0
+ * gives D = −(Ax0 + By0 + Cz0).
+ * @param {P3} n @param {P3} m0
+ */
+export const planeD = (n, m0) => -dot3(n, m0) + 0;
+
+/**
+ * The foot of the perpendicular from p to the plane with general equation
+ * n · X + D = 0 (n need not be a unit vector).
+ * @param {P3} n @param {number} D @param {P3} p
+ */
+export function footOnEquation(n, D, p) {
+  const k = planeValue(n, D, p) / dot3(n, n);
+  return sub3(p, mul3(n, k));
+}
+
+/**
+ * Two unit vectors that, with n, make a right-handed orthonormal frame: a
+ * basis of the plane with normal n, used to draw a square patch of it.
+ * @param {P3} n a non-zero vector
+ * @returns {[P3, P3]}
+ */
+export function planeBasis(n) {
+  const k = mul3(n, 1 / len3(n));
+  const helper = Math.abs(k.z) < 0.9 ? P(0, 0, 1) : P(1, 0, 0);
+  let a = cross3(helper, k);
+  a = mul3(a, 1 / len3(a));
+  const b = cross3(k, a);
+  return [a, b];
+}
+
+/**
+ * The corners of a square patch of the plane with normal n through c, of
+ * half side h.
+ * @param {P3} n @param {P3} c @param {number} h
+ */
+export function planePatch(n, c, h) {
+  const [a, b] = planeBasis(n);
+  return [
+    [1, 1],
+    [-1, 1],
+    [-1, -1],
+    [1, -1],
+  ].map(([s, t]) => add3(c, add3(mul3(a, s * h), mul3(b, t * h))));
+}
+
+/**
+ * The circle of centre c and radius r in the plane with normal n, as a
+ * closed list of points (a sphere's equator, a cut of a sphere).
+ * @param {P3} c @param {number} r @param {P3} [n]
+ */
+export function circle3(c, r, n = P(0, 0, 1), steps = 48) {
+  const [a, b] = planeBasis(n);
+  return Array.from({ length: steps }, (_, i) => {
+    const t = (2 * Math.PI * i) / steps;
+    return add3(c, add3(mul3(a, r * Math.cos(t)), mul3(b, r * Math.sin(t))));
+  });
 }

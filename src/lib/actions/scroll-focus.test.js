@@ -3,14 +3,18 @@ import { describe, expect, it } from 'vitest';
 import { scrollFocus, updateRegion } from './scroll-focus.js';
 
 /**
- * Just enough of an element for the action: its widths and its tabindex.
+ * Just enough of an element for the action: its sizes and its tabindex.
  * @param {number} scrollWidth
  * @param {number} clientWidth
+ * @param {number} [scrollHeight]
+ * @param {number} [clientHeight]
  */
-function box(scrollWidth, clientWidth) {
+function box(scrollWidth, clientWidth, scrollHeight = 100, clientHeight = 100) {
   return {
     scrollWidth,
     clientWidth,
+    scrollHeight,
+    clientHeight,
     tabIndex: -1,
     removed: false,
     removeAttribute(/** @type {string} */ name) {
@@ -25,6 +29,12 @@ describe('scrollFocus', () => {
     scrollFocus(/** @type {any} */ (node)).destroy();
     expect(node.tabIndex).toBe(0);
     expect(node.removed).toBe(false);
+  });
+
+  it('makes a box that scrolls up and down focusable', () => {
+    const node = box(300, 300, 900, 250);
+    scrollFocus(/** @type {any} */ (node)).destroy();
+    expect(node.tabIndex).toBe(0);
   });
 
   it('leaves a box whose content fits out of the tab order', () => {

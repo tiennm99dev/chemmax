@@ -217,6 +217,8 @@ Core visuals, `#lib/core/visuals/<name>.svelte`:
 | `pictograph` | picture chart (biểu đồ tranh): one row of icons per category, a remainder as part of an icon; `item` draws a kid picture (`'apple'`) or a `'dot'` instead of the green circle |
 | `double-bar-chart` | double bar chart (biểu đồ cột kép) with legend, hideable series, selectable categories; `format` writes the values (default `formatNumber`) |
 | `data-table` | statistics table with tally marks and percentages |
+| `graph-box` | a function graph in a window, x and y scaled separately (grades 10-12): grid with round ticks, curves that lift the pen at `breaks` (`refine` draws a branch up to its asymptote), points (hollow for a value not taken), and the layers `bands`, `spans` (`axis` marks the x-axis too), `marks`, `regions`, `traps`, `rects`, `guides` and dashed `lines`; `labelPoints` names points above the clip, `wide` fills the container, `interactive` with `bind:svgEl` holds drag handles; the children snippet gets the frame |
+| `group-chart` | frequency chart of a grouped sample (biểu đồ tần số ghép nhóm): `highlight`, `shades`, `markers`, the mode lines (`modeIndex`), a `band` (interquartile range, x̄ ± s) and a `span` (range R); `layout="fixed"` keeps the box height and shortens the plot instead |
 | `probability-spinner` | spinner with running frequency table |
 | `unit-converter` | length, mass, capacity, time and VND money |
 | `clock-face` | analog clock with draggable hands |
@@ -227,6 +229,12 @@ Core visuals, `#lib/core/visuals/<name>.svelte`:
 `polar`, `angleOf`, `sectorPath`, `hopPath`, `curvePath(f, plane, { lo, hi, steps, extra })`
 (a function graph as an SVG path that lifts the pen where f is undefined or
 leaves the plane) and `PALETTE`/`colorAt`.
+`#lib/core/visuals/plot.js` draws for `graph-box`: `frameOf(win, { width, height, pad, left })`
+(`sx`, `sy`, `ix`), `squareHeight` (equal scales), `ticksIn`, `tickText`,
+`graphPath(f, win, frame, { breaks, refine, from, to })`, `sample`, `regionPath`
+(between two graphs), `simpson` (a numeric integral to check exact answers) and
+`approxText`/`approxTex` ('2,5', '≈ 0,33'; '= -1{,}5', '\approx 0{,}33');
+never copy them into a chapter.
 `#lib/core/visuals/angle-math.js` works in degrees on SVG points: `norm`,
 `dirOf`, `along`, `directionTo`, `measure`, `ccwSides`, `bisectorDir`,
 `intersect`, `degText` ('32,5°') and the angle drawings `arcPath`,
@@ -251,9 +259,18 @@ flat) and `touchPoints` (where the incircle meets the sides).
 `#lib/geom-engine/space.js` is points, lines and planes in space (`planeThrough`,
 `meetPlane`, `lineRelation`, `meetLines`, `projectAlong`, `footOnPlane`,
 `footOnLine`, `lineAngle`, `linePlaneAngle`, `commonPerpendicular`,
-`orientFaces`, `isHidden`, `cube`, `angleFan`), drawn by
-`#lib/core/visuals/space-scene.svelte` (a turning scene with dashed hidden
-edges). `#lib/geom-engine/solid.js` draws solids in a turning orthographic view:
+`orientFaces`, `isHidden`, `cube`, `angleFan` with `{ across }` for a
+straight angle), and coordinates in space: `isZero3`, `same3`, `coords`,
+`parallel3`, `angleDeg`, planes by their general equation (`planeValue`,
+`planeD`, `footOnEquation`) and `planePatch`/`circle3` to draw them.
+`#lib/geom-engine/space-tex.js` writes them the book's way: `coordTex`
+(`(1; -2; 0{,}5)`), `coordText`, `opTex`, `sqrtTex`, `overSqrtTex`
+(`\dfrac{\sqrt{3}}{3}`), `degreeText`, `degreeTex`, `ijkTex`, `sumTex`,
+`planeTex`, `pointNormalTex`, `paramTex`, `affineTex`, `canonTex`,
+`sphereTex` and `sphereExpandedTex`. Both are drawn by
+`#lib/core/visuals/space-scene.svelte`: a turning scene with dashed hidden
+edges, `arrows` (vectors), `axes` (Ox, Oy, Oz), `discs` (spheres) and
+`look="coordinates"` for the grade 12 coordinate chapters. `#lib/geom-engine/solid.js` draws solids in a turning orthographic view:
 `add3`, `sub3`, `mul3`, `dot3`, `cross3` on `{ x, y, z }`, `viewPoint`,
 `facesViewer`, `drawOrder` (faces far to near) and the view controls
 `clampPitch`, `wrapYaw`, `dragView` and `arrowView` (the near side follows
@@ -318,7 +335,8 @@ Other shared pieces:
   (`3x²y − xy + 5`), and roots `rootValue` (`= 2,5` or `≈ 1,414`),
   `isShortDecimal`, `numText`.
   `#lib/core/frac.svelte` draws a stacked fraction in HTML (no KaTeX) and
-  `#lib/core/stepper.svelte` is a labelled − / + whole-number stepper.
+  `#lib/core/stepper.svelte` is a labelled − / + whole-number stepper (a
+  button that reaches its end hands focus to the other one).
 - `#lib/core/decimal.js`: exact decimals from integers: `expand` (long
   division with its remainders and period), `decimalText` (`0,(45)`),
   `decimalTex`, `digitAt`, `roundFraction`, `sqrtFloor`, `roundSqrt`,
@@ -448,10 +466,20 @@ Other shared pieces:
     read the grade 3 book's way (`stepsOf`, `columnWords`, `equation`,
     `carriesOf`, `noCarry`, `divText`, `divWords`, `checkText`), and the board a
     child fills in (`planOf`, `sheetAt(a, b, op, done, columns)`, `askFor`,
-    `borrowLabel` "Lấy 12 trừ, nhớ 1", `wrongFor`). A chapter writes only how it
+    `borrowLabel` "Lấy 12 trừ, nhớ 1", `wrongFor`). `stepsOf(a, b, op, {
+    grade: 4 })` reads + and − columns in the grade 4 book's words ("Hạ 4",
+    "4 thêm 1 bằng 5; …"). A chapter writes only how it
     draws its tasks and renders `<ColumnWorker op columns draw kinds … />`;
     `digit-pad` is the ten big digit buttons and `kid-note` the live sentence
     under a kid widget.
+  - `division-steps.js` with `division-sheet.svelte` and
+    `division-worker.svelte`: dividing in columns from the left, round by
+    round (`stepsOf` digit, rest and bring-down steps, `sheetRows`,
+    `quotientText`, `stageMessage`, `wrongMessage`, `roundLines` "13 chục : 4
+    = 3 chục, còn 1 chục", `placeOf`; a digit brought down reads "Hạ 9." when
+    nothing was left and "Hạ 6, được 36." otherwise, as `divWords` does). A
+    chapter writes only its first tasks and how it draws new ones, and renders `<DivisionWorker kinds draw />` (`compact` for five
+    digits or more).
   - `times-table.js` with `table-grid.svelte`: the tables' sentences
     (`mulLine` "3 × 4 = 12", `divLine`, `repeatedSum`) and options
     (`productOptions`, `quotientOptions`), and the ten rows of a table with the
@@ -460,8 +488,14 @@ Other shared pieces:
   - `tally.js` with `tally-marks.svelte`: counting by category for grades 2
     and 3 (`ChartSymbol`, `tallyBundles`, `tallyWords` "1 bó 5 vạch và 2
     vạch", `countBy`, `totalOf`, `extremes`) and the tally strokes, read one
-    word per stroke until `settled`. `chance.js`: the book's three words
-    (`CHANCES`) and `wordOf(outcomes, holds)`.
+    word per stroke until `settled`; `chart-symbol.svelte` draws a
+    `ChartSymbol` (a colour as a ball, or as a tile with `swatch="tile"`) and
+    `picture-chart.svelte` is the kid picture chart (biểu đồ tranh), rows of
+    `{ label, count, symbol }`. `chance.js`: the book's three words
+    (`CHANCES`), `wordOf(outcomes, holds)`, and boxes of coloured balls as a
+    list of `BallColor` ids, one per ball (`BALL_COLORS` with each colour's
+    name, fill and letter, `ballCounts`, `boxText`, `waysToTake`), drawn by
+    `ball-box.svelte`. A chapter keeps only which colours it draws from.
   - `fractions.js` with `fraction-note.svelte`: grade 4-5 fractions on
     `{ n, d }`: `fracTex`, `fracRich`, `fracText`, `fracWords` ("ba phần tư")
     and `denominatorWords` (a denominator of 1 collapses unless `{ keepOne:
@@ -496,6 +530,20 @@ Other shared pieces:
     column addition and subtraction ("đặt tính rồi tính"), `makeProblem` and
     `freshProblem`; `counting-sticks.svelte` draws que tính bundles and loose
     sticks (cross-out, extra and ringed columns, `small`).
+    `place-column-board.svelte` is the same board for numbers of any length:
+    `written` and the `carried`/`active` places are counted by power of ten
+    (0 the ones), `width` defaults to fit the numbers and the result.
+  - `number-chain.js` with `number-chain.svelte`: a chain of calculations
+    along arrows (`chainSteps(start, [{ op, n }])` gives `ChainStep`s `{ sign,
+    word, n, value }`; a × or : chain writes its own steps), the boxes showing
+    "?" until `settled`. `ruler-segment.svelte`: a named segment lying on a cm
+    ruler from mark `from` to mark `to`.
+  - `plane-figure.js` with `plane-figure.svelte`: grade 2 plane drawings as
+    data (`Figure`: named `dots`, a name `below` its dot, `segments`, `lines`
+    run to the edges, `curves` as SVG paths with an optional name, `shapes`,
+    `strokes`, `texts` and an optional `say`), `SHAPE_MODELS`/`shapeAt`,
+    `polylineFigure` with `zigzag`, `wave`, `arch(from, bend, to)`,
+    `areCollinear`, `lineThrough`, `NAME_RUNS` and `figureText`.
   - `carry.js` with `carry-quiz.svelte` (and `column-board.svelte` with
     `carried`): the same with carrying, `carrySteps`, `carryText`, `makeCarry`,
     `freshCarry`, `sumOptions` and `differenceOptions` (the slip of a forgotten

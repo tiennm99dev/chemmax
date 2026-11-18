@@ -797,17 +797,30 @@ const ENTITIES = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '
 /** @param {string} s */
 const escape = (s) => s.replace(/[&<>"']/g, (c) => ENTITIES[c]);
 
+/** How `katex.renderToString` opens a display formula. */
+const DISPLAY_OPEN = '<span class="katex-display"><span class="katex">';
+
 /**
  * KaTeX markup with its accessible text: the text in a visually hidden span
  * that screen readers and accessible-name computation read, and the drawing
  * hidden from them. `label` overrides the text derived from the source.
+ *
+ * A display formula keeps its `.katex-display` box outside the hidden part,
+ * with the text inside it: that box scrolls when the formula is too wide and
+ * then takes a tab stop, and a focusable box must not sit inside
+ * `aria-hidden`.
  * @param {string} katexHtml output of `katex.renderToString`
  * @param {string} tex the source it was rendered from
  * @param {string} [label]
  */
 export function texHtml(katexHtml, tex, label) {
-  const text = label ?? texText(tex);
-  return `<span class="tex"><span class="sr-only">${escape(text)}</span><span aria-hidden="true">${katexHtml}</span></span>`;
+  const spoken = `<span class="sr-only">${escape(label ?? texText(tex))}</span>`;
+  if (katexHtml.startsWith(DISPLAY_OPEN)) {
+    // The rest still closes `.katex` and `.katex-display`.
+    const rest = katexHtml.slice(DISPLAY_OPEN.length);
+    return `<span class="tex"><span class="katex-display">${spoken}<span class="katex" aria-hidden="true">${rest}</span>`;
+  }
+  return `<span class="tex">${spoken}<span aria-hidden="true">${katexHtml}</span></span>`;
 }
 
 /** @type {Record<string, string>} */

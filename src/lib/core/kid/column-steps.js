@@ -12,6 +12,10 @@
  * - 1 276 : 4: "12 chia 4 được 3, viết 3; 3 nhân 4 bằng 12; 12 trừ 12 bằng 0.
  *   Hạ 7, được 7. …"
  *
+ * The grade 4 book words two things differently, given as `{ grade: 4 }`
+ * to `stepsOf`: a column with one digit and nothing carried is just "Hạ 4",
+ * and a borrowed 1 is joined by a semicolon, "4 thêm 1 bằng 5; 7 trừ 5 bằng 2".
+ *
  * Also the board a widget fills in action by action (`planOf`, `sheetAt`),
  * what it asks and how it answers a wrong digit. `column.js` keeps the
  * grade 1 two-digit columns. Pure and DOM-free.
@@ -22,6 +26,10 @@ import { PLACE_NAMES } from './whole-numbers.js';
 
 /** @typedef {'+' | '-' | '×'} Op */
 /** @typedef {{ a: number, b: number }} Task */
+/**
+ * Which book's words the column readings use: grade 3 (the default) or 4.
+ * @typedef {{ grade?: 3 | 4 }} Wording
+ */
 
 /** The signs as the book prints them. */
 export const OP_SIGNS = /** @type {const} */ ({ '+': '+', '-': '−', '×': '×' });
@@ -90,9 +98,10 @@ const writeText = (digit, carryOut) => `, viết ${digit}${carryOut > 0 ? `, nh�
  * The columns of an addition, ones first. The last column writes its whole sum.
  * @param {number} a
  * @param {number} b
+ * @param {Wording} [wording]
  * @returns {Step[]}
  */
-export function addSteps(a, b) {
+export function addSteps(a, b, { grade = 3 } = {}) {
   const [da, db] = [onesDigits(a), onesDigits(b)];
   const n = Math.max(da.length, db.length);
   /** @type {Step[]} */
@@ -112,7 +121,7 @@ export function addSteps(a, b) {
       say =
         carryIn > 0
           ? `${one} thêm ${carryIn} bằng ${total}${writeText(digit, carryOut)}`
-          : `Hạ ${one}, viết ${one}`;
+          : `Hạ ${one}${grade === 4 ? '' : `, viết ${one}`}`;
     } else {
       const added = carryIn > 0 ? `, thêm ${carryIn} bằng ${total}` : '';
       say = `${top} cộng ${bottom} bằng ${plain}${added}${writeText(digit, carryOut)}`;
@@ -140,9 +149,10 @@ export function addSteps(a, b) {
  * of the difference is not written.
  * @param {number} a
  * @param {number} b
+ * @param {Wording} [wording]
  * @returns {Step[]}
  */
-export function subSteps(a, b) {
+export function subSteps(a, b, { grade = 3 } = {}) {
   const [da, db] = [onesDigits(a), onesDigits(b)];
   const length = String(a - b).length;
   /** @type {Step[]} */
@@ -154,9 +164,11 @@ export function subSteps(a, b) {
     const borrow = top < need;
     const digit = top + (borrow ? 10 : 0) - need;
     const blank = col > 0 && col >= length && digit === 0;
-    const added = carryIn > 0 && bottom !== null ? `${bottom} thêm ${carryIn} bằng ${need}, ` : '';
+    const join = grade === 4 ? '; ' : ', ';
+    const added =
+      carryIn > 0 && bottom !== null ? `${bottom} thêm ${carryIn} bằng ${need}${join}` : '';
     let say;
-    if (bottom === null && carryIn === 0) say = `Hạ ${top}, viết ${top}`;
+    if (bottom === null && carryIn === 0) say = `Hạ ${top}${grade === 4 ? '' : `, viết ${top}`}`;
     else if (borrow) {
       say = `${added}${top} không trừ được ${need}, lấy ${top + 10} trừ ${need} bằng ${digit}${writeText(digit, 1)}`;
     } else {
@@ -224,10 +236,11 @@ export function mulSteps(a, b) {
  * @param {number} a
  * @param {number} b
  * @param {Op} op
+ * @param {Wording} [wording] how + and − columns are read
  */
-export function stepsOf(a, b, op) {
-  if (op === '+') return addSteps(a, b);
-  if (op === '-') return subSteps(a, b);
+export function stepsOf(a, b, op, wording) {
+  if (op === '+') return addSteps(a, b, wording);
+  if (op === '-') return subSteps(a, b, wording);
   return mulSteps(a, b);
 }
 

@@ -5,8 +5,8 @@
  * does not focus such a box by itself.
  *
  * `use:scrollFocus` puts one box in the tab order while its content is wider
- * than the box, so a keyboard user can focus it and scroll it with the arrow
- * keys; once everything fits it leaves the tab order again. Pair it with
+ * or taller than the box, so a keyboard user can focus it and scroll it with
+ * the arrow keys; once everything fits it leaves the tab order again. Pair it with
  * `focusRing` so the focused box shows a ring.
  *
  * `use:scrollRegions` does the same for every `.overflow-x-auto` box and every
@@ -40,8 +40,9 @@ function afterFonts(update) {
 export function scrollFocus(node) {
   node.setAttribute?.(OWNED_BY_BOX, '');
   const update = () => {
-    if (node.scrollWidth > node.clientWidth) node.tabIndex = 0;
-    else node.removeAttribute('tabindex');
+    if (node.scrollWidth > node.clientWidth || node.scrollHeight > node.clientHeight) {
+      node.tabIndex = 0;
+    } else node.removeAttribute('tabindex');
   };
   update();
   afterFonts(update);
