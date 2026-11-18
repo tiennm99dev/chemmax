@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { REAGENTS, SUGARS, observe, reason, sugar } from './sugars.js';
+import { REAGENTS, SUGARS, benchSugar, observe, sugar } from './sugars.js';
 
 describe('carbohydrates in the test tube', () => {
   it('shows the book results for each reagent', () => {
@@ -17,7 +17,7 @@ describe('carbohydrates in the test tube', () => {
     for (const s of SUGARS) {
       for (const r of REAGENTS) {
         const o = observe(s.id, r.id);
-        if (!o.text || !o.short || !o.liquid || !reason(s.id, r.id)) bad.push([s.id, r.id]);
+        if (!o.text || !o.short || !o.liquid || !o.why) bad.push([s.id, r.id]);
         if (o.tex && !o.reacts) bad.push([s.id, r.id, 'tex']);
       }
     }
@@ -29,7 +29,14 @@ describe('carbohydrates in the test tube', () => {
       (r) => observe('glucose', r.id).text !== observe('fructose', r.id).text,
     ).map((r) => r.id);
     expect(differ).toEqual(['bromine']);
-    expect(reason('fructose', 'bromine')).toContain('ketone');
+    expect(observe('fructose', 'bromine').why).toContain('ketone');
+  });
+
+  it('writes the bench formula as TeX', () => {
+    expect(benchSugar('glucose')).toEqual({
+      name: sugar('glucose').name,
+      formula: `$\\mathrm{${sugar('glucose').formula}}$`,
+    });
   });
 
   it('rejects an unknown id', () => {

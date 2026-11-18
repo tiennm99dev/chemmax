@@ -125,6 +125,12 @@ export function sugar(id) {
   return s;
 }
 
+/** A sugar as the reagent bench shows it: its name and its formula as rich text. @param {string} id */
+export function benchSugar(id) {
+  const s = sugar(id);
+  return { name: s.name, formula: `$\\mathrm{${s.formula}}$` };
+}
+
 const COLORS = {
   blueSolution: '#2563eb',
   paleBlue: '#e0f2fe',
@@ -168,9 +174,9 @@ const EQUATIONS = {
 };
 
 /**
- * What a test tube shows. `text` is rich text, `short` a few plain words for
- * a results table; `tex` is the equation, if any.
- * @typedef {{ text: string, short: string, liquid: string, precipitate: string | null, amount: number, reacts: boolean, tex: string | null }} Observation
+ * What a test tube shows. `text` and `why` are rich text, `short` a few
+ * plain words for a results table; `tex` is the equation, if any.
+ * @typedef {{ text: string, short: string, why: string, liquid: string, precipitate: string | null, amount: number, reacts: boolean, tex: string | null }} Observation
  */
 
 /**
@@ -194,6 +200,7 @@ export function observe(id, reagent) {
     precipitate,
     amount,
     tex: reacts ? tex : null,
+    why: reason(id, reagent),
   });
 
   if (reagent === 'cu-oh2') {
@@ -278,7 +285,7 @@ export const V_MOLAR = 24.79;
  * @param {SugarId} id
  * @param {ReagentId} reagent
  */
-export function reason(id, reagent) {
+function reason(id, reagent) {
   const s = sugar(id);
   if (reagent === 'cu-oh2') {
     return s.polyol

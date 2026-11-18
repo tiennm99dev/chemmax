@@ -1,32 +1,46 @@
 <script>
   import { untrack } from 'svelte';
+  import LiveRichText from '#lib/components/live-rich-text.svelte';
   import Tex from '#lib/components/tex.svelte';
   import FeedbackNote from '#lib/core/feedback-note.svelte';
   import SegmentedControl from '#lib/core/segmented-control.svelte';
   import { button } from '#lib/core/ui.js';
-  import TestTube from '#lib/domain/test-tube.svelte';
-  import { REAGENTS, observe, reason, sugar } from './sugars.js';
+  import TestTube from './test-tube.svelte';
 
   /**
-   * A test-tube bench for the carbohydrates of the chapter: pick a substance
-   * and a reagent, run the test, read what happens and why, and fill a
-   * results table. The chemistry lives in sugars.js.
+   * What a test tube shows. `text` and `why` are rich text, `short` a few
+   * plain words for the results table and the tube's spoken name, `reacts`
+   * marks a change the eye can see; `tex` is the equation, if any.
+   * @typedef {{ text: string, short: string, why: string, liquid: string, precipitate: string | null, amount: number, reacts: boolean, tex: string | null }} Observation
+   */
+
+  /**
+   * A test-tube bench for known substances: pick a substance and a reagent,
+   * run the test, read what happens and why, and fill a results table. The
+   * lesson keeps the chemistry.
    *
-   * - `sugars`: the substances on the bench, in order.
-   * - `reagents`: the reagents offered (all of them by default).
+   * - `substances`: the substance ids on the bench, in order;
+   *   `substanceOf(id)` gives its `name` and `formula` (rich text).
+   * - `reagentTable`: every reagent of the chapter with its colour and a
+   *   precipitate shown before a test; `reagents`: the ids offered (shown in
+   *   table order, the first one listed is picked at the start).
+   * - `observe(substance, reagent)`: what the tube shows.
    * - `intro`: the first note.
    * @type {{
-   *   sugars: import('./sugars.js').SugarId[];
-   *   reagents?: import('./sugars.js').ReagentId[];
+   *   substances: string[];
+   *   substanceOf: (id: any) => { name: string, formula: string };
+   *   reagentTable: ReadonlyArray<{ id: string, name: string, liquid: string, precipitate?: string | null }>;
+   *   reagents: string[];
+   *   observe: (id: any, reagent: any) => Observation;
    *   intro: string;
    * }}
    */
-  let { sugars, reagents = REAGENTS.map((r) => r.id), intro } = $props();
+  let { substances, substanceOf, reagentTable, reagents, observe, intro } = $props();
 
-  let sugarId = $state(untrack(() => sugars[0]));
+  let substanceId = $state(untrack(() => substances[0]));
   let reagentId = $state(untrack(() => reagents[0]));
   let drip = $state(0);
-  let current = $state(/** @type {import('./sugars.js').Observation | null} */ (null));
+  let current = $state(/** @type {Observation | null} */ (null));
   let log = $state(/** @type {Record<string, { reacts: boolean, short: string }>} */ ({}));
   let note = $state(
     /** @type {{ tone: 'ok' | 'warn' | 'info', text: string }} */ ({
@@ -35,18 +49,18 @@
     }),
   );
 
-  const offered = $derived(REAGENTS.filter((r) => reagents.includes(r.id)));
+  const offered = $derived(reagentTable.filter((r) => reagents.includes(r.id)));
   const reagent = $derived(offered.find((r) => r.id === reagentId) ?? offered[0]);
-  const s = $derived(sugar(sugarId));
+  const s = $derived(substanceOf(substanceId));
 
   function run() {
-    const obs = observe(sugarId, reagentId);
+    const obs = observe(substanceId, reagentId);
     current = obs;
     drip += 1;
-    log = { ...log, [`${sugarId}:${reagentId}`]: { reacts: obs.reacts, short: obs.short } };
+    log = { ...log, [`${substanceId}:${reagentId}`]: { reacts: obs.reacts, short: obs.short } };
     note = {
       tone: obs.reacts ? 'ok' : 'info',
-      text: `${s.name} + ${reagent.name}: ${obs.text}. ${reason(sugarId, reagentId)}`,
+      text: `${s.name} + ${reagent.name}: ${obs.text}. ${obs.why}`,
     };
   }
 
@@ -56,7 +70,7 @@
 
   const tubeLabel = $derived(
     current
-      ? `Ống nghiệm: ${s.name} với ${reagent.name}, ${current.text.replace(/\$[^$]*\$/g, '').trim()}`
+      ? `Ống nghiệm: ${s.name} với ${reagent.name}, ${current.short}`
       : `Ống nghiệm chứa ${s.name}`,
   );
 </script>
@@ -64,8 +78,8 @@
 <div class="space-y-4">
   <SegmentedControl
     label="Chất thử"
-    options={sugars.map((id) => ({ value: id, label: sugar(id).name }))}
-    bind:value={sugarId}
+    options={substances.map((id) => ({ value: id, label: substanceOf(id).name }))}
+    bind:value={substanceId}
     onchange={clearTube}
   />
   <SegmentedControl
@@ -87,7 +101,7 @@
     </div>
     <div class="min-w-0 space-y-2">
       <p class="text-sm text-slate-700">
-        Ống nghiệm: {s.name} (<Tex math={`\\mathrm{${s.formula}}`} />) và {reagent.name}.
+        Ống nghiệm: {s.name} (<LiveRichText text={s.formula} />) và {reagent.name}.
       </p>
       <button type="button" class={button.primary} onclick={run}>Làm thí nghiệm</button>
     </div>
@@ -113,9 +127,9 @@
         </tr>
       </thead>
       <tbody>
-        {#each sugars as id (id)}
+        {#each substances as id (id)}
           <tr class="border-t border-slate-200">
-            <th scope="row" class="px-2 py-2 font-semibold">{sugar(id).name}</th>
+            <th scope="row" class="px-2 py-2 font-semibold">{substanceOf(id).name}</th>
             {#each offered as r (r.id)}
               {@const seen = log[`${id}:${r.id}`]}
               <td
