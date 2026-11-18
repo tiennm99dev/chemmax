@@ -1,4 +1,4 @@
-// Synced from tiennm99dev/mathmax by scripts/sync-core.sh. Do not edit it here; change it in mathmax and sync again.
+// Synced from tiennm99dev/mathmate by scripts/sync-core.sh. Do not edit it here; change it in mathmate and sync again.
 import { describe, it, expect } from 'vitest';
 import { checkAnswer } from './answer-check.js';
 import {
@@ -7,6 +7,7 @@ import {
   choiceOrder,
   exerciseSeed,
   isAttempt,
+  legacyKey,
   loadSolved,
   matchOrder,
   saveSolved,
@@ -22,6 +23,8 @@ function memoryStorage() {
     getItem: (k) => data.get(k) ?? null,
     /** @param {string} k @param {string} v */
     setItem: (k, v) => void data.set(k, v),
+    /** @param {string} k */
+    removeItem: (k) => void data.delete(k),
   };
 }
 
@@ -50,6 +53,34 @@ describe('solved store', () => {
     expect(loadSolved('/a/', 5, s)).toEqual([]);
     s.setItem('practice:/a/', '{"a":1}');
     expect(loadSolved('/a/', 5, s)).toEqual([]);
+  });
+
+  it('maps a renamed base to its old key', () => {
+    expect(legacyKey('/mathmate/lop-6/so-hoc/bai/')).toBe('/mathmax/lop-6/so-hoc/bai/');
+    expect(legacyKey('/algorithmally/x/')).toBe('/algoatlas/x/');
+    expect(legacyKey('/physicsfriend/x/')).toBe('/physmax/x/');
+    expect(legacyKey('/chemcoach/x/')).toBe('/chemmax/x/');
+    expect(legacyKey('/biobuddy/x/')).toBe('/biomax/x/');
+    expect(legacyKey('/mathmate')).toBe('/mathmax');
+    expect(legacyKey('/other/x/')).toBeNull();
+    expect(legacyKey('/lop-6/x/')).toBeNull();
+  });
+
+  it('moves progress from the pre-rename key once', () => {
+    const s = memoryStorage();
+    s.setItem('practice:/mathmax/lop-6/a/', JSON.stringify([0, 2]));
+    expect(loadSolved('/mathmate/lop-6/a/', 5, s)).toEqual([0, 2]);
+    expect(s.data.get('practice:/mathmate/lop-6/a/')).toBe('[0,2]');
+    expect(s.data.has('practice:/mathmax/lop-6/a/')).toBe(false);
+    expect(loadSolved('/mathmate/lop-6/a/', 5, s)).toEqual([0, 2]);
+  });
+
+  it('keeps newer progress over the pre-rename key', () => {
+    const s = memoryStorage();
+    s.setItem('practice:/mathmax/lop-6/a/', JSON.stringify([0]));
+    s.setItem('practice:/mathmate/lop-6/a/', JSON.stringify([1]));
+    expect(loadSolved('/mathmate/lop-6/a/', 5, s)).toEqual([1]);
+    expect(s.data.has('practice:/mathmax/lop-6/a/')).toBe(true);
   });
 
   it('works without storage', () => {

@@ -1,4 +1,4 @@
-// Synced from tiennm99dev/mathmax by scripts/sync-core.sh. Do not edit it here; change it in mathmax and sync again.
+// Synced from tiennm99dev/mathmate by scripts/sync-core.sh. Do not edit it here; change it in mathmate and sync again.
 /**
  * Vietnamese number writing for widgets, visuals and live readouts. The
  * decimal mark is always a comma (52,9, never 52.9). Written by hand rather

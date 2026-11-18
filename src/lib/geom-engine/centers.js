@@ -1,4 +1,4 @@
-// Synced from tiennm99dev/mathmax by scripts/sync-core.sh. Do not edit it here; change it in mathmax and sync again.
+// Synced from tiennm99dev/mathmate by scripts/sync-core.sh. Do not edit it here; change it in mathmate and sync again.
 /**
  * The circles of a triangle: the circumscribed circle (centre where the
  * perpendicular bisectors meet) and the inscribed circle (centre where the

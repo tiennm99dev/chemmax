@@ -1,4 +1,4 @@
-// Synced from tiennm99dev/mathmax by scripts/sync-core.sh. Do not edit it here; change it in mathmax and sync again.
+// Synced from tiennm99dev/mathmate by scripts/sync-core.sh. Do not edit it here; change it in mathmate and sync again.
 /**
  * The quadrilaterals of the grade 4 geometry reviews: where their corners go on a
  * small grid, their names, and the side and angle facts the book teaches

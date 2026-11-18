@@ -1,4 +1,4 @@
-// Synced from tiennm99dev/mathmax by scripts/sync-core.sh. Do not edit it here; change it in mathmax and sync again.
+// Synced from tiennm99dev/mathmate by scripts/sync-core.sh. Do not edit it here; change it in mathmate and sync again.
 /**
  * Boxes of unit cubes drawn the way the primary books draw them: a cabinet
  * view seen from the front, a little from the right and from above, so the

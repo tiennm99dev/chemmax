@@ -1,4 +1,4 @@
-// Synced from tiennm99dev/mathmax by scripts/sync-core.sh. Do not edit it here; change it in mathmax and sync again.
+// Synced from tiennm99dev/mathmate by scripts/sync-core.sh. Do not edit it here; change it in mathmate and sync again.
 /**
  * Mass with a pan balance (cân đĩa), the grade 2 way: things to weigh, the
  * 1 kg, 2 kg and 5 kg weights (quả cân), which pan goes down, how the loads

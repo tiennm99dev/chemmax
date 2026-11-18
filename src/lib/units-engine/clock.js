@@ -1,4 +1,4 @@
-// Synced from tiennm99dev/mathmax by scripts/sync-core.sh. Do not edit it here; change it in mathmax and sync again.
+// Synced from tiennm99dev/mathmate by scripts/sync-core.sh. Do not edit it here; change it in mathmate and sync again.
 /**
  * Time on an analog clock, held as minutes since 0:00 (0 to 1439). Angles
  * are degrees clockwise from 12 o'clock, the SVG-friendly convention.

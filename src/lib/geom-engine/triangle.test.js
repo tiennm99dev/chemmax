@@ -1,4 +1,4 @@
-// Synced from tiennm99dev/mathmax by scripts/sync-core.sh. Do not edit it here; change it in mathmax and sync again.
+// Synced from tiennm99dev/mathmate by scripts/sync-core.sh. Do not edit it here; change it in mathmate and sync again.
 import { describe, expect, it } from 'vitest';
 import { vec } from './vec.js';
 import { congruentSSS, sides, triangle } from './triangle.js';

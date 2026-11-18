@@ -1,4 +1,4 @@
-<!-- Synced from tiennm99dev/mathmax by scripts/sync-core.sh. Do not edit it here; change it in mathmax and sync again. -->
+<!-- Synced from tiennm99dev/mathmate by scripts/sync-core.sh. Do not edit it here; change it in mathmate and sync again. -->
 <script>
   import { along, arcPath, rightMarkPath } from '#lib/core/visuals/angle-math.js';
   import Protractor from '#lib/core/visuals/protractor.svelte';

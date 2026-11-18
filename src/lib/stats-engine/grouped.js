@@ -1,4 +1,4 @@
-// Synced from tiennm99dev/mathmax by scripts/sync-core.sh. Do not edit it here; change it in mathmax and sync again.
+// Synced from tiennm99dev/mathmate by scripts/sync-core.sh. Do not edit it here; change it in mathmate and sync again.
 /**
  * Grouped samples (mẫu số liệu ghép nhóm) with the conventions of the KNTT
  * books, grade 11 (centre) and grade 12 (spread): groups [a_i; a_{i+1}) of

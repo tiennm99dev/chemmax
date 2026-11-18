@@ -1,4 +1,4 @@
-// Synced from tiennm99dev/mathmax by scripts/sync-core.sh. Do not edit it here; change it in mathmax and sync again.
+// Synced from tiennm99dev/mathmate by scripts/sync-core.sh. Do not edit it here; change it in mathmate and sync again.
 /**
  * Grade 5 decimals the book's way, kept exact as digit strings and integers
  * scaled by a power of ten: the parts of '2,47', writing and reading a scaled

@@ -1,4 +1,4 @@
-// Synced from tiennm99dev/mathmax by scripts/sync-core.sh. Do not edit it here; change it in mathmax and sync again.
+// Synced from tiennm99dev/mathmate by scripts/sync-core.sh. Do not edit it here; change it in mathmate and sync again.
 /**
  * Names of the inline SVG pictures that kid exercises and visuals can show,
  * with the Vietnamese noun used in labels. Each name has a `<name>.svelte`

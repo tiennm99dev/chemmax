@@ -1,4 +1,4 @@
-// Synced from tiennm99dev/mathmax by scripts/sync-core.sh. Do not edit it here; change it in mathmax and sync again.
+// Synced from tiennm99dev/mathmate by scripts/sync-core.sh. Do not edit it here; change it in mathmate and sync again.
 /**
  * Plain kid text with its fractions found, so they can be drawn stacked as the
  * primary books print them: `3/8` and a mixed number `2 3/4` (whole, a space,

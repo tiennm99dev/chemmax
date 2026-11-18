@@ -1,4 +1,4 @@
-// Synced from tiennm99dev/mathmax by scripts/sync-core.sh. Do not edit it here; change it in mathmax and sync again.
+// Synced from tiennm99dev/mathmate by scripts/sync-core.sh. Do not edit it here; change it in mathmate and sync again.
 /**
  * Puts a name or phrase into the middle of a sentence: the first letter is
  * lowered (`Thiên địch` → `thiên địch`), unless the text starts with an

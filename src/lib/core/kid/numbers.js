@@ -1,4 +1,4 @@
-// Synced from tiennm99dev/mathmax by scripts/sync-core.sh. Do not edit it here; change it in mathmax and sync again.
+// Synced from tiennm99dev/mathmate by scripts/sync-core.sh. Do not edit it here; change it in mathmate and sync again.
 /**
  * Numbers to 100 as a grade 1-2 child meets them: how a number is read aloud,
  * its tens and ones, counting sticks, how two numbers compare, and additions

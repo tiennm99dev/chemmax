@@ -1,4 +1,4 @@
-// Synced from tiennm99dev/mathmax by scripts/sync-core.sh. Do not edit it here; change it in mathmax and sync again.
+// Synced from tiennm99dev/mathmate by scripts/sync-core.sh. Do not edit it here; change it in mathmate and sync again.
 /**
  * Per-viewer practice progress. The "đã làm" tick is a convenience only, so
  * every storage access is wrapped: private windows, blocked site data or a
@@ -10,7 +10,21 @@ import { rng, shuffle } from './drill.js';
 
 const PREFIX = 'practice:';
 
-/** @typedef {Pick<Storage, 'getItem' | 'setItem'>} SimpleStorage */
+/**
+ * Base paths the sites served from before they were renamed. Keys hold the
+ * resolved lesson path, base included, so progress saved under an old base is
+ * moved to the new one the first time the lesson loads.
+ * @type {Record<string, string>}
+ */
+const RENAMED_BASES = {
+  mathmate: 'mathmax',
+  algorithmally: 'algoatlas',
+  physicsfriend: 'physmax',
+  chemcoach: 'chemmax',
+  biobuddy: 'biomax',
+};
+
+/** @typedef {Pick<Storage, 'getItem' | 'setItem'> & Partial<Pick<Storage, 'removeItem'>>} SimpleStorage */
 
 /** @returns {SimpleStorage | null} */
 function defaultStorage() {
@@ -19,6 +33,42 @@ function defaultStorage() {
   } catch {
     return null;
   }
+}
+
+/**
+ * The key a lesson had before its site was renamed, or null when its base was
+ * never renamed.
+ * @param {string} key
+ * @returns {string | null}
+ */
+export function legacyKey(key) {
+  const match = /^\/([^/]+)(\/.*)?$/.exec(key);
+  const old = match ? RENAMED_BASES[match[1]] : undefined;
+  return old ? `/${old}${match?.[2] ?? ''}` : null;
+}
+
+/**
+ * The stored value for `key`, moving it over from the pre-rename key once:
+ * when only the old key holds progress, it is written under the new key and
+ * the old one removed.
+ * @param {string} key
+ * @param {SimpleStorage} storage
+ * @returns {string | null}
+ */
+function readMigrated(key, storage) {
+  const raw = storage.getItem(PREFIX + key);
+  if (raw !== null) return raw;
+  const old = legacyKey(key);
+  if (!old) return null;
+  const legacy = storage.getItem(PREFIX + old);
+  if (legacy === null) return null;
+  try {
+    storage.setItem(PREFIX + key, legacy);
+    storage.removeItem?.(PREFIX + old);
+  } catch {
+    // A failed move still shows the old progress; the next visit tries again.
+  }
+  return legacy;
 }
 
 /**
@@ -31,7 +81,7 @@ function defaultStorage() {
  */
 export function loadSolved(key, count, storage = defaultStorage()) {
   try {
-    const raw = storage?.getItem(PREFIX + key);
+    const raw = storage ? readMigrated(key, storage) : null;
     const parsed = raw ? JSON.parse(raw) : [];
     if (!Array.isArray(parsed)) return [];
     const valid = parsed.filter((i) => Number.isInteger(i) && i >= 0 && i < count);

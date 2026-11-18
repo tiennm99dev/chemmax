@@ -1,4 +1,4 @@
-<!-- Synced from tiennm99dev/mathmax by scripts/sync-core.sh. Do not edit it here; change it in mathmax and sync again. -->
+<!-- Synced from tiennm99dev/mathmate by scripts/sync-core.sh. Do not edit it here; change it in mathmate and sync again. -->
 <svelte:options namespace="svg" />
 
 <ellipse cx="15" cy="10" rx="3.5" ry="9" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1" />
