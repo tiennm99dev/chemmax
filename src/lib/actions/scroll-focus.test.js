@@ -45,19 +45,33 @@ describe('scrollFocus', () => {
 });
 
 /**
- * A scrolling box for `updateRegion`: widths, attributes and whether it holds
- * a focusable element.
+ * A scrolling box for `updateRegion`: sizes, class, attributes and whether it
+ * holds a focusable element.
  * @param {number} scrollWidth
  * @param {number} clientWidth
- * @param {{ control?: boolean; attrs?: Record<string, string> }} [opts]
+ * @param {{ control?: boolean; attrs?: Record<string, string>; className?: string; scrollHeight?: number; clientHeight?: number }} [opts]
  */
-function region(scrollWidth, clientWidth, { control = false, attrs = {} } = {}) {
+function region(
+  scrollWidth,
+  clientWidth,
+  {
+    control = false,
+    attrs = {},
+    className = 'overflow-x-auto',
+    scrollHeight = 100,
+    clientHeight = 100,
+  } = {},
+) {
   /** @type {Record<string, string>} */
   const attributes = { ...attrs };
   return {
     scrollWidth,
     clientWidth,
+    scrollHeight,
+    clientHeight,
     attributes,
+    matches: (/** @type {string} */ selector) =>
+      selector.split(',').some((s) => s.trim() === `.${className}`),
     get tabIndex() {
       return 'tabindex' in attributes ? Number(attributes.tabindex) : -1;
     },
@@ -108,5 +122,25 @@ describe('updateRegion', () => {
     const node = region(300, 300, { attrs: { 'data-scroll-focus': '', tabindex: '0' } });
     updateRegion(/** @type {any} */ (node));
     expect(node.attributes.tabindex).toBe('0');
+  });
+
+  it('gives a tall box that scrolls up and down a tab stop', () => {
+    const node = region(300, 300, {
+      className: 'overflow-y-auto',
+      scrollHeight: 900,
+      clientHeight: 250,
+    });
+    updateRegion(/** @type {any} */ (node));
+    expect(node.attributes.tabindex).toBe('0');
+  });
+
+  it('ignores the height of a sideways box that fits sideways', () => {
+    const node = region(300, 300, {
+      className: 'overflow-x-auto',
+      scrollHeight: 900,
+      clientHeight: 250,
+    });
+    updateRegion(/** @type {any} */ (node));
+    expect(node.attributes.tabindex).toBeUndefined();
   });
 });

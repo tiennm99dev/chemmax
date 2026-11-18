@@ -10,7 +10,7 @@
  * - 1 427 × 3: "3 nhân 7 bằng 21, viết 1, nhớ 2. 3 nhân 2 bằng 6, thêm 2
  *   bằng 8, viết 8. …"
  * - 1 276 : 4: "12 chia 4 được 3, viết 3; 3 nhân 4 bằng 12; 12 trừ 12 bằng 0.
- *   Hạ 7, được 7. …"
+ *   Hạ 7. …"
  *
  * The grade 4 book words two things differently, given as `{ grade: 4 }`
  * to `stepsOf`: a column with one digit and nothing carried is just "Hạ 4",

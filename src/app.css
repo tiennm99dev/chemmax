@@ -39,6 +39,8 @@
   /* Scrolling boxes that `use:scrollRegions` puts in the tab order get the
      same ring as `focusRing` in core/ui.js. */
   .overflow-x-auto:focus-visible,
+  .overflow-y-auto:focus-visible,
+  .overflow-auto:focus-visible,
   .katex-display:focus-visible {
     outline: none;
     border-radius: 0.25rem;

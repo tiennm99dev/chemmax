@@ -563,7 +563,8 @@ Other shared pieces:
     trăm linh năm", `placesOf`, `valueOf`, `sumParts`, `sumText`,
     `placesText`, `decidingPlace`, `compareWhy(a, b, { byDigits })`), the
     unit, ten, hundred and thousand blocks drawn to scale, a pile of them and a
-    big − / + pair for one place.
+    big − / + pair for one place (a button that reaches its end hands focus
+    to the other one).
   - `mass.js` with `balance-scale.svelte` (a pan balance; `Load` is a drawn
     thing, a labelled box or a weight; a gram weight is `{ kind: 'weight',
     kg: 100, unit: 'g' }`, labelled `100 g` and read "quả cân 100 g", with

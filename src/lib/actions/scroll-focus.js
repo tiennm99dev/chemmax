@@ -1,6 +1,6 @@
 // Synced from tiennm99dev/mathmax by scripts/sync-core.sh. Do not edit it here; change it in mathmax and sync again.
 /**
- * Keyboard access to boxes that scroll sideways. A box whose content is wider
+ * Keyboard access to boxes that scroll. A box whose content is wider or taller
  * than it can only be scrolled by keyboard once it can take focus, and Safari
  * does not focus such a box by itself.
  *
@@ -9,10 +9,13 @@
  * the arrow keys; once everything fits it leaves the tab order again. Pair it with
  * `focusRing` so the focused box shows a ring.
  *
- * `use:scrollRegions` does the same for every `.overflow-x-auto` box and every
- * display formula (`.katex-display`) inside a lesson, so widget boxes need no
- * action of their own. A box that holds a control already has a focus stop and
- * is left alone, and so is a tabindex an author or `scrollFocus` set.
+ * `use:scrollRegions` does the same for every scrolling box inside a lesson
+ * (`.overflow-x-auto`, `.overflow-y-auto`, `.overflow-auto`) and every display
+ * formula (`.katex-display`), so widget boxes need no action of their own.
+ * Height counts only for boxes meant to scroll up and down (`.overflow-y-auto`,
+ * `.overflow-auto`): a tall glyph in a sideways box or a formula is not a
+ * reason to stop there. A box that holds a control already has a focus stop
+ * and is left alone, and so is a tabindex an author or `scrollFocus` set.
  */
 
 /** Marks a box whose tabindex `scrollFocus` manages. */
@@ -20,7 +23,9 @@ const OWNED_BY_BOX = 'data-scroll-focus';
 /** Marks a box whose tabindex `scrollRegions` set. */
 const OWNED_BY_REGIONS = 'data-scroll-region';
 
-const SCROLLERS = '.overflow-x-auto, .katex-display';
+const SCROLLERS = '.overflow-x-auto, .overflow-y-auto, .overflow-auto, .katex-display';
+/** Boxes meant to scroll up and down, whose height counts as overflow. */
+const TALL_SCROLLERS = '.overflow-y-auto, .overflow-auto';
 const FOCUSABLE = 'a[href], button, input, select, textarea, [tabindex]:not([tabindex="-1"])';
 
 /**
@@ -68,7 +73,8 @@ export function updateRegion(box) {
   if (el.hasAttribute(OWNED_BY_BOX)) return;
   const owned = el.hasAttribute(OWNED_BY_REGIONS);
   if (!owned && el.hasAttribute('tabindex')) return;
-  const needs = el.scrollWidth > el.clientWidth && !el.querySelector(FOCUSABLE);
+  const tall = el.matches(TALL_SCROLLERS) && el.scrollHeight > el.clientHeight;
+  const needs = (el.scrollWidth > el.clientWidth || tall) && !el.querySelector(FOCUSABLE);
   if (needs) {
     el.tabIndex = 0;
     el.setAttribute(OWNED_BY_REGIONS, '');
