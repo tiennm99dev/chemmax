@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 480" fill="none" stroke="#475569" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+<g transform="translate(70 65) rotate(15)"><path d="M-7-28V18A7 7 0 0 0 7 18V-28M-10-28H10M-7 4H7"/></g>
+<g transform="translate(190 65)" stroke="#065f46"><path d="M0-22L19-11V11L0 22L-19 11V-11Z"/><circle cx="0" cy="0" r="12"/></g>
+<g transform="translate(305 65)"><circle cx="4" cy="-4" r="8"/><circle cx="-10" cy="14" r="5"/><circle cx="-4" cy="-22" r="4"/><circle cx="14" cy="-20" r="3"/></g>
+<g transform="translate(420 70) rotate(-30)"><ellipse cx="0" cy="-20" rx="7" ry="9"/><path d="M-3-11V14L0 20L3 14V-11M0 25Q-4 31 0 32Q4 31 0 25Z"/></g>
+<g transform="translate(60 185)"><path d="M-22-26L-18-22V22Q-18 26-14 26H14Q18 26 18 22V-24M-18-10H-10M-18 0H-13M-18 10H-10"/></g>
+<g transform="translate(180 185)"><circle cx="0" cy="0" r="7"/><circle cx="-20" cy="12" r="5"/><circle cx="20" cy="12" r="5"/><circle cx="0" cy="-22" r="5"/><path d="M-6 3.6L-15.7 9.4M6 3.6L15.7 9.4M0-7V-17"/></g>
+<g transform="translate(300 185)"><path d="M-6-28V-10L-24 22Q-25 26-21 26H21Q25 26 24 22L6-10V-28M-9-28H9M-17.2 10H17.2"/></g>
+<g transform="translate(415 185) rotate(15)"><rect x="-22" y="-24" width="44" height="48" rx="3"/><path d="M-16-16H-10M-10 17H10M7.1-5.1A10 10 0 1 0 7.1 9.1"/></g>
+<g transform="translate(75 300) rotate(-15)"><path d="M-5-28V-9.3A18 18 0 1 0 5-9.3V-28M-8-28H8M-17 14H17"/></g>
+<g transform="translate(195 300)"><path d="M-16 0H16M10-6L16 0L10 6"/></g>
+<g transform="translate(310 300)" stroke="#065f46"><path d="M-18 26H18Q22 26 20 20Q18 4 6 0H-6Q-18 4-20 20Q-22 26-18 26ZM-4 0V-6H4V0M0-8Q-7-16 0-28Q7-16 0-8Z"/></g>
+<g transform="translate(425 300) rotate(-30)"><path d="M-7-28V18A7 7 0 0 0 7 18V-28M-10-28H10M-7 6H7"/></g>
+<g transform="translate(65 415) rotate(30)"><circle cx="0" cy="0" r="7"/><circle cx="-20" cy="12" r="5"/><circle cx="20" cy="12" r="5"/><path d="M-6 3.6L-15.7 9.4M6 3.6L15.7 9.4"/></g>
+<g transform="translate(185 415) rotate(60)"><ellipse cx="0" cy="-20" rx="7" ry="9"/><path d="M-3-11V14L0 20L3 14V-11"/></g>
+<g transform="translate(300 415) rotate(15)"><path d="M0-20L17.3-10V10L0 20L-17.3 10V-10Z"/><path d="M0-13L11.3-6.5M11.3 6.5L0 13M-11.3 6.5V-6.5"/></g>
+<g transform="translate(420 415) rotate(-15)"><path d="M-22-26L-18-22V22Q-18 26-14 26H14Q18 26 18 22V-24M-18-6H18M-18 6H-11"/></g>
+</svg>

@@ -1,0 +1,9 @@
+/* HoáHợp's subject art and colours for the age-band theme in app.css. Each
+   site owns this file and the SVGs in ./decor/; core reads only these custom
+   properties. */
+:root {
+  --tile-line: url('./decor/tile-line.svg');
+  --spot-line: url('./decor/spot-line.svg');
+  --subject-tint: #d1fae5;
+  --subject-ink: #065f46;
+}
