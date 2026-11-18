@@ -1,6 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import katex from 'katex';
-import { texSource, texStrict } from '#lib/core/katex-options.js';
+import { strictTexFailures } from '#lib/core/tex-check.js';
 import {
   CELL_METALS,
   COUPLES,
@@ -17,21 +16,8 @@ import {
   reductionTex,
 } from './electrochem.js';
 
-/** @param {string} tex */
-function renders(tex) {
-  try {
-    katex.renderToString(texSource(tex), {
-      throwOnError: true,
-      strict: (/** @type {string} */ code, /** @type {string} */ msg) => {
-        if (texStrict(code, msg) !== 'ignore') throw new Error(msg);
-        return 'ignore';
-      },
-    });
-    return true;
-  } catch {
-    return false;
-  }
-}
+/** Bare TeX as a rich text. @param {string} tex */
+const inline = (tex) => `$${tex}$`;
 
 describe('electrode potentials and Galvani cells', () => {
   it('keeps the couples in the order of the electrochemical series', () => {
@@ -71,17 +57,20 @@ describe('electrode potentials and Galvani cells', () => {
     expect(potentialTex(-0.44)).toBe('-0{,}440');
     expect(potentialTex(0.34)).toBe('+0{,}340');
     const bad = [];
+    /** @type {string[]} */
+    const texts = [];
     for (const a of CELL_METALS) {
       for (const b of CELL_METALS) {
         const c = cell(a, b);
         if (!c) continue;
         if (!(c.emf > 0)) bad.push([a, b, 'emf']);
-        for (const tex of [c.emfTex, c.overall, oxidationTex(c.anode), reductionTex(c.cathode)]) {
-          if (!renders(tex)) bad.push([a, b, tex]);
-        }
+        texts.push(
+          ...[c.emfTex, c.overall, oxidationTex(c.anode), reductionTex(c.cathode)].map(inline),
+        );
       }
     }
     expect(bad).toEqual([]);
+    expect(strictTexFailures(texts)).toEqual([]);
   });
 
   it('applies the α rule', () => {
@@ -114,16 +103,15 @@ describe('electrolysis', () => {
   });
 
   it('renders every equation and reason', () => {
-    const bad = [];
-    for (const e of ELECTROLYTES) {
+    const texts = ELECTROLYTES.flatMap((e) => {
       const d = discharge(e);
-      const texts = [e.overall, d.cathode.chosen.half, d.anode.chosen.half];
-      for (const t of texts) if (!renders(t)) bad.push([e.id, t]);
-      for (const why of [d.cathode.why, d.anode.why]) {
-        for (const m of why.matchAll(/\$([^$]+)\$/g)) if (!renders(m[1])) bad.push([e.id, m[1]]);
-      }
-    }
-    expect(bad).toEqual([]);
+      return [
+        ...[e.overall, d.cathode.chosen.half, d.anode.chosen.half].map(inline),
+        d.cathode.why,
+        d.anode.why,
+      ];
+    });
+    expect(strictTexFailures(texts)).toEqual([]);
   });
 
   it('turns charge into amounts of product', () => {

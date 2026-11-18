@@ -1,7 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import katex from 'katex';
 import { rng } from '#lib/core/drill.js';
-import { texSource, texStrict } from '#lib/core/katex-options.js';
+import { strictTexFailures, texSpans } from '#lib/core/tex-check.js';
 import { formulaParts } from '#lib/domain/formula.js';
 import { ITEMS, buildQuiz, judgePick } from './engine.js';
 import {
@@ -12,31 +11,12 @@ import {
   titrationSkill,
 } from './skills.js';
 
-/** Every `$...$` piece of a rich text. @param {string} text */
-const texPieces = (text) => [...text.matchAll(/\$([^$]+)\$/g)].map((m) => m[1]);
-
 /** The plain numbers written in TeX in a prompt, in order. @param {string} text */
 const numbers = (text) =>
-  texPieces(text)
+  texSpans(text)
     .map((t) => t.replace(/\\,/g, '').replace('{,}', '.'))
     .filter((t) => /^-?[\d.]+$/.test(t))
     .map(Number);
-
-/** @param {string} tex */
-function renders(tex) {
-  try {
-    katex.renderToString(texSource(tex), {
-      throwOnError: true,
-      strict: (/** @type {string} */ code, /** @type {string} */ msg) => {
-        if (texStrict(code, msg) !== 'ignore') throw new Error(msg);
-        return 'ignore';
-      },
-    });
-    return true;
-  } catch {
-    return false;
-  }
-}
 
 describe('the colour and formula quiz', () => {
   it('asks about every item once, with the answer among four distinct options', () => {
@@ -67,6 +47,8 @@ describe('the colour and formula quiz', () => {
 describe('the chapter review drill', () => {
   it('draws integer or short exact answers with TeX that renders', () => {
     const bad = [];
+    /** @type {string[]} */
+    const texts = [];
     for (const skill of REVIEW_SKILLS)
       for (let seed = 1; seed <= 40; seed++) {
         const q = skill.make(rng(seed));
@@ -77,10 +59,10 @@ describe('the chapter review drill', () => {
           decimals > 3
         )
           bad.push([skill.id, seed, q.answer]);
-        for (const text of [q.prompt, ...q.steps, ...(q.hints ?? [])])
-          for (const tex of texPieces(text)) if (!renders(tex)) bad.push([skill.id, seed, tex]);
+        texts.push(q.prompt, ...q.steps, ...(q.hints ?? []));
       }
     expect(bad).toEqual([]);
+    expect(strictTexFailures(texts)).toEqual([]);
   });
 
   it('computes the answers from the prompt', () => {

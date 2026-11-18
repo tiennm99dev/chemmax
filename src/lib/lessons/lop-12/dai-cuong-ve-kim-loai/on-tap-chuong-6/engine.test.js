@@ -1,6 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import katex from 'katex';
-import { texSource, texStrict } from '#lib/core/katex-options.js';
+import { strictTexFailures } from '#lib/core/tex-check.js';
 import {
   CORROSION_CASES,
   NONE,
@@ -46,25 +45,10 @@ describe('the quiz', () => {
 
 describe('the quiz text', () => {
   it('writes TeX that renders in every prompt, explanation and note', () => {
-    const bad = [];
-    for (const q of QUESTIONS) {
+    const texts = QUESTIONS.flatMap((q) => {
       const c = card(q);
-      for (const text of [c.prompt, c.why, c.note ?? '']) {
-        for (const [, tex] of text.matchAll(/\$([^$]+)\$/g)) {
-          try {
-            katex.renderToString(texSource(tex), {
-              throwOnError: true,
-              strict: (/** @type {string} */ code, /** @type {string} */ msg) => {
-                if (texStrict(code, msg) !== 'ignore') throw new Error(msg);
-                return 'ignore';
-              },
-            });
-          } catch {
-            bad.push(tex);
-          }
-        }
-      }
-    }
-    expect(bad).toEqual([]);
+      return [c.prompt, c.why, c.note ?? ''];
+    });
+    expect(strictTexFailures(texts)).toEqual([]);
   });
 });
