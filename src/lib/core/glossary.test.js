@@ -16,6 +16,7 @@ import {
   termsByGrade,
   termsForLesson,
 } from './glossary.js';
+import { filterSections, searchKey, showsEnglish } from './glossary-search.js';
 
 /** @typedef {import('./glossary.js').GlossaryEntry} GlossaryEntry */
 
@@ -214,10 +215,30 @@ describe('termsByGrade and termsForLesson', () => {
     const line = own?.entries.find((e) => e.term === 'đường thẳng');
     expect(line).toMatchObject({
       anchor: anchorOf(top.grade, 'muc-1'),
-      key: 'duong thang | test term 1 | d',
       see: [{ anchor: anchorOf(top.grade, 'muc-2'), term: 'ánh xạ' }],
     });
     expect(line?.lesson.path).toBe(`/lop-${top.grade}/${entries[0].lesson}/`);
+  });
+
+  it('sends no search key to the page, and search still finds term, English name and aka', () => {
+    const sections = termsByGrade(files);
+    for (const e of sections.flatMap((s) => s.entries)) expect(e).not.toHaveProperty('key');
+    const keys = new Map(sections.flatMap((s) => s.entries.map((e) => [e.anchor, searchKey(e)])));
+    const hits = (/** @type {string} */ q) =>
+      filterSections(sections, keys, fold(q)).flatMap((s) => s.entries.map((e) => e.term));
+    expect(hits('Đường Thẳng')).toEqual(['đường thẳng']);
+    expect(hits('duong thang')).toEqual(['đường thẳng']);
+    expect(hits('test term 1')).toContain('đường thẳng');
+    expect(hits('d')).toContain('đường thẳng');
+    expect(hits('anh xa')).toEqual(['ánh xạ']);
+    expect(hits('khong co muc nay')).toEqual([]);
+    expect(filterSections(sections, keys, '')).toBe(sections);
+  });
+
+  it('shows the English name only when it differs from the term', () => {
+    expect(showsEnglish({ term: 'đường thẳng', en: 'line' })).toBe(true);
+    expect(showsEnglish({ term: 'Python', en: 'python' })).toBe(false);
+    expect(showsEnglish({ term: 'hàm', en: 'Hàm' })).toBe(false);
   });
 
   it('lists the entries of one lesson', () => {

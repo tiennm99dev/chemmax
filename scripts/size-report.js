@@ -1,8 +1,9 @@
 #!/usr/bin/env node
 // Synced from tiennm99dev/toantot by scripts/sync-core.sh. Do not edit it here; change it in toantot and sync again.
 /**
- * Reports the gzip size of every lesson's client JS after `npm run build`, and
- * exits 1 when any lesson chunk is over the hard limit.
+ * Reports the gzip size of every lesson's client JS and the size of the
+ * prerendered "Thuật ngữ" page after `npm run build`, and exits 1 when any
+ * lesson chunk is over the hard limit or the glossary page passes its budget.
  *
  *   npm run size-report
  *
@@ -12,7 +13,9 @@
  * or the lazy KaTeX chunk behind `tex.svelte`, is not counted against a lesson.
  *
  * Budgets: a lesson's chunks should total 30 KB gzip or less (a warning), and no
- * single lesson chunk may pass 60 KB gzip (a failure).
+ * single lesson chunk may pass 60 KB gzip (a failure). `build/thuat-ngu/index.html`
+ * must exist and stay within 540 KB raw and 100 KB gzip, with all its
+ * `class="…"` attributes together within 40 KB (each a failure).
  */
 import { existsSync, readFileSync } from 'node:fs';
 import path from 'node:path';
@@ -23,9 +26,36 @@ const MANIFEST = path.join(CLIENT_DIR, '.vite/manifest.json');
 const LESSON_PREFIX = 'src/lib/lessons/';
 const CHUNK_LIMIT = 60 * 1024;
 const LESSON_BUDGET = 30 * 1024;
+const GLOSSARY_PAGE = 'build/thuat-ngu/index.html';
+const GLOSSARY_LIMITS = { raw: 540 * 1024, gzip: 100 * 1024, classes: 40 * 1024 };
 
 /** @param {number} bytes */
 const kb = (bytes) => `${(bytes / 1024).toFixed(1)} KB`;
+
+/**
+ * Prints the glossary page's raw, gzip and class-attribute bytes against their
+ * limits, and returns how many limits it passes (1 when the page is missing).
+ */
+function glossaryReport() {
+  if (!existsSync(GLOSSARY_PAGE)) {
+    console.log(`FAIL  ${GLOSSARY_PAGE} is missing`);
+    return 1;
+  }
+  const html = readFileSync(GLOSSARY_PAGE);
+  let classes = 0;
+  for (const m of html.toString('utf8').matchAll(/\sclass="[^"]*"/g)) {
+    classes += Buffer.byteLength(m[0]);
+  }
+  const sizes = { raw: html.length, gzip: gzipSync(html).length, classes };
+  let over = 0;
+  for (const [name, limit] of Object.entries(GLOSSARY_LIMITS)) {
+    const size = sizes[/** @type {keyof typeof sizes} */ (name)];
+    const flag = size > limit ? 'FAIL' : 'ok  ';
+    if (size > limit) over += 1;
+    console.log(`${flag}  ${kb(size).padStart(9)}  ${GLOSSARY_PAGE} ${name} (limit ${kb(limit)})`);
+  }
+  return over;
+}
 
 function main() {
   if (!existsSync(MANIFEST)) {
@@ -67,7 +97,8 @@ function main() {
     `${rows.length} lesson(s) with client JS; ${warnings} over the ${kb(LESSON_BUDGET)} budget, ` +
       `${failures} with a chunk over ${kb(CHUNK_LIMIT)} gzip`,
   );
-  if (failures > 0) process.exit(1);
+  const glossaryFailures = glossaryReport();
+  if (failures > 0 || glossaryFailures > 0) process.exit(1);
 }
 
 main();

@@ -28,14 +28,15 @@ export { fold };
 /** @typedef {{ grade: number, entries: GlossaryEntry[] }} GlossaryFile */
 
 /**
- * An entry ready for the page: links resolved, search key folded.
+ * An entry ready for the page, links resolved. It carries no search key: the
+ * page derives one with `searchKey` (`glossary-search.js`), so the inline
+ * hydration data holds each name once.
  * @typedef {object} GlossaryItem
  * @property {string} anchor `lop-N-<id>`, the element id on `/thuat-ngu/`.
  * @property {string} term
  * @property {string} en
  * @property {string} def
  * @property {string[]} aka
- * @property {string} key Folded term, English name and other names, for search.
  * @property {{ title: string, path: string }} lesson
  * @property {Array<{ anchor: string, term: string }>} see
  */
@@ -123,7 +124,6 @@ export function termsByGrade(files = glossaryFiles) {
         en: e.en,
         def: e.def,
         aka: e.aka ?? [],
-        key: fold([e.term, e.en, ...(e.aka ?? [])].join(' | ')),
         lesson: { title: l?.title ?? e.lesson, path: lessonPath(grade, chapter, slug) },
         see: (e.see ?? []).flatMap((ref) => {
           const to = parseSee(grade, ref);
