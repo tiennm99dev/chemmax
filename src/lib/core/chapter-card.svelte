@@ -6,7 +6,7 @@
   import StatusBadge from './status-badge.svelte';
   import { chapterStatus } from './chapter-status.js';
   import { hub as copy } from './copy.vi.js';
-  import { focusRing } from './ui.js';
+  import { hubCard } from './ui.js';
 
   /**
    * A chapter link with its live lesson count. The badge says `Đã có` only when
@@ -32,9 +32,7 @@
 
 <a
   href={resolve(/** @type {import('$app/types').Path} */ (path))}
-  class="flex h-full flex-col gap-2 rounded-2xl border border-slate-200 bg-white p-4 transition hover:border-indigo-400 hover:shadow-sm {focusRing} {live
-    ? ''
-    : 'opacity-75'}"
+  class="flex h-full flex-col gap-2 {hubCard} {live ? '' : 'opacity-75'}"
 >
   <div class="flex items-start justify-between gap-3">
     <span class="text-xs font-semibold uppercase tracking-wide text-slate-500">

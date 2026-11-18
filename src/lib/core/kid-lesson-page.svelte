@@ -47,7 +47,7 @@
   }
 </script>
 
-<SiteShell>
+<SiteShell grade={grade.grade}>
   <div class="kid space-y-6 text-[20px] leading-relaxed" use:scrollRegions>
     <Breadcrumbs items={crumbs(grade, chapter, lesson)} />
 

@@ -4,7 +4,8 @@
   import { t } from '#lib/i18n/index.js';
   import { gradeSlug, grades, strands } from '#lib/curriculum/index.js';
   import SiteShell from '#lib/core/site-shell.svelte';
-  import { focusRing } from '#lib/core/ui.js';
+  import { bandOf } from '#lib/core/band.js';
+  import { hubCard, hubCardShape } from '#lib/core/ui.js';
 
   const copy = t();
   const levels = copy.levels
@@ -22,7 +23,17 @@
   /** @param {import('#lib/curriculum/index.js').Grade} g */
   const lessonCount = (g) => g.chapters.reduce((n, c) => n + c.lessons.length, 0);
 
-  const cardClass = `flex h-full min-h-12 flex-col gap-1 rounded-2xl border border-slate-200 bg-white p-4 transition hover:border-indigo-400 hover:shadow-sm ${focusRing}`;
+  const cardLayout = 'flex h-full min-h-12 flex-col gap-1';
+  const cardClass = `${cardLayout} ${hubCard}`;
+
+  /** Tiểu học grade cards cycle these pastels, each with a border one step darker. */
+  const pastels = [
+    'border-2 border-rose-300 bg-rose-100',
+    'border-2 border-amber-300 bg-amber-100',
+    'border-2 border-lime-300 bg-lime-100',
+    'border-2 border-sky-300 bg-sky-100',
+    'border-2 border-violet-300 bg-violet-100',
+  ];
 </script>
 
 <svelte:head>
@@ -32,6 +43,7 @@
 
 <SiteShell width="wide">
   <header class="py-6 text-center sm:py-10">
+    <div class="decor-spot mx-auto mb-4 size-24" aria-hidden="true"></div>
     <h1 class="mb-3 text-4xl font-bold text-slate-900 sm:text-5xl">{copy.site.title}</h1>
     <p class="mx-auto max-w-2xl text-lg leading-relaxed text-slate-600">
       {copy.site.description}
@@ -42,23 +54,35 @@
     <h2 id="grades" class="mb-6 text-2xl font-bold text-slate-900">{copy.home.gradesTitle}</h2>
     <div class="space-y-8">
       {#each levels as level (level.title)}
-        <section aria-labelledby="level-{level.from}">
-          <h3 id="level-{level.from}" class="mb-3 text-lg font-bold text-slate-700">
-            {level.title}
-          </h3>
-          <ul class="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
-            {#each level.grades as g (g.grade)}
+        {@const band = bandOf(level.from)}
+        {@const kid = band === 'tieu-hoc'}
+        <section aria-labelledby="level-{level.from}" data-band={band}>
+          <div class="mb-3 flex items-center gap-3">
+            {#if kid}
+              <div class="decor-spot size-[120px] shrink-0" aria-hidden="true"></div>
+            {/if}
+            <h3
+              id="level-{level.from}"
+              class="font-bold text-slate-700 {kid ? 'text-2xl' : 'text-lg'}"
+            >
+              {level.title}
+            </h3>
+          </div>
+          <ul class="grid grid-cols-2 gap-[var(--hub-gap)] sm:grid-cols-3 lg:grid-cols-5">
+            {#each level.grades as g, i (g.grade)}
               <li>
                 <a
                   href={resolve(
                     /** @type {import('$app/types').Path} */ (`/${gradeSlug(g.grade)}/`),
                   )}
-                  class={cardClass}
+                  class={kid
+                    ? `${cardLayout} ${hubCardShape} ${pastels[i % pastels.length]}`
+                    : cardClass}
                 >
-                  <span class="text-xl font-bold text-indigo-700"
+                  <span class="text-xl font-bold {kid ? 'text-slate-900' : 'text-indigo-700'}"
                     >{copy.grades[gradeSlug(g.grade)]}</span
                   >
-                  <span class="text-sm text-slate-500"
+                  <span class="text-sm {kid ? 'text-slate-700' : 'text-slate-500'}"
                     >{copy.home.gradeSummary(g.chapters.length, lessonCount(g))}</span
                   >
                 </a>
@@ -72,7 +96,7 @@
 
   <section aria-labelledby="strands" class="pb-6">
     <h2 id="strands" class="mb-6 text-2xl font-bold text-slate-900">{copy.home.strandsTitle}</h2>
-    <ul class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+    <ul class="grid gap-[var(--hub-gap)] sm:grid-cols-2 lg:grid-cols-3">
       {#each strandList as s (s.slug)}
         <li>
           <a

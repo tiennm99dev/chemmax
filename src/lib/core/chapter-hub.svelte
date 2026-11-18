@@ -8,7 +8,8 @@
   import StatusBadge from './status-badge.svelte';
   import { crumbs } from './crumbs.js';
   import { hub as copy } from './copy.vi.js';
-  import { focusRing } from './ui.js';
+  import { bandOf } from './band.js';
+  import { hubCard, pageTitle } from './ui.js';
 
   /**
    * A chapter's lessons with their kind and live / "Sắp ra mắt" status. Stub
@@ -29,6 +30,7 @@
     })),
   );
   const live = $derived(lessons.filter((l) => l.status === 'live').length);
+  const band = $derived(bandOf(grade.grade));
 </script>
 
 <svelte:head>
@@ -39,23 +41,23 @@
   />
 </svelte:head>
 
-<SiteShell>
+<SiteShell grade={grade.grade} spot={band !== 'thpt'}>
   <Breadcrumbs items={crumbs(grade, chapter)} />
   <header class="mb-6">
     <p class="text-sm font-semibold uppercase tracking-wide text-slate-500">
       {site.grades[gradeSlug(grade.grade)]} · {chapter.label}
     </p>
-    <h1 class="mb-2 mt-1 text-3xl font-bold text-slate-900 sm:text-4xl">{chapter.title}</h1>
+    <h1 class="mb-2 mt-1 {pageTitle(band)}">{chapter.title}</h1>
     <p class="text-slate-600">{copy.lessonCount(live, lessons.length)}</p>
   </header>
 
   <h2 class="sr-only">{copy.lessons}</h2>
-  <ol class="space-y-3">
+  <ol class="clear-both flex flex-col gap-[var(--hub-gap)]">
     {#each lessons as l (l.slug)}
       <li>
         <a
           href={resolve(/** @type {import('$app/types').Path} */ (l.path))}
-          class="flex min-h-12 flex-col gap-1 rounded-2xl border border-slate-200 bg-white p-4 transition hover:border-indigo-400 hover:shadow-sm sm:flex-row sm:items-center sm:justify-between {focusRing} {l.status ===
+          class="flex min-h-12 flex-col gap-1 sm:flex-row sm:items-center sm:justify-between {hubCard} {l.status ===
           'live'
             ? ''
             : 'opacity-75'}"

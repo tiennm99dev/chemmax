@@ -165,6 +165,16 @@ export const hub = {
   backToChapter: 'Về chương',
 };
 
+/** The error page, and the message of every 404 a route throws. */
+export const errorPage = {
+  notFound: 'Không tìm thấy trang',
+  notFoundBody:
+    'Đường dẫn có thể đã cũ hoặc gõ nhầm. Em quay về trang chủ để chọn lớp và bài học nhé.',
+  failed: 'Đã có lỗi xảy ra',
+  failedBody: 'Trang chưa hiện được. Em tải lại trang hoặc quay về trang chủ nhé.',
+  home: 'Về trang chủ',
+};
+
 export const moved = {
   title: 'Bài học đã chuyển',
   body: 'Bài này nay nằm trong chương trình theo lớp. Nếu trang không tự chuyển, hãy bấm vào liên kết dưới đây.',

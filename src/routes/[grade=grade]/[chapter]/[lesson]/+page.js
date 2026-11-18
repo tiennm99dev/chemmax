@@ -1,5 +1,6 @@
 // Synced from tiennm99dev/toantot by scripts/sync-core.sh. Do not edit it here; change it in toantot and sync again.
 import { error } from '@sveltejs/kit';
+import { errorPage } from '#lib/core/copy.vi.js';
 import { chapter, grade, lesson, prevNext } from '#lib/curriculum/index.js';
 
 /** @typedef {import('svelte').Component<any>} Component */
@@ -48,7 +49,7 @@ export async function load({ params, data }) {
   const g = grade(params.grade);
   const c = chapter(params.grade, params.chapter);
   const l = lesson(params.grade, params.chapter, params.lesson);
-  if (!g || !c || !l) error(404, 'Unknown lesson');
+  if (!g || !c || !l) error(404, errorPage.notFound);
   const { prev, next } = prevNext(g.grade, c.slug, l.slug);
   const base = { grade: g, chapter: c, lesson: l, prev, next };
   if (!data.content) return { ...base, content: null, widget: null, widgets: {} };

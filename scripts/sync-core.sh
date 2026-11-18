@@ -13,7 +13,8 @@
 #
 # Site-owned paths are never touched: src/lib/curriculum/*.json and the rest of
 # src/lib/curriculum/ apart from index.js, src/lib/i18n/site.vi.js,
-# src/lib/domain/, src/lib/lessons/, static/, README, RUNBOOK, LICENSE, VERSION,
+# src/lib/domain/, src/lib/lessons/, src/lib/site/ (decoration art and subject
+# colours), static/, README, RUNBOOK, LICENSE, VERSION,
 # CHANGELOG, package.json name/version/description and package-lock.json.
 # The synced routes import src/lib/curriculum/legacy-redirects.js, so a target
 # without one gets an empty table it then owns.

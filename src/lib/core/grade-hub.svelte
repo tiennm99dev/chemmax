@@ -7,6 +7,8 @@
   import ChapterCard from './chapter-card.svelte';
   import { crumbs } from './crumbs.js';
   import { hub as copy } from './copy.vi.js';
+  import { bandOf } from './band.js';
+  import { pageTitle } from './ui.js';
 
   /**
    * A grade's chapters grouped by volume (Tập 1, Tập 2, Chuyên đề), in book order.
@@ -33,15 +35,15 @@
   />
 </svelte:head>
 
-<SiteShell width="wide">
+<SiteShell width="wide" grade={grade.grade} spot>
   <Breadcrumbs items={crumbs(grade)} />
-  <h1 class="mb-6 text-3xl font-bold text-slate-900 sm:text-4xl">{label}</h1>
+  <h1 class="mb-6 {pageTitle(bandOf(grade.grade))}">{label}</h1>
 
-  <div class="space-y-10">
+  <div class="clear-both space-y-10">
     {#each volumes as volume, v (volume.name)}
       <section aria-labelledby="volume-{v}">
         <h2 id="volume-{v}" class="mb-4 text-xl font-bold text-slate-800">{volume.name}</h2>
-        <ul class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <ul class="grid gap-[var(--hub-gap)] sm:grid-cols-2 lg:grid-cols-3">
           {#each volume.chapters as chapter (chapter.slug)}
             <li><ChapterCard {grade} {chapter} /></li>
           {/each}

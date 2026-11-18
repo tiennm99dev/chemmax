@@ -1,5 +1,6 @@
 // Synced from tiennm99dev/toantot by scripts/sync-core.sh. Do not edit it here; change it in toantot and sync again.
 import { error } from '@sveltejs/kit';
+import { errorPage } from '#lib/core/copy.vi.js';
 import { chapter, grade, gradeSlug, grades } from '#lib/curriculum/index.js';
 
 /** @type {import('./$types').EntryGenerator} */
@@ -13,6 +14,6 @@ export function entries() {
 export function load({ params }) {
   const g = grade(params.grade);
   const c = chapter(params.grade, params.chapter);
-  if (!g || !c) error(404, 'Unknown chapter');
+  if (!g || !c) error(404, errorPage.notFound);
   return { grade: g, chapter: c };
 }

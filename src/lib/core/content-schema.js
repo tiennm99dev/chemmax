@@ -11,6 +11,7 @@
 
 import { isPictureName } from './kid/pictures/index.js';
 import { findClose } from './rich-parts.js';
+import { KID_MAX_GRADE } from './band.js';
 
 /** @typedef {import('./kid/pictures/index.js').PictureName} PictureName */
 /** @typedef {import('#lib/curriculum/index.js').LessonKind} LessonKind */
@@ -118,8 +119,8 @@ export const EXERCISE_TYPES = /** @type {const} */ ([
   'count',
 ]);
 
-/** Highest grade that uses the kid lesson layout. */
-export const KID_MAX_GRADE = 5;
+/** Highest grade that uses the kid lesson layout; owned by `band.js`. */
+export { KID_MAX_GRADE };
 
 /** Longest kid `intro`, in characters. */
 export const KID_INTRO_MAX = 300;

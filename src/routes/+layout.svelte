@@ -6,6 +6,8 @@
   import '@fontsource/be-vietnam-pro/500.css';
   import '@fontsource/be-vietnam-pro/700.css';
   import '../app.css';
+  // The site's own decoration art and subject colours for the band theme.
+  import '#lib/site/decor.css';
   import 'katex/dist/katex.min.css';
 
   let { children } = $props();

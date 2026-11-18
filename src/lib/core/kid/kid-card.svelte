@@ -27,7 +27,7 @@
 </script>
 
 <section
-  class="rounded-3xl border-2 p-5 shadow-sm sm:p-6 {tones[tone]}"
+  class="rounded-[var(--card-radius)] border-2 p-5 shadow-sm sm:p-6 {tones[tone]}"
   aria-labelledby={labelledby}
 >
   <div bind:this={body} class="space-y-4">

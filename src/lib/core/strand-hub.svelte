@@ -6,6 +6,8 @@
   import Breadcrumbs from './breadcrumbs.svelte';
   import ChapterCard from './chapter-card.svelte';
   import { nav } from './copy.vi.js';
+  import { bandOf } from './band.js';
+  import { pageTitle } from './ui.js';
 
   /**
    * Every chapter of one strand (Số học, Đại số, ...) across grades.
@@ -33,20 +35,20 @@
   <meta name="description" content={info.blurb || info.title} />
 </svelte:head>
 
-<SiteShell width="wide">
+<SiteShell width="wide" spot>
   <Breadcrumbs items={[{ label: nav.home, href: '/' }, { label: info.title }]} />
   <header class="mb-8">
-    <h1 class="mb-2 text-3xl font-bold text-slate-900 sm:text-4xl">{info.title}</h1>
+    <h1 class="mb-2 {pageTitle('chung')}">{info.title}</h1>
     {#if info.blurb}<p class="text-lg text-slate-600">{info.blurb}</p>{/if}
   </header>
 
-  <div class="space-y-10">
+  <div class="clear-both space-y-10">
     {#each byGrade as group (group.n)}
-      <section aria-labelledby="grade-{group.n}">
+      <section aria-labelledby="grade-{group.n}" data-band={bandOf(group.n)}>
         <h2 id="grade-{group.n}" class="mb-4 text-xl font-bold text-slate-800">
           {site.grades[gradeSlug(group.n)]}
         </h2>
-        <ul class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <ul class="grid gap-[var(--hub-gap)] sm:grid-cols-2 lg:grid-cols-3">
           {#each group.chapters as entry (entry.chapter.slug)}
             <li><ChapterCard grade={entry.grade} chapter={entry.chapter} /></li>
           {/each}

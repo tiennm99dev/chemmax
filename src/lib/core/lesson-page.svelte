@@ -13,9 +13,9 @@
   import KidLessonPage from './kid-lesson-page.svelte';
   import { crumbs } from './crumbs.js';
   import { scrollRegions } from '#lib/actions/scroll-focus.js';
-  import { KID_MAX_GRADE } from './content-schema.js';
+  import { KID_MAX_GRADE, bandOf } from './band.js';
   import { lesson as copy } from './copy.vi.js';
-  import { card } from './ui.js';
+  import { card, pageTitle } from './ui.js';
 
   /** @type {import('./content-schema.js').LessonPageProps} */
   let props = $props();
@@ -36,7 +36,7 @@
 {#if grade.grade <= KID_MAX_GRADE}
   <KidLessonPage {...props} />
 {:else}
-  <SiteShell>
+  <SiteShell grade={grade.grade}>
     <Breadcrumbs items={crumbs(grade, chapter, lesson)} />
 
     <article class="space-y-8" use:scrollRegions>
@@ -44,7 +44,7 @@
         <p class="text-sm font-semibold uppercase tracking-wide text-slate-500">
           {chapter.label} · {site.kinds[lesson.kind]}
         </p>
-        <h1 class="mb-3 mt-1 text-3xl font-bold text-slate-900 sm:text-4xl">{lesson.title}</h1>
+        <h1 class="mb-3 mt-1 {pageTitle(bandOf(grade.grade))}">{lesson.title}</h1>
         <RichText as="p" html={content.intro} class="text-lg leading-relaxed text-slate-700" />
       </header>
 
@@ -114,7 +114,7 @@
 
       {#if content.takeaways.length}
         <section
-          class="rounded-2xl border border-emerald-200 bg-emerald-50 p-4 sm:p-5"
+          class="rounded-[var(--card-radius)] border border-emerald-200 bg-emerald-50 p-4 sm:p-5"
           aria-labelledby="takeaways"
         >
           <h2 id="takeaways" class="mb-2 text-lg font-bold text-emerald-900">{copy.takeaways}</h2>

@@ -9,7 +9,8 @@
   import PrevNext from './prev-next.svelte';
   import { crumbs } from './crumbs.js';
   import { hub as copy } from './copy.vi.js';
-  import { card, focusRing } from './ui.js';
+  import { bandOf } from './band.js';
+  import { card, focusRing, pageTitle } from './ui.js';
 
   /**
    * Placeholder for a curriculum lesson without content yet: title, kind,
@@ -34,7 +35,7 @@
   <meta name="robots" content="noindex" />
 </svelte:head>
 
-<SiteShell>
+<SiteShell grade={grade.grade}>
   <Breadcrumbs items={crumbs(grade, chapter, lesson)} />
 
   <article class="space-y-6">
@@ -45,7 +46,7 @@
         </span>
         <StatusBadge status="stub" />
       </div>
-      <h1 class="mb-3 mt-2 text-3xl font-bold text-slate-900 sm:text-4xl">{lesson.title}</h1>
+      <h1 class="mb-3 mt-2 {pageTitle(bandOf(grade.grade))}">{lesson.title}</h1>
       <p class="leading-relaxed text-slate-600">{copy.stubNote}</p>
     </header>
 
@@ -62,7 +63,7 @@
 
     {#if lesson.interactiveIdea}
       <section
-        class="rounded-2xl border border-dashed border-indigo-300 bg-indigo-50 p-4 sm:p-5"
+        class="rounded-[var(--card-radius)] border border-dashed border-indigo-300 bg-indigo-50 p-4 sm:p-5"
         aria-labelledby="preview"
       >
         <h2 id="preview" class="mb-1 text-lg font-bold text-indigo-900">{copy.preview}</h2>
