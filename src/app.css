@@ -83,9 +83,9 @@
 
 /* Age-band theme. SiteShell sets `data-band` (core/band.js); hub sections may
    nest their own. Bands change surface, shape, density and decoration, never
-   the interaction colour. The art and subject colours come from the
-   site-owned src/lib/site/decor.css. Decoration sits only in the gutters, the
-   ribbon and hub spots, on empty aria-hidden elements, never under text. */
+   the interaction colour. Art and subject colours: site-owned
+   src/lib/site/decor.css. Decoration sits only in the gutters, ribbon and
+   hub spots, on empty aria-hidden elements, never under text. */
 :root,
 [data-band='thcs'],
 [data-band='chung'] {
@@ -103,6 +103,7 @@
   --ribbon-tile: var(--tile-line);
   --ribbon-opacity: 0.5;
   --ribbon-line: 0;
+  --spot-opacity: 1;
 }
 
 [data-band='tieu-hoc'] {
@@ -117,24 +118,30 @@
   --ribbon-h: 44px;
   --ribbon-tile: var(--tile-kid);
   --ribbon-opacity: 0.9;
+  --spot-opacity: 1;
 }
 
 [data-band='thpt'] {
+  --page-bg: #f8fafc;
   --card-radius: 0.5rem;
   --btn-radius: 0.375rem;
   --hub-pad: 0.75rem;
   --hub-gap: 0.5rem;
   --decor-size: 520px;
   --decor-opacity: 0.16;
+  --decor-tile: var(--tile-line);
   --decor-grid:
     linear-gradient(rgb(100 116 139 / 0.08) 1px, transparent 1px),
     linear-gradient(90deg, rgb(100 116 139 / 0.08) 1px, transparent 1px);
   --ribbon-h: 16px;
   --ribbon-tile: none;
+  --ribbon-opacity: 0.5;
   --ribbon-line: 1px;
+  --decor-spot: var(--spot-line);
+  --spot-opacity: 0.6;
 }
 
-/* <main>: the page colour, plus the ô li grid paper in the thpt gutters. */
+/* <main>: page colour, plus ô li grid paper in thpt gutters. */
 .decor-surface {
   position: relative;
   background-color: var(--page-bg);
@@ -142,7 +149,7 @@
   background-size: 24px 24px;
 }
 
-/* The content column stays opaque, with plain colour 1.5rem to each side. */
+/* The content column stays opaque, plain 1.5rem to each side. */
 .decor-column {
   position: relative;
   background-color: var(--page-bg);
@@ -162,7 +169,7 @@
 .decor-layer {
   position: absolute;
   inset: 0;
-  background: var(--decor-tile) 0 0 / var(--decor-size) repeat;
+  background: var(--decor-tile) center top / var(--decor-size) repeat;
   opacity: var(--decor-opacity);
 }
 
@@ -183,6 +190,7 @@
 
 .decor-spot {
   background: var(--decor-spot) center / contain no-repeat;
+  opacity: var(--spot-opacity);
 }
 
 @media print {
