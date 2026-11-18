@@ -1,5 +1,6 @@
 <!-- Synced from tiennm99dev/toantot by scripts/sync-core.sh. Do not edit it here; change it in toantot and sync again. -->
 <script>
+  import { flushSync } from 'svelte';
   import { resolve } from '$app/paths';
   import { t } from '#lib/i18n/index.js';
   import { gradeSlug } from '#lib/curriculum/index.js';
@@ -30,21 +31,46 @@
   const found = $derived(visible.reduce((n, s) => n + s.entries.length, 0));
   const total = $derived(sections.reduce((n, s) => n + s.entries.length, 0));
 
+  /**
+   * Clears the search before an in-page link is followed, so the grade or
+   * term it points at is on the page when the browser scrolls to it.
+   */
+  function showAll() {
+    if (query) flushSync(() => (query = ''));
+  }
+
   /** @param {number} grade */
   const label = (grade) => site.grades[gradeSlug(grade)];
 
   const link = `rounded text-indigo-700 underline underline-offset-2 hover:text-indigo-900 ${focusRing}`;
 
   /**
-   * Type size, density and touch-target height of a grade's band: large and
-   * roomy in tiểu học, compact rows in thpt.
+   * Type size, density and touch-target heights of a grade's band: large and
+   * roomy in tiểu học, compact rows in thpt. `target` sizes the jump links,
+   * `inner` the links inside a card, `pad` the card and `meta` the gap above
+   * each row under the definition.
    * @param {number} grade
    */
   function look(grade) {
     const band = bandOf(grade);
-    if (band === 'tieu-hoc') return { text: 'text-[20px] leading-relaxed', target: 'min-h-12' };
-    if (band === 'thpt') return { text: 'text-[15px] leading-snug', target: 'min-h-11' };
-    return { text: 'text-base leading-relaxed', target: 'min-h-11' };
+    const roomy = { pad: 'p-[var(--hub-pad)]', meta: 'mt-1', seeGap: 'gap-x-3' };
+    if (band === 'tieu-hoc')
+      return {
+        text: 'text-[20px] leading-relaxed',
+        target: 'min-h-12',
+        inner: 'min-h-12',
+        ...roomy,
+      };
+    if (band === 'thpt')
+      return {
+        text: 'text-[15px] leading-snug',
+        target: 'min-h-11',
+        inner: 'min-h-8',
+        pad: 'p-2',
+        meta: 'mt-0.5',
+        seeGap: 'gap-x-2',
+      };
+    return { text: 'text-base leading-relaxed', target: 'min-h-11', inner: 'min-h-11', ...roomy };
   }
 </script>
 
@@ -64,6 +90,7 @@
           <li>
             <a
               href="#lop-{s.grade}"
+              onclick={showAll}
               class="inline-flex {look(s.grade)
                 .target} items-center rounded-[var(--btn-radius)] border border-slate-300 bg-white px-3 text-indigo-700 underline underline-offset-2 hover:bg-indigo-50 {focusRing}"
               >{label(s.grade)}</a
@@ -95,7 +122,7 @@
     {/if}
 
     {#each visible as s (s.grade)}
-      {@const { text, target } = look(s.grade)}
+      {@const { text, inner, pad, meta, seeGap } = look(s.grade)}
       <section
         id="lop-{s.grade}"
         data-band={bandOf(s.grade)}
@@ -117,29 +144,31 @@
             {#each s.entries as e (e.anchor)}
               <div
                 id={e.anchor}
-                class="scroll-mt-4 {card} border-l-4 p-[var(--hub-pad)] target:border-l-indigo-600 target:bg-indigo-50"
+                class="scroll-mt-4 {card} {pad} target:border-l-4 target:border-l-indigo-600 target:bg-indigo-50"
               >
                 <dt class="font-bold text-slate-900">
                   {e.term}
-                  <span lang="en" class="ml-1 font-normal text-slate-600">{e.en}</span>
+                  <span lang="en" class="ml-1 font-normal text-slate-600">({e.en})</span>
                 </dt>
-                <dd class="mt-1 text-slate-800">{e.def}</dd>
+                <dd class="{meta} text-slate-800">{e.def}</dd>
                 {#if e.aka.length}
-                  <dd class="mt-1 text-slate-600">{copy.aka} {e.aka.join(', ')}</dd>
+                  <dd class="{meta} text-slate-600">{copy.aka} {e.aka.join(', ')}</dd>
                 {/if}
-                <dd class="mt-1 flex flex-wrap items-center gap-x-2 text-slate-600">
-                  <span>{copy.learnedIn}</span>
+                <dd class="{meta} flex items-center gap-x-2 text-slate-600">
+                  <span class="shrink-0">{copy.learnedIn}</span>
                   <a
                     href={resolve(/** @type {import('$app/types').Path} */ (e.lesson.path))}
-                    class="inline-flex {target} items-center {link}">{e.lesson.title}</a
+                    class="inline-flex min-w-0 {inner} items-center {link}">{e.lesson.title}</a
                   >
                 </dd>
                 {#if e.see.length}
-                  <dd class="flex flex-wrap items-center gap-x-3 text-slate-600">
+                  <dd class="flex flex-wrap items-center {seeGap} text-slate-600">
                     <span>{copy.seeAlso}</span>
                     {#each e.see as ref (ref.anchor)}
-                      <a href="#{ref.anchor}" class="inline-flex {target} items-center {link}"
-                        >{ref.term}</a
+                      <a
+                        href="#{ref.anchor}"
+                        onclick={showAll}
+                        class="inline-flex {inner} items-center {link}">{ref.term}</a
                       >
                     {/each}
                   </dd>

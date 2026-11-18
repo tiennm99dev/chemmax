@@ -40,6 +40,12 @@ describe('glossary data files', () => {
     expect(glossaryFiles).toHaveLength(dataFiles.length);
   });
 
+  it('cover every grade in the curriculum', () => {
+    expect(glossaryFiles.filter((f) => f.entries.length > 0).map((f) => f.grade)).toEqual(
+      grades().map((g) => g.grade),
+    );
+  });
+
   it('stay inside the size budgets', () => {
     let total = 0;
     for (const name of dataFiles) {
