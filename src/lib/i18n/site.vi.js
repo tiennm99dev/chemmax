@@ -1,9 +1,9 @@
 export const site = {
-  title: 'ChemCoach',
-  repo: 'https://github.com/tiennm99dev/chemcoach',
+  title: 'HoáHợp',
+  repo: 'https://github.com/tiennm99dev/hoahop',
   tagline: 'Hoá học tương tác cho học sinh lớp 6-12',
   description:
-    'ChemCoach giúp học sinh lớp 6-12 học Hoá học theo sách Kết nối tri thức với cuộc sống qua mô hình tương tác: bảng tuần hoàn, mô hình nguyên tử, phân tử, cân bằng phương trình và thang pH.',
+    'HoáHợp giúp học sinh lớp 6-12 học Hoá học theo sách Kết nối tri thức với cuộc sống qua mô hình tương tác: bảng tuần hoàn, mô hình nguyên tử, phân tử, cân bằng phương trình và thang pH.',
 };
 
 export const home = {

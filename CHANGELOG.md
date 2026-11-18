@@ -1,11 +1,12 @@
 # Changelog
 
-All notable changes to **ChemCoach** are documented here. Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versioning: 4-digit MAJOR.MINOR.PATCH.MICRO.
+All notable changes to **HoáHợp** are documented here. Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versioning: 4-digit MAJOR.MINOR.PATCH.MICRO.
 
 ## [Unreleased]
 
 ### Changed
 
+- Đổi tên site từ ChemCoach thành HoáHợp: repo `tiennm99dev/hoahop`, địa chỉ mới `https://tiennm99dev.github.io/hoahop/`. Site gốc MathMate đổi thành ToánTốt. Tiến độ "đã làm" lưu trong trình duyệt dưới cả hai tên cũ (ChemMax và ChemCoach) được chuyển sang tên mới ở lần mở bài đầu tiên.
 - Đổi tên site từ ChemMax thành ChemCoach: repo `tiennm99dev/chemcoach`, địa chỉ mới `https://tiennm99dev.github.io/chemcoach/`. Site gốc MathMax đổi thành MathMate. Tiến độ "đã làm" lưu trong trình duyệt dưới tên cũ được chuyển sang tên mới ở lần mở bài đầu tiên.
 
 ## [0.0.1.0] - 2026-10-25
