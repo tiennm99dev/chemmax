@@ -1,8 +1,8 @@
 {
-  "name": "chemmax",
+  "name": "chemcoach",
   "version": "0.0.1.0",
   "private": true,
-  "description": "ChemMax — Hoá học tương tác cho học sinh lớp 6-12. Static site.",
+  "description": "ChemCoach — Hoá học tương tác cho học sinh lớp 6-12. Static site.",
   "type": "module",
   "scripts": {
     "dev": "vite dev",

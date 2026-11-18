@@ -1,9 +1,9 @@
 export const site = {
-  title: 'ChemMax',
-  repo: 'https://github.com/tiennm99dev/chemmax',
+  title: 'ChemCoach',
+  repo: 'https://github.com/tiennm99dev/chemcoach',
   tagline: 'Hoá học tương tác cho học sinh lớp 6-12',
   description:
-    'ChemMax giúp học sinh lớp 6-12 học Hoá học theo sách Kết nối tri thức với cuộc sống qua mô hình tương tác: bảng tuần hoàn, mô hình nguyên tử, phân tử, cân bằng phương trình và thang pH.',
+    'ChemCoach giúp học sinh lớp 6-12 học Hoá học theo sách Kết nối tri thức với cuộc sống qua mô hình tương tác: bảng tuần hoàn, mô hình nguyên tử, phân tử, cân bằng phương trình và thang pH.',
 };
 
 export const home = {
