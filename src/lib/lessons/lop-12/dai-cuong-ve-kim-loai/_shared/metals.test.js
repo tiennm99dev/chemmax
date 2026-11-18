@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import { electrodeCouple } from '#lib/domain/electrode-potentials.js';
 import { isBalancedText } from '#lib/domain/reaction.js';
 import {
   ANIONS,
@@ -18,6 +19,13 @@ describe('metal data', () => {
   it('lists the series in rising E°', () => {
     const E = METALS.map((m) => m.E);
     expect(E).toEqual([...E].sort((a, b) => a - b));
+  });
+
+  it('takes every metal from the domain table of potentials', () => {
+    for (const m of METALS) {
+      const c = electrodeCouple(m.id);
+      expect([m.name, m.charge, m.E]).toEqual([c.name, c.charge, c.E]);
+    }
   });
 
   it('writes potentials with a sign and a decimal comma', () => {

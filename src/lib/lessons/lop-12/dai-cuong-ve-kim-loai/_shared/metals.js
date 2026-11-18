@@ -6,6 +6,7 @@
  * such as "Zn + CuSO4 → ZnSO4 + Cu".
  */
 import { formatFixed, texNumber } from '#lib/core/number-format.js';
+import { electrodeCouple } from '#lib/domain/electrode-potentials.js';
 
 /**
  * @typedef {object} Metal
@@ -19,23 +20,33 @@ import { formatFixed, texNumber } from '#lib/core/number-format.js';
  */
 
 /**
- * Metals of the electrochemical series in the order of rising E°, values as
- * printed in the KNTT book.
+ * How each metal of the chapter meets water, in the order of the
+ * electrochemical series (E° rising).
+ * @type {Record<string, Metal['water']>}
+ */
+const WATER = {
+  K: 'cold',
+  Na: 'cold',
+  Mg: 'hot',
+  Al: 'oxide',
+  Zn: 'steam',
+  Fe: 'steam',
+  Ni: 'none',
+  Sn: 'none',
+  Pb: 'none',
+  Cu: 'none',
+  Ag: 'none',
+};
+
+/**
+ * Metals of the electrochemical series in the order of rising E°; name,
+ * charge and E° come from the book's table in the domain module.
  * @type {Metal[]}
  */
-export const METALS = [
-  { id: 'K', name: 'potassium', charge: 1, E: -2.924, water: 'cold' },
-  { id: 'Na', name: 'sodium', charge: 1, E: -2.713, water: 'cold' },
-  { id: 'Mg', name: 'magnesium', charge: 2, E: -2.356, water: 'hot' },
-  { id: 'Al', name: 'aluminium', charge: 3, E: -1.676, water: 'oxide' },
-  { id: 'Zn', name: 'zinc', charge: 2, E: -0.762, water: 'steam' },
-  { id: 'Fe', name: 'iron', charge: 2, E: -0.44, water: 'steam' },
-  { id: 'Ni', name: 'nickel', charge: 2, E: -0.257, water: 'none' },
-  { id: 'Sn', name: 'tin', charge: 2, E: -0.137, water: 'none' },
-  { id: 'Pb', name: 'lead', charge: 2, E: -0.126, water: 'none' },
-  { id: 'Cu', name: 'copper', charge: 2, E: 0.34, water: 'none' },
-  { id: 'Ag', name: 'silver', charge: 1, E: 0.799, water: 'none' },
-];
+export const METALS = Object.entries(WATER).map(([id, water]) => {
+  const { name, charge, E } = electrodeCouple(id);
+  return { id, name, charge, E, water };
+});
 
 /** @param {string} id */
 export function metal(id) {
