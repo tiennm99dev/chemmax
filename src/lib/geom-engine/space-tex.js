@@ -1,4 +1,4 @@
-// Synced from tiennm99dev/mathmate by scripts/sync-core.sh. Do not edit it here; change it in mathmate and sync again.
+// Synced from tiennm99dev/toantot by scripts/sync-core.sh. Do not edit it here; change it in toantot and sync again.
 import { formatNumber, numTex } from '#lib/core/number-format.js';
 import { gcd } from '#lib/numtheory-engine/index.js';
 import { dot3 } from '#lib/geom-engine/solid.js';

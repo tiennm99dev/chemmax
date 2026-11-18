@@ -1,4 +1,4 @@
-<!-- Synced from tiennm99dev/mathmate by scripts/sync-core.sh. Do not edit it here; change it in mathmate and sync again. -->
+<!-- Synced from tiennm99dev/toantot by scripts/sync-core.sh. Do not edit it here; change it in toantot and sync again. -->
 <svelte:options namespace="svg" />
 
 <path d="M8 15c0-3 5-4 12-4s12 1 12 4c0 9-7 19-12 21-5-2-12-12-12-21z" fill="#dc2626" />

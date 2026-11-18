@@ -1,4 +1,4 @@
-// Synced from tiennm99dev/mathmate by scripts/sync-core.sh. Do not edit it here; change it in mathmate and sync again.
+// Synced from tiennm99dev/toantot by scripts/sync-core.sh. Do not edit it here; change it in toantot and sync again.
 /**
  * Solids drawn in an orthographic view that turns and tilts: 3D vector
  * arithmetic on `{ x, y, z }`, the view transform, back-face tests, the

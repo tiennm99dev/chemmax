@@ -1,4 +1,4 @@
-// Synced from tiennm99dev/mathmate by scripts/sync-core.sh. Do not edit it here; change it in mathmate and sync again.
+// Synced from tiennm99dev/toantot by scripts/sync-core.sh. Do not edit it here; change it in toantot and sync again.
 /**
  * Days, hours and months for grades 1 and 2: the days of the week in the order
  * the book counts them (thứ Hai first), the parts of a day as the book names

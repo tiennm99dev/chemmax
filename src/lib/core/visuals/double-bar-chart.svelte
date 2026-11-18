@@ -1,4 +1,4 @@
-<!-- Synced from tiennm99dev/mathmate by scripts/sync-core.sh. Do not edit it here; change it in mathmate and sync again. -->
+<!-- Synced from tiennm99dev/toantot by scripts/sync-core.sh. Do not edit it here; change it in toantot and sync again. -->
 <script>
   import { niceAxis } from '#lib/stats-engine/ticks.js';
   import { linear } from '#lib/core/visuals/svg-math.js';

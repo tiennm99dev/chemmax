@@ -1,8 +1,8 @@
 ---
 name: write-lesson
-description: Write every lesson of one curriculum chapter on a KNTT learning site (MathMate and its sister sites) - content.vi.js, the interactive widget and exercises - then run the batch checks and commit. Use when assigned a chapter such as "lop-6/<chuong-slug>", or asked to write, fill in or replace the stub lessons of a chapter.
+description: Write every lesson of one curriculum chapter on a KNTT learning site (ToánTốt and its sister sites) - content.vi.js, the interactive widget and exercises - then run the batch checks and commit. Use when assigned a chapter such as "lop-6/<chuong-slug>", or asked to write, fill in or replace the stub lessons of a chapter.
 ---
-<!-- Synced from tiennm99dev/mathmate by scripts/sync-core.sh. Do not edit it here; change it in mathmate and sync again. -->
+<!-- Synced from tiennm99dev/toantot by scripts/sync-core.sh. Do not edit it here; change it in toantot and sync again. -->
 
 # Write the lessons of one chapter
 
@@ -59,7 +59,7 @@ report so a core pass can promote it. Never add dependencies.
    `src/lib/lessons/lop-1/cac-so-tu-0-den-10/bai-1-cac-so-0-1-2-3-4-5/` (on a
    sister site, its own reference lesson); for grades 6-12 a theory lesson such as
    `src/lib/lessons/lop-8/tam-giac-dong-dang/bai-35-dinh-li-pythagore-va-ung-dung/`
-   on MathMate, or the reference lesson of the sister site.
+   on ToánTốt, or the reference lesson of the sister site.
 5. List what you can reuse: the core visuals (section 6), `ls src/lib/domain/`
    on a sister site, and the engines under `src/lib/*-engine/`. Read the JSDoc
    header of any component before using it, and run `npm run dev` then open
@@ -584,7 +584,7 @@ Other shared pieces:
   `iconRow` for picture charts), `#lib/units-engine/index.js` (re-exports
   `formatNumber`).
 - Domain components for the site's subject: `src/lib/domain/` (empty on
-  MathMate). PhysicsFriend has `vector-field`, `force-diagram`, `motion-plot`,
+  ToánTốt). LíLẽ has `vector-field`, `force-diagram`, `motion-plot`,
   `circuit-board`, `ray-optics-bench` (pass `unsigned` on grade 9: the
   caption then gives d and d′ as plain distances and no k), `wave-plot`,
   `thermometer`, `meter-dial` (ammeter or voltmeter dial), `boundary-view`
@@ -599,7 +599,7 @@ Other shared pieces:
   an SVG), `current-trace` (current against time, with `pushSample`), `oscillation.js`
   (harmonic motion: `stateAt`, `piTex`, `equationTex`, `phaseRelation`) with `osc-graph` (a signed
   graph against time that can be a time slider) and `spring-mass` (a horizontal spring
-  pendulum), and `renewable-power.js` (solar, wind and hydro power); ChemCoach has `periodic-table`, `atom-model`, `molecule-viewer`,
+  pendulum), and `renewable-power.js` (solar, wind and hydro power); HoáHợp has `periodic-table`, `atom-model`, `molecule-viewer`,
   `equation-balancer`, `ph-scale`, `lab-glassware`, `equation-line` (a
   book-style equation such as "Zn + 2HCl → ZnCl2 + H2↑" with real subscripts)
   with `reaction.js` (`terms`, `isBalancedText`, which also checks condensed
@@ -610,7 +610,7 @@ Other shared pieces:
   (`BOND_ENERGY`, the book's values), `test-tube`, `sample-bench` (telling unknown samples apart with reagents and a results
   table), `alkane-name.js` (IUPAC names of alkanes from a drawn skeleton, `judgeName`) and
   `curve-plot` (a curve
-  against time or volume with dashed series and a shaded band); BioBuddy has
+  against time or volume with dashed series and a shaded band); SinhSôi has
   `diagram-hotspots`, `punnett-square`, `pedigree-chart`, `food-web` (`mode`
   opens it in "Loại bỏ" mode), `dna-codon-translator`, `population-chart`,
   `pea` (a garden-pea seed, flower or plant picture for Mendel's traits),

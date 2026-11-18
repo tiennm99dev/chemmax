@@ -1,4 +1,4 @@
-// Synced from tiennm99dev/mathmate by scripts/sync-core.sh. Do not edit it here; change it in mathmate and sync again.
+// Synced from tiennm99dev/toantot by scripts/sync-core.sh. Do not edit it here; change it in toantot and sync again.
 /**
  * Strings for the shared lesson and hub components. Subject-specific chrome
  * (site name, grade, strand and kind labels) lives in `#lib/i18n/site.vi.js`.

@@ -1,4 +1,4 @@
-// Synced from tiennm99dev/mathmate by scripts/sync-core.sh. Do not edit it here; change it in mathmate and sync again.
+// Synced from tiennm99dev/toantot by scripts/sync-core.sh. Do not edit it here; change it in toantot and sync again.
 /**
  * Pure layout math shared by the SVG visuals. Angles are degrees clockwise
  * from 12 o'clock, which matches clocks, spinners and pie charts.

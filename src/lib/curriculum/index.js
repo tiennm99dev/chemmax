@@ -1,4 +1,4 @@
-// Synced from tiennm99dev/mathmate by scripts/sync-core.sh. Do not edit it here; change it in mathmate and sync again.
+// Synced from tiennm99dev/toantot by scripts/sync-core.sh. Do not edit it here; change it in toantot and sync again.
 /**
  * Curriculum accessors over the generated `lop-N.json` files. Array order is book
  * order (activity and review chapters sit between numbered ones), so nothing here

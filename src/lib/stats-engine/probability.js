@@ -1,4 +1,4 @@
-// Synced from tiennm99dev/mathmate by scripts/sync-core.sh. Do not edit it here; change it in mathmate and sync again.
+// Synced from tiennm99dev/toantot by scripts/sync-core.sh. Do not edit it here; change it in toantot and sync again.
 /**
  * Index of the outcome picked by `r`, a uniform number in [0, 1), when each
  * outcome has the given weight. Zero-weight outcomes are never picked.

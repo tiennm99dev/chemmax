@@ -1,4 +1,4 @@
-/* Synced from tiennm99dev/mathmate by scripts/sync-core.sh. Do not edit it here; change it in mathmate and sync again. */
+/* Synced from tiennm99dev/toantot by scripts/sync-core.sh. Do not edit it here; change it in toantot and sync again. */
 /* Explicit `/index.css` so the bundler's @import resolver finds the file;
    the bare 'tailwindcss' specifier is intercepted before Tailwind sees it. */
 @import 'tailwindcss/index.css';

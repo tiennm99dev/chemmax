@@ -1,4 +1,4 @@
-// Synced from tiennm99dev/mathmate by scripts/sync-core.sh. Do not edit it here; change it in mathmate and sync again.
+// Synced from tiennm99dev/toantot by scripts/sync-core.sh. Do not edit it here; change it in toantot and sync again.
 export { lineFromPoints, lineFromSlope, yAt, linePoints } from './linear.js';
 export { solveSystem, clipToBox, constantThrough, isDegenerate, EPSILON_COEF } from './system.js';
 export {

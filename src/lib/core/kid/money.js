@@ -1,4 +1,4 @@
-// Synced from tiennm99dev/mathmate by scripts/sync-core.sh. Do not edit it here; change it in mathmate and sync again.
+// Synced from tiennm99dev/toantot by scripts/sync-core.sh. Do not edit it here; change it in toantot and sync again.
 /**
  * Vietnamese banknotes as grades 2 and 3 meet them: grade 2 uses the notes
  * from 100 to 1000 đồng, grade 3 those from 1 000 to 100 000 đồng. How a note

@@ -1,4 +1,4 @@
-<!-- Synced from tiennm99dev/mathmate by scripts/sync-core.sh. Do not edit it here; change it in mathmate and sync again. -->
+<!-- Synced from tiennm99dev/toantot by scripts/sync-core.sh. Do not edit it here; change it in toantot and sync again. -->
 <script generics="Q extends import('./quiz.js').KidQuestion<any>">
   import { tick } from 'svelte';
   import { button } from '#lib/core/ui.js';

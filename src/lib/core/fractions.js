@@ -1,4 +1,4 @@
-// Synced from tiennm99dev/mathmate by scripts/sync-core.sh. Do not edit it here; change it in mathmate and sync again.
+// Synced from tiennm99dev/toantot by scripts/sync-core.sh. Do not edit it here; change it in toantot and sync again.
 /**
  * Writing and reading fractions the way the grade 6 book prints them: a true
  * minus sign on the numerator (−3/4), mixed numbers as "1 3/4", and learner

@@ -1,4 +1,4 @@
-// Synced from tiennm99dev/mathmate by scripts/sync-core.sh. Do not edit it here; change it in mathmate and sync again.
+// Synced from tiennm99dev/toantot by scripts/sync-core.sh. Do not edit it here; change it in toantot and sync again.
 /**
  * Kid tap-the-answer questions for grades 1-5: the question shape, option
  * builders, how a tap moves a question on (a wrong first tap shows a hint and

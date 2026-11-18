@@ -1,4 +1,4 @@
-// Synced from tiennm99dev/mathmate by scripts/sync-core.sh. Do not edit it here; change it in mathmate and sync again.
+// Synced from tiennm99dev/toantot by scripts/sync-core.sh. Do not edit it here; change it in toantot and sync again.
 /**
  * Keyboard access to boxes that scroll. A box whose content is wider or taller
  * than it can only be scrolled by keyboard once it can take focus, and Safari

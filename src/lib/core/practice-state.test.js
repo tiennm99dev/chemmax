@@ -1,4 +1,4 @@
-// Synced from tiennm99dev/mathmate by scripts/sync-core.sh. Do not edit it here; change it in mathmate and sync again.
+// Synced from tiennm99dev/toantot by scripts/sync-core.sh. Do not edit it here; change it in toantot and sync again.
 import { describe, it, expect } from 'vitest';
 import { checkAnswer } from './answer-check.js';
 import {
@@ -7,7 +7,7 @@ import {
   choiceOrder,
   exerciseSeed,
   isAttempt,
-  legacyKey,
+  legacyKeys,
   loadSolved,
   matchOrder,
   saveSolved,
@@ -55,32 +55,55 @@ describe('solved store', () => {
     expect(loadSolved('/a/', 5, s)).toEqual([]);
   });
 
-  it('maps a renamed base to its old key', () => {
-    expect(legacyKey('/mathmate/lop-6/so-hoc/bai/')).toBe('/mathmax/lop-6/so-hoc/bai/');
-    expect(legacyKey('/algorithmally/x/')).toBe('/algoatlas/x/');
-    expect(legacyKey('/physicsfriend/x/')).toBe('/physmax/x/');
-    expect(legacyKey('/chemcoach/x/')).toBe('/chemmax/x/');
-    expect(legacyKey('/biobuddy/x/')).toBe('/biomax/x/');
-    expect(legacyKey('/mathmate')).toBe('/mathmax');
-    expect(legacyKey('/other/x/')).toBeNull();
-    expect(legacyKey('/lop-6/x/')).toBeNull();
+  it('maps a renamed base to its old keys, newest first', () => {
+    expect(legacyKeys('/toantot/lop-6/so-hoc/bai/')).toEqual([
+      '/mathmate/lop-6/so-hoc/bai/',
+      '/mathmax/lop-6/so-hoc/bai/',
+    ]);
+    expect(legacyKeys('/tintuong/x/')).toEqual(['/algorithmally/x/', '/algoatlas/x/']);
+    expect(legacyKeys('/lile/x/')).toEqual(['/physicsfriend/x/', '/physmax/x/']);
+    expect(legacyKeys('/hoahop/x/')).toEqual(['/chemcoach/x/', '/chemmax/x/']);
+    expect(legacyKeys('/sinhsoi/x/')).toEqual(['/biobuddy/x/', '/biomax/x/']);
+    expect(legacyKeys('/toantot')).toEqual(['/mathmate', '/mathmax']);
+    expect(legacyKeys('/mathmate/x/')).toEqual([]);
+    expect(legacyKeys('/other/x/')).toEqual([]);
+    expect(legacyKeys('/lop-6/x/')).toEqual([]);
   });
 
-  it('moves progress from the pre-rename key once', () => {
+  it('moves progress from the English-era key once', () => {
     const s = memoryStorage();
-    s.setItem('practice:/mathmax/lop-6/a/', JSON.stringify([0, 2]));
-    expect(loadSolved('/mathmate/lop-6/a/', 5, s)).toEqual([0, 2]);
-    expect(s.data.get('practice:/mathmate/lop-6/a/')).toBe('[0,2]');
-    expect(s.data.has('practice:/mathmax/lop-6/a/')).toBe(false);
-    expect(loadSolved('/mathmate/lop-6/a/', 5, s)).toEqual([0, 2]);
+    s.setItem('practice:/mathmate/lop-6/a/', JSON.stringify([0, 2]));
+    expect(loadSolved('/toantot/lop-6/a/', 5, s)).toEqual([0, 2]);
+    expect(s.data.get('practice:/toantot/lop-6/a/')).toBe('[0,2]');
+    expect(s.data.has('practice:/mathmate/lop-6/a/')).toBe(false);
+    expect(loadSolved('/toantot/lop-6/a/', 5, s)).toEqual([0, 2]);
   });
 
-  it('keeps newer progress over the pre-rename key', () => {
+  it('moves progress from the oldest key once', () => {
+    const s = memoryStorage();
+    s.setItem('practice:/biomax/lop-6/a/', JSON.stringify([1]));
+    expect(loadSolved('/sinhsoi/lop-6/a/', 5, s)).toEqual([1]);
+    expect(s.data.get('practice:/sinhsoi/lop-6/a/')).toBe('[1]');
+    expect(s.data.has('practice:/biomax/lop-6/a/')).toBe(false);
+  });
+
+  it('prefers the English-era key over the oldest one and removes both', () => {
     const s = memoryStorage();
     s.setItem('practice:/mathmax/lop-6/a/', JSON.stringify([0]));
-    s.setItem('practice:/mathmate/lop-6/a/', JSON.stringify([1]));
-    expect(loadSolved('/mathmate/lop-6/a/', 5, s)).toEqual([1]);
-    expect(s.data.has('practice:/mathmax/lop-6/a/')).toBe(true);
+    s.setItem('practice:/mathmate/lop-6/a/', JSON.stringify([3]));
+    expect(loadSolved('/toantot/lop-6/a/', 5, s)).toEqual([3]);
+    expect(s.data.get('practice:/toantot/lop-6/a/')).toBe('[3]');
+    expect(s.data.has('practice:/mathmate/lop-6/a/')).toBe(false);
+    expect(s.data.has('practice:/mathmax/lop-6/a/')).toBe(false);
+  });
+
+  it('keeps newer progress over the pre-rename keys', () => {
+    const s = memoryStorage();
+    s.setItem('practice:/mathmax/lop-6/a/', JSON.stringify([0]));
+    s.setItem('practice:/mathmate/lop-6/a/', JSON.stringify([2]));
+    s.setItem('practice:/toantot/lop-6/a/', JSON.stringify([1]));
+    expect(loadSolved('/toantot/lop-6/a/', 5, s)).toEqual([1]);
+    expect(s.data.has('practice:/mathmate/lop-6/a/')).toBe(true);
   });
 
   it('works without storage', () => {

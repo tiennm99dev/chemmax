@@ -1,4 +1,4 @@
-<!-- Synced from tiennm99dev/mathmate by scripts/sync-core.sh. Do not edit it here; change it in mathmate and sync again. -->
+<!-- Synced from tiennm99dev/toantot by scripts/sync-core.sh. Do not edit it here; change it in toantot and sync again. -->
 <svelte:options namespace="svg" />
 
 <circle cx="20" cy="22" r="14" fill="#f97316" />

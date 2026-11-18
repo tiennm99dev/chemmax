@@ -1,4 +1,4 @@
-<!-- Synced from tiennm99dev/mathmate by scripts/sync-core.sh. Do not edit it here; change it in mathmate and sync again. -->
+<!-- Synced from tiennm99dev/toantot by scripts/sync-core.sh. Do not edit it here; change it in toantot and sync again. -->
 <svelte:options namespace="svg" />
 
 <rect x="6" y="6" width="28" height="28" rx="3" fill="#60a5fa" stroke="#1d4ed8" stroke-width="2" />

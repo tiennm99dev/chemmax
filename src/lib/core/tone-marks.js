@@ -1,4 +1,4 @@
-// Synced from tiennm99dev/mathmate by scripts/sync-core.sh. Do not edit it here; change it in mathmate and sync again.
+// Synced from tiennm99dev/toantot by scripts/sync-core.sh. Do not edit it here; change it in toantot and sync again.
 /**
  * Vietnamese tone-mark placement, the new style the site uses everywhere: in
  * an open syllable ending in `oa`, `oe` or `uy`, the mark sits on the last

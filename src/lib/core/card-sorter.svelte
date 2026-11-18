@@ -1,4 +1,4 @@
-<!-- Synced from tiennm99dev/mathmate by scripts/sync-core.sh. Do not edit it here; change it in mathmate and sync again. -->
+<!-- Synced from tiennm99dev/toantot by scripts/sync-core.sh. Do not edit it here; change it in toantot and sync again. -->
 <script>
   import { button, card as cardClass, focusRing } from './ui.js';
   import { clearWrong, isCorrect, moveFeedback, place, progress } from './card-sorter.js';

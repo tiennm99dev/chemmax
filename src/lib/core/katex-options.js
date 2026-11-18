@@ -1,4 +1,4 @@
-// Synced from tiennm99dev/mathmate by scripts/sync-core.sh. Do not edit it here; change it in mathmate and sync again.
+// Synced from tiennm99dev/toantot by scripts/sync-core.sh. Do not edit it here; change it in toantot and sync again.
 /**
  * KaTeX options shared by the prerender (`render-content.server.js`) and the
  * live widget renderer (`tex.svelte`), so both treat Vietnamese text the same.

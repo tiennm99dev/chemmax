@@ -1,4 +1,4 @@
-<!-- Synced from tiennm99dev/mathmate by scripts/sync-core.sh. Do not edit it here; change it in mathmate and sync again. -->
+<!-- Synced from tiennm99dev/toantot by scripts/sync-core.sh. Do not edit it here; change it in toantot and sync again. -->
 <script>
   // Font CSS goes through Vite here, not through @import in app.css: Tailwind
   // inlines CSS imports without rebasing their relative font URLs.

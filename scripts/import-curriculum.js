@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Synced from tiennm99dev/mathmate by scripts/sync-core.sh. Do not edit it here; change it in mathmate and sync again.
+// Synced from tiennm99dev/toantot by scripts/sync-core.sh. Do not edit it here; change it in toantot and sync again.
 /**
  * Turns curriculum manifests (subject → grades → chapters → lessons) into one
  * `lop-N.json` per grade plus `strands.json`, the ordered strand slugs that the

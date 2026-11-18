@@ -1,4 +1,4 @@
-// Synced from tiennm99dev/mathmate by scripts/sync-core.sh. Do not edit it here; change it in mathmate and sync again.
+// Synced from tiennm99dev/toantot by scripts/sync-core.sh. Do not edit it here; change it in toantot and sync again.
 /**
  * The four plane shapes a grade 1 child meets (hình vuông, hình tròn, hình
  * tam giác, hình chữ nhật), the two solids (khối lập phương, khối hộp chữ

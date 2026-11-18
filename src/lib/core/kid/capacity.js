@@ -1,4 +1,4 @@
-// Synced from tiennm99dev/mathmate by scripts/sync-core.sh. Do not edit it here; change it in mathmate and sync again.
+// Synced from tiennm99dev/toantot by scripts/sync-core.sh. Do not edit it here; change it in toantot and sync again.
 /**
  * Capacity in litres, the grade 2 way: containers (can, xô, bình, chai)
  * full of water are poured into 1 l mugs (ca 1 l), and the full mugs are

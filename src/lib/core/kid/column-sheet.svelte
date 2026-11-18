@@ -1,4 +1,4 @@
-<!-- Synced from tiennm99dev/mathmate by scripts/sync-core.sh. Do not edit it here; change it in mathmate and sync again. -->
+<!-- Synced from tiennm99dev/toantot by scripts/sync-core.sh. Do not edit it here; change it in toantot and sync again. -->
 <script>
   import { fmt } from '#lib/core/number-format.js';
   import { OP_SIGNS, OP_WORDS, onesDigits } from './column-steps.js';

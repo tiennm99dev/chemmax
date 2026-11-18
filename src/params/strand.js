@@ -1,4 +1,4 @@
-// Synced from tiennm99dev/mathmate by scripts/sync-core.sh. Do not edit it here; change it in mathmate and sync again.
+// Synced from tiennm99dev/toantot by scripts/sync-core.sh. Do not edit it here; change it in toantot and sync again.
 import strandSlugs from '#lib/curriculum/strands.json' with { type: 'json' };
 
 // The small generated slug list, not the curriculum accessors: matchers ship to

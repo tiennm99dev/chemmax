@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Synced from tiennm99dev/mathmate by scripts/sync-core.sh. Do not edit it here; change it in mathmate and sync again.
+// Synced from tiennm99dev/toantot by scripts/sync-core.sh. Do not edit it here; change it in toantot and sync again.
 /**
  * Reports the gzip size of every lesson's client JS after `npm run build`, and
  * exits 1 when any lesson chunk is over the hard limit.

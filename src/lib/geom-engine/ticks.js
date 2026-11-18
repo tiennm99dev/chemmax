@@ -1,4 +1,4 @@
-// Synced from tiennm99dev/mathmate by scripts/sync-core.sh. Do not edit it here; change it in mathmate and sync again.
+// Synced from tiennm99dev/toantot by scripts/sync-core.sh. Do not edit it here; change it in toantot and sync again.
 /**
  * @typedef {import('./vec.js').Vec2} Vec2
  * @typedef {Readonly<{x1: number, y1: number, x2: number, y2: number}>} TickSegment

@@ -1,4 +1,4 @@
-// Synced from tiennm99dev/mathmate by scripts/sync-core.sh. Do not edit it here; change it in mathmate and sync again.
+// Synced from tiennm99dev/toantot by scripts/sync-core.sh. Do not edit it here; change it in toantot and sync again.
 /**
  * Grade 4-5 fractions the book's way, on a plain `{ n, d }` with natural
  * numbers: the stacked TeX and plain text of a fraction, how it is read

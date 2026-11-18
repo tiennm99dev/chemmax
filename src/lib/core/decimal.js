@@ -1,4 +1,4 @@
-// Synced from tiennm99dev/mathmate by scripts/sync-core.sh. Do not edit it here; change it in mathmate and sync again.
+// Synced from tiennm99dev/toantot by scripts/sync-core.sh. Do not edit it here; change it in toantot and sync again.
 /**
  * Exact decimal work (grade 7 "Số thực" and later): the long division that
  * turns a fraction into a finite or repeating decimal (with its remainders, so a

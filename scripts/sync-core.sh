@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
-# Synced from tiennm99dev/mathmate by scripts/sync-core.sh. Do not edit it here; change it in mathmate and sync again.
+# Synced from tiennm99dev/toantot by scripts/sync-core.sh. Do not edit it here; change it in toantot and sync again.
 # Copies the subject-agnostic core of this site into a sister site.
 #
 #   scripts/sync-core.sh <target-repo> [--dry-run]
 #
-# mathmate is the single source of truth for the shared code. This script mirrors
+# toantot is the single source of truth for the shared code. This script mirrors
 # the synced paths below into <target-repo> (deleting files that no longer exist
 # here), stamps every synced file that can hold a comment with a header saying it
 # is synced, copies the shared package.json fields, and writes CORE_VERSION with
-# the mathmate commit it came from. Sister repos never edit synced paths: change
+# the toantot commit it came from. Sister repos never edit synced paths: change
 # them here, commit, then sync again.
 #
 # Site-owned paths are never touched: src/lib/curriculum/*.json and the rest of
@@ -18,7 +18,7 @@
 # The synced routes import src/lib/curriculum/legacy-redirects.js, so a target
 # without one gets an empty table it then owns.
 #
-# Run it from a clean mathmate checkout so CORE_VERSION names exactly what was
+# Run it from a clean toantot checkout so CORE_VERSION names exactly what was
 # copied, into a target whose index is clean (nothing staged), so the sync
 # commit holds only the sync: a deletion or rename staged earlier would
 # otherwise be swept into it. Afterwards, in the target: npm install, then the
@@ -54,7 +54,7 @@ src="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 [[ -d "$target" ]] || die "$target is not a directory"
 target="$(cd "$target" && pwd)"
 
-[[ ! -f "$src/CORE_VERSION" ]] || die "$src is itself a synced copy; run this from mathmate"
+[[ ! -f "$src/CORE_VERSION" ]] || die "$src is itself a synced copy; run this from toantot"
 [[ "$target" != "$src" ]] || die "target is this repo"
 [[ -f "$target/package.json" ]] || die "$target has no package.json"
 
@@ -140,7 +140,7 @@ done
 
 # Stamps one synced file with the header, after a shebang, doctype or front
 # matter when it has one. Files with no comment syntax (JSON) are left as is.
-NOTE="Synced from tiennm99dev/mathmate by scripts/sync-core.sh. Do not edit it here; change it in mathmate and sync again."
+NOTE="Synced from tiennm99dev/toantot by scripts/sync-core.sh. Do not edit it here; change it in toantot and sync again."
 stamp() {
   local file="$1" line
   case "$file" in
@@ -217,6 +217,6 @@ EOF
 fi
 
 echo "$sha" >"$target/CORE_VERSION"
-echo "sync-core: synced mathmate $sha into $target"
+echo "sync-core: synced toantot $sha into $target"
 echo "sync-core: next, in $target: npm install, then lint, format:check, check, test and build"
 echo "sync-core: then check git status and commit the sync on its own"

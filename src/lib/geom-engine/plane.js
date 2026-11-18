@@ -1,4 +1,4 @@
-// Synced from tiennm99dev/mathmate by scripts/sync-core.sh. Do not edit it here; change it in mathmate and sync again.
+// Synced from tiennm99dev/toantot by scripts/sync-core.sh. Do not edit it here; change it in toantot and sync again.
 /**
  * Plane geometry on plain `{ x, y }` points for drawing widgets: lengths,
  * angles, collinearity and parallel tests, a triangle from its sides, feet

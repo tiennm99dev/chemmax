@@ -1,4 +1,4 @@
-// Synced from tiennm99dev/mathmate by scripts/sync-core.sh. Do not edit it here; change it in mathmate and sync again.
+// Synced from tiennm99dev/toantot by scripts/sync-core.sh. Do not edit it here; change it in toantot and sync again.
 /**
  * Polynomials in one variable, as the grade 7 book introduces them in "Biểu
  * thức đại số và đa thức một biến". A collected polynomial is an array of

@@ -1,4 +1,4 @@
-// Synced from tiennm99dev/mathmate by scripts/sync-core.sh. Do not edit it here; change it in mathmate and sync again.
+// Synced from tiennm99dev/toantot by scripts/sync-core.sh. Do not edit it here; change it in toantot and sync again.
 export { UNITS, unit, quantityOf, convert, ratio, splitMixed, joinMixed } from './units.js';
 export { VND_DENOMINATIONS, breakdown, totalOf } from './money.js';
 export {

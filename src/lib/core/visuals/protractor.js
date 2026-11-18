@@ -1,4 +1,4 @@
-// Synced from tiennm99dev/mathmate by scripts/sync-core.sh. Do not edit it here; change it in mathmate and sync again.
+// Synced from tiennm99dev/toantot by scripts/sync-core.sh. Do not edit it here; change it in toantot and sync again.
 /**
  * Angles measured with a protractor and sorted by kind, shared by the grade 4
  * and grade 6 lessons on angles. Directions are whole degrees measured the
